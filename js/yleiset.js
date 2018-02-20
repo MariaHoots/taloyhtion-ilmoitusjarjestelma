@@ -28,6 +28,14 @@ class dataHaku
 		
 	}
 	
+	talletaHenkilonTiedot()
+	{
+	
+
+	
+	}
+	
+	
 	naytaHenkilonTiedot(kenttaID)
 	{
 		var sisalto = "";
