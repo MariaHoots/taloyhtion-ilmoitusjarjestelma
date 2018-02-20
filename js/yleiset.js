@@ -31,11 +31,11 @@ class dataHaku
 	
 	talletaHenkilonTiedotKysy(kenttaID)
 	{
-		document.getElementById("isannoitsijaHenkilotHenkilotd"+kenttaID).innerHTML = '<h4>Tietojen tallennus</h4><p>Haluatko varmasti tallentaa tiedot?</p><button type="button" class="btn btn-primary">Kyllä</button> <button type="button" class="btn btn-danger">Ei</button>';
+		document.getElementById("isannoitsijaHenkilotHenkilotd"+kenttaID).innerHTML = '<h4>Tietojen tallennus</h4><p>Haluatko varmasti tallentaa tiedot?</p><form><div class="form-row"><div class="col"><button type="button" class="btn btn-primary">Kyllä</button> <button type="button" class="btn btn-danger">Ei</button></div></div></form> ';
 	}
 	poistaHenkilonTiedotKysy(kenttaID)
 	{
-		document.getElementById("isannoitsijaHenkilotHenkilotd"+kenttaID).innerHTML = '<h4>Henkilön poistaminen</h4><p>Haluatko varmasti poistaa henkilön?</p><p><button type="button" class="btn btn-primary">Kyllä</button> <button type="button" class="btn btn-danger">Ei</button></p><p><input type="checkbox" class="form-check-input" id="exampleCheck1"><label class="form-check-label " for="exampleCheck1">Haluan varmasti suorittaa toiminnon.</label></p>';
+		document.getElementById("isannoitsijaHenkilotHenkilotd"+kenttaID).innerHTML = '<h4>Käyttäjän poistaminen</h4><p>Haluatko varmasti poistaa käyttäjän?</p><form><div class="form-row"><button type="button" class="btn btn-primary">Kyllä</button>&nbsp;<button type="button" class="btn btn-danger">Ei</button></div><div class="form-check"><br><br><input class="form-check-input" type="checkbox" id="gridCheck"><label class="form-check-label" for="gridCheck">Olen täysin varma. (Käyttäjän poistoa ei voi peruuttaa.)</label></div></form>';
 	}
 	
 	naytaHenkilonTiedot(kenttaID)
