@@ -1,8 +1,9 @@
 class dataHaku
 {
 	
-	constructor()
+	constructor(datannimi)
 	{
+		this.datannimi = datannimi;
 		this.kasiteltaviasoluja = 0;
 		this.nimi = "Teppo";
 		this.sukunimi = "Testaaja";
@@ -28,13 +29,14 @@ class dataHaku
 		
 	}
 	
-	talletaHenkilonTiedot()
+	talletaHenkilonTiedotKysy(kenttaID)
 	{
-	
-
-	
+		document.getElementById("isannoitsijaHenkilotHenkilotd"+kenttaID).innerHTML = '<h4>Tietojen tallennus</h4><p>Haluatko varmasti tallentaa tiedot?</p><button type="button" class="btn btn-primary">Kyllä</button> <button type="button" class="btn btn-danger">Ei</button>';
 	}
-	
+	poistaHenkilonTiedotKysy(kenttaID)
+	{
+		document.getElementById("isannoitsijaHenkilotHenkilotd"+kenttaID).innerHTML = '<h4>Henkilön poistaminen</h4><p>Haluatko varmasti poistaa henkilön?</p><p><button type="button" class="btn btn-primary">Kyllä</button> <button type="button" class="btn btn-danger">Ei</button></p><p><input type="checkbox" class="form-check-input" id="exampleCheck1"><label class="form-check-label " for="exampleCheck1">Haluan varmasti suorittaa toiminnon.</label></p>';
+	}
 	
 	naytaHenkilonTiedot(kenttaID)
 	{
@@ -42,7 +44,7 @@ class dataHaku
 		var curStyle = ""
 		var elem,displayStyle
 		
-		document.getElementById("isannoitsijaHenkilotHenkilotd"+kenttaID).innerHTML = '<h4>Teppo Testaaja</h4><form><div class="form-row"><div class="form-group col-md-3"><label for="formGroupNimi">Nimi</label><input type="text" class="form-control" id="formGroupNimi" value="' + this.nimi + '"></div><div class="form-group col-md-3"><label for="formGroupNimi">Sukunimi</label><input type="text" class="form-control" id="formGroupNimi" value="' + this.sukunimi + '"></div></div><div class="form-row"><div class="form-group col-md-6"><label for="formGroupOsoite">Osoite</label><input type="text" class="form-control" id="formGroupOsoite" value="' + this.osoite + '"></div></div><div class="form-row"><div class="form-group col-md-2"><label for="formGroupPostinumero">Postinumero</label><input type="text" class="form-control" id="formGroupPostinumero" value="' + this.postinumero + '"></div><div class="form-group col-md-4"><label for="formGroupPostinumero">Postitoimipaikka</label><input type="text" class="form-control" id="formGroupPostinumero" value="' + this.postitoimipaikka + '"></div></div><div class="form-row"><div class="form-group col-md-6"><label for="kayttajaInputEmail1">Sähköposti</label><input type="email" class="form-control" id="kayttajaInputEmail1" aria-describedby="emailHelp" value="' + this.sahkoposti + '"><small id="emailHelp" class="form-text text-muted">Emme tee osoitteellasi mitään laitonta.</small></div></div><button type="submit" class="btn btn-primary">Tallenna</button> <button type="button" class="btn btn-primary">Poista käyttäjä</button></form>';
+		document.getElementById("isannoitsijaHenkilotHenkilotd"+kenttaID).innerHTML = '<h4>' + this.nimi + '</h4><form><div class="form-row"><div class="form-group col-md-3"><label for="formGroupNimi">Nimi</label><input type="text" class="form-control" id="formGroupNimi" value="' + this.nimi + '"></div><div class="form-group col-md-3"><label for="formGroupNimi">Sukunimi</label><input type="text" class="form-control" id="formGroupNimi" value="' + this.sukunimi + '"></div></div><div class="form-row"><div class="form-group col-md-6"><label for="formGroupOsoite">Osoite</label><input type="text" class="form-control" id="formGroupOsoite" value="' + this.osoite + '"></div></div><div class="form-row"><div class="form-group col-md-2"><label for="formGroupPostinumero">Postinumero</label><input type="text" class="form-control" id="formGroupPostinumero" value="' + this.postinumero + '"></div><div class="form-group col-md-4"><label for="formGroupPostinumero">Postitoimipaikka</label><input type="text" class="form-control" id="formGroupPostinumero" value="' + this.postitoimipaikka + '"></div></div><div class="form-row"><div class="form-group col-md-6"><label for="kayttajaInputEmail1">Sähköposti</label><input type="email" class="form-control" id="kayttajaInputEmail1" aria-describedby="emailHelp" value="' + this.sahkoposti + '"><small id="emailHelp" class="form-text text-muted">Emme tee osoitteellasi mitään laitonta.</small></div></div><button type="button" class="btn btn-primary" onclick="'+ this.datannimi +'.talletaHenkilonTiedotKysy('+ kenttaID +');">Tallenna</button> <button type="button" class="btn btn-primary" onclick="'+ this.datannimi +'.poistaHenkilonTiedotKysy('+ kenttaID +');">Poista käyttäjä</button></form>';
 		
 		elem = document.getElementById("isannoitsijaHenkilotHenkilo"+kenttaID);
 		if (elem.currentStyle)
@@ -80,6 +82,7 @@ class dataHaku
 		document.getElementById("isannoitsijaYhtiotYhtiotd"+kenttaID).innerHTML = '<h4>As. Oy Maailman paras talonyhtiö</h4><form><div class="form-row"><div class="form-group col-md-4"><label for="formGroupNimi">Nimi</label><input type="text" class="form-control" id="formGroupNimi" value="' + this.nimi + '"></div><div class="form-group col-md-2"><label for="formGroupNimi">Y-tunnus</label><input type="text" class="form-control" id="formGroupYtunnus" value="' + this.ytunnus + '"></div></div><div class="form-row"><div class="form-groupform-group3 col-md-6"><label for="formGroupOsoite">Osoite</label><input type="text" class="form-control" id="formGroupOsoite" value="' + this.osoite + '"></div></div><div class="form-row"><div class="form-group col-md-2"><label for="formGroupPostinumero">Postinumero</label><input type="text" class="form-control" id="formGroupPostinumero" value="' + this.postinumero + '"></div><div class="form-group col-md-4"><label for="formGroupPostinumero">Postitoimipaikka</label><input type="text" class="form-control" id="formGroupPostinumero" value="' + this. postitoimipaikka + '"></div></div><button type="submit" class="btn btn-primary">Tallenna</button> <button type="button" class="btn btn-primary">Poista yhtiö</button></form>';
 		
 		elem = document.getElementById("isannoitsijaYhtiotYhtio"+kenttaID);
+		
 		if (elem.currentStyle)
 		{
 			displayStyle = elem.currentStyle.display;
