@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Taloyhtiön Ilmoitusjärjestelmä</title>
   
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/main.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-   
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/main.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	  
    </head>
 	<body>
 
@@ -87,9 +89,22 @@
     <label for="sahkoposti">Sähköposti</label>
     <input type="text" class="form-control" id="sahkoposti" placeholder="">
    </div>
-  </div>
+  
+  <div class="form-group col-md-3">
+     <div class="form-group">
+    <label for="ilmoitustyyppi">Valitse ilmoitustyyppi</label>
+    <select class="form-control" id="ilmoitustyyppi">
+      <option>Vikailmoitus</option>
+      <option>Lähtöilmoitus</option>
+      <option>Häiriöilmoitus</option>
+	  <option>Muu ilmoitus</option>
+    </select>
+    </div>
+   </div>
+  </div> <!-- form row -->
+ 
    <div class="form-group">
-    <label for="kuvaus">Kuvaus</label>
+    <label for="kuvaus">Tarkempi kuvaus palvelupyynnölle</label>
     <textarea class="form-control" id="kuvaus" rows="5"></textarea>
   </div>
   
