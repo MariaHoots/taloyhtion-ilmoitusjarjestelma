@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Taloyhtiön Ilmoitusjärjestelmä</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/main.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+  </head>
+  <body>
+	<div class="container">
+		<!-- header & footer -->
+		<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+		  <a class="navbar-brand" href="#">TIJ</a>
+		  <ul class="navbar-nav">
+		    <li class="nav-item">
+		      <a class="nav-link" href="javascript:void(0)">Etusivu</a>
+		    </li>
+		    <li class="nav-item">
+		      <a class="nav-link" href="isannoitsija-ilmoitukset.html">Ilmoitukset</a>
+		    </li>
+		    <li class="nav-item">
+		      <a class="nav-link" href="javascript:void(0)">Yhtiöt</a>
+		    </li>
+			<li class="nav-item">
+		      <a class="nav-link" href="javascript:void(0)">Henkilöt</a>
+		    </li>
+			<li class="nav-item">
+		      <a class="nav-link" href="javascript:void(0)">Maija Meikäläinen</a>
+		    </li>
+			<li class="nav-item">
+		      <a class="nav-link" href="javascript:void(0)">Kirjaudu ulos</a>
+		    </li>
+		  </ul>
+		</nav>
+		<div class="jumbotron">
+		  <h1>Taloyhtiön Ilmoitusjärjestelmä</h1>
+		  <p>Henkilöt - Isännöitsijä</p>
+		</div>
+		<!-- header & footer end -->
+	           
+		<h3>Talonyhtiöt</h3>
+		  <table class="table table-bordered">
+		    <thead>
+		      <tr>
+					<th scope="row" colspan="3"Nimi</th>
+					<th scope="row" colspan="3">Osoite</th>
+					<th scope="row">Toiminnot</th>
+			 </tr>
+		    </thead>
+		    <tbody>
+			<tr>
+			<td><input type="text" class="form-control" id="henkilotHaeNimellä" placeholder="Nimi" ></td><td><a href="#"><img src="img/jarjestysylos.svg" class="img-fluid" alt="[H]" height="20" width="20"></a></td><td><a href="#"><img src="img/jarjestysalas.svg" class="img-fluid" alt="[H]" height="20" width="20"></a></td>
+			<td><input type="text" class="form-control" id="henkilotHaeOsoitteella" placeholder="Osoite" ></td><td><a href="#"><img src="img/jarjestysylos.svg" class="img-fluid" alt="[H]" height="20" width="20"></a></td><td><a href="#"><img src="img/jarjestysalas.svg" class="img-fluid" alt="[H]" height="20" width="20"></a></td>
+			
+	
+			<td></td>
+		    </tr>
+			<tr>
+			<td colspan="3"><a href="#">Matti Meikäläinen<a href="#"></td>
+			<td colspan="3">Avaruusrakettikatu 1000, Kuu</td>
+			<td><a href="#"><img src="img/asetukset.svg" class="img-fluid" alt="[H]" height="20" width="20"></a></td>
+		    </tr>
+			<tr>
+			<td colspan="3"><a href="#">Maija Meikäläinen<a href="#"></td>
+			<td colspan="3">Avaruusrakettikatu 1000, Kuu</td>
+			<td><a href="#"><img src="img/hallitus.svg" class="img-fluid" alt="[H]" height="20" width="20"></a><a href="#"><img src="img/asetukset.svg" class="img-fluid" alt="[H]" height="20" width="20"></a></td>
+		    </tr>
+			<tr>
+			<td colspan="3"><a href="#">Teppo Testaaja<a href="#"></td>
+			<td colspan="3">Testaajakatu 4 c 56</td>
+			<td><a href="#"><a href="#"><img src="img/asetukset.svg" class="img-fluid" alt="[H]" height="20" width="20"></a></td>
+		    </tr>
+			<tr>
+			<td colspan="7" class="bg-secondary">
+			<h4>As. Oy Maailman paras talonyhtiö</h4>
+			<form>
+			<div class="form-row">
+				<div class="form-group col-md-3">
+					<label for="formGroupNimi">Nimi</label>
+					<input type="text" class="form-control" id="formGroupNimi" value="Teppo">
+				</div>
+				<div class="form-group col-md-3">
+					<label for="formGroupNimi">Sukunimi</label>
+					<input type="text" class="form-control" id="formGroupNimi" value="Testaaja">
+				</div>
+			</div>
+			<div class="form-row">
+			<div class="form-group col-md-6">
+				<label for="formGroupOsoite">Osoite</label>
+				<input type="text" class="form-control" id="formGroupOsoite" value="Testaajakatu 4 c 56">
+			</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-2">
+					<label for="formGroupPostinumero">Postinumero</label>
+					<input type="text" class="form-control" id="formGroupPostinumero" value="345343">
+				</div>
+				<div class="form-group col-md-4">
+					<label for="formGroupPostinumero">Postitoimipaikka</label>
+					<input type="text" class="form-control" id="formGroupPostinumero" value="Testaamo">
+				</div>
+			</div>	
+			<div class="form-row">
+			<div class="form-group col-md-6">
+				<label for="kayttajaInputEmail1">Sähköposti</label>
+				<input type="email" class="form-control" id="kayttajaInputEmail1" aria-describedby="emailHelp" value="teppo@testaaja.nulll">
+				<small id="emailHelp" class="form-text text-muted">Emme tee osoitteellasi mitään laitonta.</small>
+			</div>
+			</div>
+			<button type="submit" class="btn btn-primary">Tallenna</button> <button type="button" class="btn btn-primary">Poista käyttäjä</button>
+		</form>
+			
+			
+			
+			</td>
+		    </tr>
+			<td colspan="3"><a href="#">Matti Meikäläinen<a href="#"></td>
+			<td colspan="3">Avaruusrakettikatu 1000, Kuu</td>
+			<td><a href="#"><img src="img/hallitus.svg" class="img-fluid" alt="[H]" height="20" width="20"></a><a href="#"><img src="img/asetukset.svg" class="img-fluid" alt="[H]" height="20" width="20"></a></td>
+		    </tr>
+			<tr>
+			<td colspan="3"><a href="#">Maija Meikäläinen<a href="#"></td>
+			<td colspan="3">Avaruusrakettikatu 1000, Kuu</td>
+			<td><a href="#"><img src="img/hallitus.svg" class="img-fluid" alt="[H]" height="20" width="20"></a><a href="#"><img src="img/asetukset.svg" class="img-fluid" alt="[H]" height="20" width="20"></a></td>
+		    </tr>
+			<tr>
+			<td colspan="3"><a href="#">Teppo Testaaja<a href="#"></td>
+			<td colspan="3">Testaajakatu 4 c 56</td>
+			<td><a href="#"><img src="img/hallitus.svg" class="img-fluid" alt="[H]" height="20" width="20"></a><a href="#"><img src="img/asetukset.svg" class="img-fluid" alt="[H]" height="20" width="20"></a></td>
+		    </tr>
+			<td colspan="3"><a href="#">Matti Meikäläinen<a href="#"></td>
+			<td colspan="3">Avaruusrakettikatu 1000, Kuu</td>
+			<td><a href="#"><a href="#"><img src="img/asetukset.svg" class="img-fluid" alt="[H]" height="20" width="20"></a></td>
+		    </tr>
+			<tr>
+			<td colspan="3"><a href="#">Maija Meikäläinen<a href="#"></td>
+			<td colspan="3">Avaruusrakettikatu 1000, Kuu</td>
+			<td><a href="#"><a href="#"><img src="img/asetukset.svg" class="img-fluid" alt="[H]" height="20" width="20"></a></td>
+		    </tr>
+			<tr>
+			<td colspan="3"><a href="#">Teppo Testaaja<a href="#"></td>
+			<td colspan="3">Testaajakatu 4 c 56</td>
+			<td><a href="#"><a href="#"><img src="img/asetukset.svg" class="img-fluid" alt="[H]" height="20" width="20"></a></td>
+		    </tr>
+			<td colspan="3"><a href="#">Matti Meikäläinen<a href="#"></td>
+			<td colspan="3">Avaruusrakettikatu 1000, Kuu</td>
+			<td><a href="#"><img src="img/hallitus.svg" class="img-fluid" alt="[H]" height="20" width="20"></a><a href="#"><img src="img/asetukset.svg" class="img-fluid" alt="[H]" height="20" width="20"></a></td>
+		    </tr>
+			<tr>
+			<td colspan="3"><a href="#">Maija Meikäläinen<a href="#"></td>
+			<td colspan="3">Avaruusrakettikatu 1000, Kuu</td>
+			<td><a href="#"><a href="#"><img src="img/asetukset.svg" class="img-fluid" alt="[H]" height="20" width="20"></a></td>
+		    </tr>
+			<tr>
+			<td colspan="3"><a href="#">Teppo Testaaja<a href="#"></td>
+			<td colspan="3">Testaajakatu 4 c 56</td>
+			<td><a href="#"><a href="#"><img src="img/asetukset.svg" class="img-fluid" alt="[H]" height="20" width="20"></a></td>
+		    </tr>
+			
+			
+			
+		    </tbody>
+		  </table>
+	</div> <!-- container -->
+	<br><br>
+  </body>
+</html>
