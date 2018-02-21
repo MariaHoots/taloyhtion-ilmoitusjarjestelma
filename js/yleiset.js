@@ -91,7 +91,7 @@ class dataHaku
 		var elem,displayStyle
 	
 	
-		document.getElementById("isannoitsijaYhtiotYhtiotd"+kenttaID).innerHTML = '<h4>As. Oy Maailman paras talonyhtiö</h4><form><div class="form-row"><div class="form-group col-md-4"><label for="formGroupNimi">Nimi</label><input type="text" class="form-control" id="formGroupNimi" value="' + this.nimi + '"></div><div class="form-group col-md-2"><label for="formGroupNimi">Y-tunnus</label><input type="text" class="form-control" id="formGroupYtunnus" value="' + this.ytunnus + '"></div></div><div class="form-row"><div class="form-groupform-group3 col-md-6"><label for="formGroupOsoite">Osoite</label><input type="text" class="form-control" id="formGroupOsoite" value="' + this.osoite + '"></div></div><div class="form-row"><div class="form-group col-md-2"><label for="formGroupPostinumero">Postinumero</label><input type="text" class="form-control" id="formGroupPostinumero" value="' + this.postinumero + '"></div><div class="form-group col-md-4"><label for="formGroupPostinumero">Postitoimipaikka</label><input type="text" class="form-control" id="formGroupPostinumero" value="' + this. postitoimipaikka + '"></div></div><button type="button" class="btn btn-primary" onclick="'+ this.datannimi +'.talletaYhtionTiedotKysy('+ kenttaID +');">Tallenna</button> <button type="button" class="btn btn-primary" onclick="'+ this.datannimi +'.poistaYhtionTiedotKysy('+ kenttaID +');">Poista talonyhtiö</button></form>';
+		document.getElementById("isannoitsijaYhtiotYhtiotd"+kenttaID).innerHTML = '<h4>'+ this.nimi+ '</h4><form><div class="form-row"><div class="form-group col-md-4"><label for="formGroupNimi">Nimi</label><input type="text" class="form-control" id="formGroupNimi" value="' + this.nimi + '"></div><div class="form-group col-md-2"><label for="formGroupNimi">Y-tunnus</label><input type="text" class="form-control" id="formGroupYtunnus" value="' + this.ytunnus + '"></div></div><div class="form-row"><div class="form-groupform-group3 col-md-6"><label for="formGroupOsoite">Osoite</label><input type="text" class="form-control" id="formGroupOsoite" value="' + this.osoite + '"></div></div><div class="form-row"><div class="form-group col-md-2"><label for="formGroupPostinumero">Postinumero</label><input type="text" class="form-control" id="formGroupPostinumero" value="' + this.postinumero + '"></div><div class="form-group col-md-4"><label for="formGroupPostinumero">Postitoimipaikka</label><input type="text" class="form-control" id="formGroupPostinumero" value="' + this. postitoimipaikka + '"></div></div><button type="button" class="btn btn-primary" onclick="'+ this.datannimi +'.talletaYhtionTiedotKysy('+ kenttaID +');">Tallenna</button> <button type="button" class="btn btn-primary" onclick="'+ this.datannimi +'.poistaYhtionTiedotKysy('+ kenttaID +');">Poista talonyhtiö</button></form>';
 		
 		elem = document.getElementById("isannoitsijaYhtiotYhtio"+kenttaID);
 		
@@ -121,6 +121,47 @@ class dataHaku
 				}
 		}
 	}
+	
+	suljeIlmoituksenTiedot()
+	{
+		document.getElementById("ilmoituksetKokoRuutu").style.display = "none";
+	}	
+	
+	naytaIlmoituksenTiedot(kenttaID)
+	{
+		var sisalto = "";
+		var curStyle = ""
+		var elem,displayStyle
+	
+	
+		document.getElementById("ilmoituksetKokoRuutu").innerHTML = '<form><div class="form-row"><button type="button" class="btn btn-primary" onclick="'+ this.datannimi +'.suljeIlmoituksenTiedot();">Sulje</button></div><form>';
+		
+		elem = document.getElementById("ilmoituksetKokoRuutu");
+		
+		if (elem.currentStyle)
+		{
+			displayStyle = elem.currentStyle.display;
+			
+		}
+		else if (window.getComputedStyle)
+		{
+			curStyle = window.getComputedStyle(elem, null).getPropertyValue("display");
+		}
+		if (curStyle == "none")
+		{
+			document.getElementById("ilmoituksetKokoRuutu").style.display = "block";
+		}
+		else if (curStyle == "block")
+		{
+			document.getElementById("ilmoituksetKokoRuutu").style.display = "none";
+		}
+		
+
+	}
+	
+	
+	
+	
 	
 	
 	
