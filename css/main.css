@@ -55,7 +55,8 @@ a
 {
 	position:fixed;
 	overflow-y: scroll;
-    top: 10%;
+    top: 10px; /* Pitää olla px ei % muuten ei "overflow-y: scroll" ei toimi ison sisällön kanssa. tietääkö kukaan css-fixiä tähän? */
+	bottom: 10px; /* sama kuin edellä */
     left: 5%;
     width: 90%;
 	z-index: 10000;
