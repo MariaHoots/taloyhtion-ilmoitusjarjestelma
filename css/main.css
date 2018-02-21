@@ -32,7 +32,11 @@ a
     background-color: #333A56;
     border-color: #333A56;
 }
-
+.btn-primary:hover
+{
+    background-color: #51597B;
+    border-color: #51597B;
+}
 .jumbotron 
 {
 	text-align:center;
