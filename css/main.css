@@ -2,17 +2,49 @@
 *
 * Main css file
 *
-=========================*/
+*========================*/
 
-.jumbotron {
-	text-align:center;
-	margin-top:20px;
+@import url('https://fonts.googleapis.com/css?family=Cabin|Old+Standard+TT');
+
+body
+{
+	background-color:#F7F5E6;
+	font-family: 'Old Standard TT', serif;
 }
 
-#oldElements td{
+h1, h2, h3, h4, h5, h6
+{
+	font-family: 'Cabin', sans-serif;
+}
+
+a 
+{
+	color:#52658F;
+}
+
+.bg-dark
+{
+    background-color: #333A56 !important;
+}
+
+.btn-primary 
+{
+    background-color: #333A56;
+    border-color: #333A56;
+}
+
+.jumbotron 
+{
+	text-align:center;
+	margin-top: 3rem;
+	padding: 2rem 1rem 1rem;
+	background-color: #e8e8e8;
+}
+
+#oldElements td
+{
 	color:#b4b4b4;
 }
-
 
 .isannoitsijaHenkilotHenkilo
 {
