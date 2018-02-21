@@ -133,7 +133,7 @@ class dataHaku
 		document.getElementById("ilmoituksetKokoRuutu").style.display = "none";
 	}	
 	
-	naytaIlmoituksenTiedot(kenttaID)
+	naytaIlmoituksenTiedotIsannoitsija(kenttaID)
 	{
 		var sisalto = "";
 		var curStyle = ""
@@ -141,6 +141,37 @@ class dataHaku
 	
 	
 		document.getElementById("ilmoituksetKokoRuutu").innerHTML = '<form><div class="form-row"><button type="button" class="btn btn-primary" onclick="'+ this.datannimi +'.suljeIlmoituksenTiedot();">Sulje</button></div></form><br><table class="table table-bordered"><thead><tr><th colspan="4">'+ this.ilmoitusotsikko +'</th></tr></thead><tbody><tr><th>Ilmoitustyyppi</th><td colspan="3">'+ this.ilmoitustyyppi +'</td></tr><tr><th>Talonyhtiö</th><td>'+ this.talonyhtio +'</td><th>Huoneisto</th><td>'+ this.huoneisto +'</td></tr><tr><th>Lähettäjä</th><td colspan="3">'+ this.nimi +' '+ this.sukunimi +'</td></tr><tr><th>Osoite</th><td>'+ this.osoite +'</td><th>Postinumero</th><td>'+ this.postinumero +'</td></tr><tr><th>Postitoimipaikka</th><td colspan="3">'+ this.postitoimipaikka +'</td></tr><tr><th>Puhelin</th><td>'+ this.puhelin +'</td><th>Sähköposti</th><td>'+ this.sahkoposti +'</td></tr><tr><th colspan="4">Kuvaus</th></tr><tr><td colspan="4">'+ this.ilmoituksenkuvaus +'</td></tr></tbody></table><form>Muuta tilaa :<a href="#"><img src="img/vastaanotettu.svg" class="img-fluid" alt="[H]" height="20" width="20"></a> <a href="#"><img src="img/tyonalla.svg" class="img-fluid" alt="[H]" height="20" width="20"></a> <a href="#"><img src="img/keskeytynyt.svg" class="img-fluid" alt="[H]" height="20" width="20"></a> <a href="#"><img src="img/valmis.svg" class="img-fluid border border-dark rounded bg-success" alt="[H]" height="20" width="20"></a> <div class="form-row"><label for="exampleFormControlTextarea1">Kommentti</label><textarea class="form-control" id="isannoijaIlmoituksetKommenttiTextarea" rows="3">Soitettu ambulanssi.</textarea></div><br><button type="button" class="btn btn-primary">Tallenna</button></form><br><form><div class="form-row"><button type="button" class="btn btn-primary" onclick="'+ this.datannimi +'.suljeIlmoituksenTiedot();">Sulje</button></div></form><br>';
+		
+		elem = document.getElementById("ilmoituksetKokoRuutu");
+		
+		if (elem.currentStyle)
+		{
+			displayStyle = elem.currentStyle.display;
+			
+		}
+		else if (window.getComputedStyle)
+		{
+			curStyle = window.getComputedStyle(elem, null).getPropertyValue("display");
+		}
+		if (curStyle == "none")
+		{
+			document.getElementById("ilmoituksetKokoRuutu").style.display = "block";
+		}
+		else if (curStyle == "block")
+		{
+			document.getElementById("ilmoituksetKokoRuutu").style.display = "none";
+		}
+		
+
+	}
+	naytaIlmoituksenTiedotAsukas(kenttaID)
+	{
+		var sisalto = "";
+		var curStyle = ""
+		var elem,displayStyle
+	
+	
+		document.getElementById("ilmoituksetKokoRuutu").innerHTML = '<form><div class="form-row"><button type="button" class="btn btn-primary" onclick="'+ this.datannimi +'.suljeIlmoituksenTiedot();">Sulje</button></div></form><br><table class="table table-bordered"><thead><tr><th colspan="4">'+ this.ilmoitusotsikko +'</th></tr></thead><tbody><tr><th>Ilmoitustyyppi</th><td colspan="3">'+ this.ilmoitustyyppi +'</td></tr><tr><th>Talonyhtiö</th><td>'+ this.talonyhtio +'</td><th>Huoneisto</th><td>'+ this.huoneisto +'</td></tr><tr><th>Lähettäjä</th><td colspan="3">'+ this.nimi +' '+ this.sukunimi +'</td></tr><tr><th>Osoite</th><td>'+ this.osoite +'</td><th>Postinumero</th><td>'+ this.postinumero +'</td></tr><tr><th>Postitoimipaikka</th><td colspan="3">'+ this.postitoimipaikka +'</td></tr><tr><th>Puhelin</th><td>'+ this.puhelin +'</td><th>Sähköposti</th><td>'+ this.sahkoposti +'</td></tr><tr><th colspan="4">Kuvaus</th></tr><tr><td colspan="4">'+ this.ilmoituksenkuvaus +'</td></tr></tbody></table><br>';
 		
 		elem = document.getElementById("ilmoituksetKokoRuutu");
 		

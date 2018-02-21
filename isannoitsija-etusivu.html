@@ -12,8 +12,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
+	<script src="js/yleiset.js"></script>
+	
   </head>
   <body>
+       <script>
+  var datahaku = new dataHaku("datahaku");
+  datahaku.maaritaSolujenMaara(1);
+  </script>
+  <div class="ilmoituksetKokoRuutu" id="ilmoituksetKokoRuutu"></div>
   <div class="container">
 		<!-- header & footer -->
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
@@ -60,7 +67,7 @@
 		    </thead>
 		    <tbody>
 		      <tr>
-            <td><a href="#">Kissa katolla apua</a></td>
+            <td onclick="datahaku.naytaIlmoituksenTiedotIsannoitsija(1);"><a href="#">Kissa katolla apua</a></td>
             <td>21.10.2015 07:28</td>
             <td>Maija Meikäläinen</td>
             <td>Muu palaute</td>
