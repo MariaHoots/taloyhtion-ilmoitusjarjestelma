@@ -51,17 +51,16 @@ a
 	display:none;
 }
 
-.ilmoituksetKokoRuutu
+#ilmoituksetKokoRuutu
 {
 	position:fixed;
 	overflow-y: scroll;
-	top: 10px;
-	left: 10px;
-	bottom: 10px;
-	right: 10px;
-	opacity: 1.0;
+    top: 10%;
+    left: 5%;
+    width: 90%;
 	z-index: 10000;
-	background-color:white;
+	background-color: #eee;
+	padding: 20px;
 }
 
 
