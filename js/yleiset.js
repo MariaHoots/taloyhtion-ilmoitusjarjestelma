@@ -11,7 +11,13 @@ class dataHaku
 		this.postinumero = "345343";
 		this.postitoimipaikka = "Testaamo";
 		this.sahkoposti = "teppo@testaaja.nulll";
+		this.puhelin = "+819044444444";
 		this.ytunnus = "Y-123456567";
+		this.talonyhtio = "As Oy Talo";
+		this.huoneisto = "C 53";
+		this.ilmoitusotsikko = "Kyttääjä tippui katolta. Pitääkö kutsua palokunta, vai poliisi?";
+		this.ilmoitustyyppi = "Heippalappu";
+		this.ilmoituksenkuvaus = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sollicitudin nibh nec ipsum rhoncus, a varius velit fringilla. Cras laoreet lobortis felis vel commodo. Etiam tincidunt vulputate leo, in rutrum mi congue vel. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse odio metus, pellentesque vel tempor quis, venenatis ullamcorper est. Vestibulum turpis augue, lobortis vel ipsum eu, vulputate efficitur nisl. Pellentesque malesuada eros a tincidunt faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sollicitudin nibh nec ipsum rhoncus, a varius velit fringilla. Cras laoreet lobortis felis vel commodo. Etiam tincidunt vulputate leo, in rutrum mi congue vel. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse odio metus, pellentesque vel tempor quis, venenatis ullamcorper est. Vestibulum turpis augue, lobortis vel ipsum eu, vulputate efficitur nisl. Pellentesque malesuada eros a tincidunt faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sollicitudin nibh nec ipsum rhoncus, a varius velit fringilla. Cras laoreet lobortis felis vel commodo. Etiam tincidunt vulputate leo, in rutrum mi congue vel. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse odio metus, pellentesque vel tempor quis, venenatis ullamcorper est. Vestibulum turpis augue, lobortis vel ipsum eu, vulputate efficitur nisl. Pellentesque malesuada eros a tincidunt faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sollicitudin nibh nec ipsum rhoncus, a varius velit fringilla. Cras laoreet lobortis felis vel commodo. Etiam tincidunt vulputate leo, in rutrum mi congue vel. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse odio metus, pellentesque vel tempor quis, venenatis ullamcorper est. Vestibulum turpis augue, lobortis vel ipsum eu, vulputate efficitur nisl. Pellentesque malesuada eros a tincidunt faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sollicitudin nibh nec ipsum rhoncus, a varius velit fringilla. Cras laoreet lobortis felis vel commodo. Etiam tincidunt vulputate leo, in rutrum mi congue vel. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse odio metus, pellentesque vel tempor quis, venenatis ullamcorper est. Vestibulum turpis augue, lobortis vel ipsum eu, vulputate efficitur nisl. Pellentesque malesuada eros a tincidunt faucibus.";
 		
 	}
 	maaritaSolujenMaara(maara)
@@ -91,7 +97,7 @@ class dataHaku
 		var elem,displayStyle
 	
 	
-		document.getElementById("isannoitsijaYhtiotYhtiotd"+kenttaID).innerHTML = '<h4>As. Oy Maailman paras talonyhtiö</h4><form><div class="form-row"><div class="form-group col-md-4"><label for="formGroupNimi">Nimi</label><input type="text" class="form-control" id="formGroupNimi" value="' + this.nimi + '"></div><div class="form-group col-md-2"><label for="formGroupNimi">Y-tunnus</label><input type="text" class="form-control" id="formGroupYtunnus" value="' + this.ytunnus + '"></div></div><div class="form-row"><div class="form-groupform-group3 col-md-6"><label for="formGroupOsoite">Osoite</label><input type="text" class="form-control" id="formGroupOsoite" value="' + this.osoite + '"></div></div><div class="form-row"><div class="form-group col-md-2"><label for="formGroupPostinumero">Postinumero</label><input type="text" class="form-control" id="formGroupPostinumero" value="' + this.postinumero + '"></div><div class="form-group col-md-4"><label for="formGroupPostinumero">Postitoimipaikka</label><input type="text" class="form-control" id="formGroupPostinumero" value="' + this. postitoimipaikka + '"></div></div><button type="button" class="btn btn-primary" onclick="'+ this.datannimi +'.talletaYhtionTiedotKysy('+ kenttaID +');">Tallenna</button> <button type="button" class="btn btn-primary" onclick="'+ this.datannimi +'.poistaYhtionTiedotKysy('+ kenttaID +');">Poista talonyhtiö</button></form>';
+		document.getElementById("isannoitsijaYhtiotYhtiotd"+kenttaID).innerHTML = '<h4>'+ this.nimi+ '</h4><form><div class="form-row"><div class="form-group col-md-4"><label for="formGroupNimi">Nimi</label><input type="text" class="form-control" id="formGroupNimi" value="' + this.nimi + '"></div><div class="form-group col-md-2"><label for="formGroupNimi">Y-tunnus</label><input type="text" class="form-control" id="formGroupYtunnus" value="' + this.ytunnus + '"></div></div><div class="form-row"><div class="form-groupform-group3 col-md-6"><label for="formGroupOsoite">Osoite</label><input type="text" class="form-control" id="formGroupOsoite" value="' + this.osoite + '"></div></div><div class="form-row"><div class="form-group col-md-2"><label for="formGroupPostinumero">Postinumero</label><input type="text" class="form-control" id="formGroupPostinumero" value="' + this.postinumero + '"></div><div class="form-group col-md-4"><label for="formGroupPostinumero">Postitoimipaikka</label><input type="text" class="form-control" id="formGroupPostinumero" value="' + this. postitoimipaikka + '"></div></div><button type="button" class="btn btn-primary" onclick="'+ this.datannimi +'.talletaYhtionTiedotKysy('+ kenttaID +');">Tallenna</button> <button type="button" class="btn btn-primary" onclick="'+ this.datannimi +'.poistaYhtionTiedotKysy('+ kenttaID +');">Poista talonyhtiö</button></form>';
 		
 		elem = document.getElementById("isannoitsijaYhtiotYhtio"+kenttaID);
 		
@@ -121,6 +127,47 @@ class dataHaku
 				}
 		}
 	}
+	
+	suljeIlmoituksenTiedot()
+	{
+		document.getElementById("ilmoituksetKokoRuutu").style.display = "none";
+	}	
+	
+	naytaIlmoituksenTiedot(kenttaID)
+	{
+		var sisalto = "";
+		var curStyle = ""
+		var elem,displayStyle
+	
+	
+		document.getElementById("ilmoituksetKokoRuutu").innerHTML = '<button type="button" class="btn btn-primary" onclick="'+ this.datannimi +'.suljeIlmoituksenTiedot();">Sulje</button><table class="table table-bordered"><thead><tr><th colspan="4">'+ this.ilmoitusotsikko +'</th></tr></thead><tbody><tr><th>Ilmoitustyyppi</th><td colspan="3">'+ this.ilmoitustyyppi +'</td></tr><tr><th>Talonyhtiö</th><td>'+ this.talonyhtio +'</td><th>Huoneisto</th><td>'+ this.huoneisto +'</td></tr><tr><th>Lähettäjä</th><td colspan="3">'+ this.nimi +' '+ this.sukunimi +'</td></tr><tr><th>Osoite</th><td>'+ this.osoite +'</td><th>Postinumero</th><td>'+ this.postinumero +'</td></tr><tr><th>Postitoimipaikka</th><td colspan="3">'+ this.postitoimipaikka +'</td></tr><tr><th>Puhelin</th><td>'+ this.puhelin +'</td><th>Sähköposti</th><td>'+ this.sahkoposti +'</td></tr><tr><th colspan="4">Kuvaus</th></tr><tr><td colspan="4">'+ this.ilmoituksenkuvaus +'</td></tr></tbody></table><form><div class="form-row"><button type="button" class="btn btn-primary" onclick="'+ this.datannimi +'.suljeIlmoituksenTiedot();">Sulje</button></div><form>';
+		
+		elem = document.getElementById("ilmoituksetKokoRuutu");
+		
+		if (elem.currentStyle)
+		{
+			displayStyle = elem.currentStyle.display;
+			
+		}
+		else if (window.getComputedStyle)
+		{
+			curStyle = window.getComputedStyle(elem, null).getPropertyValue("display");
+		}
+		if (curStyle == "none")
+		{
+			document.getElementById("ilmoituksetKokoRuutu").style.display = "block";
+		}
+		else if (curStyle == "block")
+		{
+			document.getElementById("ilmoituksetKokoRuutu").style.display = "none";
+		}
+		
+
+	}
+	
+	
+	
+	
 	
 	
 	
