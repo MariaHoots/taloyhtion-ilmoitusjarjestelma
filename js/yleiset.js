@@ -12,6 +12,10 @@ class dataHaku
 		this.postitoimipaikka = "Testaamo";
 		this.sahkoposti = "teppo@testaaja.nulll";
 		this.ytunnus = "Y-123456567";
+		this.talonyhtio = "As Oy Talo";
+		this.huoneisto = "C 53";
+		this.ilmoitustyyppi = "Heippalappu";
+		this.ilmoituksenkuvaus = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sollicitudin nibh nec ipsum rhoncus, a varius velit fringilla. Cras laoreet lobortis felis vel commodo. Etiam tincidunt vulputate leo, in rutrum mi congue vel. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse odio metus, pellentesque vel tempor quis, venenatis ullamcorper est. Vestibulum turpis augue, lobortis vel ipsum eu, vulputate efficitur nisl. Pellentesque malesuada eros a tincidunt faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sollicitudin nibh nec ipsum rhoncus, a varius velit fringilla. Cras laoreet lobortis felis vel commodo. Etiam tincidunt vulputate leo, in rutrum mi congue vel. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse odio metus, pellentesque vel tempor quis, venenatis ullamcorper est. Vestibulum turpis augue, lobortis vel ipsum eu, vulputate efficitur nisl. Pellentesque malesuada eros a tincidunt faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sollicitudin nibh nec ipsum rhoncus, a varius velit fringilla. Cras laoreet lobortis felis vel commodo. Etiam tincidunt vulputate leo, in rutrum mi congue vel. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse odio metus, pellentesque vel tempor quis, venenatis ullamcorper est. Vestibulum turpis augue, lobortis vel ipsum eu, vulputate efficitur nisl. Pellentesque malesuada eros a tincidunt faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sollicitudin nibh nec ipsum rhoncus, a varius velit fringilla. Cras laoreet lobortis felis vel commodo. Etiam tincidunt vulputate leo, in rutrum mi congue vel. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse odio metus, pellentesque vel tempor quis, venenatis ullamcorper est. Vestibulum turpis augue, lobortis vel ipsum eu, vulputate efficitur nisl. Pellentesque malesuada eros a tincidunt faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sollicitudin nibh nec ipsum rhoncus, a varius velit fringilla. Cras laoreet lobortis felis vel commodo. Etiam tincidunt vulputate leo, in rutrum mi congue vel. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse odio metus, pellentesque vel tempor quis, venenatis ullamcorper est. Vestibulum turpis augue, lobortis vel ipsum eu, vulputate efficitur nisl. Pellentesque malesuada eros a tincidunt faucibus.";
 		
 	}
 	maaritaSolujenMaara(maara)
@@ -134,7 +138,7 @@ class dataHaku
 		var elem,displayStyle
 	
 	
-		document.getElementById("ilmoituksetKokoRuutu").innerHTML = '<h4>Ilmoituksen nimi</h4><form><div class="form-row"><button type="button" class="btn btn-primary" onclick="'+ this.datannimi +'.suljeIlmoituksenTiedot();">Sulje</button></div><form>';
+		document.getElementById("ilmoituksetKokoRuutu").innerHTML = '<h4>Ilmoituksen nimi</h4><p>'+ this.ilmoituksenkuvaus +'</p><form><div class="form-row"><button type="button" class="btn btn-primary" onclick="'+ this.datannimi +'.suljeIlmoituksenTiedot();">Sulje</button></div><form>';
 		
 		elem = document.getElementById("ilmoituksetKokoRuutu");
 		
