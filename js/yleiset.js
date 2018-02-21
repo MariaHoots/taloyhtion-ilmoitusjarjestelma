@@ -134,7 +134,7 @@ class dataHaku
 		var elem,displayStyle
 	
 	
-		document.getElementById("ilmoituksetKokoRuutu").innerHTML = '<form><div class="form-row"><button type="button" class="btn btn-primary" onclick="'+ this.datannimi +'.suljeIlmoituksenTiedot();">Sulje</button></div><form>';
+		document.getElementById("ilmoituksetKokoRuutu").innerHTML = '<h4>Ilmoituksen nimi</h4><form><div class="form-row"><button type="button" class="btn btn-primary" onclick="'+ this.datannimi +'.suljeIlmoituksenTiedot();">Sulje</button></div><form>';
 		
 		elem = document.getElementById("ilmoituksetKokoRuutu");
 		
