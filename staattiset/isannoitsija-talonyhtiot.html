@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Taloyhtiön Ilmoitusjärjestelmä</title>
+
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/main.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<script src="js/yleiset.js"></script>
+	  
+  </head>
+  <body>
+  
+    <script>
+  var datahaku = new dataHaku("datahaku");
+  datahaku.maaritaSolujenMaara(5);
+  </script>
+  
+  
+  
+	<div class="container">
+		<!-- header & footer -->
+		<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+		  <a class="navbar-brand" href="#">TIJ</a>
+		  <ul class="navbar-nav">
+		    <li class="nav-item">
+		      <a class="nav-link" href="isannoitsija-etusivu.html">Etusivu</a>
+		    </li>
+		    <li class="nav-item">
+		      <a class="nav-link" href="isannoitsija-ilmoitukset.html">Ilmoitukset</a>
+		    </li>
+		    <li class="nav-item">
+		      <a class="nav-link" href="isannoitsija-talonyhtiot.html">Yhtiöt</a>
+		    </li>
+			<li class="nav-item">
+		      <a class="nav-link" href="isannoitsija-henkilot.html">Henkilöt</a>
+		    </li>
+			<li class="nav-item">
+		      <a class="nav-link" href="isannoitsija-tiedot.html">Ismo Isännöitsijä</a>
+		    </li>
+			<li class="nav-item">
+		      <a class="nav-link" href="login.html">Kirjaudu ulos</a>
+		    </li>
+		  </ul>
+		</nav>
+		<div class="jumbotron">
+		  <h1>Taloyhtiön Ilmoitusjärjestelmä</h1>
+		  <p>Talonyhtiöt - Isännöitsijä</p>
+		</div>
+		<!-- header & footer end -->
+	           
+		<h3>Talonyhtiöt</h3>
+		  <table class="table table-bordered">
+		    <thead>
+		      <tr>
+					<th scope="row"></th>
+					<th scope="row" colspan="3">Yhtiön nimi</th>
+					<th scope="row" colspan="3">Osoite</th>
+					<th scope="row">Toiminnot</th>
+			 </tr>
+		    </thead>
+		    <tbody>
+			<tr>
+			<th scope="row"><a href="#"><img src="img/sort.svg" class="img-fluid" alt="[H]" height="20" width="20"></a></td>
+			<td><input type="text" class="form-control" id="yhtiotHaeYhtionNimellä" placeholder="Yhtiön nimi" ></td><td><a href="#"><img src="img/jarjestysylos.svg" class="img-fluid" alt="[H]" height="20" width="20"></a></td><td><a href="#"><img src="img/jarjestysalas.svg" class="img-fluid" alt="[H]" height="20" width="20"></a></td>
+			<td><input type="text" class="form-control" id="yhtiotHaeOsoitteella" placeholder="Osoite" ></td><td><a href="#"><img src="img/jarjestysylos.svg" class="img-fluid" alt="[H]" height="20" width="20"></a></td><td><a href="#"><img src="img/jarjestysalas.svg" class="img-fluid" alt="[H]" height="20" width="20"></a></td>
+			
+	
+			<td></td>
+		    </tr>
+			<tr>
+			<th scope="row">*</td>
+			<td colspan="3" onclick="datahaku.naytaYhtionTiedot(1);"><a href="#">As. Oy Avaruusraketti<a href="#"></td>
+			<td colspan="3">Avaruusrakettikatu 1000, Kuu</td>
+			<td><a href="isannoitsija-henkilot.html"><img src="img/hallitus.svg" class="img-fluid" alt="[H]" height="20" width="20"></a><a href="isannoitsija-henkilot.html"><img src="img/henkilot.svg" class="img-fluid" alt="[H]" height="20" width="20"></a><a href="isannoitsija-ilmoitukset.html"><img src="img/ilmoitukset.svg" class="img-fluid" alt="[H]" height="20" width="20"></a><a href="asetukset.html"><img src="img/asetukset.svg" class="img-fluid" alt="[H]" height="20" width="20"></a></td>
+		    </tr>
+			<tr class="isannoitsijaYhtiotYhtio" id="isannoitsijaYhtiotYhtio1">
+			<td colspan="8" class="bg-secondary" id="isannoitsijaYhtiotYhtiotd1">
+			
+			</td>
+		    </tr>
+			<tr>
+			<th scope="row">*</td>
+			<td colspan="3" onclick="datahaku.naytaYhtionTiedot(2);"><a href="#">As. Oy Tienmutka<a href="#"></td>
+			<td colspan="3">Mutka 10</td>
+			<td><a href="isannoitsija-henkilot.html"><img src="img/hallitus.svg" class="img-fluid" alt="[H]" height="20" width="20"></a><a href="isannoitsija-henkilot.html"><img src="img/henkilot.svg" class="img-fluid" alt="[H]" height="20" width="20"></a><a href="isannoitsija-ilmoitukset.html"><img src="img/ilmoitukset.svg" class="img-fluid" alt="[H]" height="20" width="20"></a><a href="asetukset.html"><img src="img/asetukset.svg" class="img-fluid" alt="[H]" height="20" width="20"></a></td>
+		    </tr>
+			<tr class="isannoitsijaYhtiotYhtio" id="isannoitsijaYhtiotYhtio2">
+			<td colspan="8" class="bg-secondary" id="isannoitsijaYhtiotYhtiotd2">
+			
+			</td>
+		    </tr>
+			<tr>
+			<th scope="row"></td>
+			<td colspan="3" onclick="datahaku.naytaYhtionTiedot(3);"><a href="#">As. Oy Umpikuja<a href="#"></td>
+			<td colspan="3">Huitsinnevada 100</td>
+			<td><a href="isannoitsija-henkilot.html"><img src="img/hallitus.svg" class="img-fluid" alt="[H]" height="20" width="20"></a><a href="isannoitsija-henkilot.html"><img src="img/henkilot.svg" class="img-fluid" alt="[H]" height="20" width="20"></a><a href="isannoitsija-ilmoitukset.html"><img src="img/ilmoitukset.svg" class="img-fluid" alt="[H]" height="20" width="20"></a><a href="asetukset.html"><img src="img/asetukset.svg" class="img-fluid" alt="[H]" height="20" width="20"></a></td>
+		    </tr>
+			<tr class="isannoitsijaYhtiotYhtio" id="isannoitsijaYhtiotYhtio3">
+			<td colspan="8" class="bg-secondary" id="isannoitsijaYhtiotYhtiotd3">
+			
+			</td>
+		    </tr>
+			<tr>
+			<th scope="row"></td>
+			<td colspan="3" onclick="datahaku.naytaYhtionTiedot(4);"><a href="#">As. Oy Maailman paras talonyhtiö<a href="#"></td>
+			<td colspan="3">Utopiakatu 7</td>
+			<td colspan="3"><a href="isannoitsija-henkilot.html"><img src="img/hallitus.svg" class="img-fluid" alt="[H]" height="20" width="20"></a><a href="isannoitsija-henkilot.html"><img src="img/henkilot.svg" class="img-fluid" alt="[H]" height="20" width="20"></a><a href="isannoitsija-ilmoitukset.html"><img src="img/ilmoitukset.svg" class="img-fluid" alt="[H]" height="20" width="20"></a><a href="asetukset.html"><img src="img/asetukset.svg" class="img-fluid" alt="[H]" height="20" width="20"></a></td>
+		    </tr>
+			<tr class="isannoitsijaYhtiotYhtio" id="isannoitsijaYhtiotYhtio4">
+			<td colspan="8" class="bg-secondary" id="isannoitsijaYhtiotYhtiotd4">
+			</td>
+		    </tr>
+			<tr>
+			<th scope="row"></td>
+			<td colspan="3" onclick="datahaku.naytaYhtionTiedot(5);"><a href="#">As. Oy Valtionmajoitus<a href="#"></td>
+			<td colspan="3">Linnakatu 19</td>
+			<td><a href="isannoitsija-henkilot.html"><img src="img/hallitus.svg" class="img-fluid" alt="[H]" height="20" width="20"></a><a href="isannoitsija-henkilot.html"><img src="img/henkilot.svg" class="img-fluid" alt="[H]" height="20" width="20"></a><a href="isannoitsija-ilmoitukset.html"><img src="img/ilmoitukset.svg" class="img-fluid" alt="[H]" height="20" width="20"></a><a href="asetukset.html"><img src="img/asetukset.svg" class="img-fluid" alt="[H]" height="20" width="20"></a></td>
+		    </tr>
+			<tr class="isannoitsijaYhtiotYhtio" id="isannoitsijaYhtiotYhtio5">
+			<td colspan="8" class="bg-secondary" id="isannoitsijaYhtiotYhtiotd5">
+			
+			</td>
+		    </tr>
+		    </tbody>
+		  </table>
+	</div> <!-- container -->
+	<br><br>
+  </body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Taloyhtiön Ilmoitusjärjestelmä</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+	<script src="js/yleiset.js"></script>
+	
+  </head>
+  <body>
+        <script>
+  var datahaku = new dataHaku("datahaku");
+  datahaku.maaritaSolujenMaara(1);
+  </script>
+  <div class="ilmoituksetKokoRuutu" id="ilmoituksetKokoRuutu"></div>
+  <div class="container">
+		<!-- header & footer -->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+		  <a class="navbar-brand" href="#">TIJ</a>
+		  <ul class="navbar-nav">
+		    <li class="nav-item">
+		      <a class="nav-link" href="javascript:void(0)">Etusivu</a>
+		    </li>
+		    <li class="nav-item">
+		      <a class="nav-link" href="ilmoituslomake.html">Tee ilmoitus</a>
+		    </li>
+       <li class="nav-item">
+		      <a class="nav-link" href="tiedot.html">Maija Meikäläinen</a>
+		    </li>
+       <li class="nav-item">
+		      <a class="nav-link" href="javascript:void(0)">Kirjaudu ulos</a>
+		    </li>
+		  </ul>
+		</nav>
+		<div class="jumbotron">
+		  <h1>Taloyhtiön Ilmoitusjärjestelmä</h1>
+		  <p>Etusivu</p>
+		</div>
+		<!-- header & footer end -->
+
+		<div class="card">
+		  <div class="card-body">
+		    <h3 class="card-title">Tervetuloa Maija</h3>
+		    <p class="card-text mb-5">Viimeinen sisäänkirjautuminen 12.2.2018 09:23</p>
+
+		    <h4>Omat ilmoitukset</h4>
+		  <table class="table table-bordered mb-5">
+		    <thead>
+		      <tr>
+            <th>Ilmoitus</th>
+            <th>Päivämäärä</th>
+            <th>Ilmoitus</th>
+            <th>Tyyppi</th>
+            <th>Kuittaus</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr>
+            <td onclick="datahaku.naytaIlmoituksenTiedotAsukas(1);"><a href="#">Kissa katolla apua</a></td>
+            <td>15.2.2018 09:15</td>
+            <td>Maija Meikäläinen</td>
+            <td>Muu palaute</td>
+            <td><small>Vastaanotettu 15.2.2018 09:20</small></td>
+		      </tr>
+		    </tbody>
+		  </table>
+
+		  <a href="tiedot.html" class="card-link">
+		  <img src="img/tiedot.svg" class="img-fluid" alt="[H]" height="20" width="20"> Omat tiedot</a>
+		  <a href="asetukset.html" class="card-link">
+		  <img src="img/asetukset.svg" class="img-fluid" alt="[H]" height="20" width="20"> Asetukset</a>
+		  <a href="ilmoituslomake.html" class="card-link">
+		  <img src="img/ilmoitukset.svg" class="img-fluid" alt="[H]" height="20" width="20"> Tee ilmoitus</a>
+		  </div>
+		</div>
+
+	</div> <!-- container -->
+	<br><br>
+  </body>
+</html>
