@@ -5,7 +5,7 @@ export default class TopMenu extends React.Component {
     return (
 		<ul class="navbar-nav">
 		    <li class="nav-item">
-		      <a class="nav-link" href="index.html)">Etusivu</a>
+		      <a class="nav-link" href="index.html">Etusivu</a>
 		    </li>
 			<li class="nav-item">
 		      <a class="nav-link" href="tiedot.html">Maija Meikäläinen</a>
