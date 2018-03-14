@@ -1,6 +1,7 @@
 import React from 'react';
 import TopMenuAsukas from './TopMenuAsukas';
 import TopMenuIsannoitsija from './TopMenuIsannoitsija';
+import TopMenuHuoltoyhtio from './TopMenuHuoltoyhtio';
 
 export default class TopMenu extends React.Component {
 	naytaSivu = (sivu) =>
@@ -15,6 +16,10 @@ export default class TopMenu extends React.Component {
 		{
 			return <TopMenuIsannoitsija/>;
 		}
+		else if (Sivu === 3)
+		{
+			return <TopMenuHuoltoyhtio/>;
+		}
 	}
 
 
@@ -28,7 +33,7 @@ export default class TopMenu extends React.Component {
 						</li>
 				</ul>
 
-						{this.naytaSivu(2)}
+						{this.naytaSivu(3)}
 
 				<ul class="navbar-nav">
 				    <li class="nav-item"><a class="nav-link" href="#"> Maija Meikäläinen</a></li>
