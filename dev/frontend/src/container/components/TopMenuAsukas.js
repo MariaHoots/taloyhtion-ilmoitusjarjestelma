@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class TopMenu extends React.Component {
+export default class TopMenuAsukas extends React.Component {
   render() {
     return (
 

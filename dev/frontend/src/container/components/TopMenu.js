@@ -33,7 +33,7 @@ export default class TopMenu extends React.Component {
 						</li>
 				</ul>
 
-						{this.naytaSivu(3)}
+						{this.naytaSivu(1)}
 
 				<ul class="navbar-nav">
 				    <li class="nav-item"><a class="nav-link" href="#"> Maija Meikäläinen</a></li>
