@@ -1,7 +1,7 @@
 let config = ({
 "username":"postgres",
-"pw":"12321",
-"dbname":"TIJ_DB",
+"pw":"admin",
+"dbname":"tij_db",
 "address":"localhost",
 "port":"5432"
 });
