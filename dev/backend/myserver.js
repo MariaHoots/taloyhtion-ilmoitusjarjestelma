@@ -1,3 +1,4 @@
+
 /*
 Express and postgres support
 npm init
@@ -53,6 +54,9 @@ app.use(bodyparser.json());
 // DB ROUTING
 //
 
+app.get('/', function (req, res) {
+  res.send('hello world')
+})
 
 
 //
