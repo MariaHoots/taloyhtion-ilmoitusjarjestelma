@@ -16,6 +16,9 @@ const express = require('express');
 const pg = require('pg');
 const bodyparser = require('body-parser');
 
+let settings = require('./config');
+
+
 //
 // END MODULE SET
 //
@@ -24,8 +27,8 @@ const bodyparser = require('body-parser');
 // CONNECT TO DBSERVER
 //
 console.log("TEST server start");
-
-var conString = "postgres://postgres:admin@localhost:5432/tij_db";
+console.log(settings.username);
+var conString = "postgres://"+settings.username+":"+settings.pw+"@localhost:5432/TIJ_DB";
 var client = new pg.Client(conString);
 client.connect();
 
