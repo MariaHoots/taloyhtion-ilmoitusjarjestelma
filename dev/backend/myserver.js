@@ -27,7 +27,6 @@ let settings = require('./config');
 // CONNECT TO DBSERVER
 //
 console.log("TEST server start");
-console.log(settings.username);
 var conString = "postgres://"+settings.username+":"+settings.pw+"@localhost:5432/TIJ_DB";
 var client = new pg.Client(conString);
 client.connect();
