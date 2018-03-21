@@ -8,13 +8,13 @@ export default class TopMenu extends React.Component {
 	naytaSivu = () => {
 		//return content according user (1 admin|2 huoltomies|3 asukas)
 		switch(this.props.userGroup) {
-		    case 1:
+		    case 3:
 		        return <TopMenuIsannoitsija/>;
 		        break;
 		    case 2:
 		        return <TopMenuHuoltoyhtio/>;
 		        break;
-		    case 3:
+		    case 1:
 		        return <TopMenuAsukas/>;
 		        break;
 		    default:
@@ -25,12 +25,12 @@ export default class TopMenu extends React.Component {
   render() {
 
 		let brand =
-			<a href="index.html" className="navbar-brand">TIJ</a>
+			<a href="/" className="navbar-brand">TIJ</a>
 
 		let leftPart =
 		<ul className="navbar-nav">
 				<li className="nav-item">
-					<a className="nav-link" href="index.html">Etusivu</a>
+					<a className="nav-link" href="/">Etusivu</a>
 				</li>
 		</ul>
 
@@ -40,13 +40,13 @@ export default class TopMenu extends React.Component {
 			//user is not logged in
 			rightPart =
 			<ul className="navbar-nav ml-auto">
-				<li className="nav-item"><a className="nav-link" href="#"> Kirjaudu sisään</a></li>
+				<li className="nav-item"><a className="nav-link" href="/login"> Kirjaudu sisään</a></li>
 			</ul>
 		} else {
 			rightPart =
 			<ul className="navbar-nav">
-				<li className="nav-item"><a className="nav-link" href="#"> Maija Meikäläinen</a></li>
-				<li className="nav-item"><a className="nav-link" href="#"> Kirjaudu ulos</a></li>
+				<li className="nav-item"><a className="nav-link" href="/tiedot"> Maija Meikäläinen</a></li>
+				<li className="nav-item"><a className="nav-link" href="/logout"> Kirjaudu ulos</a></li>
 			</ul>
 		}
 

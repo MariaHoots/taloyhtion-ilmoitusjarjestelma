@@ -5,13 +5,13 @@ export default class TopMenuIsannoitsija extends React.Component {
     return (
 			<ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">Ilmoitukset</a>
+          <a class="nav-link" href="/admin_ilmoitukset">Ilmoitukset</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Yhtiöt</a>
+          <a class="nav-link" href="/admin_yhtiot">Yhtiöt</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Henkilöt</a>
+          <a class="nav-link" href="/admin_henkilot">Henkilöt</a>
         </li>
       </ul>
     );

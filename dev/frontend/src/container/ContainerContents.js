@@ -11,6 +11,7 @@ import Ilmoitukset from './components/Ilmoitukset';
 import Ilmoituslomake from './components/Ilmoituslomake';
 import Tiedot from './components/Tiedot';
 import Login from './components/Login';
+import Logout from './components/Logout';
 
 export default class ContainerContents extends React.Component
 {
@@ -22,48 +23,68 @@ export default class ContainerContents extends React.Component
 	{
 		return (   
 			<Switch>
-			<Route exact path="/"
-				render={() => this.props.userGroup > 0 ?
-					(<EtuSivu/>) :
-					(<Redirect to="/login"/>)} 
-			/>
-			<Route path="/login"
-				render={() => this.props.userGroup === 0 ?
-					(<Login/>) :
-					(<Redirect to="/"/>)
-					}/>
-			<Route path="/ilmoitukset"
-				render={() => this.props.userGroup > 0 ?
-					(<Ilmoitukset/>) :
-					(<Redirect to="/"/>)
-					}/>
-			<Route path="/tiedot"
-				render={() => this.props.userGroup > 0 ?
-					(<Tiedot/>) :
-					(<Redirect to="/"/>)
-					}/>
-			<Route path="/isannoitsija/henkilot"
-				render={() => this.props.userGroup > 1 ?
-					(<IsannoitsijaHenkilot userList={this.props.userList}/>) :
-					(<Redirect to="/"/>)
-					}/>
-			<Route path="/isannoitsija/etusivu"
-				render={() => this.props.userGroup > 1 ?
-					(<IsannoitsijaEtuSivu/>) :
-					(<Redirect to="/"/>)
-					}/>
-			<Route path="/isannoitsija/tiedot"
-				render={() => this.props.userGroup > 1 ?
-					(<IsannoitsijaTiedot/>) :
-					(<Redirect to="/"/>)
-					}/>
-			<Route path="/isannoitsija/talonyhtiot"
-				render={() => this.props.userGroup > 1 ?
-					(<IsannoitsijaTaloyhtiot/>) :
-					(<Redirect to="/"/>)
-					}/>
-																
-		</Switch>  
+				<Route exact path="/"
+					render={
+						() => this.props.userGroup > 0 ?
+						(<EtuSivu/>) :
+						(<Redirect to="/login"/>)} 
+				/>
+				<Route path="/etusivu"
+					render={() => this.props.userGroup > 1 ?
+						(<IsannoitsijaEtuSivu/>) :
+						(<Redirect to="/login"/>)
+						}/>
+				<Route path="/login"
+					render={() => this.props.userGroup === 0 ?
+						(<Login/>) :
+						(<Redirect to="/"/>)
+						}/>
+				<Route path="/Logout"
+					render={() => this.props.userGroup > 0 ?
+						(<Logout/>) :
+						(<Redirect to="/"/>)
+						}/>
+				<Route path="/ilmoitukset"
+					render={() => this.props.userGroup > 0 ?
+						(<Ilmoitukset/>) :
+						(<Redirect to="/"/>)
+						}/>
+				<Route path="/ilmoituslomake"
+					render={() => this.props.userGroup > 0 ?
+						(<Ilmoituslomake/>) :
+						(<Redirect to="/"/>)
+						}/>
+				<Route path="/tiedot"
+					render={() => this.props.userGroup > 0 ?
+						(<Tiedot/>) :
+						(<Redirect to="/"/>)
+						}/>
+				<Route path="/admin_ilmoitukset"
+					render={() => this.props.userGroup > 1 ?
+						(<IsannoitsijaIlmoitukset/>) :
+						(<Redirect to="/"/>)
+						}/>
+				<Route path="/admin_henkilot"
+					render={() => this.props.userGroup > 1 ?
+						(<IsannoitsijaHenkilot userList={this.props.userList}/>) :
+						(<Redirect to="/"/>)
+						}/>
+				<Route path="/admin_etusivu"
+					render={() => this.props.userGroup > 1 ?
+						(<IsannoitsijaEtuSivu/>) :
+						(<Redirect to="/"/>)
+						}/>
+				<Route path="/admin_tiedot"
+					render={() => this.props.userGroup > 1 ?
+						(<IsannoitsijaTiedot/>) :
+						(<Redirect to="/"/>)
+						}/>
+				<Route path="/admin_yhtiot"
+					render={() => this.props.userGroup > 1 ?
+						(<IsannoitsijaTaloyhtiot/>) :
+						(<Redirect to="/"/>)
+						}/>													
+			</Switch>  
 		);
 	}
 }
