@@ -14,14 +14,14 @@ import Tiedot from './components/Tiedot';
 
 export default class ContainerContents extends React.Component
 {
-	naytaSivu = (sivu) => 
+	naytaSivu = (sivu) =>
 	{
 		let Sivu = sivu;
-		
+
 		if (Sivu === 1)
 		{
 			return <EtuSivu/>;
-		}	
+		}
 		else if (Sivu === 2)
 		{
 			return <Ilmoitukset/>;
@@ -53,16 +53,16 @@ export default class ContainerContents extends React.Component
 		else if (Sivu === 9)
 		{
 			return <IsannoitsijaTaloyhtiot/>;
-		}  
+		}
 	}
-		
+
 	render()
 	{
 
-		return (    
-			<div>			
-				{this.naytaSivu(9)}
-			</div>	  
+		return (
+			<div>
+				{this.naytaSivu(1)}
+			</div>
 		);
 	}
 }
