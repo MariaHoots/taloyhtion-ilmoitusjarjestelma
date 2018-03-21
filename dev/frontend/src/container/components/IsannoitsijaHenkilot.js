@@ -4,6 +4,10 @@ import IsannoitsijaHenkilotLista from './IsannoitsijaHenkilotLista';
 
 export default class EtuSivu extends React.Component 
 {
+		constructor(props) {
+			super(props);
+		}
+
 	render() {
 		return (
 			<div class="card">
@@ -17,20 +21,9 @@ export default class EtuSivu extends React.Component
 						<th scope="row">Toiminnot</th>
 				 </tr>
 				</thead>
-				<tbody>
-				<tr>
-				<td><input type="text" class="form-control" id="henkilotHaeNimellä" placeholder="Nimi"/></td><td><a href="index.html"><img src="img/jarjestysylos.svg" class="img-fluid" alt="[H]" height="20" width="20"/></a></td><td><a href="index.html"><img src="img/jarjestysalas.svg" class="img-fluid" alt="[H]" height="20" width="20"/></a></td>
-				<td><input type="text" class="form-control" id="henkilotHaeOsoitteella" placeholder="Osoite"/></td><td><a href="index.html"><img src="img/jarjestysylos.svg" class="img-fluid" alt="[H]" height="20" width="20"/></a></td><td><a href="index.html"><img src="img/jarjestysalas.svg" class="img-fluid" alt="[H]" height="20" width="20"/></a></td>
-				
-		
-				<td></td>
-				</tr>
-				
-				
-					<IsannoitsijaHenkilotLista/>
-				
-				
-				</tbody>
+
+				<IsannoitsijaHenkilotLista userList={this.props.userList}/>
+
 			  </table>
 			  </div>
 			</div>

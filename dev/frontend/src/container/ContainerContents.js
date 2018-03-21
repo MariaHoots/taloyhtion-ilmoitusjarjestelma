@@ -10,17 +10,11 @@ import Ilmoitukset from './components/Ilmoitukset';
 import Ilmoituslomake from './components/Ilmoituslomake';
 import Tiedot from './components/Tiedot';
 
-
-
 export default class ContainerContents extends React.Component
 {
 	constructor(props) {
 		super(props);
 	}
-
-	
-
-
 
 	naytaSivu = (sivu) => 
 	{
@@ -36,7 +30,7 @@ export default class ContainerContents extends React.Component
 		}
 		else if (Sivu === 3)
 		{
-			return <IsannoitsijaHenkilot/>;
+			return <IsannoitsijaHenkilot userList={this.props.userList}/>;
 		}
 		else if (Sivu === 4)
 		{
@@ -66,21 +60,9 @@ export default class ContainerContents extends React.Component
 		
 	render()
 	{
-		let tempView = {}
-		if (this.props.notificationsList.length === 0) {
-			tempView = <p>Nothing on the list</p>
-		} else {
-			tempView = this.props.notificationsList.map((list) => 
-				<tr key={list._id}>
-				<td>{list.title}</td>
-				<td>{list.message}</td>
-				</tr>
-			)
-		}
 		return (    
 			<div>			
-				{this.naytaSivu(9)}
-				{tempView}
+				{this.naytaSivu(3)}
 			</div>	  
 		);
 	}
