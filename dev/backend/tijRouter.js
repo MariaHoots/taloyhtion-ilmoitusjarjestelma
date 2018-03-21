@@ -2,9 +2,35 @@ let express = require("express");
 let tijPg = require("./pgserver");
 let tijUser = require('./models/user');
 let tijNotification = require('./models/notification');
+let tijHousingcompany = require('./models/housingcompany');
 
 
 let tijRouter = express.Router();
+
+
+tijRouter.get("/housingcomp", function(req,res) {
+    let housingCompanies = [];
+    let housingCompany = tijHousingcompany;
+    
+    tijPg.query('SELECT * FROM tij_housing_comp') 
+    .then(pgres => {
+        queryContents = pgres.rows;
+        for (let i=0;i<pgres.rows.length;i++) 
+        {
+            housingCompany = {
+                id:pgres.rows[i].id,
+                name:pgres.rows[i].name,
+                address:pgres.rows[i].address,
+                zip:pgres.rows[i].zip,
+                city:pgres.rows[i].city,
+                business_id:pgres.rows[i].business_id
+            };
+            housingCompanies.push(housingCompany);         
+        }
+        return res.status(200).json(housingCompanies);
+
+    }).catch(e => console.error(e.stack));
+});
 
 tijRouter.get("/users", function(req,res) {
     let users = [];

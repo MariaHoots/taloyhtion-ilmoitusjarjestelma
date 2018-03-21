@@ -1,7 +1,15 @@
 let user = {
     id:"",
-    email:"",
-    first_name:""
+    id_flat:"",
+    emailpassword:"",
+    first_name:"",
+    last_name:"",
+    phone:"",
+    role:"",
+    last_login:"",
+    billing_address:"",
+    zip:"",
+    city:""
 };
 
 module.exports = user;
