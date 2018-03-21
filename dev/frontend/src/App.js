@@ -35,7 +35,7 @@ export default class App extends Component {
 			if(response.ok) {
 				response.json().then((data) => {
 					this.setState({
-						notificationsList:data
+						userList:data
 					})
 				})
 			} else {
@@ -46,6 +46,7 @@ export default class App extends Component {
 		});
 		
 	}
+
 	getNotifications = () => {
 		let onGetNotificationList = {
 			method:"GET",
