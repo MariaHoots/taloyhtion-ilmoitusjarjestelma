@@ -1,4 +1,5 @@
 import React from 'react';
+import {Switch,Route,Redirect} from 'react-router-dom';
 
 import EtuSivu from './components/EtuSivu';
 import IsannoitsijaIlmoitukset from './components/IsannoitsijaIlmoitukset';
@@ -9,6 +10,7 @@ import IsannoitsijaTaloyhtiot from './components/IsannoitsijaTaloyhtiot';
 import Ilmoitukset from './components/Ilmoitukset';
 import Ilmoituslomake from './components/Ilmoituslomake';
 import Tiedot from './components/Tiedot';
+import Login from './components/Login';
 
 export default class ContainerContents extends React.Component
 {
@@ -16,54 +18,52 @@ export default class ContainerContents extends React.Component
 		super(props);
 	}
 
-	naytaSivu = (sivu) => 
-	{
-		let Sivu = sivu;
-		
-		if (Sivu === 1)
-		{
-			return <EtuSivu/>;
-		}	
-		else if (Sivu === 2)
-		{
-			return <Ilmoitukset/>;
-		}
-		else if (Sivu === 3)
-		{
-			return <IsannoitsijaHenkilot userList={this.props.userList}/>;
-		}
-		else if (Sivu === 4)
-		{
-			return <IsannoitsijaIlmoitukset/>;
-		}
-		else if (Sivu === 5)
-		{
-			return <IsannoitsijaEtuSivu/>;
-		}
-		else if (Sivu === 6)
-		{
-			return <Ilmoituslomake/>;
-		}
-		else if (Sivu === 7)
-		{
-			return <Tiedot/>;
-		}
-		else if (Sivu === 8)
-		{
-			return <IsannoitsijaTiedot/>;
-		}
-		else if (Sivu === 9)
-		{
-			return <IsannoitsijaTaloyhtiot/>;
-		}  
-	}
-		
 	render()
 	{
-		return (    
-			<div>			
-				{this.naytaSivu(3)}
-			</div>	  
+		return (   
+			<Switch>
+			<Route exact path="/"
+				render={() => this.props.userGroup > 0 ?
+					(<EtuSivu/>) :
+					(<Redirect to="/login"/>)} 
+			/>
+			<Route path="/login"
+				render={() => this.props.userGroup === 0 ?
+					(<Login/>) :
+					(<Redirect to="/"/>)
+					}/>
+			<Route path="/ilmoitukset"
+				render={() => this.props.userGroup > 0 ?
+					(<Ilmoitukset/>) :
+					(<Redirect to="/"/>)
+					}/>
+			<Route path="/tiedot"
+				render={() => this.props.userGroup > 0 ?
+					(<Tiedot/>) :
+					(<Redirect to="/"/>)
+					}/>
+			<Route path="/isannoitsija/henkilot"
+				render={() => this.props.userGroup > 1 ?
+					(<IsannoitsijaHenkilot userList={this.props.userList}/>) :
+					(<Redirect to="/"/>)
+					}/>
+			<Route path="/isannoitsija/etusivu"
+				render={() => this.props.userGroup > 1 ?
+					(<IsannoitsijaEtuSivu/>) :
+					(<Redirect to="/"/>)
+					}/>
+			<Route path="/isannoitsija/tiedot"
+				render={() => this.props.userGroup > 1 ?
+					(<IsannoitsijaTiedot/>) :
+					(<Redirect to="/"/>)
+					}/>
+			<Route path="/isannoitsija/talonyhtiot"
+				render={() => this.props.userGroup > 1 ?
+					(<IsannoitsijaTaloyhtiot/>) :
+					(<Redirect to="/"/>)
+					}/>
+																
+		</Switch>  
 		);
 	}
 }
