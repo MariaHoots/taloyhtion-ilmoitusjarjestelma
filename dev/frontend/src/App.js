@@ -5,7 +5,7 @@ import ContainerContents from './container/ContainerContents';
 import ContainerBottom from './container/ContainerBottom';
 
 
-export default class App extends Component {
+export default class App extends React.Component {
 
 	constructor(props) {
 		super(props);
@@ -14,17 +14,43 @@ export default class App extends Component {
 			//not logged in group 0 (1 admin|2 huoltomies|3 asukas)
 			userGroup:3,
 			notificationsList: [],
-			userList: []
+			userList: [],
+			housingCompList:[]
 
 		}
 	}
 	componentDidMount() {
+
+		// TESTAUSTA VARTEN START
 		this.getNotifications();
 		this.getUsers();
+		this.getHousingCompanies();
+		// TESTAUSTA VARTEN END
 		
 
 	}
-	
+
+	getHousingCompanies = () => {
+		let onGetHousingCompanyList = {
+			method:"GET",
+			mode:"cors",
+			headers:{"Content-Type":"application/json"}
+		}
+		fetch("/api/housingcomp/",onGetHousingCompanyList).then((response) => {
+			if(response.ok) {
+				response.json().then((data) => {
+					this.setState({
+						housingCompList:data
+					})
+				})
+			} else {
+				console.log(response.statusText);
+			}
+		}).catch((error) => {
+			console.log(error);
+		});	
+	}
+
 	getUsers = () => {
 		let onGetNotificationList = {
 			method:"GET",
@@ -69,9 +95,6 @@ export default class App extends Component {
 		
 	}
 
-
-
-
 	render() {
 		return (
 			<div className="App">
@@ -79,7 +102,12 @@ export default class App extends Component {
 					<ContainerTop userGroup={this.state.userGroup}/>
 					<ContainerMid/>
 					<ContainerContents getNotifications={this.getNotifications}
-										notificationsList={this.state.notificationsList}/>
+									   getUsers={this.getUsers}
+									   getHousingCompanies={this.getHousingCompanies}
+									   notificationsList={this.state.notificationsList}
+									   userList={this.state.userList}
+									   housingCompList={this.state.housingCompList}
+										/>
 					<ContainerBottom/>
 				</div>
 			</div>
