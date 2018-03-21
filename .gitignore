@@ -1,4 +1,4 @@
 **/node_modules/
-/dev/frontend/package.json
-/dev/frontend/package-lock.json
+**/package-lock.json
+**/package.json
 /dev/backend/config.js
