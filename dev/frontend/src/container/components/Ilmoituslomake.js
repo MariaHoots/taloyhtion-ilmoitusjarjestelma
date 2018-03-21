@@ -3,74 +3,74 @@ import React from 'react';
 export default class EtuSivu extends React.Component {
   render() {
     return (
-		<div class="card">
-		  <div class="card-body">
-		   
+		<div className="card">
+		  <div className="card-body">
+
 	<h3>Ilmoituslomake</h3>
 
 <form>
 
- <div class="form-row">
-    <div class="form-group col-md-6">
+ <div className="form-row">
+    <div className="form-group col-md-6">
       <label for="taloyhtio">Kirjoita otsikko</label>
-      <input type="text" class="form-control" id="otsikko" placeholder="kirjoita otsikko"/>
+      <input type="text" className="form-control" id="otsikko" placeholder="kirjoita otsikko"/>
     </div>
 </div>
 
-  <div class="form-row">
-    <div class="form-group col-md-6">
+  <div className="form-row">
+    <div className="form-group col-md-6">
       <label for="taloyhtio">Taloyhtiö</label>
-      <input type="text" class="form-control" id="taloyhtio" placeholder="valitse talo"/>
+      <input type="text" className="form-control" id="taloyhtio" placeholder="valitse talo"/>
     </div>
 
-    <div class="form-group col-md-6">
+    <div className="form-group col-md-6">
       <label for="huoneisto">Huoneisto</label>
-      <input type="text" class="form-control" id="huoneisto" placeholder="valitse huoneisto"/>
+      <input type="text" className="form-control" id="huoneisto" placeholder="valitse huoneisto"/>
     </div>
   </div>
 
-  <div class="form-row">
-    <div class="form-group col-md-6">
+  <div className="form-row">
+    <div className="form-group col-md-6">
       <label for="etunimi">Etunimi</label>
-      <input type="text" class="form-control" id="etunimi" placeholder=""/>
+      <input type="text" className="form-control" id="etunimi" placeholder=""/>
     </div>
 
-    <div class="form-group col-md-6">
+    <div className="form-group col-md-6">
       <label for="sukunimi">Sukunimi</label>
-      <input type="text" class="form-control" id="sukunimi" placeholder=""/>
+      <input type="text" className="form-control" id="sukunimi" placeholder=""/>
     </div>
   </div>
 
-  <div class="form-row">
-    <div class="form-group col-md-6">
+  <div className="form-row">
+    <div className="form-group col-md-6">
       <label for="osoite">Osoite</label>
-      <input type="text" class="form-control" id="osoite" placeholder=""/>
+      <input type="text" className="form-control" id="osoite" placeholder=""/>
     </div>
 
-    <div class="form-group col-md-4">
+    <div className="form-group col-md-4">
       <label for="postinumero">Postinumero</label>
-      <input type="text" class="form-control" id="postinumero" placeholder=""/>
+      <input type="text" className="form-control" id="postinumero" placeholder=""/>
     </div>
 
-    <div class="form-group col-md-2">
+    <div className="form-group col-md-2">
       <label for="postitoimipaikka">Postitoimipaikka</label>
-      <input type="text" class="form-control" id="postitoimipaikka" placeholder=""/>
+      <input type="text" className="form-control" id="postitoimipaikka" placeholder=""/>
     </div>
 
-    <div class="form-group col-md-3">
+    <div className="form-group col-md-3">
       <label for="puhelin">Puhelin</label>
-      <input type="text" class="form-control" id="puhelin" placeholder=""/>
+      <input type="text" className="form-control" id="puhelin" placeholder=""/>
     </div>
 
-    <div class="form-group col-md-3">
+    <div className="form-group col-md-3">
       <label for="sahkoposti">Sähköposti</label>
-      <input type="text" class="form-control" id="sahkoposti" placeholder=""/>
+      <input type="text" className="form-control" id="sahkoposti" placeholder=""/>
     </div>
 
-    <div class="form-group col-md-3">
-      <div class="form-group">
+    <div className="form-group col-md-3">
+      <div className="form-group">
         <label for="ilmoitustyyppi">Valitse ilmoitustyyppi</label>
-        <select class="form-control" id="ilmoitustyyppi">
+        <select className="form-control" id="ilmoitustyyppi">
           <option>Vikailmoitus (H)</option>
           <option>Avaimet (H)</option>
           <option>Autopaikat (H)</option>
@@ -86,12 +86,12 @@ export default class EtuSivu extends React.Component {
    </div>
   </div>
 
-  <div class="form-group">
+  <div className="form-group">
     <label for="kuvaus">Ilmoituksen tarkempi kuvaus</label>
-    <textarea class="form-control" id="kuvaus" rows="5"></textarea>
+    <textarea className="form-control" id="kuvaus" rows="5"></textarea>
   </div>
 
-  <button type="submit" class="btn btn-primary">Lähetä ilmoitus</button>
+  <button type="submit" className="btn btn-primary">Lähetä ilmoitus</button>
   <br/><br/>
 </form>
 		  </div>

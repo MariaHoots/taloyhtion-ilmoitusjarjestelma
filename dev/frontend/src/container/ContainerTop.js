@@ -6,8 +6,8 @@ export default class ContainerTop extends React.Component {
   render() {
     return (
 
-		  <TopMenu/>
-      
+		  <TopMenu userGroup={this.props.userGroup}/>
+
     );
   }
 }

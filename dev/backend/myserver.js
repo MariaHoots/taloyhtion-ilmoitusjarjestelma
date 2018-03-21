@@ -14,5 +14,5 @@ app.use("/api", tijRouter);
 app.use("/apim", tijRouterManager);
 
 
-app.listen(3000);
-console.log("Running on port 3000");
+app.listen(3001);
+console.log("Running on port 3001");

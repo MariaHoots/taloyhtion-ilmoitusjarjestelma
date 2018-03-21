@@ -17,8 +17,16 @@ tijRouter.get("/users", function(req,res) {
         {
             user = {
                 id:pgres.rows[i].id,
-                email:pgres.rows[i].email,
-                first_name:pgres.rows[i].first_name
+                id_flat:pgres.rows[i].id_flat,
+                emailpassword:pgres.rows[i].emailpassword,
+                first_name:pgres.rows[i].first_name,
+                last_name:pgres.rows[i].last_name,
+                phone:pgres.rows[i].phone,
+                role:pgres.rows[i].role,
+                last_login:pgres.rows[i].last_login,
+                billing_address:pgres.rows[i].billing_address,
+                zip:pgres.rows[i].zip,
+                city:pgres.rows[i].city
             };
             users.push(user);         
         }
@@ -38,8 +46,19 @@ tijRouter.get("/notifications", function(req,res) {
         {
             notification = {
                 id:pgres.rows[i].id,
+                id_user:pgres.rows[i].id_user,
+                id_housing_comp:pgres.rows[i].id_housing_comp,
+                id_checkout:pgres.rows[i].id_checkout,
+                read_id:pgres.rows[i].read_id,
+                sent_date:pgres.rows[i].sent_date,
+                read_date:pgres.rows[i].read_date,
                 title:pgres.rows[i].title,
-                message:pgres.rows[i].message
+                message:pgres.rows[i].message,
+                notif_type:pgres.rows[i].notif_type,
+                checkout:pgres.rows[i].checkout,
+                checkout_message:pgres.rows[i].checkout_message,
+                status:pgres.rows[i].status
+
             };
             notifications.push(notification);         
         }

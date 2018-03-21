@@ -4,9 +4,9 @@ export default class TopMenuAsukas extends React.Component {
   render() {
     return (
 
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-		      <a class="nav-link" href="ilmoituslomake.html">Tee ilmoitus</a>
+      <ul className="navbar-nav mr-auto">
+        <li className="nav-item">
+		      <a className="nav-link" href="ilmoituslomake.html">Tee ilmoitus</a>
 		    </li>
       </ul>
 
