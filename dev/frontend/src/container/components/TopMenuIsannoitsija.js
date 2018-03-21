@@ -13,7 +13,7 @@ export default class TopMenuIsannoitsija extends React.Component {
         <li class="nav-item">
           <a class="nav-link" href="#">Henkilöt</a>
         </li>
-    </ul>
+      </ul>
     );
   }
 }

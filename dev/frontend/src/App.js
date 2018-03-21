@@ -5,14 +5,21 @@ import ContainerContents from './container/ContainerContents';
 import ContainerBottom from './container/ContainerBottom';
 
 
-export default class App extends Component
-{
-	render()
-	{
+export default class App extends Component {
+
+	constructor(props) {
+		super(props);
+		this.state = {
+			//not logged in, group is 0
+			userGroup:3
+		}
+	}
+
+	render() {
 		return (
 			<div className="App">
 				<div class="container">
-					<ContainerTop/>
+					<ContainerTop userGroup={this.state.userGroup}/>
 					<ContainerMid/>
 					<ContainerContents/>
 					<ContainerBottom/>
