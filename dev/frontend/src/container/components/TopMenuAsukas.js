@@ -6,7 +6,7 @@ export default class TopMenuAsukas extends React.Component {
 
       <ul className="navbar-nav mr-auto">
         <li className="nav-item">
-		      <a className="nav-link" href="ilmoituslomake.html">Tee ilmoitus</a>
+		      <a className="nav-link" href="/ilmoituslomake">Tee ilmoitus</a>
 		    </li>
       </ul>
 

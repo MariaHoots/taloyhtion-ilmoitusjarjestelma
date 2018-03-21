@@ -10,8 +10,7 @@ export default class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			
-			//not logged in group 0 (1 admin|2 huoltomies|3 asukas)
+			//not logged in group 0 (3:admin| 2:huoltomies | 1:asukas)
 			userGroup:3,
 			notificationsList: [],
 			userList: [],
@@ -107,6 +106,8 @@ export default class App extends React.Component {
 									   notificationsList={this.state.notificationsList}
 									   userList={this.state.userList}
 									   housingCompList={this.state.housingCompList}
+									   isLoggedIn={this.state.isLoggedIn}
+									   userGroup={this.state.userGroup}
 										/>
 					<ContainerBottom/>
 				</div>
