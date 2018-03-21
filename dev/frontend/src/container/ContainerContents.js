@@ -14,6 +14,14 @@ import Tiedot from './components/Tiedot';
 
 export default class ContainerContents extends React.Component
 {
+	constructor(props) {
+		super(props);
+	}
+
+	
+
+
+
 	naytaSivu = (sivu) => 
 	{
 		let Sivu = sivu;
@@ -58,10 +66,21 @@ export default class ContainerContents extends React.Component
 		
 	render()
 	{
-
+		let tempView = {}
+		if (this.props.notificationsList.length === 0) {
+			tempView = <p>Nothing on the list</p>
+		} else {
+			tempView = this.props.notificationsList.map((notification) => 
+				<tr key={notification._id}>
+				<td>{notification.title}</td>
+				<td>{notification.message}</td>
+				</tr>
+			)
+		}
 		return (    
 			<div>			
 				{this.naytaSivu(9)}
+				{tempView}
 			</div>	  
 		);
 	}
