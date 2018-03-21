@@ -66,7 +66,17 @@ export default class ContainerContents extends React.Component
 		
 	render()
 	{
-		
+		let tempView = {}
+		if (this.props.notificationsList.length === 0) {
+			tempView = <p>Nothing on the list</p>
+		} else {
+			tempView = this.props.notificationsList.map((list) => 
+				<tr key={list._id}>
+				<td>{list.title}</td>
+				<td>{list.message}</td>
+				</tr>
+			)
+		}
 		return (    
 			<div>			
 				{this.naytaSivu(9)}
