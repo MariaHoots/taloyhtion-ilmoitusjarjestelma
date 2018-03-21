@@ -10,14 +10,11 @@ export default class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-<<<<<<< HEAD
-			//not logged in, group is 0 (1 admin|2 huoltomies|3 asukas)
+			
+			//not logged in group 0 (1 admin|2 huoltomies|3 asukas)
 			userGroup:3,
 			notificationsList: []
-=======
-			//not logged in group 0 (1 admin|2 huoltomies|3 asukas)
-			userGroup:3
->>>>>>> 47ede1a446398ec7a56bd364e3860f71d95f34de
+
 		}
 	}
 	componentDidMount() {

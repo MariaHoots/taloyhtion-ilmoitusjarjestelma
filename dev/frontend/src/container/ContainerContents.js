@@ -14,7 +14,6 @@ import Tiedot from './components/Tiedot';
 
 export default class ContainerContents extends React.Component
 {
-<<<<<<< HEAD
 	constructor(props) {
 		super(props);
 	}
@@ -24,16 +23,13 @@ export default class ContainerContents extends React.Component
 
 
 	naytaSivu = (sivu) => 
-=======
-	naytaSivu = (sivu) =>
->>>>>>> 47ede1a446398ec7a56bd364e3860f71d95f34de
 	{
 		let Sivu = sivu;
-
+		
 		if (Sivu === 1)
 		{
 			return <EtuSivu/>;
-		}
+		}	
 		else if (Sivu === 2)
 		{
 			return <Ilmoitukset/>;
@@ -65,35 +61,17 @@ export default class ContainerContents extends React.Component
 		else if (Sivu === 9)
 		{
 			return <IsannoitsijaTaloyhtiot/>;
-		}
+		}  
 	}
-
+		
 	render()
 	{
-<<<<<<< HEAD
-		let tempView = {}
-		if (this.props.notificationsList.length === 0) {
-			tempView = <p>Nothing on the list</p>
-		} else {
-			tempView = this.props.notificationsList.map((notification) => 
-				<tr key={notification._id}>
-				<td>{notification.title}</td>
-				<td>{notification.message}</td>
-				</tr>
-			)
-		}
+		
 		return (    
 			<div>			
 				{this.naytaSivu(9)}
 				{tempView}
 			</div>	  
-=======
-
-		return (
-			<div>
-				{this.naytaSivu(1)}
-			</div>
->>>>>>> 47ede1a446398ec7a56bd364e3860f71d95f34de
 		);
 	}
 }
