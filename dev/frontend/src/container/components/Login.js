@@ -44,6 +44,10 @@ export default class Login extends React.Component {
 	            <div className="col">
 	            </div>
 	          <div className="col">
+						asukas: hwormstone1@goodreads.com
+						<br/>
+						isännöitsijä: breece2@hibu.com
+
 		        <form onSubmit={this.onSubmit}>
 		          <div className="form-group">
 		            <label htmlFor="uname">Sähköposti</label>

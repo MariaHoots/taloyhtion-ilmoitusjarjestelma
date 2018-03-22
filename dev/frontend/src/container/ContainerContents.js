@@ -61,9 +61,6 @@ export default class ContainerContents extends React.Component
 						(<Tiedot/>) :
 						(<Redirect to="/"/>)
 						}/>
-
-
-
 				<Route path="/admin_ilmoitukset"
 					render={() => this.props.isLogged ?
 						(<IsannoitsijaIlmoitukset userList={this.props.notificationsList}
