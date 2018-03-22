@@ -1,4 +1,6 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+
 import TopMenuAsukas from './TopMenuAsukas';
 import TopMenuIsannoitsija from './TopMenuIsannoitsija';
 import TopMenuHuoltoyhtio from './TopMenuHuoltoyhtio';
@@ -10,13 +12,10 @@ export default class TopMenu extends React.Component {
 		switch(this.props.userGroup) {
 		    case 3:
 		        return <TopMenuIsannoitsija/>;
-		        break;
 		    case 2:
 		        return <TopMenuHuoltoyhtio/>;
-		        break;
 		    case 1:
 		        return <TopMenuAsukas/>;
-		        break;
 		    default:
 					//not logged in
 		}
@@ -46,7 +45,9 @@ export default class TopMenu extends React.Component {
 			rightPart =
 			<ul className="navbar-nav">
 				<li className="nav-item"><a className="nav-link" href="/tiedot"> Maija Meikäläinen</a></li>
-				<li className="nav-item"><a className="nav-link" href="/logout"> Kirjaudu ulos</a></li>
+				<li className="nav-item"><Link className="nav-link" to="/" 
+							onClick={this.props.onLogout}> Kirjaudu ulos</Link>
+				</li>
 			</ul>
 		}
 

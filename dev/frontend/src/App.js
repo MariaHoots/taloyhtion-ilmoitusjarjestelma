@@ -3,6 +3,7 @@ import ContainerTop from './container/ContainerTop';
 import ContainerMid from './container/ContainerMid';
 import ContainerContents from './container/ContainerContents';
 import ContainerBottom from './container/ContainerBottom';
+import Login from './container/components/Login';
 
 
 export default class App extends Component {
@@ -11,7 +12,8 @@ export default class App extends Component {
 		super(props);
 		this.state = {
 			//not logged in group 0 (3:admin| 2:huoltomies | 1:asukas)
-			userGroup:3,
+			userGroup:0,
+			isLogged:false,
 			token:"",
 			notificationsList: [],
 			userList: [],
@@ -19,24 +21,36 @@ export default class App extends Component {
 
 		}
 	}
+
 	componentDidMount() {
 
-		// TESTAUSTA VARTEN START
-		this.getNotifications();
-		this.getUsers();
-		this.getHousingCompanies();
-		// TESTAUSTA VARTEN END
-		
-
+		if(!sessionStorage.getItem("loginStatus")){
+			sessionStorage.setItem("loginLevel",0);
+			sessionStorage.setItem("loginStatus","not logged");
+			sessionStorage.setItem("token","");
+			return;
+		}
+		let loginStatus = sessionStorage.getItem("loginStatus");	
+		let token = sessionStorage.getItem("token");
+		let loginLevel = sessionStorage.getItem("loginLevel");
+		if(loginStatus === "logged") {
+			this.setState({
+				isLogged:true,
+				token:token,
+				userGroup:parseInt(loginLevel,10)
+			})
+		}
 	}
+
 
 	getHousingCompanies = () => {
 		let onGetHousingCompanyList = {
 			method:"GET",
 			mode:"cors",
-			headers:{"Content-Type":"application/json"}
+			headers:{"Content-Type":"application/json",
+			"token":this.state.token}
 		}
-		fetch("/api/housingcomp/",onGetHousingCompanyList).then((response) => {
+		fetch("/api/housingcomp",onGetHousingCompanyList).then((response) => {
 			if(response.ok) {
 				response.json().then((data) => {
 					this.setState({
@@ -55,9 +69,10 @@ export default class App extends Component {
 		let onGetNotificationList = {
 			method:"GET",
 			mode:"cors",
-			headers:{"Content-Type":"application/json"}
+			headers:{"Content-Type":"application/json",
+			"token":this.state.token}
 		}
-		fetch("/api/users/",onGetNotificationList).then((response) => {
+		fetch("/api/users",onGetNotificationList).then((response) => {
 			if(response.ok) {
 				response.json().then((data) => {
 					this.setState({
@@ -77,9 +92,10 @@ export default class App extends Component {
 		let onGetNotificationList = {
 			method:"GET",
 			mode:"cors",
-			headers:{"Content-Type":"application/json"}
+			headers:{"Content-Type":"application/json",
+			"token":this.state.token}
 		}
-		fetch("/api/notifications/",onGetNotificationList).then((response) => {
+		fetch("/api/notifications",onGetNotificationList).then((response) => {
 			if(response.ok) {
 				response.json().then((data) => {
 					this.setState({
@@ -109,10 +125,12 @@ export default class App extends Component {
 				response.json().then((data) => {
 					this.setState({
 						token:data.token,
-						userGroup:data.role
+						userGroup:parseInt(data.usergroup,10),
+						isLogged:true
 					})
-					sessionStorage.setItem("loginStatus","logged");
 					sessionStorage.setItem("token",data.token);
+					sessionStorage.setItem("loginLevel",data.usergroup);
+					sessionStorage.setItem("loginStatus","logged");
 				})
 			} else {
 				console.log(response.statusText);
@@ -124,7 +142,7 @@ export default class App extends Component {
 	}
 	
 	onLogout = () => {
-		
+		console.log("logout");
 		let onLogout = {
 			method:"POST",
 			mode:"cors",
@@ -135,9 +153,11 @@ export default class App extends Component {
 			if(response.ok) {
 				this.setState({
 					token:"",
-					userGroup:0
+					userGroup:0,
+					isLogged:false
 				})
 				sessionStorage.setItem("loginStatus","not logged");
+				sessionStorage.setItem("loginLevel",0);
 				sessionStorage.setItem("token","");
 			} else {
 				console.log(response.statusText);
@@ -147,27 +167,33 @@ export default class App extends Component {
 		})
 	}
 
-
-
-
-
 	render() {
 		return (
 			<div className="App">
 				<div className="container">
-					<ContainerTop userGroup={this.state.userGroup}/>
+					<ContainerTop userGroup={this.state.userGroup}
+					 				onLogout={this.onLogout}/>
 					<ContainerMid/>
+					{this.state.isLogged === false &&
+					<Login onLogin={this.onLogin}/>
+					}
+					{this.state.isLogged === true &&
 					<ContainerContents getNotifications={this.getNotifications}
 									   getUsers={this.getUsers}
+									   getHousingCompanies={this.getHousingCompanies}
+
 									   onLogin={this.onLogin}
 									   onLogout={this.onLogout}
-									   getHousingCompanies={this.getHousingCompanies}
+									   
 									   notificationsList={this.state.notificationsList}
 									   userList={this.state.userList}
 									   housingCompList={this.state.housingCompList}
-									   isLoggedIn={this.state.isLoggedIn}
+
+									   isLogged={this.state.isLogged}
 									   userGroup={this.state.userGroup}
+									   token={this.state.token}
 										/>
+					}
 					<ContainerBottom/>
 				</div>
 			</div>

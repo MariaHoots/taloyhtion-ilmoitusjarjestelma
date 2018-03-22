@@ -4,6 +4,13 @@ import IsannoitsijaIlmoituksetLista from './IsannoitsijaIlmoituksetLista';
 import IsannoitsijaIlmoituksetListaKuitatut from './IsannoitsijaIlmoituksetListaKuitatut';
 
 export default class EtuSivu extends React.Component {
+
+  
+componentDidMount() {
+    this.props.getNotifications();	
+}
+
+
   render() {
     return (
 		<div class="card">

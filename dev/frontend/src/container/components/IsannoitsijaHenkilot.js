@@ -3,21 +3,23 @@ import React from 'react';
 import IsannoitsijaHenkilotLista from './IsannoitsijaHenkilotLista';
 
 export default class EtuSivu extends React.Component 
-{
-		constructor(props) {
-			super(props);
-		}
+{	
 
+	componentDidMount() {
+			this.props.getUsers();	
+	}
+
+	
 	render() {
 		return (
-			<div class="card">
-			  <div class="card-body">
+			<div className="card">
+			  <div className="card-body">
 			   <h3>Henkilöt</h3>
-			  <table class="table table-bordered">
+			  <table className="table table-bordered">
 				<thead>
 				  <tr>
-						<th scope="row" colspan="3">Nimi</th>
-						<th scope="row" colspan="3">Osoite</th>
+						<th scope="row" colSpan="3">Nimi</th>
+						<th scope="row" colSpan="3">Osoite</th>
 						<th scope="row">Toiminnot</th>
 				 </tr>
 				</thead>

@@ -4,6 +4,12 @@ import IsannoitsijaTaloyhtiotLista from './IsannoitsijaTaloyhtiotLista';
 
 export default class EtuSivu extends React.Component
 {
+
+	componentDidMount() {
+		this.props.getHousingCompanies();	
+	}
+
+
 	render()
 	{
 		return (

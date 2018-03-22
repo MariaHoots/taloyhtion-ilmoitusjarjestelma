@@ -4,7 +4,7 @@ export default class Login extends React.Component {
   constructor(props) {
 		super(props);
 		this.state={
-			uname:"",
+			uname:"breece2@hibu.com",
 			passphrase:""
 		}
   }
@@ -40,29 +40,29 @@ export default class Login extends React.Component {
     return (
 			<div className="card">
 		     <div className="card-body">
-            <div class="row">
-	            <div class="col">
+            <div className="row">
+	            <div className="col">
 	            </div>
-	          <div class="col">
-		        <form>
-		          <div class="form-group">
-		            <label for="uname">Sähköposti</label>
+	          <div className="col">
+		        <form onSubmit={this.onSubmit}>
+		          <div className="form-group">
+		            <label htmlFor="uname">Sähköposti</label>
                 <input type="email"
                         name="uname"
                         value={this.state.uname}
 					              onChange={this.onChange}
-                        class="form-control"
+                        className="form-control"
                         id="uname"
                         aria-describedby="emailHelp"
                         placeholder="Kirjoita sähköpostiosoitteesi"/>
 		          </div>
-		          <div class="form-group">
-		            <label for="passphrase">Salasana</label>
+		          <div className="form-group">
+		            <label htmlFor="passphrase">Salasana</label>
                 <input type="password"
                         name="passphrase"
                         value={this.state.passphrase}
                         onChange={this.onChange}
-                        class="form-control"
+                        className="form-control"
                         id="passphrase"
                         placeholder="Salasana"/>
 		          </div>
@@ -70,10 +70,10 @@ export default class Login extends React.Component {
 					            name="login"
 					            value="Kirjaudu"
 					            onClick={this.onSubmit}
-                      class="btn btn-primary"/>
+                      className="btn btn-primary"/>
 		        </form>
 	        </div>
-	        <div class="col">
+	        <div className="col">
 	        </div>
 	      </div>
       </div>

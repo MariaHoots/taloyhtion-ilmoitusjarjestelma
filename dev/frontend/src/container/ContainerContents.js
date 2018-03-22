@@ -15,76 +15,84 @@ import Logout from './components/Logout';
 
 export default class ContainerContents extends React.Component
 {
-	constructor(props) {
-		super(props);
-	}
+	/*shouldComponentUpdate(nextProps, nextState) {
+		return this.props.isLogged;
+	  }*/
 
 	render()
 	{
+		console.log(this.props.isLogged)
 		return (
 			<Switch>
 				<Route exact path="/"
 					render={
-						() => this.props.userGroup > 0 ?
+						() => this.props.isLogged  ?
 						(<EtuSivu/>) :
 						(<Redirect to="/login"/>)}
 				/>
+
 				<Route path="/etusivu"
-					render={() => this.props.userGroup > 1 ?
+					render={() => this.props.isLogged ?
 						(<IsannoitsijaEtuSivu/>) :
-						(<Redirect to="/login"/>)
+						(<Redirect to="/"/>)
 						}/>
 				<Route path="/login"
-					render={() => this.props.userGroup === 0 ?
-						(<Login onLogin={this.props.onLogin}
-								onLogout={this.props.onLogout}/>) :
+					render={() => !this.props.isLogged ?
+						(<Login onLogin={this.props.onLogin}/>) :
 						(<Redirect to="/"/>)
 						}/>
-				<Route path="/Logout"
-					render={() => this.props.userGroup > 0 ?
-						(<Logout/>) :
+				<Route path="/logout"
+					render={() => this.props.isLogged ?
+						(<Logout onLogout={this.props.onLogout}/>) :
 						(<Redirect to="/"/>)
-						}/>
+						}/>	
 				<Route path="/ilmoitukset"
-					render={() => this.props.userGroup > 0 ?
+					render={() => this.props.isLogged ?
 						(<Ilmoitukset/>) :
 						(<Redirect to="/"/>)
 						}/>
 				<Route path="/ilmoituslomake"
-					render={() => this.props.userGroup > 0 ?
+					render={() => this.props.isLogged ?
 						(<Ilmoituslomake/>) :
 						(<Redirect to="/"/>)
 						}/>
 				<Route path="/tiedot"
-					render={() => this.props.userGroup > 0 ?
+					render={() => this.props.isLogged ?
 						(<Tiedot/>) :
 						(<Redirect to="/"/>)
 						}/>
+
+
+
 				<Route path="/admin_ilmoitukset"
-					render={() => this.props.userGroup > 1 ?
-						(<IsannoitsijaIlmoitukset/>) :
+					render={() => this.props.isLogged ?
+						(<IsannoitsijaIlmoitukset userList={this.props.notificationsList}
+													getNotifications={this.props.getNotifications}/>) :
 						(<Redirect to="/"/>)
 						}/>
 				<Route path="/admin_henkilot"
-					render={() => this.props.userGroup > 1 ?
-						(<IsannoitsijaHenkilot userList={this.props.userList}/>) :
+					render={() => this.props.isLogged?
+						(<IsannoitsijaHenkilot userList={this.props.userList}
+												getUsers={this.props.getUsers}/>) :
 						(<Redirect to="/"/>)
 						}/>
 				<Route path="/admin_etusivu"
-					render={() => this.props.userGroup > 1 ?
+					render={() => this.props.isLogged ?
 						(<IsannoitsijaEtuSivu/>) :
 						(<Redirect to="/"/>)
 						}/>
 				<Route path="/admin_tiedot"
-					render={() => this.props.userGroup > 1 ?
+					render={() => this.props.isLogged ?
 						(<IsannoitsijaTiedot/>) :
 						(<Redirect to="/"/>)
 						}/>
 				<Route path="/admin_yhtiot"
-					render={() => this.props.userGroup > 1 ?
-						(<IsannoitsijaTaloyhtiot housingCompList={this.props.housingCompList}/>) :
+					render={() => this.props.isLogged ?
+						(<IsannoitsijaTaloyhtiot housingCompList={this.props.housingCompList}
+												getHousingCompanies={this.props.getHousingCompanies}/>) :
 						(<Redirect to="/"/>)
 						}/>
+				
 			</Switch>
 		);
 	}
