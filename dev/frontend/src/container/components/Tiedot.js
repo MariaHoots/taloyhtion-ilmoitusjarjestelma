@@ -42,7 +42,7 @@ export default class EtuSivu extends React.Component {
 						   name="nimi" 
 						   class="form-control" 
 						   id="formGroupNimi"
-						   placeholder="Nimi"/> 
+						   placeholder="Nimi" 
 						   value={this.state.nimi}
 						   onChange={this.onChange}/> */}	
 				</div>
@@ -52,7 +52,7 @@ export default class EtuSivu extends React.Component {
 						   name="sukunimi"
 						   class="form-control" 
 						   id="formGroupNimi" 
-						   placeholder="Sukunimi"/> 
+						   placeholder="Sukunimi"
 						   value={this.state.sukunimi} 
 						   onChange={this.onChange}/> */}
 				</div>
@@ -63,9 +63,9 @@ export default class EtuSivu extends React.Component {
 						   name="osoite"
 						   class="form-control"
 						   id="formGroupOsoite"
-						   placeholder="Osoite"/>
+						   placeholder="Osoite"
 						   value={this.state.osoite} 
-						   onChange={this.onChange} */}
+						   onChange={this.onChange}/> */}
 			</div>
 			<div class="form-row">
 				<div class="form-group col-md-2">
@@ -74,7 +74,7 @@ export default class EtuSivu extends React.Component {
 						   name="postinumero"
 						   class="form-control" 
 						   id="formGroupPostinumero" 
-						   placeholder="Postinumero"/>						   
+						   placeholder="Postinumero"						   
 						   value={this.state.postinumero}
 						   onChange={this.onChange}/>  */}
 				</div>
@@ -84,7 +84,7 @@ export default class EtuSivu extends React.Component {
 						   name="postitoimipaikka"	
 						   class="form-control" 
 						   id="formGroupPostinumero"
-						   placeholder="Postitoimipaikka"/> 
+						   placeholder="Postitoimipaikka"
 						   value={this.state.postitoimipaikka} 
 						   onChange={this.onChange}/> */}
 				</div>
