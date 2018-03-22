@@ -11,7 +11,7 @@ export default class App extends Component {
 		super(props);
 		this.state = {
 			//not logged in group 0 (3:admin| 2:huoltomies | 1:asukas)
-			userGroup:0,
+			userGroup:3,
 			token:"",
 			notificationsList: [],
 			userList: [],
