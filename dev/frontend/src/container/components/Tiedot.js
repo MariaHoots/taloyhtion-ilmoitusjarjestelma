@@ -16,6 +16,17 @@ export default class EtuSivu extends React.Component {
 	}	
 */	
 
+/*
+	onChange = (event) => {
+		if(event.target.name === "passphrase") {
+		this.setState({
+			passphrase:event.target.value
+		});	
+	   }
+	 }
+	 
+*/
+
 // JSX-alkaa alapuolella
 	
   render() {
@@ -52,7 +63,7 @@ export default class EtuSivu extends React.Component {
 						   name="osoite"
 						   class="form-control"
 						   id="formGroupOsoite"
-						    placeholder="Osoite"/>
+						   placeholder="Osoite"/>
 						   value={this.state.osoite} 
 						   onChange={this.onChange} */}
 			</div>
