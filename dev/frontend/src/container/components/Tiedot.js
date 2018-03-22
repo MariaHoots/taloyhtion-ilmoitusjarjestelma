@@ -1,9 +1,9 @@
 import React from 'react';
 
+export default class EtuSivu extends React.Component {
+
 // Vaatii konstruktorin?
 
-
-export default class EtuSivu extends React.Component {
 /*
 	constructor(props) {
 		super(props);
@@ -11,8 +11,7 @@ export default class EtuSivu extends React.Component {
 			//
 			//
 		}	
-	}
-	
+	}	
 */	
 	
   render() {
