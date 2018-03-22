@@ -21,13 +21,13 @@ export default class ContainerContents extends React.Component
 
 	render()
 	{
-		return (   
+		return (
 			<Switch>
 				<Route exact path="/"
 					render={
 						() => this.props.userGroup > 0 ?
 						(<EtuSivu/>) :
-						(<Redirect to="/login"/>)} 
+						(<Redirect to="/login"/>)}
 				/>
 				<Route path="/etusivu"
 					render={() => this.props.userGroup > 1 ?
@@ -81,10 +81,10 @@ export default class ContainerContents extends React.Component
 						}/>
 				<Route path="/admin_yhtiot"
 					render={() => this.props.userGroup > 1 ?
-						(<IsannoitsijaTaloyhtiot/>) :
+						(<IsannoitsijaTaloyhtiot housingCompList={this.props.housingCompList}/>) :
 						(<Redirect to="/"/>)
-						}/>													
-			</Switch>  
+						}/>
+			</Switch>
 		);
 	}
 }
