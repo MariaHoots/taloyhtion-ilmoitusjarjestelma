@@ -36,7 +36,8 @@ export default class ContainerContents extends React.Component
 						}/>
 				<Route path="/login"
 					render={() => this.props.userGroup === 0 ?
-						(<Login/>) :
+						(<Login onLogin={this.props.onLogin}
+								onLogout={this.props.onLogout}/>) :
 						(<Redirect to="/"/>)
 						}/>
 				<Route path="/Logout"
