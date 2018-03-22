@@ -2,6 +2,8 @@ import React from 'react';
 
 export default class EtuSivu extends React.Component {
 
+// Kommentoidut kohdat lisäyksiä
+
 // Vaatii konstruktorin?
 
 /*
@@ -16,6 +18,7 @@ export default class EtuSivu extends React.Component {
 	
   render() {
     return (
+	// <form onSubmit={this.onSubmit}>
 		<div class="card">
 		  <div class="card-body">
 		   <form>
@@ -59,7 +62,7 @@ export default class EtuSivu extends React.Component {
 			</div>
 	
 			<button type="submit" class="btn btn-primary">Tallenna</button>
-		</form>
+		// </form>
 		  </div>
 		</div>
     );
