@@ -48,7 +48,7 @@ tijRouterManager.get("/notifications", function(req,res) {
     }).catch(e => console.error(e.stack));
 });
 
-tijRouter.get("/housingcomp", function(req,res) {
+tijRouterManager.get("/housingcomp", function(req,res) {
     let housingCompanies = [];
     let housingCompany = tijHousingcompany;
 
