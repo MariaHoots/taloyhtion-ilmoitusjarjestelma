@@ -19,7 +19,7 @@ export default class EtuSivu extends React.Component
 						<th scope="row">Toiminnot</th>
 				 </tr>
 				</thead>
-				<tbody>
+				<thead>
 				<tr>
 				<th scope="row"><a href="index.html"><img src="img/sort.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a></th>
 				<td><input type="text" className="form-control" id="yhtiotHaeYhtionNimellä" placeholder="Yhtiön nimi"/></td><td><a href="index.html"><img src="img/jarjestysylos.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a></td><td><a href="index.html"><img src="img/jarjestysalas.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a></td>
@@ -28,11 +28,10 @@ export default class EtuSivu extends React.Component
 
 				<td></td>
 				</tr>
+				</thead>
 
-				<IsannoitsijaTaloyhtiotLista/>
+				<IsannoitsijaTaloyhtiotLista housingCompList={this.props.housingCompList}/>
 
-
-				</tbody>
 			  </table>
 			  </div>
 			</div>

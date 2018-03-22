@@ -1,7 +1,8 @@
 let user = {
     id:"",
     id_flat:"",
-    emailpassword:"",
+    email:"",
+    password:"",
     first_name:"",
     last_name:"",
     phone:"",
