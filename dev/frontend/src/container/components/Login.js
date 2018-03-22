@@ -23,7 +23,6 @@ export default class Login extends React.Component {
 	}
 	
 	onSubmit = (event) => {
-		console.log("onsubmit")
 		let user = {
 			"uname":this.state.uname,
 			"passphrase":this.state.passphrase			

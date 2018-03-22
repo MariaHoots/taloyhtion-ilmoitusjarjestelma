@@ -11,7 +11,7 @@ export default class App extends Component {
 		super(props);
 		this.state = {
 			//not logged in group 0 (3:admin| 2:huoltomies | 1:asukas)
-			userGroup:3,
+			userGroup:0,
 			token:"",
 			notificationsList: [],
 			userList: [],
@@ -113,7 +113,6 @@ export default class App extends Component {
 					})
 					sessionStorage.setItem("loginStatus","logged");
 					sessionStorage.setItem("token",data.token);
-					this.getCarList();
 				})
 			} else {
 				console.log(response.statusText);
@@ -136,7 +135,7 @@ export default class App extends Component {
 			if(response.ok) {
 				this.setState({
 					token:"",
-					isLogged:false
+					userGroup:0
 				})
 				sessionStorage.setItem("loginStatus","not logged");
 				sessionStorage.setItem("token","");
