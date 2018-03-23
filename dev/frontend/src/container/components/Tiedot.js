@@ -4,7 +4,7 @@ export default class EtuSivu extends React.Component {
 
  //  Kommentoidut kohdat lisäyksiä
 
- //  Vaatii konstruktorin?
+ //  Vaatinee JavaScriptiin ainakin konstruktorin, onChange ja onSubmit?
 
 /*
 	constructor(props) {
@@ -19,6 +19,48 @@ export default class EtuSivu extends React.Component {
 			passphrase:""
 		}	
 	}	
+*/	
+
+/*
+
+  onChange = (event) => {
+		if(event.target.name === "first_name") {
+			this.setState({
+				first_name:event.target.value
+			});
+		}
+		if(event.target.name === "last_name") {
+			this.setState({
+				last_name:event.target.value
+			});
+		}	
+		if(event.target.name === "address") {
+			this.setState({
+				address:event.target.value
+			});
+		}
+		if(event.target.name === "zip") {
+			this.setState({
+				zip:event.target.value
+			});
+		}
+		if(event.target.name === "city") {
+			this.setState({
+				city:event.target.value
+			});
+		}
+		if(event.target.name === "email") {
+			this.setState({
+				email:event.target.value
+			});
+		}	
+		if(event.target.name === "passphrase") {
+			this.setState({
+				passphrase:event.target.value
+			});
+		}		
+	}
+	
 */	
 
 /*
@@ -38,8 +80,7 @@ export default class EtuSivu extends React.Component {
 		}
 		event.preventDefault();
 	}
-		
-	 
+		 
 */
 
 // JSX-alkaa alapuolella
