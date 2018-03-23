@@ -1,5 +1,4 @@
 let express = require("express");
-let bcrypt = require("bcrypt-nodejs");
 
 let tijPg = require("./pgserver");
 let tijUser = require('./models/user');

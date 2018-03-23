@@ -10,8 +10,6 @@ import IsannoitsijaTaloyhtiot from './components/IsannoitsijaTaloyhtiot';
 import Ilmoitukset from './components/Ilmoitukset';
 import Ilmoituslomake from './components/Ilmoituslomake';
 import Tiedot from './components/Tiedot';
-import Login from './components/Login';
-import Logout from './components/Logout';
 
 export default class ContainerContents extends React.Component
 {
@@ -36,16 +34,6 @@ export default class ContainerContents extends React.Component
 						(<IsannoitsijaEtuSivu/>) :
 						(<Redirect to="/"/>)
 						}/>
-				<Route path="/login"
-					render={() => !this.props.isLogged ?
-						(<Login onLogin={this.props.onLogin}/>) :
-						(<Redirect to="/"/>)
-						}/>
-				<Route path="/logout"
-					render={() => this.props.isLogged ?
-						(<Logout onLogout={this.props.onLogout}/>) :
-						(<Redirect to="/"/>)
-						}/>	
 				<Route path="/ilmoitukset"
 					render={() => this.props.isLogged ?
 						(<Ilmoitukset/>) :
