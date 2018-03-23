@@ -3,6 +3,7 @@ let tijPg = require("./pgserver");
 let tijUser = require('./models/user');
 let tijNotification = require('./models/notification');
 let tijHousingcompany = require('./models/housingcompany');
+let tijMaintenancecompany = require('./models/maintenancecompany');
 
 let tijRouterManager = express.Router();
 
@@ -71,6 +72,31 @@ tijRouterManager.get("/housingcomp", function(req,res) {
 
     }).catch(e => console.error(e.stack));
 });
+
+tijRouterManager.get("/maintenancecomp", function(req,res) {
+    let maintenanceCompanies = [];
+    let maintenanceCompany = tijMaintenancecompany;
+
+    tijPg.query('SELECT * FROM tij_maintenance_comp')
+    .then(pgres => {
+        queryContents = pgres.rows;
+        for (let i=0;i<pgres.rows.length;i++)
+        {
+            maintenanceCompany = {
+                id:pgres.rows[i].id,
+                name:pgres.rows[i].name,
+                address:pgres.rows[i].address,
+                zip:pgres.rows[i].zip,
+                city:pgres.rows[i].city,
+                business_id:pgres.rows[i].business_id
+            };
+            maintenanceCompanies.push(maintenanceCompany);
+        }
+        return res.status(200).json(maintenanceCompanies);
+
+    }).catch(e => console.error(e.stack));
+});
+
 
 tijRouterManager.post("/cars", function(req,res) {
 
