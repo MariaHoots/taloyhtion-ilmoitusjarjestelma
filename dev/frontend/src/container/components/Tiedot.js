@@ -10,11 +10,11 @@ export default class EtuSivu extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state={
-			name:"",
-			lastname:"",
+			first_name:"",
+			last_name:"",
 			address:"",
-			postalcode:"",
-			postoffice:"",
+			zip:"",
+			city:"",
 			email:"",
 			passphrase:""
 		}	
@@ -25,11 +25,11 @@ export default class EtuSivu extends React.Component {
 		onSubmit = (event) => {
 		console.log("onsubmit")
 		let user = {
-			"name":this.state.name,
-			"lastname":this.state.lastname,
+			"first_name":this.state.first_name,
+			"lastname":this.state.last_name,
 			"address":this.state.address,
-			"postalcode":this.state.postalcode,
-			"postoffice":this.state.postoffice,
+			"zip":this.state.zip,
+			"city":this.state.city,
 			"email":this.state.email,
 			"passphrase":this.state.passphrase
 		}
