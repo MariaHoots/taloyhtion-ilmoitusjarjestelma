@@ -39,6 +39,7 @@ export default class App extends Component {
 		let token = sessionStorage.getItem("token");
 		let token2 = sessionStorage.getItem("token2");
 
+
 		if (token2 === cr.returnHash(token + "0" + this.state.salt)){
 			usergroup = 0;
 			return;
@@ -51,6 +52,10 @@ export default class App extends Component {
 		}
 		else if (token2 === cr.returnHash(token + "3" + this.state.salt)){
 			usergroup = 3;
+		}
+		else {
+			this.onLogout();
+			return;
 		}
 
 		if(loginStatus === "logged") {
