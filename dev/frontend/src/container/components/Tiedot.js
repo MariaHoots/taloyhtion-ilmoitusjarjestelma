@@ -10,20 +10,35 @@ export default class EtuSivu extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state={
-			{/* 
-			{/* 
+			name:"",
+			lastname:"",
+			address:"",
+			postalcode:"",
+			postoffice:"",
+			email:"",
+			passphrase:""
 		}	
 	}	
 */	
 
 /*
-	onChange = (event) => {
-		if(event.target.name === "passphrase") {
-		this.setState({
-			passphrase:event.target.value
-		});	
-	   }
-	 }
+		onSubmit = (event) => {
+		console.log("onsubmit")
+		let user = {
+			"name":this.state.name,
+			"lastname":this.state.lastname,
+			"address":this.state.address,
+			"postalcode":this.state.postalcode,
+			"postoffice":this.state.postoffice,
+			"email":this.state.email,
+			"passphrase":this.state.passphrase
+		}
+		if(event.target.name === "save") {
+			this.props.onSubmit(user);
+		}
+		event.preventDefault();
+	}
+		
 	 
 */
 
