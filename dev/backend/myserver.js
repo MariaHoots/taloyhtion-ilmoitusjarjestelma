@@ -86,7 +86,7 @@ function isUserLogged(req,res,next) {
 
 app.use("/api",isUserLogged, tijRouter);
 
-//app.use("/apim", tijRouterManager);
+app.use("/apim",isUserLogged, tijRouterManager);
 
 
 app.listen(3001);
