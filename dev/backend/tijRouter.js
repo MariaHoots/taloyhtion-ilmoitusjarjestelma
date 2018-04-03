@@ -11,11 +11,11 @@ let tijRouter = express.Router();
 tijRouter.get("/housingcomp", function(req,res) {
     let housingCompanies = [];
     let housingCompany = tijHousingcompany;
-    
-    tijPg.query('SELECT * FROM tij_housing_comp') 
+
+    tijPg.query('SELECT * FROM tij_housing_comp')
     .then(pgres => {
         queryContents = pgres.rows;
-        for (let i=0;i<pgres.rows.length;i++) 
+        for (let i=0;i<pgres.rows.length;i++)
         {
             housingCompany = {
                 id:pgres.rows[i].id,
@@ -25,7 +25,7 @@ tijRouter.get("/housingcomp", function(req,res) {
                 city:pgres.rows[i].city,
                 business_id:pgres.rows[i].business_id
             };
-            housingCompanies.push(housingCompany);         
+            housingCompanies.push(housingCompany);
         }
         return res.status(200).json(housingCompanies);
 
@@ -35,16 +35,17 @@ tijRouter.get("/housingcomp", function(req,res) {
 tijRouter.get("/users", function(req,res) {
     let users = [];
     let user = tijUser;
-    
-    tijPg.query('SELECT * FROM tij_users') 
+
+    tijPg.query('SELECT * FROM tij_users')
     .then(pgres => {
         queryContents = pgres.rows;
-        for (let i=0;i<pgres.rows.length;i++) 
+        for (let i=0;i<pgres.rows.length;i++)
         {
             user = {
                 id:pgres.rows[i].id,
                 id_flat:pgres.rows[i].id_flat,
-                emailpassword:pgres.rows[i].emailpassword,
+                email:pgres.rows[i].email,
+                password:pgres.rows[i].password,
                 first_name:pgres.rows[i].first_name,
                 last_name:pgres.rows[i].last_name,
                 phone:pgres.rows[i].phone,
@@ -54,7 +55,7 @@ tijRouter.get("/users", function(req,res) {
                 zip:pgres.rows[i].zip,
                 city:pgres.rows[i].city
             };
-            users.push(user);         
+            users.push(user);
         }
         return res.status(200).json(users);
 
@@ -64,11 +65,11 @@ tijRouter.get("/users", function(req,res) {
 tijRouter.get("/notifications", function(req,res) {
     let notifications = [];
     let notification = tijNotification;
-    
-    tijPg.query('SELECT * FROM tij_notifications') 
+
+    tijPg.query('SELECT * FROM tij_notifications')
     .then(pgres => {
         queryContents = pgres.rows;
-        for (let i=0;i<pgres.rows.length;i++) 
+        for (let i=0;i<pgres.rows.length;i++)
         {
             notification = {
                 id:pgres.rows[i].id,
@@ -84,9 +85,8 @@ tijRouter.get("/notifications", function(req,res) {
                 checkout:pgres.rows[i].checkout,
                 checkout_message:pgres.rows[i].checkout_message,
                 status:pgres.rows[i].status
-
             };
-            notifications.push(notification);         
+            notifications.push(notification);
         }
         return res.status(200).json(notifications);
 

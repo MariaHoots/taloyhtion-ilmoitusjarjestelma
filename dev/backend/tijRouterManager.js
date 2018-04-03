@@ -18,12 +18,51 @@ tijRouterManager.get("/users", function(req,res) {
         {
             user = {
                 id:pgres.rows[i].id,
+                id_flat:pgres.rows[i].id_flat,
                 email:pgres.rows[i].email,
-                first_name:pgres.rows[i].first_name
+                password:pgres.rows[i].password,
+                first_name:pgres.rows[i].first_name,
+                last_name:pgres.rows[i].last_name,
+                phone:pgres.rows[i].phone,
+                role:pgres.rows[i].role,
+                last_login:pgres.rows[i].last_login,
+                billing_address:pgres.rows[i].billing_address,
+                zip:pgres.rows[i].zip,
+                city:pgres.rows[i].city
             };
             users.push(user);
         }
         return res.status(200).json(users);
+
+    }).catch(e => console.error(e.stack));
+});
+
+tijRouterManager.put("/users/:id", function(req,res){
+    let putId = parseInt(req.params.id);
+    let putUser = tijUser;
+    putUser = {
+        id_flat:req.body.id_flat,
+        email:req.body.email,
+        password:req.body.password,
+        first_name:req.body.first_name,
+        last_name:req.body.last_name,
+        phone:req.body.phone,
+        role:parseInt(req.body.role),
+        last_login:req.body.last_login,
+        billing_address:req.body.billing_address,
+        zip:req.body.zip,
+        city:req.body.city
+    };
+    tijPg.query('UPDATE tij_users SET id_flat=($1), email=($2), password=($3), first_name=($4), last_name=($5),' +
+                'phone=($6), role=($7), last_login=($8), billing_address=($9), zip=($10), city=($11) WHERE id=($12)',
+                    [putUser.id_flat, putUser.email, putUser.password, putUser.first_name, putUser.last_name, putUser.phone,
+                    putUser.role, putUser.last_login, putUser.billing_address, putUser.zip, putUser.city, putId]
+                )
+    .then(pgres => {
+        return res.status(200)
+        .json({
+            status: 'OK', message: 'user updated'
+        });
 
     }).catch(e => console.error(e.stack));
 });
@@ -39,8 +78,18 @@ tijRouterManager.get("/notifications", function(req,res) {
         {
             notification = {
                 id:pgres.rows[i].id,
+                id_user:pgres.rows[i].id_user,
+                id_housing_comp:pgres.rows[i].id_housing_comp,
+                id_checkout:pgres.rows[i].id_checkout,
+                read_id:pgres.rows[i].read_id,
+                sent_date:pgres.rows[i].sent_date,
+                read_date:pgres.rows[i].read_date,
                 title:pgres.rows[i].title,
-                message:pgres.rows[i].message
+                message:pgres.rows[i].message,
+                notif_type:pgres.rows[i].notif_type,
+                checkout:pgres.rows[i].checkout,
+                checkout_message:pgres.rows[i].checkout_message,
+                status:pgres.rows[i].status
             };
             notifications.push(notification);
         }
