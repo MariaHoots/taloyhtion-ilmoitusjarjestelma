@@ -67,6 +67,18 @@ tijRouterManager.put("/users/:id", function(req,res){
     }).catch(e => console.error(e.stack));
 });
 
+tijRouterManager.delete("/users/:id", function(req,res){
+    let delId = parseInt(req.params.id);
+    tijPg.query('DELETE FROM tij_users WHERE id = $1, delId')
+    .then(pgres => {
+        return res.status(200)
+        .json({
+            status: 'OK', message: 'user deleted'
+        });
+
+    }).catch(e => console.error(e.stack));
+});
+
 tijRouterManager.get("/notifications", function(req,res) {
     let notifications = [];
     let notification = tijNotification;
