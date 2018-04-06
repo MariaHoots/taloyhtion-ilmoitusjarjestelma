@@ -7,6 +7,7 @@ let tijMaintenancecompany = require('./models/maintenancecompany');
 
 let tijRouterManager = express.Router();
 
+// users - get all
 tijRouterManager.get("/users", function(req,res) {
     let users = [];
     let user = tijUser;
@@ -37,6 +38,7 @@ tijRouterManager.get("/users", function(req,res) {
     }).catch(e => console.error(e.stack));
 });
 
+// users - update one
 tijRouterManager.put("/users/:id", function(req,res){
     let putId = parseInt(req.params.id);
     let putUser = tijUser;
@@ -67,6 +69,7 @@ tijRouterManager.put("/users/:id", function(req,res){
     }).catch(e => console.error(e.stack));
 });
 
+// users - delete (hide) one
 // Ei saa poistaa - merkitään poistetuksi eli piilotetaan
 // email/pwd tyhjäksi, role 0, last_login = poistopvm, nimeen merkintä
 // yhteystietoja voi päivittää(?), eli billing_address = new_address
@@ -99,20 +102,8 @@ tijRouterManager.delete("/users/:id", function(req,res){
 
     }).catch(e => console.error(e.stack));
 });
-// pohja jos tarvitaan oikeaa poistoa (ei user eikä notification)
-/*
-tijRouterManager.realDel("/users/:id", function(req,res){
-    let delId = parseInt(req.params.id);
-    tijPg.query('DELETE FROM tij_users WHERE id = $1, delId')
-    .then(pgres => {
-        return res.status(200)
-        .json({
-            status: 'OK', message: 'user deleted'
-        });
 
-    }).catch(e => console.error(e.stack));
-});
-*/
+// notifications - get all
 tijRouterManager.get("/notifications", function(req,res) {
     let notifications = [];
     let notification = tijNotification;
@@ -144,6 +135,41 @@ tijRouterManager.get("/notifications", function(req,res) {
     }).catch(e => console.error(e.stack));
 });
 
+// notifications - update one
+tijRouterManager.put("/notifications/:id", function(req,res){
+    let putId = parseInt(req.params.id);
+    let putNtf = tijNotification;
+    putNtf = {
+        id_user:req.body.id_user,
+        id_housing_comp:req.body.id_housing_comp,
+        id_checkout:req.body.id_checkout,
+        read_id:req.body.read_id,
+        sent_date:req.body.sent_date,
+        read_date:req.body.read_date,
+        title:req.body.title,
+        message:req.body.message,
+        notif_type:req.body.notif_type,
+        checkout:req.body.checkout,
+        checkout_message:req.body.checkout_message,
+        status:req.body.status
+    };
+    tijPg.query('UPDATE tij_notifications SET id_user=($1), id_housing_comp=($2), id_checkout=($3),' +
+                'read_id=($4), sent_date=($5), read_date=($6), title=($7), notif_type=($8),' +
+                'checkout=($9), checkout_message=($10), status=($11) WHERE id=($12)',
+                [putNtf.id_user, putNtf.id_housing_comp, putNtf.id_checkout, putNtf.read_id,
+                putNtf.sent_date, putNtf.read_date, putNtf.title, putNtf.notif_type,
+                putNtf.checkout, putNtf.checkout_message, putNtf.status, putId]
+                )
+    .then(pgres => {
+        return res.status(200)
+        .json({
+            status: 'OK', message: 'notification updated'
+        });
+
+    }).catch(e => console.error(e.stack));
+});
+
+// housing_comp - get all
 tijRouterManager.get("/housingcomp", function(req,res) {
     let housingCompanies = [];
     let housingCompany = tijHousingcompany;
@@ -168,6 +194,31 @@ tijRouterManager.get("/housingcomp", function(req,res) {
     }).catch(e => console.error(e.stack));
 });
 
+// housing_comp - update one
+tijRouterManager.put("/housingcomp/:id", function(req,res){
+    let putId = parseInt(req.params.id);
+    let putHC = tijHousingcompany;
+    putHC = {
+        name:req.body.name,
+        address:req.body.address,
+        zip:req.body.zip,
+        city:req.body.city,
+        business_id:req.body.business_id
+    };
+    tijPg.query('UPDATE tij_housing_comp SET name=($1), address=($2),' +
+                'zip=($3), city=($4), business_id=($5) WHERE id=($6)',
+                [putHC.name, putHC.address, putHC.zip, putHC.city, putHC.business_id, putId]
+                )
+    .then(pgres => {
+        return res.status(200)
+        .json({
+            status: 'OK', message: 'housing company updated'
+        });
+
+    }).catch(e => console.error(e.stack));
+});
+
+// maintenance_comp - get all
 tijRouterManager.get("/maintenancecomp", function(req,res) {
     let maintenanceCompanies = [];
     let maintenanceCompany = tijMaintenancecompany;
@@ -204,5 +255,19 @@ tijRouterManager.put("/cars/:id", function(req,res){
 tijRouterManager.delete("/cars/:id", function(req,res) {
 
 });
+// pohja jos tarvitaan oikeaa poistoa (ei user eikä notification)
+/*
+tijRouterManager.realDel("/users/:id", function(req,res){
+    let delId = parseInt(req.params.id);
+    tijPg.query('DELETE FROM tij_users WHERE id = $1, delId')
+    .then(pgres => {
+        return res.status(200)
+        .json({
+            status: 'OK', message: 'user deleted'
+        });
+
+    }).catch(e => console.error(e.stack));
+});
+*/
 
 module.exports = tijRouterManager;
