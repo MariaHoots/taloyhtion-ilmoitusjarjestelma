@@ -67,7 +67,40 @@ tijRouterManager.put("/users/:id", function(req,res){
     }).catch(e => console.error(e.stack));
 });
 
+// Ei saa poistaa - merkitään poistetuksi eli piilotetaan
+// email/pwd tyhjäksi, role 0, last_login = poistopvm, nimeen merkintä
+// yhteystietoja voi päivittää(?), eli billing_address = new_address
 tijRouterManager.delete("/users/:id", function(req,res){
+    let delId = parseInt(req.params.id);
+    let hidUser = tijUser;
+    hidUser = {
+        id_flat:req.body.id_flat,
+        email:"",
+        password:"",
+        first_name:req.body.first_name,
+        last_name:req.body.last_name + ' *** poistettu ***',
+        phone:req.body.phone,
+        role:0,
+        last_login:Date.now,
+        billing_address:req.body.billing_address,
+        zip:req.body.zip,
+        city:req.body.city
+    };
+    tijPg.query('UPDATE tij_users SET email=($1), password=($2), phone=($3), role=($4), last_name=($5),' +
+                'last_login=($6), billing_address=($7), zip=($8), city=($9) WHERE id=($10)',
+                    [hidUser.email, hidUser.password, hidUser.phone, hidUser.role, hidUser.last_name,
+                    hidUser.last_login, hidUser.billing_address, hidUser.zip, hidUser.city, delId]
+                )
+    .then(pgres => {
+        return res.status(200)
+        .json({
+            status: 'OK', message: 'user hidden'
+        });
+
+    }).catch(e => console.error(e.stack));
+});
+// pohja jos tarvitaan oikeaa poistoa (ei user eikä notification)
+tijRouterManager.realDel("/users/:id", function(req,res){
     let delId = parseInt(req.params.id);
     tijPg.query('DELETE FROM tij_users WHERE id = $1, delId')
     .then(pgres => {
