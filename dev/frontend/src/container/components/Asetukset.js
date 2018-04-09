@@ -1,21 +1,20 @@
 import React from 'react';
 
-import Asetukset from './Asetukset';
-
-export default class EtuSivu extends React.Component 
+export default class Asetukset extends React.Component 
 /*
 {	
 
 	componentDidMount() {
 			this.props.getUsers();	
 	}
-
+*/
 	
 	render() {
 		return (
 			
+			<div classname="col">	
+			Asetukset
 			  </div>
-			</div>
+			
 		);
 	}
-} */
