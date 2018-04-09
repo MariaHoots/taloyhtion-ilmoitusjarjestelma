@@ -38,6 +38,36 @@ tijRouterManager.get("/users", function(req,res) {
     }).catch(e => console.error(e.stack));
 });
 
+// users - add (insert) one
+tijRouterManager.post("/users", function(req,res){
+    let addUser = tijUser;
+    addUser = {
+        id_flat:req.body.id_flat,
+        email:req.body.email,
+        password:req.body.password,
+        first_name:req.body.first_name,
+        last_name:req.body.last_name,
+        phone:req.body.phone,
+        role:parseInt(req.body.role),
+        last_login:req.body.last_login,
+        billing_address:req.body.billing_address,
+        zip:req.body.zip,
+        city:req.body.city
+    };
+    tijPg.query('INSERT INTO tij_users (id_flat, email, password, first_name, last_name,' +
+                'phone, role, last_login, billing_address, zip, city)' +
+                'VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)',
+                    [addUser.id_flat, addUser.email, addUser.password, addUser.first_name, addUser.last_name, addUser.phone,
+                    addUser.role, addUser.last_login, addUser.billing_address, addUser.zip, addUser.city]
+                )
+    .then(pgres => {
+        return res.status(200)
+        .json({
+            status: 'OK', message: 'user inserted'
+        });
+    }).catch(e => console.error(e.stack));
+});
+
 // users - update one
 tijRouterManager.put("/users/:id", function(req,res){
     let putId = parseInt(req.params.id);
@@ -65,7 +95,6 @@ tijRouterManager.put("/users/:id", function(req,res){
         .json({
             status: 'OK', message: 'user updated'
         });
-
     }).catch(e => console.error(e.stack));
 });
 
@@ -99,7 +128,6 @@ tijRouterManager.delete("/users/:id", function(req,res){
         .json({
             status: 'OK', message: 'user hidden'
         });
-
     }).catch(e => console.error(e.stack));
 });
 
@@ -135,6 +163,38 @@ tijRouterManager.get("/notifications", function(req,res) {
     }).catch(e => console.error(e.stack));
 });
 
+// notifications - add (insert) one
+tijRouterManager.post("/notifications", function(req,res){
+    let addNtf = tijNotification;
+    addNtf = {
+        id_user:req.body.id_user,
+        id_housing_comp:req.body.id_housing_comp,
+        id_checkout:req.body.id_checkout,
+        read_id:req.body.read_id,
+        sent_date:req.body.sent_date,
+        read_date:req.body.read_date,
+        title:req.body.title,
+        message:req.body.message,
+        notif_type:req.body.notif_type,
+        checkout:req.body.checkout,
+        checkout_message:req.body.checkout_message,
+        status:req.body.status
+    };
+    tijPg.query('INSERT INTO tij_notifications(id_user, id_housing_comp, id_checkout, read_id,' +
+                'sent_date, read_date, title, notif_type, checkout, checkout_message, status)' +
+                'VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)'
+                [addNtf.id_user, addNtf.id_housing_comp, addNtf.id_checkout, addNtf.read_id,
+                addNtf.sent_date, addNtf.read_date, addNtf.title, addNtf.notif_type,
+                addNtf.checkout, addNtf.checkout_message, addNtf.status]
+                )
+    .then(pgres => {
+        return res.status(200)
+        .json({
+            status: 'OK', message: 'notification inserted'
+        });
+    }).catch(e => console.error(e.stack));
+});
+
 // notifications - update one
 tijRouterManager.put("/notifications/:id", function(req,res){
     let putId = parseInt(req.params.id);
@@ -165,7 +225,6 @@ tijRouterManager.put("/notifications/:id", function(req,res){
         .json({
             status: 'OK', message: 'notification updated'
         });
-
     }).catch(e => console.error(e.stack));
 });
 
@@ -214,7 +273,6 @@ tijRouterManager.put("/housingcomp/:id", function(req,res){
         .json({
             status: 'OK', message: 'housing company updated'
         });
-
     }).catch(e => console.error(e.stack));
 });
 
