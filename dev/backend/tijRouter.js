@@ -39,6 +39,20 @@ tijRouter.get("/users", function(req,res) {
     }).catch(e => console.error(e.stack));
 });
 
+// users - get one by id
+tijRouter.get("/users/:id", function(req,res) {
+    let user = tijUser;
+    var getId = [ parseInt(req.params.id) ];
+
+    tijPg.query('SELECT * FROM tij_users WHERE id = $1', getId)
+    .then(pgres => {
+        queryContents = pgres.rows;
+        user = pgres.rows[0];
+        return res.status(200).json(user);
+
+    }).catch(e => console.error(e.stack));
+});
+
 // users - add (insert) one
 tijRouter.post("/users", function(req,res){
     let addUser = tijUser;
