@@ -9,7 +9,10 @@ export default class EtuSivu extends React.Component
 			this.props.getUsers();	
 	}
 
-	
+	getNotificationsByUser(uid,status) {
+		this.props.getNotificationsByUidStatus(1,1);
+	}
+
 	render() {
 		return (
 			<div className="card">
@@ -24,7 +27,8 @@ export default class EtuSivu extends React.Component
 				 </tr>
 				</thead>
 
-				<IsannoitsijaHenkilotLista userList={this.props.userList}/>
+				<IsannoitsijaHenkilotLista userList={this.props.userList}
+																	 getNotificationsByUser={this.getNotificationsByUser}/>
 
 			  </table>
 			  </div>

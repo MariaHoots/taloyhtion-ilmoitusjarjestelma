@@ -135,6 +135,28 @@ export default class App extends Component {
 		});	
 	}
 
+	getNotificationsByUidStatus = (uid,status) => {
+		let onGetNotificationList = {
+			method:"GET",
+			mode:"cors",
+			headers:{"Content-Type":"application/json",
+			"token":this.state.token}
+		}
+		fetch("/api/notifications/"+uid+"/"+status,onGetNotificationList).then((response) => {
+			if(response.ok) {
+				response.json().then((data) => {
+					this.setState({
+						notificationsList:data
+					})
+				})
+			} else {
+				console.log(response.statusText);
+			}
+		}).catch((error) => {
+			console.log(error);
+		});	
+	}
+
 	onLogin = (user) => {
 		let usergroup=0;
 		let cr =  new Crypto();
@@ -222,6 +244,7 @@ export default class App extends Component {
 					}
 					{this.state.isLogged === true &&
 					<ContainerContents getNotifications={this.getNotifications}
+									   getNotificationsByUidStatus={this.getNotificationsByUidStatus}
 									   getUsers={this.getUsers}
 									   getHousingCompanies={this.getHousingCompanies}
 
