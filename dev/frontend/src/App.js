@@ -24,7 +24,7 @@ export default class App extends Component {
 		}
 	}
 
-	componentDidMount() {	
+	componentDidMount() {
 		if(!sessionStorage.getItem("loginStatus")){
 			sessionStorage.setItem("token2","");
 			sessionStorage.setItem("loginStatus","not logged");
@@ -35,7 +35,7 @@ export default class App extends Component {
 		let usergroup=0;
 		let cr =  new Crypto();
 
-		let loginStatus = sessionStorage.getItem("loginStatus");	
+		let loginStatus = sessionStorage.getItem("loginStatus");
 		let token = sessionStorage.getItem("token");
 		let token2 = sessionStorage.getItem("token2");
 
@@ -48,7 +48,7 @@ export default class App extends Component {
 			usergroup = 1;
 		}
 		else if (token2 === cr.returnHash(token + "1" + this.state.salt)){
-			usergroup = 1;	
+			usergroup = 1;
 		}
 		else if (token2 === cr.returnHash(token + "3" + this.state.salt)){
 			usergroup = 3;
@@ -87,17 +87,17 @@ export default class App extends Component {
 			}
 		}).catch((error) => {
 			console.log(error);
-		});	
+		});
 	}
-
+// get all users
 	getUsers = () => {
-		let onGetNotificationList = {
+		let onGetUser = {
 			method:"GET",
 			mode:"cors",
 			headers:{"Content-Type":"application/json",
 			"token":this.state.token}
 		}
-		fetch("/api/users",onGetNotificationList).then((response) => {
+		fetch("/api/users",onGetUser).then((response) => {
 			if(response.ok) {
 				response.json().then((data) => {
 					this.setState({
@@ -110,9 +110,31 @@ export default class App extends Component {
 		}).catch((error) => {
 			console.log(error);
 		});
-		
-	}
 
+	}
+// get one user by id
+	getUser = (id) => {
+		let onGetUser = {
+			method:"GET",
+			mode:"cors",
+			headers:{"Content-Type":"application/json",
+			"token":this.state.token}
+		}
+		fetch("/api/users"+id,onGetUser).then((response) => {
+			if(response.ok) {
+				response.json().then((data) => {
+					this.setState({
+						userList:data
+					})
+				})
+			} else {
+				console.log(response.statusText);
+			}
+		}).catch((error) => {
+			console.log(error);
+		});
+	}
+// get all notifications
 	getNotifications = () => {
 		let onGetNotificationList = {
 			method:"GET",
@@ -132,9 +154,31 @@ export default class App extends Component {
 			}
 		}).catch((error) => {
 			console.log(error);
-		});	
+		});
 	}
-
+// get one notification by id
+	getNotification = (id) => {
+		let onGetNotification = {
+			method:"GET",
+			mode:"cors",
+			headers:{"Content-Type":"application/json",
+			"token":this.state.token}
+		}
+		fetch("/api/notifications/"+id,onGetNotification).then((response) => {
+			if(response.ok) {
+				response.json().then((data) => {
+					this.setState({
+						notificationsList:data
+					})
+				})
+			} else {
+				console.log(response.statusText);
+			}
+		}).catch((error) => {
+			console.log(error);
+		});
+	}
+// get notifications of one user by status
 	getNotificationsByUidStatus = (uid,status) => {
 		let onGetNotificationList = {
 			method:"GET",
@@ -154,7 +198,7 @@ export default class App extends Component {
 			}
 		}).catch((error) => {
 			console.log(error);
-		});	
+		});
 	}
 
 	onLogin = (user) => {
@@ -169,7 +213,7 @@ export default class App extends Component {
 				"uname":user.uname,
 				"passphrase":user.passphrase
 			})
-		}	
+		}
 		fetch("/login",onLogin).then((response) => {
 			if(response.ok) {
 				response.json().then((data) => {
@@ -181,7 +225,7 @@ export default class App extends Component {
 						usergroup = 1;
 					}
 					else if (data.token2 === cr.returnHash(data.token + "1" + this.state.salt)){
-						usergroup = 1;	
+						usergroup = 1;
 					}
 					else if (data.token2 === cr.returnHash(data.token + "3" + this.state.salt)){
 						usergroup = 3;
@@ -199,13 +243,13 @@ export default class App extends Component {
 				})
 			} else {
 				console.log(response.statusText);
-			}	
+			}
 		}).catch((error) => {
 			console.log(error);
 		})
-		
+
 	}
-	
+
 	onLogout = () => {
 		console.log("logout");
 		let onLogout = {
@@ -250,7 +294,7 @@ export default class App extends Component {
 
 									   onLogin={this.onLogin}
 									   onLogout={this.onLogout}
-									   
+
 									   notificationsList={this.state.notificationsList}
 									   userList={this.state.userList}
 									   housingCompList={this.state.housingCompList}
