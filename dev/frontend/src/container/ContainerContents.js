@@ -51,7 +51,7 @@ export default class ContainerContents extends React.Component
 						}/>
 				<Route path="/admin_ilmoitukset"
 					render={() => this.props.isLogged ?
-						(<IsannoitsijaIlmoitukset userList={this.props.notificationsList}
+						(<IsannoitsijaIlmoitukset notificationsList={this.props.notificationsList}
 													getNotifications={this.props.getNotifications}/>) :
 						(<Redirect to="/"/>)
 						}/>
@@ -79,7 +79,7 @@ export default class ContainerContents extends React.Component
 												getHousingCompanies={this.props.getHousingCompanies}/>) :
 						(<Redirect to="/"/>)
 						}/>
-				
+
 			</Switch>
 		);
 	}

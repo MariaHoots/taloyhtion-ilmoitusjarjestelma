@@ -5,13 +5,14 @@ import IsannoitsijaIlmoituksetListaKuitatut from './IsannoitsijaIlmoituksetLista
 
 export default class EtuSivu extends React.Component {
 
-  
+
 componentDidMount() {
-    this.props.getNotifications();	
+    this.props.getNotifications();
 }
 
 
   render() {
+    console.log(this.props.notificationsList);
     return (
 		<div class="card">
 		  <div class="card-body">
@@ -52,13 +53,13 @@ componentDidMount() {
           <td><a href="index.html"><img src="img/jarjestysalas.svg" class="img-fluid" alt="[H]" height="20" width="20"/></a></td>
           <td></td>
         </tr>
-		    
-			
+
+
 			<IsannoitsijaIlmoituksetLista/>
-			
-			
-			
- 
+
+
+
+
 		  </tbody>
 		</table>
 
@@ -85,12 +86,12 @@ componentDidMount() {
          <td><a href="index.html"><img src="img/jarjestysalas.svg" class="img-fluid" alt="[H]" height="20" width="20"/></a></td>
          <td></td>
        </tr>
-		   
-		   
-		   
+
+
+
 		   <IsannoitsijaIlmoituksetListaKuitatut/>
-		   
-		   
+
+
 		  </tbody>
    </table>
 		<a href="index.html">Lisää ilmoituksia...</a>
