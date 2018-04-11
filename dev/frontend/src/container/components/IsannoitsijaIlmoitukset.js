@@ -12,6 +12,7 @@ componentDidMount() {
 
 
   render() {
+    console.log(this.props.notificationsList);
     return (
 		<div class="card">
 		  <div class="card-body">
