@@ -4,16 +4,17 @@ import IsannoitsijaHenkilotLista from './IsannoitsijaHenkilotLista';
 
 export default class EtuSivu extends React.Component 
 {	
-
-	componentDidMount() {
-			this.props.getUsers();	
+	constructor(props) {
+		super(props);
 	}
 
-	getNotificationsByUser(uid,status) {
-		this.props.getNotificationsByUidStatus(1,1);
+	componentDidMount() {
+			this.props.getUsers();
+
 	}
 
 	render() {
+		this.props.getNotificationsByUidStatus(1,1);
 		return (
 			<div className="card">
 			  <div className="card-body">
@@ -28,7 +29,7 @@ export default class EtuSivu extends React.Component
 				</thead>
 
 				<IsannoitsijaHenkilotLista userList={this.props.userList}
-																	 getNotificationsByUser={this.getNotificationsByUser}/>
+																	 getNotificationsByUidStatus={this.getNotificationsByUidStatus}/>
 
 			  </table>
 			  </div>
