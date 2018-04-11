@@ -145,6 +145,20 @@ tijRouter.get("/notifications", function(req,res) {
     }).catch(e => console.error(e.stack));
 });
 
+// notifications - get one by id
+tijRouter.get("/notifications/:id", function(req,res) {
+    let notification = tijNotification;
+    var getId = [ parseInt(req.params.id) ];
+
+    tijPg.query('SELECT * FROM tij_notifications WHERE id = $1', getId)
+    .then(pgres => {
+        queryContents = pgres.rows;
+        notification = pgres.rows[0];
+        return res.status(200).json(notification);
+
+    }).catch(e => console.error(e.stack));
+});
+
 // notifications - add (insert) one
 tijRouter.post("/notifications", function(req,res){
     let addNtf = tijNotification;
