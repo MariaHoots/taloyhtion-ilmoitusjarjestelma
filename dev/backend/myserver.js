@@ -26,7 +26,7 @@ app.post("/login", function(req,res){
     let letters = "abcdefghijklmnopqrstu1234567890";
 
     //tijPg.query("SELECT COUNT(*) FROM tij_users WHERE email='"+email+"' AND password='"+password+"'")
-    // Testauksessa katsotaan vain, että onko sposti olemassa, kun dummydata sisältää randomi salasanoja 
+    // Testauksessa katsotaan vain, että onko sposti olemassa, kun dummydata sisältää randomi salasanoja
     tijPg.query("SELECT role, (SELECT COUNT(*) FROM tij_users WHERE email='"+email+"') AS found FROM tij_users WHERE email='"+email+"'")
     .then(pgres => {
         if (pgres.rows[0].found === 0) {
@@ -38,7 +38,7 @@ app.post("/login", function(req,res){
             let temp = Math.floor(Math.random() * letters.length);
             token = token + letters[temp];
         }
-    
+
         loggedUsers.push(token);
 
         token2.update(token + pgres.rows[0].role + salt);
@@ -61,11 +61,11 @@ app.post("/logout", function(req,res) {
                 console.log("User logged out.")
 				return res.status(200).json({"message":"Logged out"});
 			}
-			
+
 		}
-		
+
 	}
-	
+
 	return res.status(404).json({"message":"Not found"});
 });
 
@@ -83,10 +83,13 @@ function isUserLogged(req,res,next) {
     return res.status(403).json({"message":"forbidden"});
 }
 
-
+/* tsekkaus väliaikaisesti pois
 app.use("/api",isUserLogged, tijRouter);
-
 app.use("/apim",isUserLogged, tijRouterManager);
+*/
+app.use("/api", tijRouter);
+
+app.use("/apim", tijRouterManager);
 
 
 app.listen(3001);
