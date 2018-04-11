@@ -2,6 +2,15 @@ import React from 'react';
 
 export default class EtuSivu extends React.Component 
 {
+	constructor(props) {
+		super(props);
+	}
+
+
+	componentDidMount() {
+		//this.props.getNotificationsByUidStatus(1,1);
+	}
+
 /*
 	<tr key={list._id}>
 	<td colspan="3" ><a href="index.html">{list.first_name} {list.last_name}</a></td>
@@ -9,13 +18,11 @@ export default class EtuSivu extends React.Component
 <td><a href="isannoitsija-ilmoitukset.html"><img src="img/ilmoitukset.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a><a href="asetukset.html"><img src="img/asetukset.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a></td>
 	</tr>
 */
-	getNotificationsByUser(uid,status)
-	{
-		this.props.getNotificationsByUser(uid,status);
-	}
+	
 
 	render() 
 	{
+		this.props.getNotificationsByUidStatus(1,1);
 		let tempView = {}
 		if (this.props.userList.length === 0) {
 			tempView = <tr><td>Etsitään henkilöitä..</td></tr>
