@@ -163,6 +163,40 @@ tijRouterManager.get("/notifications", function(req,res) {
     }).catch(e => console.error(e.stack));
 });
 
+// notifications - get by user id. limit to status
+tijRouterManager.get("/notifications/:uid/:stat", function(req,res) {
+    let uId = parseInt(req.params.uid);
+    let status = parseInt(req.params.stat);
+    let notifications = [];
+    let notification = tijNotification;
+
+    tijPg.query('SELECT * FROM tij_notifications WHERE id_user='+uId+' AND status='+status)
+    .then(pgres => {
+        queryContents = pgres.rows;
+        for (let i=0;i<pgres.rows.length;i++)
+        {
+            notification = {
+                id:pgres.rows[i].id,
+                id_user:pgres.rows[i].id_user,
+                id_housing_comp:pgres.rows[i].id_housing_comp,
+                id_checkout:pgres.rows[i].id_checkout,
+                read_id:pgres.rows[i].read_id,
+                sent_date:pgres.rows[i].sent_date,
+                read_date:pgres.rows[i].read_date,
+                title:pgres.rows[i].title,
+                message:pgres.rows[i].message,
+                notif_type:pgres.rows[i].notif_type,
+                checkout:pgres.rows[i].checkout,
+                checkout_message:pgres.rows[i].checkout_message,
+                status:pgres.rows[i].status
+            };
+            notifications.push(notification);
+        }
+        return res.status(200).json(notifications);
+
+    }).catch(e => console.error(e.stack));
+});
+
 // notifications - add (insert) one
 tijRouterManager.post("/notifications", function(req,res){
     let addNtf = tijNotification;
