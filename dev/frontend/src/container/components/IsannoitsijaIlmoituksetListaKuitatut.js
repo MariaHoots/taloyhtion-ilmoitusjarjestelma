@@ -86,9 +86,10 @@ export default class EtuSivu extends React.Component
 
 					</td>
 
-					<td colSpan="2">{notification.sent_date}</td>
+					<td>{notification.sent_date}</td>
 					<td colSpan="3">{notification.id_user}</td>
 					<td colSpan="3">{notification.notif_type}</td>
+					<td>{notification.id_checkout}</td>
 				</tr>
 			)
 
