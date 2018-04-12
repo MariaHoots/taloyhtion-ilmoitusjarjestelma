@@ -200,7 +200,32 @@ export default class App extends Component {
 			console.log(error);
 		});
 	}
-
+/*
+// add one notification			update = method POST
+	addNotification = (notification) => {
+		let onAddNotification = {
+			method:"PUT",
+			mode:"cors",
+			headers:{"Content-Type":"application/json",
+			body:JSON.stringify({
+//				"item":req.body.item, "item":notification.item,	KUMPI?
+			}),
+			"token":this.state.token}
+		}
+		fetch("/api/notifications/",onAddNotification).then((response) => {
+			if(response.ok) {
+				response.json().then((data) => {
+						this.getNotifications();
+//					this.setState({notificationsList:data})
+				})
+			} else {
+				console.log(response.statusText);
+			}
+		}).catch((error) => {
+			console.log(error);
+		});
+	}
+*/
 	onLogin = (user) => {
 		let usergroup=0;
 		let cr =  new Crypto();
