@@ -19,8 +19,15 @@ export default class App extends Component {
 			salt:'jg#¤gdml5begf%Wgwerbewegewbmwvie4WEGobw',
 			notificationsList: [],
 			userList: [],
-			housingCompList:[]
-
+			housingCompList:[],
+			sortSettings:{
+				usersSortNameAddress:0,
+				usersSortAsc:0,
+				companySortAsc:0,
+				companySortNameAddress:0,
+				notificationSortAsc:0,
+				notificationSortDate:0
+			}
 		}
 	}
 
