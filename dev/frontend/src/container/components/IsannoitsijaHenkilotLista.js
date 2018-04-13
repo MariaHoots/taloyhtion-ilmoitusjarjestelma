@@ -86,6 +86,12 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 							      </div>
 							      <div className="modal-footer">
 							        <button type="button" className="btn btn-secondary" data-dismiss="modal">Sulje</button>
+				
+						
+							      </div>
+								  <div className="modal-footer">
+							        
+									<button type="button" className="btn btn-alert" data-dismiss="modal">Poista käyttäjä</button>
 						
 							      </div>
 							    </div>
