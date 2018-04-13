@@ -408,6 +408,9 @@ export default class App extends Component {
 									  userList={this.state.userList}
 									  housingCompList={this.state.housingCompList}
 
+									  sortSettings={this.state.sortSettings}
+									  
+
 									  isLogged={this.state.isLogged}
 									  userGroup={this.state.userGroup}
 									  token={this.state.token}
