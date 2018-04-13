@@ -66,6 +66,12 @@ export default class EtuSivu extends React.Component
 													<tr>
 														<td colSpan="4">{notification.message}</td>
 													</tr>
+													<tr>
+														<th colSpan="4">Kommentti</th>
+													</tr>
+													<tr>
+														<td colSpan="4">{notification.checkout_message}</td>
+													</tr>
 												</tbody>
 											</table>
 
