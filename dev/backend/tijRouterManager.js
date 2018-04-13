@@ -53,7 +53,7 @@ tijRouterManager.get("/users/:id", function(req,res) {
 });
 
 // users - add (insert) one
-tijRouterManager.post("/users", function(req,res){
+tijRouterManager.put("/users", function(req,res){
     let addUser = tijUser;
     addUser = {
         id_flat:req.body.id_flat,
@@ -83,7 +83,7 @@ tijRouterManager.post("/users", function(req,res){
 });
 
 // users - update one
-tijRouterManager.put("/users/:id", function(req,res){
+tijRouterManager.post("/users/:id", function(req,res){
     let putId = parseInt(req.params.id);
     let putUser = tijUser;
     putUser = {
@@ -226,7 +226,7 @@ tijRouterManager.get("/notifications/:uid/:stat", function(req,res) {
 });
 
 // notifications - add (insert) one
-tijRouterManager.post("/notifications", function(req,res){
+tijRouterManager.put("/notifications", function(req,res){
     let addNtf = tijNotification;
     addNtf = {
         id_user:req.body.id_user,
@@ -258,7 +258,7 @@ tijRouterManager.post("/notifications", function(req,res){
 });
 
 // notifications - update one
-tijRouterManager.put("/notifications/:id", function(req,res){
+tijRouterManager.post("/notifications/:id", function(req,res){
     let putId = parseInt(req.params.id);
     let putNtf = tijNotification;
     putNtf = {
