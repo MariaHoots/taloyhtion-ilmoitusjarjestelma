@@ -2,11 +2,8 @@ import React from 'react';
 
 import IsannoitsijaHenkilotLista from './IsannoitsijaHenkilotLista';
 
-export default class EtuSivu extends React.Component 
+export default class IsannoitsijaHenkilot extends React.Component 
 {	
-	constructor(props) {
-		super(props);
-	}
 
 	componentDidMount() {
 			this.props.getUsers();
@@ -29,7 +26,8 @@ export default class EtuSivu extends React.Component
 				</thead>
 
 				<IsannoitsijaHenkilotLista userList={this.props.userList}
-																	 getNotificationsByUidStatus={this.props.getNotificationsByUidStatus}/>
+										   notificationsList={this.props.notificationsList}
+										   getNotificationsByUidStatus={this.props.getNotificationsByUidStatus}/>
 
 			  </table>
 			  </div>

@@ -67,7 +67,6 @@ export default class App extends Component {
 		}
 	}
 
-
 	getHousingCompanies = () => {
 		let onGetHousingCompanyList = {
 			method:"GET",
@@ -89,6 +88,7 @@ export default class App extends Component {
 			console.log(error);
 		});
 	}
+
 // get all users
 	getUsers = () => {
 		let onGetUser = {
@@ -110,8 +110,8 @@ export default class App extends Component {
 		}).catch((error) => {
 			console.log(error);
 		});
-
 	}
+
 // get one user by id
 	getUser = (id) => {
 		let onGetUser = {
@@ -134,6 +134,53 @@ export default class App extends Component {
 			console.log(error);
 		});
 	}
+
+	// add one user
+		addUser = (user) => {
+			let onAddUser = {
+				method:"PUT",
+				mode:"cors",
+				headers:{"Content-Type":"application/json",
+				body:JSON.stringify({user}),
+				"token":this.state.token}
+			}
+			fetch("/api/users/",onAddUser).then((response) => {
+				if(response.ok) {
+					response.json().then((data) => {
+							this.getUsers();
+							this.setState({userList:data})
+					})
+				} else {
+					console.log(response.statusText);
+				}
+			}).catch((error) => {
+				console.log(error);
+			});
+		}
+
+	// updaqte a user
+		updateUser = (user) => {
+			let onUpdUser = {
+				method:"POST",
+				mode:"cors",
+				headers:{"Content-Type":"application/json",
+				body:JSON.stringify({user}),
+				"token":this.state.token}
+			}
+			fetch("/api/users/",onUpdUser).then((response) => {
+				if(response.ok) {
+					response.json().then((data) => {
+							this.getUsers();
+							this.setState({userList:data})
+					})
+				} else {
+					console.log(response.statusText);
+				}
+			}).catch((error) => {
+				console.log(error);
+			});
+		}
+
 // get all notifications
 	getNotifications = () => {
 		let onGetNotificationList = {
@@ -178,6 +225,7 @@ export default class App extends Component {
 			console.log(error);
 		});
 	}
+
 // get notifications of one user by status
 	getNotificationsByUidStatus = (uid,status) => {
 		let onGetNotificationList = {
@@ -186,12 +234,14 @@ export default class App extends Component {
 			headers:{"Content-Type":"application/json",
 			"token":this.state.token}
 		}
-		fetch("/api/notifications/"+uid+"/"+status,onGetNotificationList).then((response) => {
+		fetch("/apim/notifications/"+uid+"/"+status,onGetNotificationList).then((response) => {
 			if(response.ok) {
 				response.json().then((data) => {
 					this.setState({
 						notificationsList:data
-					})
+						
+					});
+					console.log(this.notificationsList);
 				})
 			} else {
 				console.log(response.statusText);
@@ -200,23 +250,21 @@ export default class App extends Component {
 			console.log(error);
 		});
 	}
-/*
-// add one notification			update = method POST
+
+// add one notification
 	addNotification = (notification) => {
 		let onAddNotification = {
 			method:"PUT",
 			mode:"cors",
 			headers:{"Content-Type":"application/json",
-			body:JSON.stringify({
-//				"item":req.body.item, "item":notification.item,	KUMPI?
-			}),
+			body:JSON.stringify({notification}),
 			"token":this.state.token}
 		}
 		fetch("/api/notifications/",onAddNotification).then((response) => {
 			if(response.ok) {
 				response.json().then((data) => {
 						this.getNotifications();
-//					this.setState({notificationsList:data})
+						this.setState({notificationsList:data})
 				})
 			} else {
 				console.log(response.statusText);
@@ -225,7 +273,30 @@ export default class App extends Component {
 			console.log(error);
 		});
 	}
-*/
+
+// update a notification
+	updateNotification = (notification) => {
+		let onUpdNotification = {
+			method:"POST",
+			mode:"cors",
+			headers:{"Content-Type":"application/json",
+			body:JSON.stringify({notification}),
+			"token":this.state.token}
+		}
+		fetch("/api/notifications/",onUpdNotification).then((response) => {
+			if(response.ok) {
+				response.json().then((data) => {
+						this.getNotifications();
+						this.setState({notificationsList:data})
+				})
+			} else {
+				console.log(response.statusText);
+			}
+		}).catch((error) => {
+			console.log(error);
+		});
+	}
+
 	onLogin = (user) => {
 		let usergroup=0;
 		let cr =  new Crypto();
@@ -256,7 +327,6 @@ export default class App extends Component {
 						usergroup = 3;
 					}
 
-
 					this.setState({
 						token:data.token,
 						userGroup:usergroup,
@@ -272,7 +342,6 @@ export default class App extends Component {
 		}).catch((error) => {
 			console.log(error);
 		})
-
 	}
 
 	onLogout = () => {
@@ -305,28 +374,36 @@ export default class App extends Component {
 		return (
 			<div className="App">
 				<div className="container">
-					<ContainerTop userGroup={this.state.userGroup}
+					<ContainerTop
+									userGroup={this.state.userGroup}
 					 				onLogout={this.onLogout}/>
 					<ContainerMid/>
 					{this.state.isLogged === false &&
 					<Login onLogin={this.onLogin}/>
 					}
 					{this.state.isLogged === true &&
-					<ContainerContents getNotifications={this.getNotifications}
-									   getNotificationsByUidStatus={this.getNotificationsByUidStatus}
-									   getUsers={this.getUsers}
-									   getHousingCompanies={this.getHousingCompanies}
+					<ContainerContents
+										getNotifications={this.getNotifications}
+									  getNotificationsByUidStatus={this.getNotificationsByUidStatus}
+									  getUsers={this.getUsers}
+									  getHousingCompanies={this.getHousingCompanies}
 
-									   onLogin={this.onLogin}
-									   onLogout={this.onLogout}
+										addNotification={this.addNotification}
+										addUser={this.addUser}
 
-									   notificationsList={this.state.notificationsList}
-									   userList={this.state.userList}
-									   housingCompList={this.state.housingCompList}
+										updateNotification={this.updateNotification}
+										updateUser={this.updateUser}
 
-									   isLogged={this.state.isLogged}
-									   userGroup={this.state.userGroup}
-									   token={this.state.token}
+									  onLogin={this.onLogin}
+									  onLogout={this.onLogout}
+
+									  notificationsList={this.state.notificationsList}
+									  userList={this.state.userList}
+									  housingCompList={this.state.housingCompList}
+
+									  isLogged={this.state.isLogged}
+									  userGroup={this.state.userGroup}
+									  token={this.state.token}
 										/>
 					}
 					<ContainerBottom/>

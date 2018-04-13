@@ -1,28 +1,23 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
-export default class EtuSivu extends React.Component 
+import IsannoitsijaHenkilotListaNotifications from './IsannoitsijaHenkilotListaNotifications';
+
+export default class IsannoitsijaHenkilotLista extends React.Component 
 {
-	constructor(props) {
-		super(props);
-	}
-
-
 	componentDidMount() {
-		//this.props.getNotificationsByUidStatus(1,1);
+		
 	}
 
-/*
-	<tr key={list._id}>
-	<td colspan="3" ><a href="index.html">{list.first_name} {list.last_name}</a></td>
-<td colspan="3">Avaruusrakettikatu 1000, Kuu</td>
-<td><a href="isannoitsija-ilmoitukset.html"><img src="img/ilmoitukset.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a><a href="asetukset.html"><img src="img/asetukset.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a></td>
-	</tr>
-*/
+	getNotificationsByUidStatus = (event) => {
 	
+		this.props.getNotificationsByUidStatus(event.target.name,1);		
+	}
+
+
 
 	render() 
 	{
-		this.props.getNotificationsByUidStatus(1,1);
 		let tempView = {}
 		if (this.props.userList.length === 0) {
 			tempView = <tr><td>Etsitään henkilöitä..</td></tr>
@@ -33,7 +28,7 @@ export default class EtuSivu extends React.Component
 
 					<th colSpan="3" scope="row">
 
-						<a href="#" data-toggle="modal" data-target={`#${list.id}`}>{list.last_name} {list.first_name}</a>
+						<Link to="/" data-toggle="modal" name={list.id} id={`#${list.id}`} data-target={`#${list.id}`} onClick={this.getNotificationsByUidStatus}>{list.last_name} {list.first_name}</Link>
 
 							<div className="modal fade" id={`${list.id}`} tabIndex="-1" role="dialog" aria-labelledby={`${list.name}`} aria-hidden="true">
 							  <div className="modal-dialog" role="document">
@@ -45,7 +40,7 @@ export default class EtuSivu extends React.Component
 							        </button>
 							      </div>
 							      <div className="modal-body">
-								  <th5>Tiedot:</th5>
+								  <h5>Tiedot:</h5>
 								  <table>
 										
 											<tbody>
@@ -75,7 +70,7 @@ export default class EtuSivu extends React.Component
 		   									</tr>	
 											</tbody>
 										</table>
-									<th5>Käyttäjän ilmoitukset:</th5>
+									<h5>Käyttäjän ilmoitukset:</h5>
 										<table>
 											<thead>
 												<tr>
@@ -83,12 +78,9 @@ export default class EtuSivu extends React.Component
 													<td>Aika</td>
 												</tr>
 											</thead>
-											<tbody>
-											<tr>
-												<td><a href="/ilmoitus">todo</a></td>
-												<td>todo</td>
-		   									</tr>	
-											</tbody>
+											
+											<IsannoitsijaHenkilotListaNotifications notificationsList={this.props.notificationsList}/>	
+											
 										</table>
 
 							      </div>

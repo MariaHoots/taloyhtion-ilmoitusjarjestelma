@@ -19,8 +19,8 @@ export default class ContainerContents extends React.Component
 
 	render()
 	{
-		this.props.getNotificationsByUidStatus(1,1);
-		console.log(this.props.isLogged)
+		
+	
 		return (
 			<Switch>
 				<Route exact path="/"
