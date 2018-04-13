@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import Sorter from '../../Sorter';
 
 import IsannoitsijaHenkilotListaNotifications from './IsannoitsijaHenkilotListaNotifications';
 
@@ -15,7 +16,29 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 	}
 
 	sortEvent = (event) => {
-	
+		let tempUserList = this.props.userList;
+		let sorter = new Sorter();
+			if (event.target.name === "sortaddressdown"){
+				tempUserList = sorter.sortArrayByField(tempUserList,2);
+				this.props.setAppPropsState("userlist",tempUserList);
+
+			}
+			if (event.target.name === "sortaddressup"){
+
+		
+			}
+			if (event.target.name === "sortnamedown"){
+
+		
+			}
+			if (event.target.name === "sortnameup"){
+
+		
+			}
+
+		
+
+
 		console.log(event.target.name);		
 	}
 
@@ -120,7 +143,7 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 			<tbody>
 				<tr>
 				<td><input type="text" className="form-control" id="henkilotHaeNimellä" placeholder="Nimi"/></td><td><Link to="/" data-toggle="modal" onClick={this.sortEvent}><img src="img/jarjestysylos.svg" name="sortnameup" className="img-fluid" alt="[H]" height="20" width="20"/></Link></td><td><Link to="/" data-toggle="modal" onClick={this.sortEvent}><img src="img/jarjestysalas.svg" className="img-fluid" name="sortnamedown" alt="[H]" height="20" width="20"/></Link></td>
-				<td><input type="text" className="form-control" id="henkilotHaeOsoitteella" placeholder="Osoite"/></td><td><Link to="/" data-toggle="modal" name="sortaddressup" onClick={this.sortEvent}><img src="img/jarjestysylos.svg" className="img-fluid" alt="[H]" height="20" width="20"/></Link></td><td><Link to="/" data-toggle="modal" name="sortaddressdown" onClick={this.sortEvent}><img src="img/jarjestysalas.svg" className="img-fluid" alt="[H]" height="20" width="20"/></Link></td>
+				<td><input type="text" className="form-control" id="henkilotHaeOsoitteella" placeholder="Osoite"/></td><td><Link to="/" data-toggle="modal" onClick={this.sortEvent}><img src="img/jarjestysylos.svg" name="sortaddressup" className="img-fluid" alt="[H]" height="20" width="20"/></Link></td><td><Link to="/" data-toggle="modal" onClick={this.sortEvent}><img src="img/jarjestysalas.svg" name="sortaddressdown" className="img-fluid" alt="[H]" height="20" width="20"/></Link></td>
 				<td></td>
 
 				</tr>

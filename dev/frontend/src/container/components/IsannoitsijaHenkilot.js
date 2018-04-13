@@ -27,7 +27,8 @@ export default class IsannoitsijaHenkilot extends React.Component
 
 				<IsannoitsijaHenkilotLista userList={this.props.userList}
 										   notificationsList={this.props.notificationsList}
-										   getNotificationsByUidStatus={this.props.getNotificationsByUidStatus}/>
+										   getNotificationsByUidStatus={this.props.getNotificationsByUidStatus}
+											 setAppPropsState={this.props.setAppPropsState}/>
 
 			  </table>
 			  </div>

@@ -61,7 +61,8 @@ export default class ContainerContents extends React.Component
 						(<IsannoitsijaHenkilot userList={this.props.userList}
 												getUsers={this.props.getUsers}
 												notificationsList={this.props.notificationsList}
-												getNotificationsByUidStatus={this.props.getNotificationsByUidStatus}/>) :
+												getNotificationsByUidStatus={this.props.getNotificationsByUidStatus}
+												setAppPropsState={this.props.setAppPropsState}/>) :
 						(<Redirect to="/"/>)
 						}/>
 				<Route path="/admin_etusivu"

@@ -11,6 +11,7 @@ export default class App extends Component {
 
 	constructor(props) {
 		super(props);
+		this.setAppPropsState = this.setAppPropsState.bind(this);
 		this.state = {
 			//not logged in group 0 (3:admin| 2:huoltomies | 1:asukas)
 			userGroup:0,
@@ -72,6 +73,10 @@ export default class App extends Component {
 				userGroup:usergroup
 			})
 		}
+	}
+
+	setAppPropsState(propstoupdate){
+		this.setState(propstoupdate);
 	}
 
 	getHousingCompanies = () => {
@@ -389,7 +394,7 @@ export default class App extends Component {
 					<Login onLogin={this.onLogin}/>
 					}
 					{this.state.isLogged === true &&
-					<ContainerContents
+					<ContainerContents setAppPropsState={this.setAppPropsState}
 										getNotifications={this.getNotifications}
 									  getNotificationsByUidStatus={this.getNotificationsByUidStatus}
 									  getUsers={this.getUsers}
