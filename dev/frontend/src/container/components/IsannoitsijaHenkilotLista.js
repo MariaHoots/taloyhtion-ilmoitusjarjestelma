@@ -14,6 +14,11 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 		this.props.getNotificationsByUidStatus(event.target.name,1);		
 	}
 
+	sortEvent = (event) => {
+	
+		console.log(event.target.name);		
+	}
+
 
 
 	render() 
@@ -114,8 +119,8 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 		return (
 			<tbody>
 				<tr>
-				<td><input type="text" className="form-control" id="henkilotHaeNimellä" placeholder="Nimi"/></td><td><a href="index.html"><img src="img/jarjestysylos.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a></td><td><a href="index.html"><img src="img/jarjestysalas.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a></td>
-				<td><input type="text" className="form-control" id="henkilotHaeOsoitteella" placeholder="Osoite"/></td><td><a href="index.html"><img src="img/jarjestysylos.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a></td><td><a href="index.html"><img src="img/jarjestysalas.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a></td>
+				<td><input type="text" className="form-control" id="henkilotHaeNimellä" placeholder="Nimi"/></td><td><Link to="/" data-toggle="modal" onClick={this.sortEvent}><img src="img/jarjestysylos.svg" name="sortnameup" className="img-fluid" alt="[H]" height="20" width="20"/></Link></td><td><Link to="/" data-toggle="modal" onClick={this.sortEvent}><img src="img/jarjestysalas.svg" className="img-fluid" name="sortnamedown" alt="[H]" height="20" width="20"/></Link></td>
+				<td><input type="text" className="form-control" id="henkilotHaeOsoitteella" placeholder="Osoite"/></td><td><Link to="/" data-toggle="modal" name="sortaddressup" onClick={this.sortEvent}><img src="img/jarjestysylos.svg" className="img-fluid" alt="[H]" height="20" width="20"/></Link></td><td><Link to="/" data-toggle="modal" name="sortaddressdown" onClick={this.sortEvent}><img src="img/jarjestysalas.svg" className="img-fluid" alt="[H]" height="20" width="20"/></Link></td>
 				<td></td>
 
 				</tr>
