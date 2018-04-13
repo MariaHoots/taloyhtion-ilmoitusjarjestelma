@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 import IsannoitsijaIlmoituksetLista from './IsannoitsijaIlmoituksetLista';
 import IsannoitsijaIlmoituksetListaKuitatut from './IsannoitsijaIlmoituksetListaKuitatut';
 
@@ -37,11 +38,13 @@ export default class EtuSivu extends React.Component {
       }
     }
 
+
+
     return (
 		<div className="card">
 		  <div className="card-body">
 				<h3>Aktiiviset ilmoitukset</h3>
-		<table className="table table-bordered">
+		<table className="table table-bordered" id="activeElements">
 		  <thead>
 		    <tr>
          <th>Ilmoitus</th>
@@ -53,29 +56,32 @@ export default class EtuSivu extends React.Component {
 		  </thead>
 		  <thead>
         <tr>
-          <td></td>
-          <td><a href="index.html"><img src="img/jarjestysylos.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a></td>
-          <td><a href="index.html"><img src="img/jarjestysalas.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a></td>
-          <td><input type="text" className="form-control" id="ilmoitusHaeNimellä" placeholder="Nimi" /></td>
-          <td><a href="index.html"><img src="img/jarjestysylos.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a></td>
-          <td><a href="index.html"><img src="img/jarjestysalas.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a></td>
-          <td>
-        <select className="form-control" id="ilmoitustyyppi">
-		  <option>Kaikki</option>
-          <option>Vikailmoitus (H)</option>
-          <option>Avaimet (H)</option>
-          <option>Autopaikat (H)</option>
-          <option>Saunavuorot (H)</option>
-          <option>Lähtöilmoitus (I)</option>
-          <option>Vastikeasiat (I)</option>
-          <option>Häiriöilmoitus (I)</option>
-          <option>Reklamaatio (I)</option>
-          <option>Muu palaute (I)</option>
-          <option>Yhteydenotto (I) (H)</option>
-        </select></td>
-          <td><a href="index.html"><img src="img/jarjestysylos.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a></td>
-          <td><a href="index.html"><img src="img/jarjestysalas.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a></td>
-          <td></td>
+          <th></th>
+          <th><a href="index.html"><img src="img/jarjestysylos.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a></th>
+          <th><a href="index.html"><img src="img/jarjestysalas.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a></th>
+          <th>
+            <input type="text" className="form-control" id="ilmoitusHaeNimellä" placeholder="Nimi" />
+          </th>
+          <th><a href="index.html"><img src="img/jarjestysylos.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a></th>
+          <th><a href="index.html"><img src="img/jarjestysalas.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a></th>
+          <th>
+            <select className="form-control" id="ilmoitustyyppi">
+    		      <option>Kaikki</option>
+              <option>Vikailmoitus (H)</option>
+              <option>Avaimet (H)</option>
+              <option>Autopaikat (H)</option>
+              <option>Saunavuorot (H)</option>
+              <option>Lähtöilmoitus (I)</option>
+              <option>Vastikeasiat (I)</option>
+              <option>Häiriöilmoitus (I)</option>
+              <option>Reklamaatio (I)</option>
+              <option>Muu palaute (I)</option>
+              <option>Yhteydenotto (I) (H)</option>
+            </select>
+          </th>
+          <th><a href="index.html"><img src="img/jarjestysylos.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a></th>
+          <th><a href="index.html"><img src="img/jarjestysalas.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a></th>
+          <th></th>
         </tr>
       </thead>
 
@@ -97,15 +103,15 @@ export default class EtuSivu extends React.Component {
 		  </thead>
 		  <thead>
        <tr>
-         <td></td>
-         <td></td>
-         <td><input type="text" className="form-control" id="ilmoitusHaeNimellä" placeholder="Nimi" /></td>
-         <td><a href="index.html"><img src="img/jarjestysylos.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a></td>
-         <td><a href="index.html"><img src="img/jarjestysalas.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a></td>
-         <td><input type="text" className="form-control" id="ilmoitusHaeTyyppi" placeholder="Ilmoitus" /></td>
-         <td><a href="index.html"><img src="img/jarjestysylos.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a></td>
-         <td><a href="index.html"><img src="img/jarjestysalas.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a></td>
-         <td></td>
+         <th></th>
+         <th></th>
+         <th><input type="text" className="form-control" id="ilmoitusHaeNimellä" placeholder="Nimi" /></th>
+         <th><a href="index.html"><img src="img/jarjestysylos.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a></th>
+         <th><a href="index.html"><img src="img/jarjestysalas.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a></th>
+         <th><input type="text" className="form-control" id="ilmoitusHaeTyyppi" placeholder="Ilmoitus" /></th>
+         <th><a href="index.html"><img src="img/jarjestysylos.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a></th>
+         <th><a href="index.html"><img src="img/jarjestysalas.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a></th>
+         <th></th>
        </tr>
       </thead>
 
