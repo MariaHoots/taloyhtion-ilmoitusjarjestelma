@@ -1,7 +1,8 @@
 import React from 'react';
+import {getIlmoitustyyppiById} from '../../Helper.js';
 
-export default class EtuSivu extends React.Component
-{
+export default class EtuSivu extends React.Component{
+
 
 
 	render() {
@@ -29,11 +30,11 @@ export default class EtuSivu extends React.Component
 							      </div>
 							      <div className="modal-body">
 
-											<table class="table table-bordered">
+											<table className="table table-bordered">
 												<tbody>
 													<tr>
 														<th>Ilmoitustyyppi</th>
-														<td colspan="3">{notification.notif_type}</td>
+														<td colSpan="3">{getIlmoitustyyppiById(notification.notif_type)}</td>
 													</tr>
 													<tr>
 														<th>Talonyhtiö</th>
@@ -43,7 +44,7 @@ export default class EtuSivu extends React.Component
 													</tr>
 													<tr>
 														<th>Lähettäjä</th>
-														<td colspan="3">{notification.id_user}</td>
+														<td colSpan="3">{notification.id_user}</td>
 													</tr>
 													<tr>
 														<th>Osoite</th>
@@ -53,7 +54,7 @@ export default class EtuSivu extends React.Component
 													</tr>
 													<tr>
 														<th>Postitoimipaikka</th>
-														<td colspan="3">x</td>
+														<td colSpan="3">x</td>
 													</tr>
 													<tr>
 														<th>Puhelin</th>
@@ -62,10 +63,10 @@ export default class EtuSivu extends React.Component
 														<td>x</td>
 													</tr>
 													<tr>
-														<th colspan="4">Kuvaus</th>
+														<th colSpan="4">Kuvaus</th>
 													</tr>
 													<tr>
-														<td colspan="4">{notification.message}</td>
+														<td colSpan="4">{notification.message}</td>
 													</tr>
 												</tbody>
 											</table>
@@ -95,10 +96,10 @@ export default class EtuSivu extends React.Component
 
 					<td colSpan="2">{notification.sent_date}</td>
 					<td colSpan="3">{notification.id_user}</td>
-					<td colSpan="3">{notification.notif_type}</td>
+					<td colSpan="3">{getIlmoitustyyppiById(notification.notif_type)}</td>
 
 					<td>
-						<a href="index.html"><img src="img/vastaanotettu.svg" class="img-fluid" alt="[H]" height="20" width="20"/></a> <a href="index.html"><img src="img/tyonalla.svg" class="img-fluid" alt="[H]" height="20" width="20"/></a> <a href="index.html"><img src="img/keskeytynyt.svg" class="img-fluid" alt="[H]" height="20" width="20"/></a> <a href="index.html"><img src="img/valmis.svg" class="img-fluid border border-dark rounded bg-success" alt="[H]" height="20" width="20"/></a>
+						<a href="index.html"><img src="img/vastaanotettu.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a> <a href="index.html"><img src="img/tyonalla.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a> <a href="index.html"><img src="img/keskeytynyt.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a> <a href="index.html"><img src="img/valmis.svg" className="img-fluid border border-dark rounded bg-success" alt="[H]" height="20" width="20"/></a>
 					</td>
 
 				</tr>
@@ -119,10 +120,10 @@ export default class EtuSivu extends React.Component
     return (
 		 <tr>
 			  <td onclick="datahaku.naytaIlmoituksenTiedotIsannoitsija(1);"><a href="index.html">Kissa katolla apua</a></td>
-			  <td colspan="2">15.2.2018 09:15</td>
-			  <td colspan="3">Taavetti Tompainen</td>
-			  <td colspan="3">Muu palaute</td>
-			  <td><a href="index.html"><img src="img/vastaanotettu.svg" class="img-fluid" alt="[H]" height="20" width="20"/></a> <a href="index.html"><img src="img/tyonalla.svg" class="img-fluid" alt="[H]" height="20" width="20"/></a> <a href="index.html"><img src="img/keskeytynyt.svg" class="img-fluid" alt="[H]" height="20" width="20"/></a> <a href="index.html"><img src="img/valmis.svg" class="img-fluid border border-dark rounded bg-success" alt="[H]" height="20" width="20"/></a>
+			  <td colSpan="2">15.2.2018 09:15</td>
+			  <td colSpan="3">Taavetti Tompainen</td>
+			  <td colSpan="3">Muu palaute</td>
+			  <td><a href="index.html"><img src="img/vastaanotettu.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a> <a href="index.html"><img src="img/tyonalla.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a> <a href="index.html"><img src="img/keskeytynyt.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a> <a href="index.html"><img src="img/valmis.svg" className="img-fluid border border-dark rounded bg-success" alt="[H]" height="20" width="20"/></a>
 			  </td>
 		</tr>
 		);

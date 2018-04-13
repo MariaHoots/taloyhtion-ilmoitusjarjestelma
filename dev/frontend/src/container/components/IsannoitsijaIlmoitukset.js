@@ -36,8 +36,6 @@ export default class EtuSivu extends React.Component {
         }
       }
     }
-    console.log(activeNotifications);
-    console.log(checkedNotifications);
 
     return (
 		<div className="card">
