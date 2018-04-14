@@ -18,6 +18,7 @@ export default class App extends Component {
 			isLogged:false,
 			token:"",
 			salt:'jg#¤gdml5begf%Wgwerbewegewbmwvie4WEGobw',
+			loggedUser: [],
 			notificationsList: [],
 			userList: [],
 			housingCompList:[],
@@ -389,7 +390,8 @@ getUsersByAddress = (address) => {
 					this.setState({
 						token:data.token,
 						userGroup:usergroup,
-						isLogged:true
+						isLogged:true,
+						loggedUser:data.user
 					})
 					sessionStorage.setItem("token",data.token);
 					sessionStorage.setItem("token2",data.token2);
@@ -435,7 +437,8 @@ getUsersByAddress = (address) => {
 				<div className="container">
 					<ContainerTop
 									userGroup={this.state.userGroup}
-					 				onLogout={this.onLogout}/>
+					 				onLogout={this.onLogout}
+									loggedUser={this.state.loggedUser}/>
 					<ContainerMid/>
 					{this.state.isLogged === false &&
 					<Login onLogin={this.onLogin}/>

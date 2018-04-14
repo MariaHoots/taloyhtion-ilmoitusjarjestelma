@@ -27,7 +27,7 @@ app.post("/login", function(req,res){
 
     //tijPg.query("SELECT COUNT(*) FROM tij_users WHERE email='"+email+"' AND password='"+password+"'")
     // Testauksessa katsotaan vain, että onko sposti olemassa, kun dummydata sisältää randomi salasanoja
-    tijPg.query("SELECT role, (SELECT COUNT(*) FROM tij_users WHERE email='"+email+"') AS found FROM tij_users WHERE email='"+email+"'")
+    tijPg.query("SELECT *, (SELECT COUNT(*) FROM tij_users WHERE email='"+email+"') AS found FROM tij_users WHERE email='"+email+"'")
     .then(pgres => {
         if (pgres.rows[0].found === 0) {
             return res.status(409).json({"message":"conflict!!"});
@@ -44,7 +44,7 @@ app.post("/login", function(req,res){
         token2.update(token + pgres.rows[0].role + salt);
 
         console.log("User logged.");
-        return res.status(200).json({"token":token,"token2":token2.digest('hex')});
+        return res.status(200).json({"token":token,"token2":token2.digest('hex'),"user":pgres.rows[0]});
 
     }).catch(e => {
         return res.status(409).json({"message":"conflict!"});

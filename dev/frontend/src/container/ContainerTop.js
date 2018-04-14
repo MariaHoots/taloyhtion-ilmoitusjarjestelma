@@ -7,7 +7,8 @@ export default class ContainerTop extends React.Component {
     return (
 
 		  <TopMenu userGroup={this.props.userGroup}
-                onLogout={this.props.onLogout}/>
+                onLogout={this.props.onLogout}
+                loggedUser={this.props.loggedUser}/>
 
     );
   }
