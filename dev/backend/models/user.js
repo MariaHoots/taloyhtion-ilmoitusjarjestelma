@@ -10,7 +10,8 @@ let user = {
     last_login:"",
     billing_address:"",
     zip:"",
-    city:""
+    city:"",
+    fullname:""
 };
 
 module.exports = user;

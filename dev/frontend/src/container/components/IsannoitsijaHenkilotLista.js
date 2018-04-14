@@ -14,6 +14,23 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 		this.props.getNotificationsByUidStatus(event.target.name,1);		
 	}
 
+	onChange = (event) => {
+		console.log('a');
+		if (event.target.value.length > 0)
+			{
+			if(event.target.name === "henkilotHaeNimella") {
+				this.props.getUsersByName(event.target.value);
+			}
+			if(event.target.name === "henkilotHaeOsoitteella") {
+				this.props.getUsersByAddress(event.target.value);
+			}
+		}
+		else{
+			this.props.getUsers();
+
+		}
+	}
+
 	sortEvent = (event) => {
 		let tempUserList = this.props.userList;
 		let sorter = new Sorter();
@@ -27,35 +44,24 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 				this.props.setAppPropsState(tempUserList);
 			}
 			if (event.target.name === "sortnamedown"){
-				tempUserList = sorter.sortArrayByField(tempUserList,"last_name",1);
+				tempUserList = sorter.sortArrayByField(tempUserList,"fullname",1);
 				this.props.setAppPropsState(tempUserList);
 		
 			}
 			if (event.target.name === "sortnameup"){
-				tempUserList = sorter.sortArrayByField(tempUserList,"last_name",-1);
+				tempUserList = sorter.sortArrayByField(tempUserList,"fullname",-1);
 				this.props.setAppPropsState(tempUserList);
-		
 			}
-
-		
-
-
-		console.log(event.target.name);		
 	}
-
-
 
 	render() 
 	{
-		console.log(this.props.userList);
 		let tempView = {}
 		if (this.props.userList.length === 0) {
 			tempView = <tr><td>Etsitään henkilöitä..</td></tr>
 		} else {
 			tempView = this.props.userList.map((list) => 
 			<tr key={list.id}>
-					
-
 					<th colSpan="3" scope="row">
 
 						<Link to="/" data-toggle="modal" name={list.id} id={`#${list.id}`} data-target={`#${list.id}`} onClick={this.getNotificationsByUidStatus}>{list.last_name} {list.first_name}</Link>
@@ -71,8 +77,7 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 							      </div>
 							      <div className="modal-body">
 								  <h5>Tiedot:</h5>
-								  <table>
-										
+								  <table>	
 											<tbody>
 											<tr>
 												<td>Nimi</td>
@@ -144,8 +149,8 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 		return (
 			<tbody>
 				<tr>
-				<td><input type="text" className="form-control" id="henkilotHaeNimellä" placeholder="Nimi"/></td><td><Link to="/" data-toggle="modal" onClick={this.sortEvent}><img src="img/jarjestysylos.svg" name="sortnameup" className="img-fluid" alt="[H]" height="20" width="20"/></Link></td><td><Link to="/" data-toggle="modal" onClick={this.sortEvent}><img src="img/jarjestysalas.svg" className="img-fluid" name="sortnamedown" alt="[H]" height="20" width="20"/></Link></td>
-				<td><input type="text" className="form-control" id="henkilotHaeOsoitteella" placeholder="Osoite"/></td><td><Link to="/" data-toggle="modal" onClick={this.sortEvent}><img src="img/jarjestysylos.svg" name="sortaddressup" className="img-fluid" alt="[H]" height="20" width="20"/></Link></td><td><Link to="/" data-toggle="modal" onClick={this.sortEvent}><img src="img/jarjestysalas.svg" name="sortaddressdown" className="img-fluid" alt="[H]" height="20" width="20"/></Link></td>
+				<td><input type="text" className="form-control" name="henkilotHaeNimella" placeholder="Nimi" onChange={this.onChange}/></td><td><Link to="/" data-toggle="modal" onClick={this.sortEvent}><img src="img/jarjestysylos.svg" name="sortnameup" className="img-fluid" alt="[H]" height="20" width="20"/></Link></td><td><Link to="/" data-toggle="modal" onClick={this.sortEvent}><img src="img/jarjestysalas.svg" className="img-fluid" name="sortnamedown" alt="[H]" height="20" width="20"/></Link></td>
+				<td><input type="text" className="form-control" name="henkilotHaeOsoitteella" placeholder="Osoite" onChange={this.onChange}/></td><td><Link to="/" data-toggle="modal" onClick={this.sortEvent}><img src="img/jarjestysylos.svg" name="sortaddressup" className="img-fluid" alt="[H]" height="20" width="20"/></Link></td><td><Link to="/" data-toggle="modal" onClick={this.sortEvent}><img src="img/jarjestysalas.svg" name="sortaddressdown" className="img-fluid" alt="[H]" height="20" width="20"/></Link></td>
 				<td></td>
 
 				</tr>

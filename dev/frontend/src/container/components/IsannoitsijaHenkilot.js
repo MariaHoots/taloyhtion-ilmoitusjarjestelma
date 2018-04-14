@@ -11,7 +11,6 @@ export default class IsannoitsijaHenkilot extends React.Component
 	}
 
 	render() {
-		//this.props.getNotificationsByUidStatus(1,1);
 		return (
 			<div className="card">
 			  <div className="card-body">
@@ -29,7 +28,9 @@ export default class IsannoitsijaHenkilot extends React.Component
 										   notificationsList={this.props.notificationsList}
 										   getNotificationsByUidStatus={this.props.getNotificationsByUidStatus}
 											 setAppPropsState={this.props.setAppPropsState}
-											 getUsers={this.props.getUsers}/>
+											 getUsers={this.props.getUsers}
+											 getUsersByName={this.props.getUsersByName}
+											 getUsersByAddress={this.props.getUsersByAddress}/>
 
 			  </table>
 			  </div>

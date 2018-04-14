@@ -62,7 +62,9 @@ export default class ContainerContents extends React.Component
 												getUsers={this.props.getUsers}
 												notificationsList={this.props.notificationsList}
 												getNotificationsByUidStatus={this.props.getNotificationsByUidStatus}
-												setAppPropsState={this.props.setAppPropsState}/>) :
+												setAppPropsState={this.props.setAppPropsState}
+												getUsersByName={this.props.getUsersByName}
+												getUsersByAddress={this.props.getUsersByAddress}/>) :
 						(<Redirect to="/"/>)
 						}/>
 				<Route path="/admin_etusivu"

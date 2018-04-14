@@ -8,12 +8,14 @@ let tijHousingcompany = require('./models/housingcompany');
 
 let tijRouter = express.Router();
 
-// users - get all
-tijRouter.get("/users", function(req,res) {
+
+// users - get some by name
+tijRouter.get("/usersseek/:search", function(req,res) {
     let users = [];
     let user = tijUser;
+    var getSearch = req.params.search;
 
-    tijPg.query('SELECT * FROM tij_users')
+    tijPg.query("SELECT *, CONCAT (last_name, ' ', first_name) AS fullname FROM tij_users WHERE CONCAT (last_name, ' ', first_name) ~* '^"+getSearch+".*'")
     .then(pgres => {
         queryContents = pgres.rows;
         for (let i=0;i<pgres.rows.length;i++)
@@ -30,7 +32,75 @@ tijRouter.get("/users", function(req,res) {
                 last_login:pgres.rows[i].last_login,
                 billing_address:pgres.rows[i].billing_address,
                 zip:pgres.rows[i].zip,
-                city:pgres.rows[i].city
+                city:pgres.rows[i].city,
+                fullname:pgres.rows[i].fullname
+            };
+            users.push(user);
+        }
+        return res.status(200).json(users);
+
+    }).catch(e => console.error(e.stack));
+});
+
+// users - get some by name
+tijRouter.get("/usersseekaddress/:search", function(req,res) {
+    let users = [];
+    let user = tijUser;
+    var getSearch = req.params.search;
+
+    tijPg.query("SELECT *, CONCAT (last_name, ' ', first_name) AS fullname FROM tij_users WHERE billing_address ~* '^"+getSearch+".*'")
+    .then(pgres => {
+        queryContents = pgres.rows;
+        for (let i=0;i<pgres.rows.length;i++)
+        {
+            user = {
+                id:pgres.rows[i].id,
+                id_flat:pgres.rows[i].id_flat,
+                email:pgres.rows[i].email,
+                password:pgres.rows[i].password,
+                first_name:pgres.rows[i].first_name,
+                last_name:pgres.rows[i].last_name,
+                phone:pgres.rows[i].phone,
+                role:pgres.rows[i].role,
+                last_login:pgres.rows[i].last_login,
+                billing_address:pgres.rows[i].billing_address,
+                zip:pgres.rows[i].zip,
+                city:pgres.rows[i].city,
+                fullname:pgres.rows[i].fullname
+            };
+            users.push(user);
+        }
+        return res.status(200).json(users);
+
+    }).catch(e => console.error(e.stack));
+});
+
+
+
+// users - get all
+tijRouter.get("/users", function(req,res) {
+    let users = [];
+    let user = tijUser;
+
+    tijPg.query("SELECT *, CONCAT (last_name, ' ', first_name) AS fullname FROM tij_users")
+    .then(pgres => {
+        queryContents = pgres.rows;
+        for (let i=0;i<pgres.rows.length;i++)
+        {
+            user = {
+                id:pgres.rows[i].id,
+                id_flat:pgres.rows[i].id_flat,
+                email:pgres.rows[i].email,
+                password:pgres.rows[i].password,
+                first_name:pgres.rows[i].first_name,
+                last_name:pgres.rows[i].last_name,
+                phone:pgres.rows[i].phone,
+                role:pgres.rows[i].role,
+                last_login:pgres.rows[i].last_login,
+                billing_address:pgres.rows[i].billing_address,
+                zip:pgres.rows[i].zip,
+                city:pgres.rows[i].city,
+                fullname:pgres.rows[i].fullname
             };
             users.push(user);
         }

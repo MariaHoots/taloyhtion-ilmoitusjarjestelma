@@ -149,6 +149,51 @@ export default class App extends Component {
 		});
 	}
 
+// username search
+getUsersByName = (name) => {
+	let onGetUser = {
+		method:"GET",
+		mode:"cors",
+		headers:{"Content-Type":"application/json",
+		"token":this.state.token}
+	}
+	fetch("/api/usersseek/"+name,onGetUser).then((response) => {
+		if(response.ok) {
+			response.json().then((data) => {
+				this.setState({
+					userList:data
+				})
+			})
+		} else {
+			console.log(response.statusText);
+		}
+	}).catch((error) => {
+		console.log(error);
+	});
+}
+
+getUsersByAddress = (address) => {
+	let onGetUser = {
+		method:"GET",
+		mode:"cors",
+		headers:{"Content-Type":"application/json",
+		"token":this.state.token}
+	}
+	fetch("/api/usersseekaddress/"+address,onGetUser).then((response) => {
+		if(response.ok) {
+			response.json().then((data) => {
+				this.setState({
+					userList:data
+				})
+			})
+		} else {
+			console.log(response.statusText);
+		}
+	}).catch((error) => {
+		console.log(error);
+	});
+}
+
 	// add one user
 		addUser = (user) => {
 			let onAddUser = {
@@ -401,6 +446,8 @@ export default class App extends Component {
 									  getNotificationsByUidStatus={this.getNotificationsByUidStatus}
 									  getUsers={this.getUsers}
 									  getHousingCompanies={this.getHousingCompanies}
+									  getUsersByName={this.getUsersByName}
+									  getUsersByAddress={this.getUsersByAddress}
 
 										addNotification={this.addNotification}
 										addUser={this.addUser}

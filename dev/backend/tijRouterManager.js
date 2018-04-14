@@ -12,7 +12,7 @@ tijRouterManager.get("/users", function(req,res) {
     let users = [];
     let user = tijUser;
 
-    tijPg.query('SELECT * FROM tij_users')
+    tijPg.query("SELECT *, CONCAT (first_name, ' ', last_name) AS fullname FROM tij_users")
     .then(pgres => {
         queryContents = pgres.rows;
         for (let i=0;i<pgres.rows.length;i++)
@@ -29,7 +29,8 @@ tijRouterManager.get("/users", function(req,res) {
                 last_login:pgres.rows[i].last_login,
                 billing_address:pgres.rows[i].billing_address,
                 zip:pgres.rows[i].zip,
-                city:pgres.rows[i].city
+                city:pgres.rows[i].city,
+                fullname:pgres.rows[i].fullname
             };
             users.push(user);
         }
