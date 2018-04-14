@@ -6,7 +6,7 @@ export default class IsannoitsijaHenkilot extends React.Component
 {	
 
 	componentDidMount() {
-			this.props.getUsers();
+			
 
 	}
 
@@ -28,7 +28,8 @@ export default class IsannoitsijaHenkilot extends React.Component
 				<IsannoitsijaHenkilotLista userList={this.props.userList}
 										   notificationsList={this.props.notificationsList}
 										   getNotificationsByUidStatus={this.props.getNotificationsByUidStatus}
-											 setAppPropsState={this.props.setAppPropsState}/>
+											 setAppPropsState={this.props.setAppPropsState}
+											 getUsers={this.props.getUsers}/>
 
 			  </table>
 			  </div>

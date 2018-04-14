@@ -7,32 +7,33 @@ import IsannoitsijaHenkilotListaNotifications from './IsannoitsijaHenkilotListaN
 export default class IsannoitsijaHenkilotLista extends React.Component 
 {
 	componentDidMount() {
-		
+		this.props.getUsers();
 	}
 
 	getNotificationsByUidStatus = (event) => {
-	
 		this.props.getNotificationsByUidStatus(event.target.name,1);		
 	}
 
 	sortEvent = (event) => {
 		let tempUserList = this.props.userList;
 		let sorter = new Sorter();
+		
 			if (event.target.name === "sortaddressdown"){
-				tempUserList = sorter.sortArrayByField(tempUserList,2);
-				this.props.setAppPropsState("userlist",tempUserList);
-
+				tempUserList = sorter.sortArrayByField(tempUserList,"billing_address",1);
+				this.props.setAppPropsState(tempUserList);
 			}
 			if (event.target.name === "sortaddressup"){
-
-		
+				tempUserList = sorter.sortArrayByField(tempUserList,"billing_address",-1);
+				this.props.setAppPropsState(tempUserList);
 			}
 			if (event.target.name === "sortnamedown"){
-
+				tempUserList = sorter.sortArrayByField(tempUserList,"last_name",1);
+				this.props.setAppPropsState(tempUserList);
 		
 			}
 			if (event.target.name === "sortnameup"){
-
+				tempUserList = sorter.sortArrayByField(tempUserList,"last_name",-1);
+				this.props.setAppPropsState(tempUserList);
 		
 			}
 
@@ -46,6 +47,7 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 
 	render() 
 	{
+		console.log(this.props.userList);
 		let tempView = {}
 		if (this.props.userList.length === 0) {
 			tempView = <tr><td>Etsitään henkilöitä..</td></tr>

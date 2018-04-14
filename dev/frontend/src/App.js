@@ -75,8 +75,10 @@ export default class App extends Component {
 		}
 	}
 
-	setAppPropsState(propstoupdate){
-		this.setState(propstoupdate);
+	setAppPropsState(users){
+		this.setState({
+			userList:users
+		});
 	}
 
 	getHousingCompanies = () => {

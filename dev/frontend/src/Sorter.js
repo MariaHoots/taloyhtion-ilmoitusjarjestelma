@@ -1,11 +1,15 @@
 
 export default class Sorter
 {
-
-    sortArrayByField(arr, field) {
-        arr.sort(function(a, b)
+    sortArrayByField(arr, field, dir) {
+       
+        return arr.sort( function( a, b )
         {
-            return a[field] - b[field];
+          var index = field;
+          var direction = dir;
+          // Sort by the 2nd value in each array
+          if ( a[index] === b[index] ) return 0;
+          return a[index] < b[index] ? -direction : direction;
         });
     }
 }
