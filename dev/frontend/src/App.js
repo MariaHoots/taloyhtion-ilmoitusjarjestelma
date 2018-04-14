@@ -11,7 +11,9 @@ export default class App extends Component {
 
 	constructor(props) {
 		super(props);
-		this.setAppPropsState = this.setAppPropsState.bind(this);
+		this.setUserPropsState = this.setUserPropsState.bind(this);
+		this.setCompanyPropsState = this.setCompanyPropsState.bind(this);
+
 		this.state = {
 			//not logged in group 0 (3:admin| 2:huoltomies | 1:asukas)
 			userGroup:0,
@@ -76,11 +78,17 @@ export default class App extends Component {
 		}
 	}
 
-	setAppPropsState(users){
+	setUserPropsState(users){
 		this.setState({
 			userList:users
 		});
 	}
+	setCompanyPropsState(companies){
+		this.setState({
+			housingCompList:companies
+		});
+	}
+
 
 	getHousingCompanies = () => {
 		let onGetHousingCompanyList = {
@@ -150,6 +158,54 @@ export default class App extends Component {
 		});
 	}
 
+
+// Company name search
+getCompaniesByName = (name) => {
+	
+	let onGetCompany = {
+		method:"GET",
+		mode:"cors",
+		headers:{"Content-Type":"application/json",
+		"token":this.state.token}
+	}
+	fetch("/api/companyseek/"+name,onGetCompany).then((response) => {
+		if(response.ok) {
+			response.json().then((data) => {
+				this.setState({
+					housingCompList:data
+				})
+			})
+		} else {
+			console.log(response.statusText);
+		}
+	}).catch((error) => {
+		console.log(error);
+	});
+}
+// Company address search
+getCompaniesByAddress = (address) => {
+	alert("aa")
+	let onGetCompany = {
+		method:"GET",
+		mode:"cors",
+		headers:{"Content-Type":"application/json",
+		"token":this.state.token}
+	}
+	fetch("/api/companyseekaddress/"+address,onGetCompany).then((response) => {
+		if(response.ok) {
+			response.json().then((data) => {
+				this.setState({
+					housingCompList:data
+				})
+			})
+		} else {
+			console.log(response.statusText);
+		}
+	}).catch((error) => {
+		console.log(error);
+	});
+}
+
 // username search
 getUsersByName = (name) => {
 	let onGetUser = {
@@ -172,7 +228,7 @@ getUsersByName = (name) => {
 		console.log(error);
 	});
 }
-
+// User address search
 getUsersByAddress = (address) => {
 	let onGetUser = {
 		method:"GET",
@@ -444,16 +500,19 @@ getUsersByAddress = (address) => {
 					<Login onLogin={this.onLogin}/>
 					}
 					{this.state.isLogged === true &&
-					<ContainerContents setAppPropsState={this.setAppPropsState}
-										getNotifications={this.getNotifications}
-									  getNotificationsByUidStatus={this.getNotificationsByUidStatus}
-									  getUsers={this.getUsers}
-									  getHousingCompanies={this.getHousingCompanies}
-									  getUsersByName={this.getUsersByName}
-									  getUsersByAddress={this.getUsersByAddress}
+					<ContainerContents setUserPropsState={this.setUserPropsState}
+									   setCompanyPropsState={this.setCompanyPropsState}
+								       getNotifications={this.getNotifications}
+									   getNotificationsByUidStatus={this.getNotificationsByUidStatus}
+									   getUsers={this.getUsers}
+									   getHousingCompanies={this.getHousingCompanies}
+									   getUsersByName={this.getUsersByName}
+									   getUsersByAddress={this.getUsersByAddress}
+									   getCompaniesByName={this.getUsersByName}
+									   getCompaniesByAddress={this.getUsersByAddress}
 
-										addNotification={this.addNotification}
-										addUser={this.addUser}
+									   addNotification={this.addNotification}
+									   addUser={this.addUser}
 
 										updateNotification={this.updateNotification}
 										updateUser={this.updateUser}

@@ -36,20 +36,20 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 		
 			if (event.target.name === "sortaddressdown"){
 				tempUserList = sorter.sortArrayByField(tempUserList,"billing_address",1);
-				this.props.setAppPropsState(tempUserList);
+				this.props.setUserPropsState(tempUserList);
 			}
 			if (event.target.name === "sortaddressup"){
 				tempUserList = sorter.sortArrayByField(tempUserList,"billing_address",-1);
-				this.props.setAppPropsState(tempUserList);
+				this.props.setUserPropsState(tempUserList);
 			}
 			if (event.target.name === "sortnamedown"){
 				tempUserList = sorter.sortArrayByField(tempUserList,"fullname",1);
-				this.props.setAppPropsState(tempUserList);
+				this.props.setUserPropsState(tempUserList);
 		
 			}
 			if (event.target.name === "sortnameup"){
 				tempUserList = sorter.sortArrayByField(tempUserList,"fullname",-1);
-				this.props.setAppPropsState(tempUserList);
+				this.props.setUserPropsState(tempUserList);
 			}
 	}
 

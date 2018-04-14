@@ -13,17 +13,10 @@ import Tiedot from './components/Tiedot';
 
 export default class ContainerContents extends React.Component
 {
-	/*shouldComponentUpdate(nextProps, nextState) {
-		return this.props.isLogged;
-	  }*/
 
 	render()
 	{
 	
-	/*	() => !this.props.isLogged  ?
-						(<Redirect to="/login"/>) : 
-						(<EtuSivu/>)}
-						*/
 		return (
 			<Switch>
 				<Route exact path="/"
@@ -31,11 +24,8 @@ export default class ContainerContents extends React.Component
 						() => !this.props.isLogged  ?
 						(<Redirect to="/login"/>) : this.props.userGroup === 3 ?
 						(<IsannoitsijaEtuSivu/>) :
-						(<EtuSivu/>)
-			
-					
-					}
-				/>
+						(<EtuSivu/>)	
+					}/>
 
 				<Route path="/etusivu"
 					render={() => this.props.isLogged ?
@@ -69,7 +59,7 @@ export default class ContainerContents extends React.Component
 												getUsers={this.props.getUsers}
 												notificationsList={this.props.notificationsList}
 												getNotificationsByUidStatus={this.props.getNotificationsByUidStatus}
-												setAppPropsState={this.props.setAppPropsState}
+												setUserPropsState={this.props.setUserPropsState}
 												getUsersByName={this.props.getUsersByName}
 												getUsersByAddress={this.props.getUsersByAddress}/>) :
 						(<Redirect to="/"/>)
@@ -87,7 +77,10 @@ export default class ContainerContents extends React.Component
 				<Route path="/admin_yhtiot"
 					render={() => this.props.isLogged ?
 						(<IsannoitsijaTaloyhtiot housingCompList={this.props.housingCompList}
-												getHousingCompanies={this.props.getHousingCompanies}/>) :
+												getHousingCompanies={this.props.getHousingCompanies}
+												getCompaniesByName={this.props.getUsersByName}
+									  			getCompaniesByAddress={this.props.getUsersByAddress}
+												setCompanyPropsState={this.props.setCompanyPropsState}/>) :
 						(<Redirect to="/"/>)
 						}/>
 

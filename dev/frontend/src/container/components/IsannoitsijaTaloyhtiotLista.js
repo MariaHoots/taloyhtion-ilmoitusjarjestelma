@@ -3,8 +3,6 @@ import React from 'react';
 
 export default class EtuSivu extends React.Component {
 
-
-
 	render() {
 
 		let listView = {}
@@ -33,24 +31,24 @@ export default class EtuSivu extends React.Component {
 
 											<form>
 											  <div className="form-group">
-											    <label for="name">Nimi</label>
-											    <input type="text" className="form-control" id="name" value={`${housingComp.name}`}></input>
+											    <label htmlFor="name">Nimi</label>
+											    <input type="text" className="form-control" id="name" defaultValue={`${housingComp.name}`}></input>
 												</div>
 												<div className="form-group">
-											    <label for="address">Osoite</label>
-											    <input type="text" className="form-control" id="address" value={`${housingComp.address}`}></input>
+											    <label htmlFor="address">Osoite</label>
+											    <input type="text" className="form-control" id="address" defaultValue={`${housingComp.address}`}></input>
 												</div>
 												<div className="form-group">
-											    <label for="zip">Postinumero</label>
-											    <input type="text" className="form-control" id="zip" value={`${housingComp.zip}`}></input>
-												</div>
-												<div classNameName="form-group">
-											    <label for="city">Kaupunki</label>
-											    <input type="text" className="form-control" id="city" value={`${housingComp.city}`}></input>
+											    <label htmlFor="zip">Postinumero</label>
+											    <input type="text" className="form-control" id="zip" defaultValue={`${housingComp.zip}`}></input>
 												</div>
 												<div className="form-group">
-											    <label for="business_id">Y-tunnus</label>
-											    <input type="text" className="form-control" id="business_id" value={`${housingComp.business_id}`}></input>
+											    <label htmlFor="city">Kaupunki</label>
+											    <input type="text" className="form-control" id="city" defaultValue={`${housingComp.city}`}></input>
+												</div>
+												<div className="form-group">
+											    <label htmlFor="business_id">Y-tunnus</label>
+											    <input type="text" className="form-control" id="business_id" defaultValue={`${housingComp.business_id}`}></input>
 												</div>
 											</form>
 
