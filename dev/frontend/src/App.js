@@ -11,7 +11,7 @@ export default class App extends Component {
 
 	constructor(props) {
 		super(props);
-		//this.setAppPropsState = this.setAppPropsState.bind(this);
+		this.setAppPropsState = this.setAppPropsState.bind(this);
 		this.state = {
 			//not logged in group 0 (3:admin| 2:huoltomies | 1:asukas)
 			userGroup:0,
