@@ -19,15 +19,22 @@ export default class ContainerContents extends React.Component
 
 	render()
 	{
-		
 	
+	/*	() => !this.props.isLogged  ?
+						(<Redirect to="/login"/>) : 
+						(<EtuSivu/>)}
+						*/
 		return (
 			<Switch>
 				<Route exact path="/"
 					render={
-						() => this.props.isLogged  ?
-						(<EtuSivu/>) :
-						(<Redirect to="/login"/>)}
+						() => !this.props.isLogged  ?
+						(<Redirect to="/login"/>) : this.props.userGroup === 3 ?
+						(<IsannoitsijaEtuSivu/>) :
+						(<EtuSivu/>)
+			
+					
+					}
 				/>
 
 				<Route path="/etusivu"

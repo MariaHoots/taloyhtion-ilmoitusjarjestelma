@@ -15,7 +15,6 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 	}
 
 	onChange = (event) => {
-		console.log('a');
 		if (event.target.value.length > 0)
 			{
 			if(event.target.name === "henkilotHaeNimella") {
