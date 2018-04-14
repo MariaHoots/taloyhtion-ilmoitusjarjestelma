@@ -50,8 +50,14 @@ app.post("/login", function(req,res){
 
         token2.update(token + pgres.rows[0].role + salt);
 
+        tempUser = {
+            "first_name": pgres.rows[0].first_name,
+            "last_name": pgres.rows[0].last_name,
+            "last_login": pgres.rows[0].last_login
+        }
+
         console.log("User logged.");
-        return res.status(200).json({"token":token,"token2":token2.digest('hex'),"user":pgres.rows[0]});
+        return res.status(200).json({"token":token,"token2":token2.digest('hex'),"user":tempUser});
 
     }).catch(e => {
         return res.status(409).json({"message":"conflict!"});

@@ -5,8 +5,8 @@ export default class EtuSivu extends React.Component {
     return (
 		<div className="card">
 		  <div className="card-body">
-		    <h3 className="card-title">Tervetuloa Ismo</h3>
-		    <p className="card-text mb-5">Viimeinen sisäänkirjautuminen 12.2.2018 09:23</p>
+		    <h3 className="card-title">Tervetuloa {this.props.loggedUser.first_name}</h3>
+		    <p className="card-text mb-5">Viimeinen sisäänkirjautuminen {this.props.loggedUser.last_login}</p>
 
 		    <h4>Uusimmat ilmoitukset</h4>
 		  <table className="table table-bordered mb-5">

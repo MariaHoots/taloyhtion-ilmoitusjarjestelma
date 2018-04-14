@@ -23,7 +23,7 @@ export default class ContainerContents extends React.Component
 					render={
 						() => !this.props.isLogged  ?
 						(<Redirect to="/login"/>) : this.props.userGroup === 3 ?
-						(<IsannoitsijaEtuSivu/>) :
+						(<IsannoitsijaEtuSivu loggedUser={this.props.loggedUser}/>) :
 						(<EtuSivu/>)	
 					}/>
 

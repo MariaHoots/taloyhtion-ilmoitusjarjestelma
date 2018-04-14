@@ -40,6 +40,7 @@ export default class App extends Component {
 			sessionStorage.setItem("token2","");
 			sessionStorage.setItem("loginStatus","not logged");
 			sessionStorage.setItem("token","");
+			sessionStorage.setItem("user","");
 			return;
 		}
 
@@ -49,6 +50,9 @@ export default class App extends Component {
 		let loginStatus = sessionStorage.getItem("loginStatus");
 		let token = sessionStorage.getItem("token");
 		let token2 = sessionStorage.getItem("token2");
+
+		console.log(JSON.parse(sessionStorage.getItem("user")))
+		let user = JSON.parse(sessionStorage.getItem("user"));
 
 
 		if (token2 === cr.returnHash(token + "0" + this.state.salt)){
@@ -73,7 +77,8 @@ export default class App extends Component {
 			this.setState({
 				isLogged:true,
 				token:token,
-				userGroup:usergroup
+				userGroup:usergroup,
+				loggedUser:user
 			})
 		}
 	}
@@ -442,13 +447,20 @@ getUsersByAddress = (address) => {
 					else if (data.token2 === cr.returnHash(data.token + "3" + this.state.salt)){
 						usergroup = 3;
 					}
+				
+					//let userTemp = Object.keys(data.user).map(function (i) {
+					//	return data.user[i];
+					 // });
+
+					 let userTemp = data.user;
 
 					this.setState({
 						token:data.token,
 						userGroup:usergroup,
 						isLogged:true,
-						loggedUser:data.user
+						loggedUser:userTemp
 					})
+					sessionStorage.setItem("user",JSON.stringify(userTemp));
 					sessionStorage.setItem("token",data.token);
 					sessionStorage.setItem("token2",data.token2);
 					sessionStorage.setItem("loginStatus","logged");
@@ -523,6 +535,7 @@ getUsersByAddress = (address) => {
 									  notificationsList={this.state.notificationsList}
 									  userList={this.state.userList}
 									  housingCompList={this.state.housingCompList}
+									  loggedUser={this.state.loggedUser}
 
 									  sortSettings={this.state.sortSettings}
 									  
