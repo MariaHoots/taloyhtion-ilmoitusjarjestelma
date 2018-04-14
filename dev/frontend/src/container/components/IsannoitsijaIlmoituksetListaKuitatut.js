@@ -15,7 +15,7 @@ export default class EtuSivu extends React.Component
 				<tr key={notification.id}>
 
 					<td>
-						<a href="#" data-toggle="modal" data-target={`#${notification.id}`}>{notification.title}</a>
+						<a href="/" data-toggle="modal" data-target={`#${notification.id}`}>{notification.title}</a>
 
 							<div className="modal fade" id={`${notification.id}`} tabIndex="-1" role="dialog" aria-labelledby={`${notification.name}`} aria-hidden="true">
 							  <div className="modal-dialog" role="document">
@@ -77,9 +77,9 @@ export default class EtuSivu extends React.Component
 
 											<form>
 												<label for="statusChange">Muuta tilaa:</label>
-												<a href="#"><img src="img/vastaanotettu.svg" className="img-fluid" alt="[H]" width="20" height="20" /></a>
-												<a href="#"><img src="img/tyonalla.svg" className="img-fluid" alt="[H]" width="20" height="20" /></a>
-												<a href="#"><img src="img/keskeytynyt.svg" className="img-fluid" alt="[H]" width="20" height="20" /></a>
+												<a href="/"><img src="img/vastaanotettu.svg" className="img-fluid" alt="[H]" width="20" height="20" /></a>
+												<a href="/"><img src="img/tyonalla.svg" className="img-fluid" alt="[H]" width="20" height="20" /></a>
+												<a href="/"><img src="img/keskeytynyt.svg" className="img-fluid" alt="[H]" width="20" height="20" /></a>
 											</form>
 
 							      </div>

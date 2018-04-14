@@ -18,7 +18,7 @@ export default class EtuSivu extends React.Component {
 
 					<td colSpan="3">
 
-						<a href="#" data-toggle="modal" data-target={`#${housingComp.id}`}>{housingComp.name}</a>
+						<a href="/" data-toggle="modal" data-target={`#${housingComp.id}`}>{housingComp.name}</a>
 
 							<div className="modal fade" id={`${housingComp.id}`} tabIndex="-1" role="dialog" aria-labelledby={`${housingComp.name}`} aria-hidden="true">
 							  <div className="modal-dialog" role="document">
@@ -70,7 +70,7 @@ export default class EtuSivu extends React.Component {
 					<td>
 						<a href="/admin_henkilot"><img src="img/henkilot.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a>
 						<a href="/admin_ilmoitukset"><img src="img/ilmoitukset.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a>
-						<a href="#" data-toggle="modal" data-target={`#${housingComp.id}`}><img src="img/asetukset.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a>
+						<a href="/" data-toggle="modal" data-target={`#${housingComp.id}`}><img src="img/asetukset.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a>
 					</td>
 
 				</tr>

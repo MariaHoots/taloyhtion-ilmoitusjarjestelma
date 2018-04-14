@@ -6,7 +6,7 @@ export default class EtuSivu extends React.Component
 	{
 		return (
 			<tr>
-				<td href="#" onclick="datahaku.naytaIlmoituksenTiedotAsukas(6);"><a href="index.html">Kuka tohelo kolas...</a></td>
+				<td href="/"><a href="index.html">Kuka tohelo kolas...</a></td>
 				<td>05.2.2018 11:12</td>
 				<td colspan="3">Janne Holopainen</td>
 				<td colspan="3">Muu palaute</td>
