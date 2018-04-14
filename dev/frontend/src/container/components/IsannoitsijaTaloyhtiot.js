@@ -16,6 +16,7 @@ export default class EtuSivu extends React.Component {
 		if (event.target.value.length > 0)
 			{
 			if(event.target.name === "yhtiotHaeYhtionNimella") {
+				
 				this.props.getCompaniesByName(event.target.value);
 			}
 			if(event.target.name === "yhtiotHaeOsoitteella") {

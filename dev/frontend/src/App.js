@@ -182,9 +182,9 @@ getCompaniesByName = (name) => {
 		console.log(error);
 	});
 }
+
 // Company address search
 getCompaniesByAddress = (address) => {
-	alert("aa")
 	let onGetCompany = {
 		method:"GET",
 		mode:"cors",
@@ -508,8 +508,8 @@ getUsersByAddress = (address) => {
 									   getHousingCompanies={this.getHousingCompanies}
 									   getUsersByName={this.getUsersByName}
 									   getUsersByAddress={this.getUsersByAddress}
-									   getCompaniesByName={this.getUsersByName}
-									   getCompaniesByAddress={this.getUsersByAddress}
+									   getCompaniesByName={this.getCompaniesByName}
+									   getCompaniesByAddress={this.getCompaniesByAddress}
 
 									   addNotification={this.addNotification}
 									   addUser={this.addUser}

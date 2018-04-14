@@ -78,8 +78,8 @@ export default class ContainerContents extends React.Component
 					render={() => this.props.isLogged ?
 						(<IsannoitsijaTaloyhtiot housingCompList={this.props.housingCompList}
 												getHousingCompanies={this.props.getHousingCompanies}
-												getCompaniesByName={this.props.getUsersByName}
-									  			getCompaniesByAddress={this.props.getUsersByAddress}
+												getCompaniesByName={this.props.getCompaniesByName}
+									  			getCompaniesByAddress={this.props.getCompaniesByAddress}
 												setCompanyPropsState={this.props.setCompanyPropsState}/>) :
 						(<Redirect to="/"/>)
 						}/>
