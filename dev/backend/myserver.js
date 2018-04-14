@@ -25,9 +25,16 @@ app.post("/login", function(req,res){
     let token2 = crypto.createHash('sha256');
     let letters = "abcdefghijklmnopqrstu1234567890";
 
-    //tijPg.query("SELECT COUNT(*) FROM tij_users WHERE email='"+email+"' AND password='"+password+"'")
-    // Testauksessa katsotaan vain, että onko sposti olemassa, kun dummydata sisältää randomi salasanoja
-    tijPg.query("SELECT *, (SELECT COUNT(*) FROM tij_users WHERE email='"+email+"') AS found FROM tij_users WHERE email='"+email+"'")
+    let passwordHash = crypto.createHash('sha256');
+    passwordHash.update(req.body.passphrase+salt);
+    password = passwordHash.digest('hex');
+
+
+    // "testi" = 187d0269d20bb359a9dd71ac44288a8cde5f749832791663d6ce1d6f1c5df81c
+  
+
+    
+    tijPg.query("SELECT *, (SELECT COUNT(*) FROM tij_users WHERE email='"+email+"' AND password='"+password+"') AS found FROM tij_users WHERE email='"+email+"' AND password='"+password+"'")
     .then(pgres => {
         if (pgres.rows[0].found === 0) {
             return res.status(409).json({"message":"conflict!!"});
