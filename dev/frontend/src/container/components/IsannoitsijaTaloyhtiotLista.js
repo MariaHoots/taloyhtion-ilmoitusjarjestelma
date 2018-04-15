@@ -1,7 +1,16 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 
 export default class EtuSivu extends React.Component {
+
+	linkClickEvent = (event) =>{
+		if (event.target.name === "redirecttousers"){
+		
+			this.props.setCurrentHousingCompany(event.target.id);
+		}
+	}
+
 
 	render() {
 
@@ -66,13 +75,17 @@ export default class EtuSivu extends React.Component {
 					</td>
 
 					<td colSpan="3">{housingComp.address}, {housingComp.city}</td>
-
+		
 					<td>
-						<a href="/admin_henkilot"><img src="img/henkilot.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a>
+					
+						<Link to="/admin_henkilot" data-toggle="modal" onClick={this.linkClickEvent}><img src="img/henkilot.svg" id={housingComp.id} name="redirecttousers" className="img-fluid" alt="[H]" height="20" width="20"/></Link>
 						<a href="/admin_ilmoitukset"><img src="img/ilmoitukset.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a>
 						<a href="/" data-toggle="modal" data-target={`#${housingComp.id}`}><img src="img/asetukset.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a>
+					
+						
+					
 					</td>
-
+					
 				</tr>
 			)
 		}

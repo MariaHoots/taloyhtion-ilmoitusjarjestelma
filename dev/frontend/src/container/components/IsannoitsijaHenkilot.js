@@ -6,11 +6,11 @@ export default class IsannoitsijaHenkilot extends React.Component
 {	
 
 	componentDidMount() {
-		this.props.setPageTittle("Henkilölistaus")
-
+		this.props.setPageTittle("Henkilölistaus");
 	}
 
 	render() {
+		
 		return (
 			<div className="card">
 			  <div className="card-body">
@@ -30,7 +30,9 @@ export default class IsannoitsijaHenkilot extends React.Component
 										   setUserPropsState={this.props.setUserPropsState}
 											 getUsers={this.props.getUsers}
 											 getUsersByName={this.props.getUsersByName}
-											 getUsersByAddress={this.props.getUsersByAddress}/>
+											 getUsersByAddress={this.props.getUsersByAddress}
+											 currentHousingCompany={this.props.currentHousingCompany}
+											 getUsersByHousingCompany={this.props.getUsersByHousingCompany}/>
 
 			  </table>
 			  </div>

@@ -14,6 +14,7 @@ export default class App extends Component {
 		this.setUserPropsState = this.setUserPropsState.bind(this);
 		this.setCompanyPropsState = this.setCompanyPropsState.bind(this);
 		this.setPageTittle = this.setPageTittle.bind(this);
+		this.getUsersByHousingCompany = this.getUsersByHousingCompany.bind(this);
 
 		this.state = {
 			//not logged in group 0 (3:admin| 2:huoltomies | 1:asukas)
@@ -145,6 +146,31 @@ export default class App extends Component {
 			console.log(error);
 		});
 	}
+
+	// Get users from single housing company
+	getUsersByHousingCompany = (id) => {
+		let onGetUser = {
+			method:"GET",
+			mode:"cors",
+			headers:{"Content-Type":"application/json",
+			"token":this.state.token}
+		}
+		fetch("/api/usersbycompany/"+id,onGetUser).then((response) => {
+			if(response.ok) {
+				response.json().then((data) => {
+					this.setState({
+						userList:data
+					})
+				})
+			} else {
+				console.log(response.statusText);
+			}
+		}).catch((error) => {
+			console.log(error);
+		});
+	}
+
+
 
 // get one user by id
 	getUser = (id) => {
@@ -573,6 +599,7 @@ getUsersByAddress = (address) => {
 									   getUsersByAddress={this.getUsersByAddress}
 									   getCompaniesByName={this.getCompaniesByName}
 									   getCompaniesByAddress={this.getCompaniesByAddress}
+									   getUsersByHousingCompany={this.getUsersByHousingCompany}
 
 									   addNotification={this.addNotification}
 									   addUser={this.addUser}

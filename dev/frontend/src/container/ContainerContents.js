@@ -13,10 +13,23 @@ import Tiedot from './components/Tiedot';
 
 export default class ContainerContents extends React.Component
 {
+	constructor(props) {
+		super(props);
+		this.setCurrentHousingCompany = this.setCurrentHousingCompany.bind(this);
+	
+		this.state = {
+			currentHousingCompany:0
+		}
+	}
+
+	setCurrentHousingCompany(id){
+		this.setState({
+			currentHousingCompany:id
+		});
+	}
 
 	render()
 	{
-	
 		return (
 			<Switch>
 				<Route exact path="/"
@@ -59,14 +72,16 @@ export default class ContainerContents extends React.Component
 						}/>
 				<Route path="/admin_henkilot"
 					render={() => this.props.isLogged?
-						(<IsannoitsijaHenkilot userList={this.props.userList}
+						(<IsannoitsijaHenkilot  currentHousingCompany={this.state.currentHousingCompany}
+												userList={this.props.userList}
 												getUsers={this.props.getUsers}
 												setPageTittle={this.props.setPageTittle}
 												notificationsList={this.props.notificationsList}
 												getNotificationsByUidStatus={this.props.getNotificationsByUidStatus}
 												setUserPropsState={this.props.setUserPropsState}
 												getUsersByName={this.props.getUsersByName}
-												getUsersByAddress={this.props.getUsersByAddress}/>) :
+												getUsersByAddress={this.props.getUsersByAddress}
+												getUsersByHousingCompany={this.props.getUsersByHousingCompany}/>) :
 						(<Redirect to="/"/>)
 						}/>
 				<Route path="/admin_etusivu"
@@ -81,11 +96,13 @@ export default class ContainerContents extends React.Component
 						}/>
 				<Route path="/admin_yhtiot"
 					render={() => this.props.isLogged ?
-						(<IsannoitsijaTaloyhtiot housingCompList={this.props.housingCompList}
+						(<IsannoitsijaTaloyhtiot currentHousingCompany={this.state.currentHousingCompany}
+												housingCompList={this.props.housingCompList}
 												getHousingCompanies={this.props.getHousingCompanies}
 												getCompaniesByName={this.props.getCompaniesByName}
 									  			getCompaniesByAddress={this.props.getCompaniesByAddress}
-												setCompanyPropsState={this.props.setCompanyPropsState}/>) :
+												setCompanyPropsState={this.props.setCompanyPropsState}
+												setCurrentHousingCompany={this.setCurrentHousingCompany}/>) :
 						(<Redirect to="/"/>)
 						}/>
 

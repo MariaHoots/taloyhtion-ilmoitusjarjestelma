@@ -1,6 +1,6 @@
 import React from 'react';
 import IsannoitsijaTaloyhtiotLista from './IsannoitsijaTaloyhtiotLista';
-import {Link} from 'react-router-dom';
+import {Link,Redirect} from 'react-router-dom';
 import Sorter from '../../Sorter';
 
 
@@ -85,6 +85,17 @@ export default class EtuSivu extends React.Component {
 
 
 	render() {
+		if (this.props.currentHousingCompany > 0)
+		{
+		return (<Redirect to='/admin_henkilot'/>);
+
+		}
+		else {
+
+	
+
+
+
 		return (
 			<div className="card">
 			  <div className="card-body">
@@ -109,7 +120,8 @@ export default class EtuSivu extends React.Component {
 					</tr>
 					</thead>
 
-					<IsannoitsijaTaloyhtiotLista housingCompList={this.props.housingCompList}/>
+					<IsannoitsijaTaloyhtiotLista housingCompList={this.props.housingCompList}
+												setCurrentHousingCompany={this.props.setCurrentHousingCompany}/>
 
 				  </table>
 				</div>
@@ -117,4 +129,5 @@ export default class EtuSivu extends React.Component {
 
 		);
 	}
+}
 }

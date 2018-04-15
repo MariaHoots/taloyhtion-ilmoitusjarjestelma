@@ -7,7 +7,13 @@ import IsannoitsijaHenkilotListaNotifications from './IsannoitsijaHenkilotListaN
 export default class IsannoitsijaHenkilotLista extends React.Component 
 {
 	componentDidMount() {
-		this.props.getUsers();
+		if (this.props.currentHousingCompany > 0){
+			this.props.getUsersByHousingCompany(this.props.currentHousingCompany);
+		}
+		else {
+			this.props.getUsers();
+		}
+		
 	}
 
 	getNotificationsByUidStatus = (event) => {
