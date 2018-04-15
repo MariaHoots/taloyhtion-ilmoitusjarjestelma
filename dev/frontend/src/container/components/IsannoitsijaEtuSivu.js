@@ -20,11 +20,12 @@ export default class EtuSivu extends React.Component {
 		    <h4>Uusimmat ilmoitukset</h4>
 		  <table className="table table-bordered mb-5">
 		    <thead>
-				<IsannoitsijaEtuSivuLista notificationsList={this.props.notificationsList}/>
+				
 		    </thead>
-		    <tbody>
-		     
-		    </tbody>
+		  
+				<IsannoitsijaEtuSivuLista notificationsList={this.props.notificationsList}
+																	updateNotificationStatus={this.props.updateNotificationStatus}/>
+		   
 		  </table>
 
 		  <a href="/admin_ilmoitukset" className="card-link">

@@ -26,7 +26,8 @@ export default class ContainerContents extends React.Component
 						(<IsannoitsijaEtuSivu loggedUser={this.props.loggedUser}
 											  setPageTittle={this.props.setPageTittle}
 											  notificationsList={this.props.notificationsList}
-											  getNotificationsNew={this.props.getNotificationsNew}/>) :
+											  getNotificationsNew={this.props.getNotificationsNew}
+											  updateNotificationStatus={this.props.updateNotificationStatus}/>) :
 						(<EtuSivu/>)	
 					}/>
 

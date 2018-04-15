@@ -400,6 +400,20 @@ tijRouter.post("/notifications/:id", function(req,res){
     }).catch(e => console.error(e.stack));
 });
 
+// notifications - update notification status
+tijRouter.post("/notificationstatus/:id/:status", function(req,res){
+    let putId = parseInt(req.params.id);
+    let putStatus = parseInt(req.params.status);
+
+    tijPg.query('UPDATE tij_notifications SET status='+putStatus+' WHERE id='+putId)
+    .then(pgres => {
+        return res.status(200)
+        .json({
+            status: 'OK', message: 'notification updated'
+        });
+    }).catch(e => console.error(e.stack));
+});
+
 tijRouter.get("/housingcomp", function(req,res) {
     let housingCompanies = [];
     let housingCompany = tijHousingcompany;

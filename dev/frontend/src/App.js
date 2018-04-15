@@ -447,6 +447,26 @@ getUsersByAddress = (address) => {
 		});
 	}
 
+	// update a notification status
+	updateNotificationStatus = (id,status) => {
+		let onUpdNotification = {
+			method:"POST",
+			mode:"cors",
+			headers:{"Content-Type":"application/json",
+			"token":this.state.token}
+		}
+		fetch("/api/notificationstatus/"+id+"/"+status,onUpdNotification).then((response) => {
+			if(response.ok) {
+				console.log("Status updated");
+				this.getNotificationsNew();
+			} else {
+				console.log(response.statusText);
+			}
+		}).catch((error) => {
+			console.log(error);
+		});
+	}
+
 	onLogin = (user) => {
 		let usergroup=0;
 		let cr =  new Crypto();
@@ -558,6 +578,7 @@ getUsersByAddress = (address) => {
 									   addUser={this.addUser}
 
 										updateNotification={this.updateNotification}
+										updateNotificationStatus={this.updateNotificationStatus}
 										updateUser={this.updateUser}
 
 									  onLogin={this.onLogin}
