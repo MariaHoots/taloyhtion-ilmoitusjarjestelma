@@ -23,7 +23,8 @@ export default class ContainerContents extends React.Component
 					render={
 						() => !this.props.isLogged  ?
 						(<Redirect to="/login"/>) : this.props.userGroup === 3 ?
-						(<IsannoitsijaEtuSivu loggedUser={this.props.loggedUser}/>) :
+						(<IsannoitsijaEtuSivu loggedUser={this.props.loggedUser}
+											  setPageTittle={this.props.setPageTittle}/>) :
 						(<EtuSivu/>)	
 					}/>
 
@@ -57,6 +58,7 @@ export default class ContainerContents extends React.Component
 					render={() => this.props.isLogged?
 						(<IsannoitsijaHenkilot userList={this.props.userList}
 												getUsers={this.props.getUsers}
+												setPageTittle={this.props.setPageTittle}
 												notificationsList={this.props.notificationsList}
 												getNotificationsByUidStatus={this.props.getNotificationsByUidStatus}
 												setUserPropsState={this.props.setUserPropsState}

@@ -5,7 +5,7 @@ export default class ContainerMid extends React.Component {
     return (
 	<div className="jumbotron">
 		  <h1>Taloyhtiön Ilmoitusjärjestelmä</h1>
-		  <p>Etusivu</p>
+		  <p>{this.props.pageTittle}</p>
 	</div>
     );
   }

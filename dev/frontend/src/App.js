@@ -13,6 +13,7 @@ export default class App extends Component {
 		super(props);
 		this.setUserPropsState = this.setUserPropsState.bind(this);
 		this.setCompanyPropsState = this.setCompanyPropsState.bind(this);
+		this.setPageTittle = this.setPageTittle.bind(this);
 
 		this.state = {
 			//not logged in group 0 (3:admin| 2:huoltomies | 1:asukas)
@@ -31,7 +32,8 @@ export default class App extends Component {
 				companySortNameAddress:0,
 				notificationSortAsc:0,
 				notificationSortDate:0
-			}
+			},
+			pageTittle:"Etusivu"
 		}
 	}
 
@@ -51,7 +53,6 @@ export default class App extends Component {
 		let token = sessionStorage.getItem("token");
 		let token2 = sessionStorage.getItem("token2");
 
-		console.log(JSON.parse(sessionStorage.getItem("user")))
 		let user = JSON.parse(sessionStorage.getItem("user"));
 
 
@@ -82,6 +83,13 @@ export default class App extends Component {
 			})
 		}
 	}
+
+	setPageTittle(tittle){
+		this.setState({
+			pageTittle:tittle
+		});
+	}
+
 
 	setUserPropsState(users){
 		this.setState({
@@ -507,12 +515,13 @@ getUsersByAddress = (address) => {
 									userGroup={this.state.userGroup}
 					 				onLogout={this.onLogout}
 									loggedUser={this.state.loggedUser}/>
-					<ContainerMid/>
+					<ContainerMid pageTittle={this.state.pageTittle}/>
 					{this.state.isLogged === false &&
 					<Login onLogin={this.onLogin}/>
 					}
 					{this.state.isLogged === true &&
-					<ContainerContents setUserPropsState={this.setUserPropsState}
+					<ContainerContents setPageTittle={this.setPageTittle}
+									   setUserPropsState={this.setUserPropsState}
 									   setCompanyPropsState={this.setCompanyPropsState}
 								       getNotifications={this.getNotifications}
 									   getNotificationsByUidStatus={this.getNotificationsByUidStatus}

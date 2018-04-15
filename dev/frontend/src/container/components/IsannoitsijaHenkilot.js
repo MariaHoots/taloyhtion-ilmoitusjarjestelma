@@ -6,7 +6,7 @@ export default class IsannoitsijaHenkilot extends React.Component
 {	
 
 	componentDidMount() {
-			
+		this.props.setPageTittle("Henkilölistaus")
 
 	}
 
