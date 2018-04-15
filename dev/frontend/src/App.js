@@ -33,7 +33,7 @@ export default class App extends Component {
 				notificationSortAsc:0,
 				notificationSortDate:0
 			},
-			pageTittle:"Etusivu"
+			pageTittle:""
 		}
 	}
 
@@ -90,7 +90,6 @@ export default class App extends Component {
 		});
 	}
 
-
 	setUserPropsState(users){
 		this.setState({
 			userList:users
@@ -101,7 +100,6 @@ export default class App extends Component {
 			housingCompList:companies
 		});
 	}
-
 
 	getHousingCompanies = () => {
 		let onGetHousingCompanyList = {
@@ -332,6 +330,29 @@ getUsersByAddress = (address) => {
 			console.log(error);
 		});
 	}
+
+// get 5 unread notifications
+	getNotificationsNew = () => {
+		let onGetNotificationList = {
+			method:"GET",
+			mode:"cors",
+			headers:{"Content-Type":"application/json",
+			"token":this.state.token}
+		}
+		fetch("/api/notificationsnew",onGetNotificationList).then((response) => {
+			if(response.ok) {
+				response.json().then((data) => {
+					this.setState({
+						notificationsList:data
+					})
+				})
+			} else {
+				console.log(response.statusText);
+			}
+		}).catch((error) => {
+			console.log(error);
+		});
+	}
 // get one notification by id
 	getNotification = (id) => {
 		let onGetNotification = {
@@ -523,7 +544,8 @@ getUsersByAddress = (address) => {
 					<ContainerContents setPageTittle={this.setPageTittle}
 									   setUserPropsState={this.setUserPropsState}
 									   setCompanyPropsState={this.setCompanyPropsState}
-								       getNotifications={this.getNotifications}
+									   getNotifications={this.getNotifications}
+									   getNotificationsNew={this.getNotificationsNew}
 									   getNotificationsByUidStatus={this.getNotificationsByUidStatus}
 									   getUsers={this.getUsers}
 									   getHousingCompanies={this.getHousingCompanies}

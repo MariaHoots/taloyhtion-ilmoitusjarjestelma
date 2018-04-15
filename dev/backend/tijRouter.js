@@ -269,6 +269,58 @@ tijRouter.get("/notifications", function(req,res) {
     }).catch(e => console.error(e.stack));
 });
 
+// notifications - get 5 notifications with status 0 
+tijRouter.get("/notificationsnew", function(req,res) {
+    let notifications = [];
+    let notification = tijNotification;
+
+    tijPg.query("SELECT tij_notifications.*, CONCAT (tij_users.last_name, ' ', tij_users.first_name) AS fullname,tij_users.email,tij_users.first_name,tij_users.last_name,tij_users.phone,tij_users.role,tij_users.last_login,tij_users.billing_address,tij_users.zip AS u_zip,tij_users.city AS u_city,tij_housing_comp.name,tij_housing_comp.address,tij_housing_comp.zip AS hc_zip,tij_housing_comp.city AS hc_city,tij_housing_comp.business_id FROM tij_notifications INNER JOIN tij_users ON (tij_notifications.id_user = tij_users.id) INNER JOIN tij_housing_comp ON (tij_notifications.id_housing_c = tij_housing_comp.id) WHERE status=0 ORDER BY sent_date ASC LIMIT 5")
+    .then(pgres => {
+        queryContents = pgres.rows;
+        for (let i=0;i<pgres.rows.length;i++)
+        {
+            notification = {
+                id:pgres.rows[i].id,
+                id_user:pgres.rows[i].id_user,
+                id_housing_comp:pgres.rows[i].id_housing_comp,
+                id_checkout:pgres.rows[i].id_checkout,
+                read_id:pgres.rows[i].read_id,
+                sent_date:pgres.rows[i].sent_date,
+                read_date:pgres.rows[i].read_date,
+                title:pgres.rows[i].title,
+                message:pgres.rows[i].message,
+                notif_type:pgres.rows[i].notif_type,
+                checkout:pgres.rows[i].checkout,
+                checkout_message:pgres.rows[i].checkout_message,
+                status:pgres.rows[i].status,
+
+               
+                id_flat:pgres.rows[i].id_flat,
+                email:pgres.rows[i].email,
+                first_name:pgres.rows[i].first_name,
+                last_name:pgres.rows[i].last_name,
+                phone:pgres.rows[i].phone,
+                role:pgres.rows[i].role,
+                last_login:pgres.rows[i].last_login,
+                billing_address:pgres.rows[i].billing_address,
+                u_zip:pgres.rows[i].zip,
+                u_city:pgres.rows[i].city,
+                fullname:pgres.rows[i].fullname,
+
+                name:pgres.rows[i].name,
+                address:pgres.rows[i].address,
+                hc_zip:pgres.rows[i].hc_zip,
+                hc_city:pgres.rows[i].hc_city,
+                business_id:pgres.rows[i].business_id
+                
+            };
+            notifications.push(notification);
+        }
+        return res.status(200).json(notifications);
+
+    }).catch(e => console.error(e.stack));
+});
+
 // notifications - get one by id
 tijRouter.get("/notifications/:id", function(req,res) {
     let notification = tijNotification;

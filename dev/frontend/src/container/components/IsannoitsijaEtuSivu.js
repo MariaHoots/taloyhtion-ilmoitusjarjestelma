@@ -1,10 +1,12 @@
 import React from 'react';
 
+import IsannoitsijaEtuSivuLista from './IsannoitsijaEtuSivuLista';
+
 export default class EtuSivu extends React.Component {
 
 	componentDidMount() {
 		this.props.setPageTittle("Etusivu")
-
+		this.props.getNotificationsNew();
 	}
 
 
@@ -18,22 +20,10 @@ export default class EtuSivu extends React.Component {
 		    <h4>Uusimmat ilmoitukset</h4>
 		  <table className="table table-bordered mb-5">
 		    <thead>
-		      <tr>
-            <th>Ilmoitus</th>
-            <th>Päivämäärä</th>
-            <th>Ilmoitus</th>
-            <th>Tyyppi</th>
-            <th>Kuittaus</th>
-		      </tr>
+				<IsannoitsijaEtuSivuLista notificationsList={this.props.notificationsList}/>
 		    </thead>
 		    <tbody>
-		      <tr>
-            <td ><a href="index.html">Kissa katolla apua</a></td>
-            <td>21.10.2015 07:28</td>
-            <td>Maija Meikäläinen</td>
-            <td>Muu palaute</td>
-            <td><a href="index.html"><img src="img/vastaanotettu.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a> <a href="index.html"><img src="img/tyonalla.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a> <a href="index.html"><img src="img/keskeytynyt.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a> <a href="index.html"><img src="img/valmis.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a></td>
-		      </tr>
+		     
 		    </tbody>
 		  </table>
 
