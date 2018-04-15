@@ -418,7 +418,7 @@ tijRouter.get("/housingcomp", function(req,res) {
     let housingCompanies = [];
     let housingCompany = tijHousingcompany;
 
-    tijPg.query('SELECT * FROM tij_housing_comp')
+    tijPg.query('SELECT (SELECT COUNT(*) FROM tij_notifications WHERE (tij_notifications.id_housing_c = tij_housing_comp.id) AND status=0) AS newnotifs,tij_housing_comp.* FROM tij_housing_comp JOIN tij_notifications ON (tij_housing_comp.id = tij_notifications.id_housing_c) GROUP BY tij_housing_comp.id')
     .then(pgres => {
         queryContents = pgres.rows;
         for (let i=0;i<pgres.rows.length;i++)
@@ -429,7 +429,8 @@ tijRouter.get("/housingcomp", function(req,res) {
                 address:pgres.rows[i].address,
                 zip:pgres.rows[i].zip,
                 city:pgres.rows[i].city,
-                business_id:pgres.rows[i].business_id
+                business_id:pgres.rows[i].business_id,
+                newnotifs:pgres.rows[i].newnotifs
             };
             housingCompanies.push(housingCompany);
         }

@@ -12,7 +12,9 @@ export default class EtuSivu extends React.Component {
 		} else {
 			listView = this.props.housingCompList.map((housingComp) =>
 				<tr key={housingComp.id}>
-					<th scope="row">*</th>
+					<th scope="row">{housingComp.newnotifs > 0 && 
+					"*"
+					}</th>
 
 					<td colSpan="3">
 
