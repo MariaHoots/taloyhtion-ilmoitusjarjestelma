@@ -27,11 +27,11 @@ export default class EtuSivu extends React.Component {
 		    </tbody>
 		  </table>
 
-		  <a href="isannoitsija-ilmoitukset.html" className="card-link">
+		  <a href="/admin_ilmoitukset" className="card-link">
 		  <img src="img/ilmoitukset.svg" className="img-fluid" alt="[H]" height="20" width="20"/> Kaikki ilmoitukset</a>
-		  <a href="isannoitsija-tiedot.html" className="card-link">
+		  <a href="/tiedot" className="card-link">
 		  <img src="img/tiedot.svg" className="img-fluid" alt="[H]" height="20" width="20"/> Omat tiedot</a>
-		  <a href="asetukset.html" className="card-link">
+		  <a href="/asetukset" className="card-link">
 		  <img src="img/asetukset.svg" className="img-fluid" alt="[H]" height="20" width="20"/> Asetukset</a>
 		  
 		  </div>
