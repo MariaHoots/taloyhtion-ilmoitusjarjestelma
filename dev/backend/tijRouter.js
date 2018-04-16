@@ -129,8 +129,6 @@ tijRouter.get("/usersseekaddress/:search", function(req,res) {
     }).catch(e => console.error(e.stack));
 });
 
-
-
 // users - get all
 tijRouter.get("/users", function(req,res) {
     let users = [];
@@ -195,8 +193,6 @@ tijRouter.get("/usersbycompany/:hid", function(req,res) {
 
     }).catch(e => console.error(e.stack));
 });
-
-
 
 // users - get one by id
 tijRouter.get("/users/:id", function(req,res) {
@@ -304,7 +300,7 @@ tijRouter.get("/notifications", function(req,res) {
     }).catch(e => console.error(e.stack));
 });
 */
-// notifications - get all notifications and user data (and then some)
+// notifications - get all notifications AND data from user-flats-houses-housing_comp
 tijRouter.get("/notifications", function(req,res) {
     let notifications = [];
     let notification = tijNotification;
@@ -313,9 +309,12 @@ tijRouter.get("/notifications", function(req,res) {
 					"tij_users.email,tij_users.first_name,tij_users.last_name,tij_users.phone,tij_users.role," +
 					"tij_users.last_login,tij_users.billing_address,tij_users.zip AS ub_zip,tij_users.city AS ub_city," +
 					"tij_housing_comp.name,tij_housing_comp.address,tij_housing_comp.zip AS hc_zip," +
-					"tij_housing_comp.city AS hc_city,tij_housing_comp.business_id " +
+					"tij_housing_comp.city AS hc_city,tij_housing_comp.business_id," +
+					"tij_flats.flat_number,tij_flats.stairway, tij_houses.address AS h_address, tij_houses.zip AS h_zip " +
 				"FROM tij_notifications INNER JOIN tij_users ON (tij_notifications.id_user = tij_users.id) " +
 					"INNER JOIN tij_housing_comp ON (tij_notifications.id_housing_c = tij_housing_comp.id) " +
+					"INNER JOIN tij_flats ON (tij_users.id_flat = tij_flats.id) " +
+					"INNER JOIN tij_houses ON (tij_flats.id_houses = tij_houses.id) " +
 				"ORDER BY sent_date ASC")
     .then(pgres => {
         queryContents = pgres.rows;
@@ -347,9 +346,15 @@ tijRouter.get("/notifications", function(req,res) {
                 ub_zip:pgres.rows[i].ub_zip,
                 ub_city:pgres.rows[i].ub_city,
                 fullname:pgres.rows[i].fullname,
+				
+				flat_number:pgres.rows[i].flat_number,
+				stairway:pgres.rows[i].stairway,
+				
+				h_address:pgres.rows[i].h_address,
+				h_zip:pgres.rows[i].h_zip,
 
-                name:pgres.rows[i].name,
-                address:pgres.rows[i].address,
+                hc_name:pgres.rows[i].hc_name,
+                hc_address:pgres.rows[i].hc_address,
                 hc_zip:pgres.rows[i].hc_zip,
                 hc_city:pgres.rows[i].hc_city,
                 business_id:pgres.rows[i].business_id
@@ -540,5 +545,16 @@ tijRouter.get("/housingcomp", function(req,res) {
 
     }).catch(e => console.error(e.stack));
 });
+
+/*
+("SELECT tij_notifications.*, CONCAT (tij_users.last_name, ' ', tij_users.first_name) AS fullname," +
+					"tij_users.email,tij_users.first_name,tij_users.last_name,tij_users.phone,tij_users.role," +
+					"tij_users.last_login,tij_users.billing_address,tij_users.zip AS ub_zip,tij_users.city AS ub_city," +
+					"tij_housing_comp.name,tij_housing_comp.address,tij_housing_comp.zip AS hc_zip," +
+					"tij_housing_comp.city AS hc_city,tij_housing_comp.business_id " +
+				"FROM tij_notifications INNER JOIN tij_users ON (tij_notifications.id_user = tij_users.id) " +
+					"INNER JOIN tij_housing_comp ON (tij_notifications.id_housing_c = tij_housing_comp.id) " +
+				"ORDER BY sent_date ASC")
+*/
 
 module.exports = tijRouter;
