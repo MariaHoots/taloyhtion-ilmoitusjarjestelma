@@ -4,9 +4,9 @@ import {getIlmoitustyyppiById} from '../../Helper.js';
 export default class EtuSivu extends React.Component{
 
 
-
 	render() {
 
+		console.log(this.props.activeNotifications[0]);
 		let listView = [];
 
 		if (this.props.activeNotifications.length === 0) {
@@ -20,7 +20,7 @@ export default class EtuSivu extends React.Component{
 						<a href="/" data-toggle="modal" data-target={`#${notification.id}`}>{notification.title}</a>
 
 							<div className="modal fade" id={`${notification.id}`} tabIndex="-1" role="dialog" aria-labelledby={`${notification.name}`} aria-hidden="true">
-							  <div className="modal-dialog" role="document">
+							  <div className="modal-dialog" role="document" style={{maxWidth:'800px'}}>
 							    <div className="modal-content">
 							      <div className="modal-header">
 							        <h5 className="modal-title" id={`${notification.id}`}>{notification.title}</h5>
@@ -38,29 +38,29 @@ export default class EtuSivu extends React.Component{
 													</tr>
 													<tr>
 														<th>Talonyhtiö</th>
-														<td>{notification.id_housing_C}</td>
-														<th>x</th>
+														<td>{notification.name}</td>
+														<th>Huoneisto</th>
 														<td>x</td>
 													</tr>
 													<tr>
 														<th>Lähettäjä</th>
-														<td colSpan="3">{notification.id_user}</td>
+														<td colSpan="3">{notification.fullname}</td>
 													</tr>
 													<tr>
 														<th>Osoite</th>
-														<td>x</td>
-														<th>x</th>
-														<td>x</td>
+														<td>{notification.billing_address}</td>
+														<th>Postinumero</th>
+														<td>{notification.ub_zip}</td>
 													</tr>
 													<tr>
 														<th>Postitoimipaikka</th>
-														<td colSpan="3">x</td>
+														<td colSpan="3">{notification.ub_city}</td>
 													</tr>
 													<tr>
 														<th>Puhelin</th>
-														<td>x</td>
-														<th>x</th>
-														<td>x</td>
+														<td>{notification.phone}</td>
+														<th>Sähköposti</th>
+														<td>{notification.email}</td>
 													</tr>
 													<tr>
 														<th colSpan="4">Kuvaus</th>
@@ -95,7 +95,7 @@ export default class EtuSivu extends React.Component{
 					</td>
 
 					<td colSpan="2">{notification.sent_date}</td>
-					<td colSpan="3">{notification.id_user}</td>
+					<td colSpan="3">{notification.fullname}</td>
 					<td colSpan="3">{getIlmoitustyyppiById(notification.notif_type)}</td>
 
 					<td>
