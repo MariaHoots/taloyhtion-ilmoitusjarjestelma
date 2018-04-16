@@ -311,7 +311,7 @@ tijRouter.get("/notifications", function(req,res) {
 
     tijPg.query("SELECT tij_notifications.*, CONCAT (tij_users.last_name, ' ', tij_users.first_name) AS fullname," +
 					"tij_users.email,tij_users.first_name,tij_users.last_name,tij_users.phone,tij_users.role," +
-					"tij_users.last_login,tij_users.billing_address,tij_users.zip AS u_zip,tij_users.city AS u_city," +
+					"tij_users.last_login,tij_users.billing_address,tij_users.zip AS ub_zip,tij_users.city AS ub_city," +
 					"tij_housing_comp.name,tij_housing_comp.address,tij_housing_comp.zip AS hc_zip," +
 					"tij_housing_comp.city AS hc_city,tij_housing_comp.business_id " +
 				"FROM tij_notifications INNER JOIN tij_users ON (tij_notifications.id_user = tij_users.id) " +
@@ -344,8 +344,8 @@ tijRouter.get("/notifications", function(req,res) {
                 role:pgres.rows[i].role,
                 last_login:pgres.rows[i].last_login,
                 billing_address:pgres.rows[i].billing_address,
-                u_zip:pgres.rows[i].zip,
-                u_city:pgres.rows[i].city,
+                ub_zip:pgres.rows[i].ub_zip,
+                ub_city:pgres.rows[i].ub_city,
                 fullname:pgres.rows[i].fullname,
 
                 name:pgres.rows[i].name,
@@ -369,7 +369,7 @@ tijRouter.get("/notificationsnew", function(req,res) {
 
     tijPg.query("SELECT tij_notifications.*, CONCAT (tij_users.last_name, ' ', tij_users.first_name) AS fullname," +
 					"tij_users.email,tij_users.first_name,tij_users.last_name,tij_users.phone,tij_users.role," +
-					"tij_users.last_login,tij_users.billing_address,tij_users.zip AS u_zip,tij_users.city AS u_city," +
+					"tij_users.last_login,tij_users.billing_address,tij_users.zip AS ub_zip,tij_users.city AS ub_city," +
 					"tij_housing_comp.name,tij_housing_comp.address,tij_housing_comp.zip AS hc_zip," +
 					"tij_housing_comp.city AS hc_city,tij_housing_comp.business_id " +
 				"FROM tij_notifications INNER JOIN tij_users ON (tij_notifications.id_user = tij_users.id) " +
@@ -403,8 +403,8 @@ tijRouter.get("/notificationsnew", function(req,res) {
                 role:pgres.rows[i].role,
                 last_login:pgres.rows[i].last_login,
                 billing_address:pgres.rows[i].billing_address,
-                u_zip:pgres.rows[i].zip,
-                u_city:pgres.rows[i].city,
+                ub_zip:pgres.rows[i].ub_zip,
+                ub_city:pgres.rows[i].ub_city,
                 fullname:pgres.rows[i].fullname,
 
                 name:pgres.rows[i].name,
@@ -518,8 +518,10 @@ tijRouter.get("/housingcomp", function(req,res) {
     let housingCompanies = [];
     let housingCompany = tijHousingcompany;
 
-    tijPg.query('SELECT (SELECT COUNT(*) FROM tij_notifications WHERE (tij_notifications.id_housing_c = tij_housing_comp.id) AND status=0) AS newnotifs,tij_housing_comp.* FROM tij_housing_comp JOIN tij_notifications ON (tij_housing_comp.id = tij_notifications.id_housing_c) GROUP BY tij_housing_comp.id')
-    .then(pgres => {
+    tijPg.query('SELECT (SELECT COUNT(*) FROM tij_notifications ' + 
+				'WHERE (tij_notifications.id_housing_c = tij_housing_comp.id) AND status=0) ' +
+				'AS newnotifs,tij_housing_comp.* FROM tij_housing_comp')
+	.then(pgres => {
         queryContents = pgres.rows;
         for (let i=0;i<pgres.rows.length;i++)
         {
