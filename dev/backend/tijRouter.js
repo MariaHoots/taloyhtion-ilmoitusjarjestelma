@@ -309,13 +309,13 @@ tijRouter.get("/notifications", function(req,res) {
     let notifications = [];
     let notification = tijNotification;
 
-    tijPg.query("SELECT tij_notifications.*, CONCAT (tij_users.last_name, ' ', tij_users.first_name) AS fullname,"
-					"tij_users.email,tij_users.first_name,tij_users.last_name,tij_users.phone,tij_users.role,"
-					"tij_users.last_login,tij_users.billing_address,tij_users.zip AS u_zip,tij_users.city AS u_city,"
-					"tij_housing_comp.name,tij_housing_comp.address,tij_housing_comp.zip AS hc_zip,"
-					"tij_housing_comp.city AS hc_city,tij_housing_comp.business_id"
-				"FROM tij_notifications INNER JOIN tij_users ON (tij_notifications.id_user = tij_users.id)"
-					"INNER JOIN tij_housing_comp ON (tij_notifications.id_housing_c = tij_housing_comp.id)"
+    tijPg.query("SELECT tij_notifications.*, CONCAT (tij_users.last_name, ' ', tij_users.first_name) AS fullname," +
+					"tij_users.email,tij_users.first_name,tij_users.last_name,tij_users.phone,tij_users.role," +
+					"tij_users.last_login,tij_users.billing_address,tij_users.zip AS u_zip,tij_users.city AS u_city," +
+					"tij_housing_comp.name,tij_housing_comp.address,tij_housing_comp.zip AS hc_zip," +
+					"tij_housing_comp.city AS hc_city,tij_housing_comp.business_id" +
+				"FROM tij_notifications INNER JOIN tij_users ON (tij_notifications.id_user = tij_users.id)" +
+					"INNER JOIN tij_housing_comp ON (tij_notifications.id_housing_c = tij_housing_comp.id)" +
 				"ORDER BY sent_date ASC")
     .then(pgres => {
         queryContents = pgres.rows;
@@ -367,13 +367,13 @@ tijRouter.get("/notificationsnew", function(req,res) {
     let notifications = [];
     let notification = tijNotification;
 
-    tijPg.query("SELECT tij_notifications.*, CONCAT (tij_users.last_name, ' ', tij_users.first_name) AS fullname,"
-					"tij_users.email,tij_users.first_name,tij_users.last_name,tij_users.phone,tij_users.role,"
-					"tij_users.last_login,tij_users.billing_address,tij_users.zip AS u_zip,tij_users.city AS u_city,"
-					"tij_housing_comp.name,tij_housing_comp.address,tij_housing_comp.zip AS hc_zip,"
-					"tij_housing_comp.city AS hc_city,tij_housing_comp.business_id"
-				"FROM tij_notifications INNER JOIN tij_users ON (tij_notifications.id_user = tij_users.id)"
-					"INNER JOIN tij_housing_comp ON (tij_notifications.id_housing_c = tij_housing_comp.id)" 
+    tijPg.query("SELECT tij_notifications.*, CONCAT (tij_users.last_name, ' ', tij_users.first_name) AS fullname," +
+					"tij_users.email,tij_users.first_name,tij_users.last_name,tij_users.phone,tij_users.role," +
+					"tij_users.last_login,tij_users.billing_address,tij_users.zip AS u_zip,tij_users.city AS u_city," +
+					"tij_housing_comp.name,tij_housing_comp.address,tij_housing_comp.zip AS hc_zip," +
+					"tij_housing_comp.city AS hc_city,tij_housing_comp.business_id" +
+				"FROM tij_notifications INNER JOIN tij_users ON (tij_notifications.id_user = tij_users.id)" +
+					"INNER JOIN tij_housing_comp ON (tij_notifications.id_housing_c = tij_housing_comp.id)" + 
 				"WHERE status=0 ORDER BY sent_date ASC LIMIT 5")
     .then(pgres => {
         queryContents = pgres.rows;
