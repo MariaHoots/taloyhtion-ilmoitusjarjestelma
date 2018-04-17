@@ -28,7 +28,7 @@ export default class TopMenu extends React.Component {
 		let leftPart =
 		<ul className="navbar-nav">
 				<li className="nav-item">
-					<a className="nav-link" href="/">Etusivu</a>
+					<Link className="nav-link" to="/">Etusivu</Link>
 				</li>
 		</ul>
 
@@ -44,7 +44,7 @@ export default class TopMenu extends React.Component {
 			rightPart =
 			<ul className="navbar-nav">
 				<li className="nav-item"><a className="nav-link" href="/tiedot">{this.props.loggedUser.first_name} {this.props.loggedUser.last_name}</a></li>
-				<li className="nav-item"><Link className="nav-link" to="/" 
+				<li className="nav-item"><Link className="nav-link" to="/"
 							onClick={this.props.onLogout}> Kirjaudu ulos</Link>
 				</li>
 			</ul>

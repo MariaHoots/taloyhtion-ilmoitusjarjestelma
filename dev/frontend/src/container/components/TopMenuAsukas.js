@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 export default class TopMenuAsukas extends React.Component {
   render() {
@@ -6,7 +7,7 @@ export default class TopMenuAsukas extends React.Component {
 
       <ul className="navbar-nav mr-auto">
         <li className="nav-item">
-		      <a className="nav-link" href="/ilmoituslomake">Tee ilmoitus</a>
+		      <Link className="nav-link" to="/ilmoituslomake">Tee ilmoitus</Link>
 		    </li>
       </ul>
 
