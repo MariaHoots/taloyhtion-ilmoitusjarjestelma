@@ -81,35 +81,61 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 							        </button>
 							      </div>
 							      <div className="modal-body">
-								  <h5>Tiedot:</h5>
-								  <table>	
-											<tbody>
-											<tr>
-												<td>Nimi</td>
-												<td>{list.last_name} {list.first_name}</td>
-		   									</tr>
-											   <tr>
-												<td>Email</td>
-												<td>{list.email}</td>
-		   									</tr>	
-											   <tr>
-												<td>Puhelin</td>
-												<td>{list.phone}</td>
-		   									</tr>	
-											   <tr>
-												<td>Laskutusosoite</td>
-												<td>{list.billing_address}</td>
-		   									</tr>	
-											   <tr>
-												<td>Postinumero</td>
-												<td>{list.zip}</td>
-		   									</tr>	
-											   <tr>
-												<td>Kaupunki</td>
-												<td>{list.city}</td>
-		   									</tr>	
-											</tbody>
-										</table>
+		
+
+											<form>
+											  <div className="form-group">
+											    <label htmlFor="name">Etunimi</label>
+											    <input type="text" className="form-control" name="first_name" defaultValue={`${list.first_name}`}></input>
+												</div>
+												<div className="form-group">
+											    <label htmlFor="address">Sukunimi</label>
+											    <input type="text" className="form-control" name="last_name" defaultValue={`${list.last_name}`}></input>
+												</div>
+												<div className="form-group">
+											    <label htmlFor="zip">Email</label>
+											    <input type="text" className="form-control" name="email" defaultValue={`${list.email}`}></input>
+												</div>
+												<div className="form-group">
+											    <label htmlFor="city">Puhelinnumero</label>
+											    <input type="text" className="form-control" name="phone" defaultValue={`${list.phone}`}></input>
+												</div>
+												<div className="form-group">
+											    <label htmlFor="business_id">Laskutusosoite</label>
+											    <input type="text" className="form-control" name="b_address" defaultValue={`${list.billing_address}`}></input>
+												</div>
+												<div className="form-group">
+											    <label htmlFor="business_id">Laskutus postinumero</label>
+											    <input type="text" className="form-control" name="b_zip" defaultValue={`${list.zip}`}></input>
+												</div>
+												<div className="form-group">
+											    <label htmlFor="business_id">Laskutus kaupunki</label>
+											    <input type="text" className="form-control" name="b_city" defaultValue={`${list.city}`}></input>
+												</div>
+												<div className="form-group">
+											    <label htmlFor="business_id">Asunnon osoite</label>
+											    <input type="text" className="form-control" name="h_address" defaultValue={`${list.h_address}`}></input>
+												</div>
+												<div className="form-group">
+											    <label htmlFor="business_id">Rappukäytävä</label>
+											    <input type="text" className="form-control" name="stairway" defaultValue={`${list.stairway}`}></input>
+												</div>
+												<div className="form-group">
+											    <label htmlFor="business_id">Asunnon numero</label>
+											    <input type="text" className="form-control" name="flat_number" defaultValue={`${list.flat_number}`}></input>
+												</div>
+												<div className="form-group">
+											    <label htmlFor="business_id">Postinumero</label>
+											    <input type="text" className="form-control" name="h_zip" defaultValue={`${list.h_zip}`}></input>
+												</div>
+												<div className="form-group">
+											    <label htmlFor="business_id">kaupunki</label>
+											    <input type="text" className="form-control" name="h_city" defaultValue={`${list.h_city}`}></input>
+												</div>
+											</form>
+
+							    
+								
 									<h5>Käyttäjän ilmoitukset:</h5>
 										<table>
 											<thead>
@@ -122,16 +148,17 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 											<IsannoitsijaHenkilotListaNotifications notificationsList={this.props.notificationsList}/>	
 											
 										</table>
-
+								
 							      </div>
 							      <div className="modal-footer">
 							        <button type="button" className="btn btn-secondary" data-dismiss="modal">Sulje</button>
+									<button type="button" className="btn btn-success" data-dismiss="modal">Tallenna</button>
 				
 						
 							      </div>
 								  <div className="modal-footer">
 							        
-									<button type="button" className="btn btn-alert" data-dismiss="modal">Poista käyttäjä</button>
+									<button type="button" className="btn btn-danger" data-dismiss="modal">Poista käyttäjä</button>
 						
 							      </div>
 							    </div>
