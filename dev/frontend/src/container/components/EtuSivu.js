@@ -1,12 +1,13 @@
 import React from 'react';
 
 export default class EtuSivu extends React.Component {
+
   render() {
     return (
 		<div className="card">
 		  <div className="card-body">
-		    <h3 className="card-title">Tervetuloa Maija</h3>
-		    <p className="card-text mb-5">Viimeinen sisäänkirjautuminen 12.2.2018 09:23</p>
+		    <h3 className="card-title">Tervetuloa {this.props.loggedUser.first_name}</h3>
+		    <p className="card-text mb-5">Viimeinen sisäänkirjautuminen {this.props.loggedUser.last_login}</p>
 
 		    <h4>Omat ilmoitukset</h4>
 		  <table className="table table-bordered mb-5">
@@ -19,6 +20,7 @@ export default class EtuSivu extends React.Component {
             <th>Kuittaus</th>
 		      </tr>
 		    </thead>
+
 		    <tbody>
 		      <tr>
             <td><a href="index.html">Kissa katolla apua</a></td>
