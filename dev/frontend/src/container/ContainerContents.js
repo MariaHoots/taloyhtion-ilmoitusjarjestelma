@@ -74,16 +74,26 @@ export default class ContainerContents extends React.Component
 					render={() => this.props.isLogged?
 						(<IsannoitsijaHenkilot  currentHousingCompany={this.state.currentHousingCompany}
 												userList={this.props.userList}
-												getUsers={this.props.getUsers}
+												flatsList={this.props.flatsList}
+												housesList={this.props.housesList}
+												notificationsList={this.props.notificationsList}
+												housingCompList={this.props.housingCompList}
+							
 												updateUser={this.props.updateUser}
 												updateUserByAdmin={this.props.updateUserByAdmin}
+												
 												setPageTittle={this.props.setPageTittle}
-												notificationsList={this.props.notificationsList}
-												getNotificationsByUidStatus={this.props.getNotificationsByUidStatus}
+
 												setUserPropsState={this.props.setUserPropsState}
+
+												getUsers={this.props.getUsers}
+												getNotificationsByUidStatus={this.props.getNotificationsByUidStatus}
 												getUsersByName={this.props.getUsersByName}
 												getUsersByAddress={this.props.getUsersByAddress}
-												getUsersByHousingCompany={this.props.getUsersByHousingCompany}/>) :
+												getUsersByHousingCompany={this.props.getUsersByHousingCompany}
+												getFlatsByHouse={this.props.getFlatsByHouse}
+									   			getHousesByHousingCompany={this.props.getHousesByHousingCompany}
+												getHousingCompanies={this.props.getHousingCompanies}/>) :
 						(<Redirect to="/"/>)
 						}/>
 				<Route path="/admin_etusivu"

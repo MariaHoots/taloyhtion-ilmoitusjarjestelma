@@ -26,6 +26,8 @@ export default class App extends Component {
 			notificationsList: [],
 			userList: [],
 			housingCompList:[],
+			flatsList:[],
+			housesList:[],
 			sortSettings:{
 				usersSortNameAddress:0,
 				usersSortAsc:0,
@@ -193,6 +195,51 @@ export default class App extends Component {
 		});
 	}
 
+	// get houses by housing company id
+	getHousesByHousingCompany = (id) => {
+		let onGetHouses = {
+			method:"GET",
+			mode:"cors",
+			headers:{"Content-Type":"application/json",
+					"token":this.state.token}
+		}
+		fetch("/api/housesbycompany/"+id,onGetHouses).then((response) => {
+			if(response.ok) {
+				response.json().then((data) => {
+					this.setState({
+						housesList:data
+					})
+				})
+			} else {
+				console.log(response.statusText);
+			}
+		}).catch((error) => {
+			console.log(error);
+		});
+	}
+
+	// get flats in building
+	getFlatsByHouse = (id) => {
+		let onGetFlats = {
+			method:"GET",
+			mode:"cors",
+			headers:{"Content-Type":"application/json",
+					"token":this.state.token}
+		}
+		fetch("/api/flatsbyhouse/"+id,onGetFlats).then((response) => {
+			if(response.ok) {
+				response.json().then((data) => {
+					this.setState({
+						flatsList:data
+					})
+				})
+			} else {
+				console.log(response.statusText);
+			}
+		}).catch((error) => {
+			console.log(error);
+		});
+	}
 
 	// Company name search
 	getCompaniesByName = (name) => {
@@ -623,30 +670,32 @@ export default class App extends Component {
 									   getCompaniesByName={this.getCompaniesByName}
 									   getCompaniesByAddress={this.getCompaniesByAddress}
 									   getUsersByHousingCompany={this.getUsersByHousingCompany}
+									   getFlatsByHouse={this.getFlatsByHouse}
+									   getHousesByHousingCompany={this.getHousesByHousingCompany}
 
 									   addNotification={this.addNotification}
 									   addUser={this.addUser}
 
-										updateNotification={this.updateNotification}
-										updateNotificationStatus={this.updateNotificationStatus}
-										updateUser={this.updateUser}
-										updateUserByAdmin={this.updateUserByAdmin}
-										
+									   updateNotification={this.updateNotification}
+									   updateNotificationStatus={this.updateNotificationStatus}
+									   updateUser={this.updateUser}
+									   updateUserByAdmin={this.updateUserByAdmin}
+								
+									   onLogin={this.onLogin}
+									   onLogout={this.onLogout}
 
-									  onLogin={this.onLogin}
-									  onLogout={this.onLogout}
+									   notificationsList={this.state.notificationsList}
+									   userList={this.state.userList}
+									   flatsList={this.state.flatsList}
+									   housesList={this.state.housesList}
+									   housingCompList={this.state.housingCompList}
+									   loggedUser={this.state.loggedUser}
 
-									  notificationsList={this.state.notificationsList}
-									  userList={this.state.userList}
-									  housingCompList={this.state.housingCompList}
-									  loggedUser={this.state.loggedUser}
-
-									  sortSettings={this.state.sortSettings}
-									  
-
-									  isLogged={this.state.isLogged}
-									  userGroup={this.state.userGroup}
-									  token={this.state.token}
+									   sortSettings={this.state.sortSettings}
+							
+									   isLogged={this.state.isLogged}
+									   userGroup={this.state.userGroup}
+									   token={this.state.token}
 										/>
 					}
 					<ContainerBottom/>

@@ -31,17 +31,27 @@ export default class IsannoitsijaHenkilot extends React.Component
 				 </tr>
 				</thead>
 
-				<IsannoitsijaHenkilotLista userList={this.props.userList}
-										   notificationsList={this.props.notificationsList}
-										   getNotificationsByUidStatus={this.props.getNotificationsByUidStatus}
-										   setUserPropsState={this.props.setUserPropsState}
-										   updateUser={this.props.updateUser}
-										   updateUserByAdmin={this.props.updateUserByAdmin}
-										   getUsers={this.props.getUsers}
-										   getUsersByName={this.props.getUsersByName}
-										   getUsersByAddress={this.props.getUsersByAddress}
-										   currentHousingCompany={this.props.currentHousingCompany}
-										   getUsersByHousingCompany={this.props.getUsersByHousingCompany}/>
+				<IsannoitsijaHenkilotLista 	userList={this.props.userList}
+										   	flatsList={this.props.flatsList}
+											housesList={this.props.housesList}
+											housingCompList={this.props.housingCompList}
+
+										   	notificationsList={this.props.notificationsList}
+										   
+										   	setUserPropsState={this.props.setUserPropsState}
+										   	updateUser={this.props.updateUser}
+										   	updateUserByAdmin={this.props.updateUserByAdmin}
+										  
+										   	currentHousingCompany={this.props.currentHousingCompany}
+
+										   	getNotificationsByUidStatus={this.props.getNotificationsByUidStatus}
+										  	getUsers={this.props.getUsers}
+										   	getUsersByName={this.props.getUsersByName}
+										   	getUsersByAddress={this.props.getUsersByAddress}
+											getUsersByHousingCompany={this.props.getUsersByHousingCompany}
+										   	getFlatsByHouse={this.props.getFlatsByHouse}
+									   		getHousesByHousingCompany={this.props.getHousesByHousingCompany}
+											getHousingCompanies={this.props.getHousingCompanies}/>
 
 			  </table>
 			  </div>

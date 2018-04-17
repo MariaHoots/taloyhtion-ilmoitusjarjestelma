@@ -589,6 +589,62 @@ tijRouter.get("/housingcomp", function(req,res) {
     }).catch(e => console.error(e.stack));
 });
 
+// Houses by housingcompany
+tijRouter.get("/housesbycompany/:id", function(req,res) {
+    let getId = parseInt(id);
+    let houses = [];
+    let house;
+
+    tijPg.query('SELECT * FROM tij_houses WHERE id_housing_comp='+getId)
+	.then(pgres => {
+        queryContents = pgres.rows;
+        for (let i=0;i<pgres.rows.length;i++)
+        {
+            house = {
+                id:pgres.rows[i].id,
+                name:pgres.rows[i].name,
+                address:pgres.rows[i].address,
+                zip:pgres.rows[i].zip,
+                city:pgres.rows[i].city,
+                business_id:pgres.rows[i].business_id,
+                newnotifs:pgres.rows[i].newnotifs
+            };
+            houses.push(house);
+        }
+        return res.status(200).json(houses);
+
+    }).catch(e => console.error(e.stack));
+});
+
+// Houses by housingcompany
+tijRouter.get("/flatsbyhouse/:id", function(req,res) {
+    let getId = parseInt(id);
+    let flats = [];
+    let flat;
+
+    tijPg.query('SELECT * FROM tij_flats WHERE id_houses='+getId)
+	.then(pgres => {
+        queryContents = pgres.rows;
+        for (let i=0;i<pgres.rows.length;i++)
+        {
+            flat = {
+                id:pgres.rows[i].id,
+                name:pgres.rows[i].name,
+                address:pgres.rows[i].address,
+                zip:pgres.rows[i].zip,
+                city:pgres.rows[i].city,
+                business_id:pgres.rows[i].business_id,
+                newnotifs:pgres.rows[i].newnotifs
+            };
+            flats.push(flat);
+        }
+        return res.status(200).json(flats);
+
+    }).catch(e => console.error(e.stack));
+});
+
+
+
 /*
 ("SELECT tij_notifications.*, CONCAT (tij_users.last_name, ' ', tij_users.first_name) AS fullname," +
 					"tij_users.email,tij_users.first_name,tij_users.last_name,tij_users.phone,tij_users.role," +

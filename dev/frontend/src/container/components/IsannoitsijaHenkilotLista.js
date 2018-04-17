@@ -3,6 +3,9 @@ import {Link} from 'react-router-dom';
 import Sorter from '../../Sorter';
 
 import IsannoitsijaHenkilotListaNotifications from './IsannoitsijaHenkilotListaNotifications';
+import HousingCompSelect from './HousingCompSelect';
+import HouseSelect from './HouseSelect';
+import FlatSelect from './FlatSelect';
 
 export default class IsannoitsijaHenkilotLista extends React.Component 
 {
@@ -25,7 +28,7 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 		}
 	}
 	componentDidMount() {
-	
+		this.props.getHousingCompanies();
 		
 	}
 
@@ -39,7 +42,7 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 						last_name:this.props.userList[i].last_name,
 						email:this.props.userList[i].email,
 						phone:this.props.userList[i].phone,
-						billing_address:this.props.userList[i].b_address,
+						billing_address:this.props.userList[i].billing_address,
 						zip:this.props.userList[i].zip,
 						city:this.props.userList[i].cityid,
 						h_address:this.props.userList[i].h_address,
@@ -77,23 +80,23 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 		let tempUserList = this.props.userList;
 		let sorter = new Sorter();
 		
-			if (event.target.name === "sortaddressdown"){
-				tempUserList = sorter.sortArrayByField(tempUserList,"billing_address",1);
-				this.props.setUserPropsState(tempUserList);
-			}
-			if (event.target.name === "sortaddressup"){
-				tempUserList = sorter.sortArrayByField(tempUserList,"billing_address",-1);
-				this.props.setUserPropsState(tempUserList);
-			}
-			if (event.target.name === "sortnamedown"){
-				tempUserList = sorter.sortArrayByField(tempUserList,"fullname",1);
-				this.props.setUserPropsState(tempUserList);
-		
-			}
-			if (event.target.name === "sortnameup"){
-				tempUserList = sorter.sortArrayByField(tempUserList,"fullname",-1);
-				this.props.setUserPropsState(tempUserList);
-			}
+		if (event.target.name === "sortaddressdown"){
+			tempUserList = sorter.sortArrayByField(tempUserList,"billing_address",1);
+			this.props.setUserPropsState(tempUserList);
+		}
+		if (event.target.name === "sortaddressup"){
+			tempUserList = sorter.sortArrayByField(tempUserList,"billing_address",-1);
+			this.props.setUserPropsState(tempUserList);
+		}
+		if (event.target.name === "sortnamedown"){
+			tempUserList = sorter.sortArrayByField(tempUserList,"fullname",1);
+			this.props.setUserPropsState(tempUserList);
+	
+		}
+		if (event.target.name === "sortnameup"){
+			tempUserList = sorter.sortArrayByField(tempUserList,"fullname",-1);
+			this.props.setUserPropsState(tempUserList);
+		}
 	}
 
 	onFormChange = (event) => {
@@ -228,6 +231,15 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 											    <label htmlFor="business_id">Laskutus kaupunki</label>
 											    <input type="text" onChange={this.onFormChange} className="form-control" name="b_city" defaultValue={`${list.city}`}></input>
 												</div>
+												
+												<HousingCompSelect housingCompList={this.props.housingCompList}/>
+												
+												<HouseSelect/>
+												
+												<FlatSelect/>
+											
+
+												Legacy - voi poistaa, kun selectit muodostaa osoitteen
 												<div className="form-group">
 											    <label htmlFor="business_id">Asunnon osoite</label>
 											    <input type="text" onChange={this.onFormChange} className="form-control" name="h_address" defaultValue={`${list.h_address}`}></input>
