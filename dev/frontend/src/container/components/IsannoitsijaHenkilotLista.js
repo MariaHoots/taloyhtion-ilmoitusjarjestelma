@@ -124,12 +124,12 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 		}
 		if(event.target.name==="b_zip") {
 			this.setState({
-				b_zip:event.target.value
+				zip:event.target.value
 			})
 		}
 		if(event.target.name==="b_city") {
 			this.setState({
-				b_city:event.target.value
+				city:event.target.value
 			})
 		}
 		if(event.target.name==="stairway") {
@@ -155,6 +155,7 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 	}
 
 	submit = (event) => {
+		console.log(this.state.b_address)
 		event.preventDefault();
 		let tempUser = {
 			id:this.state.id,
@@ -162,7 +163,7 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 			last_name:this.state.last_name,
 			email:this.state.email,
 			phone:this.state.phone,
-			billing_address:this.state.b_address,
+			billing_address:this.state.billing_address,
 			zip:this.state.b_zip,
 			city:this.state.b_cityid,
 			h_address:this.state.h_address,

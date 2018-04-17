@@ -250,15 +250,14 @@ tijRouter.put("/users", function(req,res){
 tijRouter.post("/users2/:id", function(req,res){
     let putId = parseInt(req.params.id);
     let putUser = tijUser;
-    console.log(putId)
-/*
+
+/* Näihin oma update logiikka
     h_address:this.state.h_address,
     stairway:this.state.stairway,
     flat_number:this.state.flat_number,
     h_zip:this.state.h_zip,
     h_city:this.state.h_city
 */
-    console.log(JSON.stringify(req.body.tempUser))
     putUser = {
         email:req.body.email,
         first_name:req.body.first_name,
