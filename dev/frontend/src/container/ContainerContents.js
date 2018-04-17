@@ -16,7 +16,7 @@ export default class ContainerContents extends React.Component
 	constructor(props) {
 		super(props);
 		this.setCurrentHousingCompany = this.setCurrentHousingCompany.bind(this);
-	
+
 		this.state = {
 			currentHousingCompany:0
 		}
@@ -41,7 +41,7 @@ export default class ContainerContents extends React.Component
 											  notificationsList={this.props.notificationsList}
 											  getNotificationsNew={this.props.getNotificationsNew}
 											  updateNotificationStatus={this.props.updateNotificationStatus}/>) :
-						(<EtuSivu/>)	
+						(<EtuSivu loggedUser={this.props.loggedUser}/>)
 					}/>
 
 				<Route path="/etusivu"
