@@ -6,18 +6,55 @@ import IsannoitsijaHenkilotListaNotifications from './IsannoitsijaHenkilotListaN
 
 export default class IsannoitsijaHenkilotLista extends React.Component 
 {
+	constructor(props) {
+		super(props);
+		this.state={
+			id:"",
+			first_name:"",
+			last_name:"",
+			email:"",
+			phone:"",
+			billing_address:"",
+			zip:"",
+			city:"",
+			h_address:"",
+			stairway:"",
+			flat_number:"",
+			h_zip:"",
+			h_city:""
+		}
+	}
 	componentDidMount() {
-		if (this.props.currentHousingCompany > 0){
-			this.props.getUsersByHousingCompany(this.props.currentHousingCompany);
-		}
-		else {
-			this.props.getUsers();
-		}
+	
 		
 	}
 
+	setCurrentPersonState(target){
+		
+		for(let i=0;i<this.props.userList.length;i++){
+			if (this.props.userList[i].id === parseInt(target,10)){
+				this.setState({
+						id:this.props.userList[i].id,
+						first_name:this.props.userList[i].first_name,
+						last_name:this.props.userList[i].last_name,
+						email:this.props.userList[i].email,
+						phone:this.props.userList[i].phone,
+						billing_address:this.props.userList[i].b_address,
+						zip:this.props.userList[i].b_zip,
+						city:this.props.userList[i].b_cityid,
+						h_address:this.props.userList[i].h_address,
+						stairway:this.props.userList[i].stairway,
+						flat_number:this.props.userList[i].flat_number,
+						h_zip:this.props.userList[i].h_zip,
+						h_city:this.props.userList[i].h_city
+				})
+			}
+		}
+	}
+
 	getNotificationsByUidStatus = (event) => {
-		this.props.getNotificationsByUidStatus(event.target.name,1);		
+		this.props.getNotificationsByUidStatus(event.target.name,1);
+		this.setCurrentPersonState(event.target.name)	
 	}
 
 	onChange = (event) => {
@@ -59,6 +96,84 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 			}
 	}
 
+	onFormChange = (event) => {
+		if(event.target.name==="first_name") {
+			this.setState({
+				first_name:event.target.value
+			})
+		}
+		if(event.target.name==="last_name") {
+			this.setState({
+				last_name:event.target.value
+			})
+		}
+		if(event.target.name==="email") {
+			this.setState({
+				email:event.target.value
+			})
+		}
+		if(event.target.name==="phone") {
+			this.setState({
+				phone:event.target.value
+			})
+		}
+		if(event.target.name==="b_address") {
+			this.setState({
+				billing_address:event.target.value
+			})
+		}
+		if(event.target.name==="b_zip") {
+			this.setState({
+				b_zip:event.target.value
+			})
+		}
+		if(event.target.name==="b_city") {
+			this.setState({
+				b_city:event.target.value
+			})
+		}
+		if(event.target.name==="stairway") {
+			this.setState({
+				stairway:event.target.value
+			})
+		}
+		if(event.target.name==="flat_number") {
+			this.setState({
+				flat_number:event.target.value
+			})
+		}
+		if(event.target.name==="h_city") {
+			this.setState({
+				h_city:event.target.value
+			})
+		}
+		if(event.target.name==="h_zip") {
+			this.setState({
+				h_zip:event.target.value
+			})
+		}
+	}
+
+	submit = (event) => {
+		event.preventDefault();
+		let tempUser = {
+			id:this.state.id,
+			first_name:this.state.first_name,
+			last_name:this.state.last_name,
+			email:this.state.email,
+			phone:this.state.phone,
+			billing_address:this.state.b_address,
+			zip:this.state.b_zip,
+			city:this.state.b_cityid,
+			h_address:this.state.h_address,
+			stairway:this.state.stairway,
+			flat_number:this.state.flat_number,
+			h_zip:this.state.h_zip,
+			h_city:this.state.h_city
+		}
+		this.props.updateUserByAdmin(tempUser);
+	}
+
 	render() 
 	{
 		let tempView = {}
@@ -81,35 +196,61 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 							        </button>
 							      </div>
 							      <div className="modal-body">
-								  <h5>Tiedot:</h5>
-								  <table>	
-											<tbody>
-											<tr>
-												<td>Nimi</td>
-												<td>{list.last_name} {list.first_name}</td>
-		   									</tr>
-											   <tr>
-												<td>Email</td>
-												<td>{list.email}</td>
-		   									</tr>	
-											   <tr>
-												<td>Puhelin</td>
-												<td>{list.phone}</td>
-		   									</tr>	
-											   <tr>
-												<td>Laskutusosoite</td>
-												<td>{list.billing_address}</td>
-		   									</tr>	
-											   <tr>
-												<td>Postinumero</td>
-												<td>{list.zip}</td>
-		   									</tr>	
-											   <tr>
-												<td>Kaupunki</td>
-												<td>{list.city}</td>
-		   									</tr>	
-											</tbody>
-										</table>
+		
+
+											<form>
+											  <div className="form-group">
+											    <label htmlFor="name">Etunimi</label>
+											    <input type="text" onChange={this.onFormChange} className="form-control" name="first_name" defaultValue={`${list.first_name}`}></input>
+												</div>
+												<div className="form-group">
+											    <label htmlFor="address">Sukunimi</label>
+											    <input type="text" onChange={this.onFormChange} className="form-control" name="last_name" defaultValue={`${list.last_name}`}></input>
+												</div>
+												<div className="form-group">
+											    <label htmlFor="zip">Email</label>
+											    <input type="text" onChange={this.onFormChange} className="form-control" name="email" defaultValue={`${list.email}`}></input>
+												</div>
+												<div className="form-group">
+											    <label htmlFor="city">Puhelinnumero</label>
+											    <input type="text" onChange={this.onFormChange} className="form-control" name="phone" defaultValue={`${list.phone}`}></input>
+												</div>
+												<div className="form-group">
+											    <label htmlFor="business_id">Laskutusosoite</label>
+											    <input type="text" onChange={this.onFormChange} className="form-control" name="b_address" defaultValue={`${list.billing_address}`}></input>
+												</div>
+												<div className="form-group">
+											    <label htmlFor="business_id">Laskutus postinumero</label>
+											    <input type="text" onChange={this.onFormChange} className="form-control" name="b_zip" defaultValue={`${list.zip}`}></input>
+												</div>
+												<div className="form-group">
+											    <label htmlFor="business_id">Laskutus kaupunki</label>
+											    <input type="text" onChange={this.onFormChange} className="form-control" name="b_city" defaultValue={`${list.city}`}></input>
+												</div>
+												<div className="form-group">
+											    <label htmlFor="business_id">Asunnon osoite</label>
+											    <input type="text" onChange={this.onFormChange} className="form-control" name="h_address" defaultValue={`${list.h_address}`}></input>
+												</div>
+												<div className="form-group">
+											    <label htmlFor="business_id">Rappukäytävä</label>
+											    <input type="text" onChange={this.onFormChange} className="form-control" name="stairway" defaultValue={`${list.stairway}`}></input>
+												</div>
+												<div className="form-group">
+											    <label htmlFor="business_id">Asunnon numero</label>
+											    <input type="text" onChange={this.onFormChange} className="form-control" name="flat_number" defaultValue={`${list.flat_number}`}></input>
+												</div>
+												<div className="form-group">
+											    <label htmlFor="business_id">Postinumero</label>
+											    <input type="text" onChange={this.onFormChange} className="form-control" name="h_zip" defaultValue={`${list.h_zip}`}></input>
+												</div>
+												<div className="form-group">
+											    <label htmlFor="business_id">Kaupunki</label>
+											    <input type="text" onChange={this.onFormChange} className="form-control" name="h_city" defaultValue={`${list.h_city}`}></input>
+												</div>
+											</form>
+
+							    
+								
 									<h5>Käyttäjän ilmoitukset:</h5>
 										<table>
 											<thead>
@@ -122,16 +263,23 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 											<IsannoitsijaHenkilotListaNotifications notificationsList={this.props.notificationsList}/>	
 											
 										</table>
-
+								
 							      </div>
 							      <div className="modal-footer">
 							        <button type="button" className="btn btn-secondary" data-dismiss="modal">Sulje</button>
+									<input type="submit"
+				       						name="submit"
+											value="Tallenna"
+											data-dismiss="modal"
+											onClick={this.submit}
+											className="btn btn-success"/>
+									
 				
 						
 							      </div>
 								  <div className="modal-footer">
 							        
-									<button type="button" className="btn btn-alert" data-dismiss="modal">Poista käyttäjä</button>
+									<button type="button" className="btn btn-danger" data-dismiss="modal">Poista käyttäjä</button>
 						
 							      </div>
 							    </div>
