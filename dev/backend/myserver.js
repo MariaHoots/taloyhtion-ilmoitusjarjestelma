@@ -31,9 +31,9 @@ app.post("/login", function(req,res){
 
 
     // "testi" = 187d0269d20bb359a9dd71ac44288a8cde5f749832791663d6ce1d6f1c5df81c
-  
 
-    
+
+
     tijPg.query("SELECT *, (SELECT COUNT(*) FROM tij_users WHERE email='"+email+"' AND password='"+password+"') AS found FROM tij_users WHERE email='"+email+"' AND password='"+password+"'")
     .then(pgres => {
         if (pgres.rows[0].found === 0) {
@@ -53,7 +53,12 @@ app.post("/login", function(req,res){
         tempUser = {
             "first_name": pgres.rows[0].first_name,
             "last_name": pgres.rows[0].last_name,
-            "last_login": pgres.rows[0].last_login
+            "last_login": pgres.rows[0].last_login,
+            "billing_address": pgres.rows[0].billing_address,
+            "zip": pgres.rows[0].zip,
+            "city": pgres.rows[0].city,
+            "phone": pgres.rows[0].phone,
+            "email": pgres.rows[0].email,
         }
 
         console.log("User logged.");
