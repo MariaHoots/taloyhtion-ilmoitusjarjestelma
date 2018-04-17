@@ -56,7 +56,7 @@ export default class ContainerContents extends React.Component
 						}/>
 				<Route path="/ilmoituslomake"
 					render={() => this.props.isLogged ?
-						(<Ilmoituslomake/>) :
+						(<Ilmoituslomake loggedUser={this.props.loggedUser}/>) :
 						(<Redirect to="/"/>)
 						}/>
 				<Route path="/tiedot"
