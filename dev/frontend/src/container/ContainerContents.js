@@ -75,6 +75,8 @@ export default class ContainerContents extends React.Component
 						(<IsannoitsijaHenkilot  currentHousingCompany={this.state.currentHousingCompany}
 												userList={this.props.userList}
 												getUsers={this.props.getUsers}
+												updateUser={this.props.updateUser}
+												updateUserByAdmin={this.props.updateUserByAdmin}
 												setPageTittle={this.props.setPageTittle}
 												notificationsList={this.props.notificationsList}
 												getNotificationsByUidStatus={this.props.getNotificationsByUidStatus}

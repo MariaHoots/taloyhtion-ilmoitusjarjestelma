@@ -7,6 +7,13 @@ export default class IsannoitsijaHenkilot extends React.Component
 
 	componentDidMount() {
 		this.props.setPageTittle("Henkilölistaus");
+
+		if (this.props.currentHousingCompany > 0){
+			this.props.getUsersByHousingCompany(this.props.currentHousingCompany);
+		}
+		else {
+			this.props.getUsers();
+		}
 	}
 
 	render() {
@@ -28,11 +35,13 @@ export default class IsannoitsijaHenkilot extends React.Component
 										   notificationsList={this.props.notificationsList}
 										   getNotificationsByUidStatus={this.props.getNotificationsByUidStatus}
 										   setUserPropsState={this.props.setUserPropsState}
-											 getUsers={this.props.getUsers}
-											 getUsersByName={this.props.getUsersByName}
-											 getUsersByAddress={this.props.getUsersByAddress}
-											 currentHousingCompany={this.props.currentHousingCompany}
-											 getUsersByHousingCompany={this.props.getUsersByHousingCompany}/>
+										   updateUser={this.props.updateUser}
+										   updateUserByAdmin={this.props.updateUserByAdmin}
+										   getUsers={this.props.getUsers}
+										   getUsersByName={this.props.getUsersByName}
+										   getUsersByAddress={this.props.getUsersByAddress}
+										   currentHousingCompany={this.props.currentHousingCompany}
+										   getUsersByHousingCompany={this.props.getUsersByHousingCompany}/>
 
 			  </table>
 			  </div>

@@ -245,7 +245,44 @@ tijRouter.put("/users", function(req,res){
     }).catch(e => console.error(e.stack));
 });
 
-// users - update one
+
+// users - update one from admin
+tijRouter.post("/users2/:id", function(req,res){
+    let putId = parseInt(req.params.id);
+    let putUser = tijUser;
+    console.log(putId)
+/*
+    h_address:this.state.h_address,
+    stairway:this.state.stairway,
+    flat_number:this.state.flat_number,
+    h_zip:this.state.h_zip,
+    h_city:this.state.h_city
+*/
+    console.log(JSON.stringify(req.body.tempUser))
+    putUser = {
+        email:req.body.email,
+        first_name:req.body.first_name,
+        last_name:req.body.last_name,
+        phone:req.body.phone,
+        billing_address:req.body.billing_address,
+        zip:req.body.zip,
+        city:req.body.city
+
+    };
+    tijPg.query('UPDATE tij_users SET email=($1), first_name=($2), last_name=($3),' +
+                'phone=($4), billing_address=($5), zip=($6), city=($7) WHERE id=($8)',
+                    [putUser.email, putUser.first_name, putUser.last_name, putUser.phone,
+                     putUser.billing_address, putUser.zip, putUser.city, putId]
+                )
+    .then(pgres => {
+        return res.status(200)
+        .json({
+            status: 'OK', message: 'user updated'
+        });
+    }).catch(e => console.error(e.stack));
+});
+
+// users - update one from omat tiedot
 tijRouter.post("/users/:id", function(req,res){
     let putId = parseInt(req.params.id);
     let putUser = tijUser;

@@ -311,20 +311,45 @@ getUsersByAddress = (address) => {
 			});
 		}
 
-	// updaqte a user
+	// update a user
 		updateUser = (user) => {
+			let tempUser = user;
 			let onUpdUser = {
 				method:"POST",
 				mode:"cors",
 				headers:{"Content-Type":"application/json",
-				body:JSON.stringify({user}),
+				body:JSON.stringify({tempUser}),
 				"token":this.state.token}
 			}
-			fetch("/api/users/",onUpdUser).then((response) => {
+			fetch("/api/users/"+tempUser.id,onUpdUser).then((response) => {
 				if(response.ok) {
 					response.json().then((data) => {
 							this.getUsers();
 							this.setState({userList:data})
+					})
+				} else {
+					console.log(response.statusText);
+				}
+			}).catch((error) => {
+				console.log(error);
+			});
+		}
+
+		// update a user by admin
+		updateUserByAdmin = (user) => {
+			let tempUser = user;
+			let onUpdUser = {
+				method:"POST",
+				mode:"cors",
+				headers:{"Content-Type":"application/json"},
+				body:JSON.stringify(tempUser),
+				"token":this.state.token
+			}
+			console.log(onUpdUser)
+			fetch("/api/users2/"+tempUser.id,onUpdUser).then((response) => {
+				if(response.ok) {
+					response.json().then((data) => {
+							this.getUsers();
 					})
 				} else {
 					console.log(response.statusText);
@@ -417,7 +442,7 @@ getUsersByAddress = (address) => {
 						notificationsList:data
 						
 					});
-					console.log(this.notificationsList);
+					//console.log(this.notificationsList);
 				})
 			} else {
 				console.log(response.statusText);
@@ -590,6 +615,7 @@ getUsersByAddress = (address) => {
 					<ContainerContents setPageTittle={this.setPageTittle}
 									   setUserPropsState={this.setUserPropsState}
 									   setCompanyPropsState={this.setCompanyPropsState}
+
 									   getNotifications={this.getNotifications}
 									   getNotificationsNew={this.getNotificationsNew}
 									   getNotificationsByUidStatus={this.getNotificationsByUidStatus}
@@ -607,6 +633,8 @@ getUsersByAddress = (address) => {
 										updateNotification={this.updateNotification}
 										updateNotificationStatus={this.updateNotificationStatus}
 										updateUser={this.updateUser}
+										updateUserByAdmin={this.updateUserByAdmin}
+										
 
 									  onLogin={this.onLogin}
 									  onLogout={this.onLogout}
