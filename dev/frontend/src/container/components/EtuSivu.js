@@ -14,8 +14,7 @@ export default class EtuSivu extends React.Component {
 		    <thead>
 		      <tr>
             <th>Ilmoitus</th>
-            <th>Päivämäärä</th>
-            <th>Ilmoitus</th>
+            <th>Lähetetty</th>
             <th>Tyyppi</th>
             <th>Kuittaus</th>
 		      </tr>
@@ -25,7 +24,6 @@ export default class EtuSivu extends React.Component {
 		      <tr>
             <td><a href="index.html">Kissa katolla apua</a></td>
             <td>15.2.2018 09:15</td>
-            <td>Maija Meikäläinen</td>
             <td>Muu palaute</td>
             <td><small>Vastaanotettu 15.2.2018 09:20</small></td>
 		      </tr>
