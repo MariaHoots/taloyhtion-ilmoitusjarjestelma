@@ -124,13 +124,13 @@ export default class App extends Component {
 		});
 	}
 
-// get all users
+	// get all users
 	getUsers = () => {
 		let onGetUser = {
 			method:"GET",
 			mode:"cors",
 			headers:{"Content-Type":"application/json",
-			"token":this.state.token}
+					"token":this.state.token}
 		}
 		fetch("/api/users",onGetUser).then((response) => {
 			if(response.ok) {
@@ -153,7 +153,7 @@ export default class App extends Component {
 			method:"GET",
 			mode:"cors",
 			headers:{"Content-Type":"application/json",
-			"token":this.state.token}
+					"token":this.state.token}
 		}
 		fetch("/api/usersbycompany/"+id,onGetUser).then((response) => {
 			if(response.ok) {
@@ -170,15 +170,13 @@ export default class App extends Component {
 		});
 	}
 
-
-
-// get one user by id
+	// get one user by id
 	getUser = (id) => {
 		let onGetUser = {
 			method:"GET",
 			mode:"cors",
 			headers:{"Content-Type":"application/json",
-			"token":this.state.token}
+					"token":this.state.token}
 		}
 		fetch("/api/users"+id,onGetUser).then((response) => {
 			if(response.ok) {
@@ -196,144 +194,143 @@ export default class App extends Component {
 	}
 
 
-// Company name search
-getCompaniesByName = (name) => {
-	
-	let onGetCompany = {
-		method:"GET",
-		mode:"cors",
-		headers:{"Content-Type":"application/json",
-		"token":this.state.token}
-	}
-	fetch("/api/companyseek/"+name,onGetCompany).then((response) => {
-		if(response.ok) {
-			response.json().then((data) => {
-				this.setState({
-					housingCompList:data
-				})
-			})
-		} else {
-			console.log(response.statusText);
+	// Company name search
+	getCompaniesByName = (name) => {
+		let onGetCompany = {
+			method:"GET",
+			mode:"cors",
+			headers:{"Content-Type":"application/json",
+					"token":this.state.token}
 		}
-	}).catch((error) => {
-		console.log(error);
-	});
-}
+		fetch("/api/companyseek/"+name,onGetCompany).then((response) => {
+			if(response.ok) {
+				response.json().then((data) => {
+					this.setState({
+						housingCompList:data
+					})
+				})
+			} else {
+				console.log(response.statusText);
+			}
+		}).catch((error) => {
+			console.log(error);
+		});
+	}
 
-// Company address search
-getCompaniesByAddress = (address) => {
-	let onGetCompany = {
-		method:"GET",
-		mode:"cors",
-		headers:{"Content-Type":"application/json",
-		"token":this.state.token}
-	}
-	fetch("/api/companyseekaddress/"+address,onGetCompany).then((response) => {
-		if(response.ok) {
-			response.json().then((data) => {
-				this.setState({
-					housingCompList:data
-				})
-			})
-		} else {
-			console.log(response.statusText);
+	// Company address search
+	getCompaniesByAddress = (address) => {
+		let onGetCompany = {
+			method:"GET",
+			mode:"cors",
+			headers:{"Content-Type":"application/json",
+					"token":this.state.token}
 		}
-	}).catch((error) => {
-		console.log(error);
-	});
-}
+		fetch("/api/companyseekaddress/"+address,onGetCompany).then((response) => {
+			if(response.ok) {
+				response.json().then((data) => {
+					this.setState({
+						housingCompList:data
+					})
+				})
+			} else {
+				console.log(response.statusText);
+			}
+		}).catch((error) => {
+			console.log(error);
+		});
+	}
 
-// username search
-getUsersByName = (name) => {
-	let onGetUser = {
-		method:"GET",
-		mode:"cors",
-		headers:{"Content-Type":"application/json",
-		"token":this.state.token}
-	}
-	fetch("/api/usersseek/"+name,onGetUser).then((response) => {
-		if(response.ok) {
-			response.json().then((data) => {
-				this.setState({
-					userList:data
-				})
-			})
-		} else {
-			console.log(response.statusText);
+	// username search
+	getUsersByName = (name) => {
+		let onGetUser = {
+			method:"GET",
+			mode:"cors",
+			headers:{"Content-Type":"application/json",
+					"token":this.state.token}
 		}
-	}).catch((error) => {
-		console.log(error);
-	});
-}
-// User address search
-getUsersByAddress = (address) => {
-	let onGetUser = {
-		method:"GET",
-		mode:"cors",
-		headers:{"Content-Type":"application/json",
-		"token":this.state.token}
-	}
-	fetch("/api/usersseekaddress/"+address,onGetUser).then((response) => {
-		if(response.ok) {
-			response.json().then((data) => {
-				this.setState({
-					userList:data
+		fetch("/api/usersseek/"+name,onGetUser).then((response) => {
+			if(response.ok) {
+				response.json().then((data) => {
+					this.setState({
+						userList:data
+					})
 				})
-			})
-		} else {
-			console.log(response.statusText);
+			} else {
+				console.log(response.statusText);
+			}
+		}).catch((error) => {
+			console.log(error);
+		});
+	}
+	// User address search
+	getUsersByAddress = (address) => {
+		let onGetUser = {
+			method:"GET",
+			mode:"cors",
+			headers:{"Content-Type":"application/json",
+					"token":this.state.token}
 		}
-	}).catch((error) => {
-		console.log(error);
-	});
-}
+		fetch("/api/usersseekaddress/"+address,onGetUser).then((response) => {
+			if(response.ok) {
+				response.json().then((data) => {
+					this.setState({
+						userList:data
+					})
+				})
+			} else {
+				console.log(response.statusText);
+			}
+		}).catch((error) => {
+			console.log(error);
+		});
+	}
 
 	// add one user
-		addUser = (user) => {
-			let onAddUser = {
-				method:"PUT",
-				mode:"cors",
-				headers:{"Content-Type":"application/json",
-				body:JSON.stringify({user}),
-				"token":this.state.token}
-			}
-			fetch("/api/users/",onAddUser).then((response) => {
-				if(response.ok) {
-					response.json().then((data) => {
-							this.getUsers();
-							this.setState({userList:data})
-					})
-				} else {
-					console.log(response.statusText);
-				}
-			}).catch((error) => {
-				console.log(error);
-			});
+	addUser = (user) => {
+		let onAddUser = {
+			method:"PUT",
+			mode:"cors",
+			headers:{"Content-Type":"application/json",
+					"token":this.state.token},
+			body:JSON.stringify(user)			
 		}
+		fetch("/api/users/",onAddUser).then((response) => {
+			if(response.ok) {
+				response.json().then((data) => {
+						this.getUsers();
+						this.setState({userList:data})
+				})
+			} else {
+				console.log(response.statusText);
+			}
+		}).catch((error) => {
+			console.log(error);
+		});
+	}
 
 	// update a user
-		updateUser = (user) => {
-			let tempUser = user;
-			let onUpdUser = {
-				method:"POST",
-				mode:"cors",
-				headers:{"Content-Type":"application/json",
-				body:JSON.stringify({tempUser}),
-				"token":this.state.token}
-			}
-			fetch("/api/users/"+tempUser.id,onUpdUser).then((response) => {
-				if(response.ok) {
-					response.json().then((data) => {
-							this.getUsers();
-							this.setState({userList:data})
-					})
-				} else {
-					console.log(response.statusText);
-				}
-			}).catch((error) => {
-				console.log(error);
-			});
+	updateUser = (user) => {
+		let tempUser = user;
+		let onUpdUser = {
+			method:"POST",
+			mode:"cors",
+			headers:{"Content-Type":"application/json",
+					"token":this.state.token},
+			body:JSON.stringify(tempUser)
 		}
+		fetch("/api/users/"+tempUser.id,onUpdUser).then((response) => {
+			if(response.ok) {
+				response.json().then((data) => {
+						this.getUsers();
+						this.setState({userList:data})
+				})
+			} else {
+				console.log(response.statusText);
+			}
+		}).catch((error) => {
+			console.log(error);
+		});
+	}
 
 		// update a user by admin
 		updateUserByAdmin = (user) => {
@@ -341,9 +338,9 @@ getUsersByAddress = (address) => {
 			let onUpdUser = {
 				method:"POST",
 				mode:"cors",
-				headers:{"Content-Type":"application/json"},
-				body:JSON.stringify(tempUser),
-				"token":this.state.token
+				headers:{"Content-Type":"application/json",
+						"token":this.state.token},
+				body:JSON.stringify(tempUser)				
 			}
 			console.log(onUpdUser)
 			fetch("/api/users2/"+tempUser.id,onUpdUser).then((response) => {
@@ -359,13 +356,13 @@ getUsersByAddress = (address) => {
 			});
 		}
 
-// get all notifications
+	// get all notifications
 	getNotifications = () => {
 		let onGetNotificationList = {
 			method:"GET",
 			mode:"cors",
 			headers:{"Content-Type":"application/json",
-			"token":this.state.token}
+					"token":this.state.token}
 		}
 		fetch("/api/notifications",onGetNotificationList).then((response) => {
 			if(response.ok) {
@@ -388,7 +385,7 @@ getUsersByAddress = (address) => {
 			method:"GET",
 			mode:"cors",
 			headers:{"Content-Type":"application/json",
-			"token":this.state.token}
+					"token":this.state.token}
 		}
 		fetch("/api/notificationsnew",onGetNotificationList).then((response) => {
 			if(response.ok) {
@@ -410,7 +407,7 @@ getUsersByAddress = (address) => {
 			method:"GET",
 			mode:"cors",
 			headers:{"Content-Type":"application/json",
-			"token":this.state.token}
+					"token":this.state.token}
 		}
 		fetch("/api/notifications/"+id,onGetNotification).then((response) => {
 			if(response.ok) {
@@ -427,13 +424,13 @@ getUsersByAddress = (address) => {
 		});
 	}
 
-// get notifications of one user by status
+	// get notifications of one user by status
 	getNotificationsByUidStatus = (uid,status) => {
 		let onGetNotificationList = {
 			method:"GET",
 			mode:"cors",
 			headers:{"Content-Type":"application/json",
-			"token":this.state.token}
+					"token":this.state.token}
 		}
 		fetch("/apim/notifications/"+uid+"/"+status,onGetNotificationList).then((response) => {
 			if(response.ok) {
@@ -452,14 +449,14 @@ getUsersByAddress = (address) => {
 		});
 	}
 
-// add one notification
+	// add one notification
 	addNotification = (notification) => {
 		let onAddNotification = {
 			method:"PUT",
 			mode:"cors",
 			headers:{"Content-Type":"application/json",
-			body:JSON.stringify({notification}),
-			"token":this.state.token}
+					"token":this.state.token},
+			body:JSON.stringify(notification)			
 		}
 		fetch("/api/notifications/",onAddNotification).then((response) => {
 			if(response.ok) {
@@ -475,14 +472,14 @@ getUsersByAddress = (address) => {
 		});
 	}
 
-// update a notification
+	// update a notification
 	updateNotification = (notification) => {
 		let onUpdNotification = {
 			method:"POST",
 			mode:"cors",
 			headers:{"Content-Type":"application/json",
-			body:JSON.stringify({notification}),
-			"token":this.state.token}
+					"token":this.state.token},
+			body:JSON.stringify(notification)
 		}
 		fetch("/api/notifications/",onUpdNotification).then((response) => {
 			if(response.ok) {
@@ -504,7 +501,7 @@ getUsersByAddress = (address) => {
 			method:"POST",
 			mode:"cors",
 			headers:{"Content-Type":"application/json",
-			"token":this.state.token}
+					"token":this.state.token}
 		}
 		fetch("/api/notificationstatus/"+id+"/"+status,onUpdNotification).then((response) => {
 			if(response.ok) {
