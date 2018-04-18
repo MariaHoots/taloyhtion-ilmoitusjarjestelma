@@ -85,6 +85,7 @@ export default class ContainerContents extends React.Component
 												setPageTittle={this.props.setPageTittle}
 
 												setUserPropsState={this.props.setUserPropsState}
+												setCurrentHousingCompany={this.setCurrentHousingCompany}
 
 												getUsers={this.props.getUsers}
 												getNotificationsByUidStatus={this.props.getNotificationsByUidStatus}

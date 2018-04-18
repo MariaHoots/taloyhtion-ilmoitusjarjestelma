@@ -8,7 +8,7 @@ export default class HousingCompSelect extends React.Component {
 		tempView = <option>Ei taloyhtiöitä</option>
 	} else {
 		tempView = this.props.housingCompList.map((list) => 
-		<option>{list.name}</option>
+		<option value={list.id}>{list.name}</option>
 		)
 	}
 

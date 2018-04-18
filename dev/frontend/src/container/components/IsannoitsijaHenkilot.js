@@ -38,7 +38,8 @@ export default class IsannoitsijaHenkilot extends React.Component
 
 										   	notificationsList={this.props.notificationsList}
 										   
-										   	setUserPropsState={this.props.setUserPropsState}
+											setUserPropsState={this.props.setUserPropsState}
+											setCurrentHousingCompany={this.props.setCurrentHousingCompany}
 										   	updateUser={this.props.updateUser}
 										   	updateUserByAdmin={this.props.updateUserByAdmin}
 										  
