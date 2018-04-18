@@ -232,7 +232,8 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 											    <input type="text" onChange={this.onFormChange} className="form-control" name="b_city" defaultValue={`${list.city}`}></input>
 												</div>
 												
-												<HousingCompSelect housingCompList={this.props.housingCompList}/>
+												<HousingCompSelect housingCompList={this.props.housingCompList}
+																	setCurrentHousingCompany={this.props.setCurrentHousingCompany}/>
 												
 												<HouseSelect/>
 												
