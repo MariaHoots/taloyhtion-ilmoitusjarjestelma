@@ -2,11 +2,12 @@ import React from 'react';
 
 export default class EtuSivu extends React.Component {
 
- //  Kommentoidut kohdat lisäyksiä
+ //  Kommentoidut kohdat lisäyksiä. Kommenteissa, koska heittää vielä erroreja ajettaessa.
 
- //  Vaatinee JavaScriptiin ainakin konstruktorin, onChange ja onSubmit?
 
-/*
+ // Konstruktori
+ 
+ /*
 	constructor(props) {
 		super(props);
 		this.state={
@@ -83,7 +84,7 @@ export default class EtuSivu extends React.Component {
 		 
 */
 
-// JSX-alkaa alapuolella
+// JSX alkaa alapuolella
 	
   render() {
     return (
