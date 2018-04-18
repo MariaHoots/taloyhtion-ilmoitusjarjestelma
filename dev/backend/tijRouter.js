@@ -594,7 +594,7 @@ tijRouter.get("/housingcomp", function(req,res) {
 
 // Houses by housingcompany
 tijRouter.get("/housesbycompany/:id", function(req,res) {
-    let getId = parseInt(id);
+    let getId = parseInt(req.params.id);
     let houses = [];
     let house;
 
@@ -619,7 +619,7 @@ tijRouter.get("/housesbycompany/:id", function(req,res) {
 
 // Houses by housingcompany
 tijRouter.get("/flatsbyhouse/:id", function(req,res) {
-    let getId = parseInt(id);
+    let getId = parseInt(req.params.id);
     let flats = [];
     let flat;
 
