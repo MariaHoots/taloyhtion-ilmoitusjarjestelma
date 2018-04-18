@@ -94,7 +94,10 @@ export default class EtuSivu extends React.Component{
 
 					</td>
 
-					<td colSpan="2">{notification.sent_date}</td>
+					<td colSpan="2"><small>
+						{new Date(notification.sent_date).toLocaleString("fi-FI")}
+						</small>
+					</td>
 					<td colSpan="3">{notification.fullname}</td>
 					<td colSpan="3">{getIlmoitustyyppiById(notification.notif_type)}</td>
 
