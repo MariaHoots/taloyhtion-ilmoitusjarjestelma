@@ -594,7 +594,7 @@ tijRouter.get("/housingcomp", function(req,res) {
 
 // Houses by housingcompany
 tijRouter.get("/housesbycompany/:id", function(req,res) {
-    let getId = parseInt(id);
+    let getId = parseInt(req.params.id);
     let houses = [];
     let house;
 
@@ -605,12 +605,10 @@ tijRouter.get("/housesbycompany/:id", function(req,res) {
         {
             house = {
                 id:pgres.rows[i].id,
-                name:pgres.rows[i].name,
+                id_housing_com:pgres.rows[i].id_housing_com,
                 address:pgres.rows[i].address,
                 zip:pgres.rows[i].zip,
-                city:pgres.rows[i].city,
-                business_id:pgres.rows[i].business_id,
-                newnotifs:pgres.rows[i].newnotifs
+                
             };
             houses.push(house);
         }
@@ -621,7 +619,7 @@ tijRouter.get("/housesbycompany/:id", function(req,res) {
 
 // Houses by housingcompany
 tijRouter.get("/flatsbyhouse/:id", function(req,res) {
-    let getId = parseInt(id);
+    let getId = parseInt(req.params.id);
     let flats = [];
     let flat;
 
@@ -632,12 +630,10 @@ tijRouter.get("/flatsbyhouse/:id", function(req,res) {
         {
             flat = {
                 id:pgres.rows[i].id,
-                name:pgres.rows[i].name,
-                address:pgres.rows[i].address,
-                zip:pgres.rows[i].zip,
-                city:pgres.rows[i].city,
-                business_id:pgres.rows[i].business_id,
-                newnotifs:pgres.rows[i].newnotifs
+                id_houses:pgres.rows[i].id_houses,
+                flat_number:pgres.rows[i].flat_number,
+                stairway:pgres.rows[i].stairway
+       
             };
             flats.push(flat);
         }
