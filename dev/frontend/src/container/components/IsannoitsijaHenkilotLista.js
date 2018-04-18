@@ -57,6 +57,8 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 						hid:this.props.userList[i].hid,
 						hcid:this.props.userList[i].hcid
 				})
+				this.props.getHousesByHousingCompany(this.props.userList[i].hcid);
+				this.props.getFlatsByHouse(this.props.userList[i].hid);
 			}
 		}
 	}
@@ -241,32 +243,10 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 												<HousingCompSelect housingCompList={this.props.housingCompList}
 																	setCurrentHousingCompany={this.props.setCurrentHousingCompany}
 																	hcid={this.state.hcid}/>
-												<HouseSelect/>
+												<HouseSelect housesList={this.props.housesList}/>
 												
-												<FlatSelect/>
+												<FlatSelect flatsList={this.props.flatsList}/>
 											
-
-												Legacy - voi poistaa, kun selectit muodostaa osoitteen
-												<div className="form-group">
-											    <label htmlFor="business_id">Asunnon osoite</label>
-											    <input type="text" onChange={this.onFormChange} className="form-control" name="h_address" defaultValue={`${list.h_address}`}></input>
-												</div>
-												<div className="form-group">
-											    <label htmlFor="business_id">Rappukäytävä</label>
-											    <input type="text" onChange={this.onFormChange} className="form-control" name="stairway" defaultValue={`${list.stairway}`}></input>
-												</div>
-												<div className="form-group">
-											    <label htmlFor="business_id">Asunnon numero</label>
-											    <input type="text" onChange={this.onFormChange} className="form-control" name="flat_number" defaultValue={`${list.flat_number}`}></input>
-												</div>
-												<div className="form-group">
-											    <label htmlFor="business_id">Postinumero</label>
-											    <input type="text" onChange={this.onFormChange} className="form-control" name="h_zip" defaultValue={`${list.h_zip}`}></input>
-												</div>
-												<div className="form-group">
-											    <label htmlFor="business_id">Kaupunki</label>
-											    <input type="text" onChange={this.onFormChange} className="form-control" name="h_city" defaultValue={`${list.h_city}`}></input>
-												</div>
 											</form>
 
 							    

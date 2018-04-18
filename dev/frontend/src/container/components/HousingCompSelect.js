@@ -15,7 +15,7 @@ export default class HousingCompSelect extends React.Component {
     return (
 			<div className="form-group">
 				<label htmlFor="taloyhtio">Taloyhtiö</label>
-				<select className="form-control" id="talo" value={this.props.hcid}>
+				<select className="form-control" id="taloyhtio" value={this.props.hcid}>
 					{tempView}
 				</select>
 			</div>	
