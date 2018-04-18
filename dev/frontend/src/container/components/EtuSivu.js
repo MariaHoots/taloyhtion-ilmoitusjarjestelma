@@ -12,7 +12,7 @@ export default class EtuSivu extends React.Component {
 		<div className="card">
 		  <div className="card-body">
 		    <h3 className="card-title">Tervetuloa {this.props.loggedUser.first_name}</h3>
-		    <p className="card-text mb-5">Viimeinen sisäänkirjautuminen {this.props.loggedUser.last_login}</p>
+		    <p className="card-text mb-5">Viimeinen sisäänkirjautuminen {new Date(this.props.loggedUser.last_login).toLocaleString("fi-FI")}</p>
 
 		    <h4>Omat ilmoitukset</h4>
 		  <table className="table table-bordered mb-5">
