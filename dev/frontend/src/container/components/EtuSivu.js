@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 export default class EtuSivu extends React.Component {
 
@@ -35,14 +36,14 @@ export default class EtuSivu extends React.Component {
 		  </table>
 
 		  {/* <a href="tiedot.html" className="card-link"> */}
-		  <a href="/tiedot" className="card-link">
-		  <img src="img/tiedot.svg" className="img-fluid" alt="[H]" height="20" width="20"/> Omat tiedot</a>
+		  <Link to="/tiedot" className="card-link">
+		  <img src="img/tiedot.svg" className="img-fluid" alt="[H]" height="20" width="20"/> Omat tiedot</Link>
 		  {/* <a href="asetukset.html" className="card-link"> */}
-		  <a href="/asetukset" className="card-link">
-		  <img src="img/asetukset.svg" className="img-fluid" alt="[H]" height="20" width="20"/> Asetukset</a>
+		  {/*<Link to="/asetukset" className="card-link">
+		  <img src="img/asetukset.svg" className="img-fluid" alt="[H]" height="20" width="20"/> Asetukset</Link>*/}
 		 {/* <a href="ilmoituslomake.html" className="card-link"> */}
-		  <a href="/ilmoituslomake" className="card-link">
-		  <img src="img/ilmoitukset.svg" className="img-fluid" alt="[H]" height="20" width="20"/> Tee ilmoitus</a>
+		  <Link to="/ilmoituslomake" className="card-link">
+		  <img src="img/ilmoitukset.svg" className="img-fluid" alt="[H]" height="20" width="20"/> Tee ilmoitus</Link>
 		  </div>
 		</div>
     );

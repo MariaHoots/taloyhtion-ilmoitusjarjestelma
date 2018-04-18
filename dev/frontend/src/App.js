@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import ContainerTop from './container/ContainerTop';
 import ContainerMid from './container/ContainerMid';
 import ContainerContents from './container/ContainerContents';
-import ContainerBottom from './container/ContainerBottom';
 import Login from './container/Login';
 import Crypto from './Crypto';
 
@@ -339,7 +338,7 @@ export default class App extends Component {
 			mode:"cors",
 			headers:{"Content-Type":"application/json",
 					"token":this.state.token},
-			body:JSON.stringify(user)			
+			body:JSON.stringify(user)
 		}
 		fetch("/api/users/",onAddUser).then((response) => {
 			if(response.ok) {
@@ -387,7 +386,7 @@ export default class App extends Component {
 			mode:"cors",
 			headers:{"Content-Type":"application/json",
 					"token":this.state.token},
-			body:JSON.stringify(tempUser)				
+			body:JSON.stringify(tempUser)
 		}
 		console.log(onUpdUser)
 		fetch("/api/users2/"+tempUser.id,onUpdUser).then((response) => {
@@ -484,7 +483,7 @@ export default class App extends Component {
 				response.json().then((data) => {
 					this.setState({
 						notificationsList:data
-						
+
 					});
 					//console.log(this.notificationsList);
 				})
@@ -503,7 +502,7 @@ export default class App extends Component {
 			mode:"cors",
 			headers:{"Content-Type":"application/json",
 					"token":this.state.token},
-			body:JSON.stringify(notification)			
+			body:JSON.stringify(notification)
 		}
 		fetch("/api/notifications/",onAddNotification).then((response) => {
 			if(response.ok) {
@@ -591,7 +590,7 @@ export default class App extends Component {
 					else if (data.token2 === cr.returnHash(data.token + "3" + this.state.salt)){
 						usergroup = 3;
 					}
-				
+
 					//let userTemp = Object.keys(data.user).map(function (i) {
 					//	return data.user[i];
 					 // });
@@ -680,7 +679,7 @@ export default class App extends Component {
 									   updateNotificationStatus={this.updateNotificationStatus}
 									   updateUser={this.updateUser}
 									   updateUserByAdmin={this.updateUserByAdmin}
-								
+
 									   onLogin={this.onLogin}
 									   onLogout={this.onLogout}
 
@@ -692,13 +691,12 @@ export default class App extends Component {
 									   loggedUser={this.state.loggedUser}
 
 									   sortSettings={this.state.sortSettings}
-							
+
 									   isLogged={this.state.isLogged}
 									   userGroup={this.state.userGroup}
 									   token={this.state.token}
 										/>
 					}
-					<ContainerBottom/>
 				</div>
 			</div>
 		);
