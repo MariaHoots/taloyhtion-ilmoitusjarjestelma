@@ -217,8 +217,8 @@ tijRouter.get("/users/:id", function(req,res) {
     }).catch(e => console.error(e.stack));
 });
 
-// users - add (insert) one
-tijRouter.put("/users", function(req,res){
+// users - add (insert) one  = POST-operaatio
+tijRouter.post("/users", function(req,res){
     let addUser = tijUser;
     addUser = {
         id_flat:req.body.id_flat,
@@ -248,8 +248,8 @@ tijRouter.put("/users", function(req,res){
 });
 
 
-// users - update one from admin
-tijRouter.post("/users2/:id", function(req,res){
+// users - update one from admin   = PUT-operaatio
+tijRouter.put("/users2/:id", function(req,res){
     let putId = parseInt(req.params.id);
     let putUser = tijUser;
     console.log(JSON.stringify(req.body)+"\n\n")
@@ -284,7 +284,7 @@ tijRouter.post("/users2/:id", function(req,res){
 });
 
 // users - update one from omat tiedot
-tijRouter.post("/users/:id", function(req,res){
+tijRouter.put("/users/:id", function(req,res){
     let putId = parseInt(req.params.id);
     let putUser = tijUser;
     putUser = {
@@ -485,8 +485,8 @@ tijRouter.get("/notifications/:id", function(req,res) {
     }).catch(e => console.error(e.stack));
 });
 
-// notifications - add (insert) one
-tijRouter.put("/notifications", function(req,res){
+// notifications - add (insert) one  = POST
+tijRouter.post("/notifications", function(req,res){
     let addNtf = tijNotification;
     addNtf = {
         id_user:req.body.id_user,
@@ -517,8 +517,8 @@ tijRouter.put("/notifications", function(req,res){
     }).catch(e => console.error(e.stack));
 });
 
-// notifications - update one
-tijRouter.post("/notifications/:id", function(req,res){
+// notifications - update one  = PUT
+tijRouter.put("/notifications/:id", function(req,res){
     let putId = parseInt(req.params.id);
     let putNtf = tijNotification;
     putNtf = {
@@ -551,7 +551,7 @@ tijRouter.post("/notifications/:id", function(req,res){
 });
 
 // notifications - update notification status
-tijRouter.post("/notificationstatus/:id/:status", function(req,res){
+tijRouter.put("/notificationstatus/:id/:status", function(req,res){
     let putId = parseInt(req.params.id);
     let putStatus = parseInt(req.params.status);
 
