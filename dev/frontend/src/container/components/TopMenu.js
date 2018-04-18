@@ -38,12 +38,12 @@ export default class TopMenu extends React.Component {
 			//user is not logged in
 			rightPart =
 			<ul className="navbar-nav ml-auto">
-				<li className="nav-item"><a className="nav-link" href="/login"> Kirjaudu sisään</a></li>
+				<li className="nav-item"><Link className="nav-link" to="/login"> Kirjaudu sisään</Link></li>
 			</ul>
 		} else {
 			rightPart =
 			<ul className="navbar-nav">
-				<li className="nav-item"><a className="nav-link" href="/tiedot">{this.props.loggedUser.first_name} {this.props.loggedUser.last_name}</a></li>
+				<li className="nav-item"><Link className="nav-link" to="/tiedot">{this.props.loggedUser.first_name} {this.props.loggedUser.last_name}</Link></li>
 				<li className="nav-item"><Link className="nav-link" to="/"
 							onClick={this.props.onLogout}> Kirjaudu ulos</Link>
 				</li>
