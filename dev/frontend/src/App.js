@@ -332,10 +332,10 @@ export default class App extends Component {
 		});
 	}
 
-	// add one user
+	// add one user  = POST
 	addUser = (user) => {
 		let onAddUser = {
-			method:"PUT",
+			method:"POST",
 			mode:"cors",
 			headers:{"Content-Type":"application/json",
 					"token":this.state.token},
@@ -355,11 +355,11 @@ export default class App extends Component {
 		});
 	}
 
-	// update a user
+	// update a user  = PUT
 	updateUser = (user) => {
 		let tempUser = user;
 		let onUpdUser = {
-			method:"POST",
+			method:"PUT",
 			mode:"cors",
 			headers:{"Content-Type":"application/json",
 					"token":this.state.token},
@@ -379,29 +379,29 @@ export default class App extends Component {
 		});
 	}
 
-		// update a user by admin
-		updateUserByAdmin = (user) => {
-			let tempUser = user;
-			let onUpdUser = {
-				method:"POST",
-				mode:"cors",
-				headers:{"Content-Type":"application/json",
-						"token":this.state.token},
-				body:JSON.stringify(tempUser)				
-			}
-			console.log(onUpdUser)
-			fetch("/api/users2/"+tempUser.id,onUpdUser).then((response) => {
-				if(response.ok) {
-					response.json().then((data) => {
-							this.getUsers();
-					})
-				} else {
-					console.log(response.statusText);
-				}
-			}).catch((error) => {
-				console.log(error);
-			});
+	// update a user by admin  (HUOM: ero URIssa: /users2/)
+	updateUserByAdmin = (user) => {
+		let tempUser = user;
+		let onUpdUser = {
+			method:"PUT",
+			mode:"cors",
+			headers:{"Content-Type":"application/json",
+					"token":this.state.token},
+			body:JSON.stringify(tempUser)				
 		}
+		console.log(onUpdUser)
+		fetch("/api/users2/"+tempUser.id,onUpdUser).then((response) => {
+			if(response.ok) {
+				response.json().then((data) => {
+						this.getUsers();
+				})
+			} else {
+				console.log(response.statusText);
+			}
+		}).catch((error) => {
+			console.log(error);
+		});
+	}
 
 	// get all notifications
 	getNotifications = () => {
@@ -496,10 +496,10 @@ export default class App extends Component {
 		});
 	}
 
-	// add one notification
+	// add one notification  = POST
 	addNotification = (notification) => {
 		let onAddNotification = {
-			method:"PUT",
+			method:"POST",
 			mode:"cors",
 			headers:{"Content-Type":"application/json",
 					"token":this.state.token},
@@ -519,10 +519,10 @@ export default class App extends Component {
 		});
 	}
 
-	// update a notification
+	// update a notification  = PUT
 	updateNotification = (notification) => {
 		let onUpdNotification = {
-			method:"POST",
+			method:"PUT",
 			mode:"cors",
 			headers:{"Content-Type":"application/json",
 					"token":this.state.token},
@@ -545,7 +545,7 @@ export default class App extends Component {
 	// update a notification status
 	updateNotificationStatus = (id,status) => {
 		let onUpdNotification = {
-			method:"POST",
+			method:"PUT",
 			mode:"cors",
 			headers:{"Content-Type":"application/json",
 					"token":this.state.token}
