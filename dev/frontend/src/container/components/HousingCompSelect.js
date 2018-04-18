@@ -8,14 +8,14 @@ export default class HousingCompSelect extends React.Component {
 		tempView = <option>Ei taloyhtiöitä</option>
 	} else {
 		tempView = this.props.housingCompList.map((list) => 
-		<option value={list.id}>{list.name}</option>
+		<option value={list.id} key={list.id}>{list.name}</option>
 		)
 	}
 
     return (
 			<div className="form-group">
 				<label htmlFor="taloyhtio">Taloyhtiö</label>
-				<select class="form-control" id="talo">
+				<select className="form-control" id="talo" value={this.props.hcid}>
 					{tempView}
 				</select>
 			</div>	

@@ -24,7 +24,10 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 			stairway:"",
 			flat_number:"",
 			h_zip:"",
-			h_city:""
+			h_city:"",
+			fid:"",
+			hid:"",
+			hcid:""
 		}
 	}
 	componentDidMount() {
@@ -49,7 +52,10 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 						stairway:this.props.userList[i].stairway,
 						flat_number:this.props.userList[i].flat_number,
 						h_zip:this.props.userList[i].h_zip,
-						h_city:this.props.userList[i].h_city
+						h_city:this.props.userList[i].h_city,
+						fid:this.props.userList[i].fid,
+						hid:this.props.userList[i].hid,
+						hcid:this.props.userList[i].hcid
 				})
 			}
 		}
@@ -57,7 +63,7 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 
 	getNotificationsByUidStatus = (event) => {
 		this.props.getNotificationsByUidStatus(event.target.name,1);
-		this.setCurrentPersonState(event.target.name)	
+		this.setCurrentPersonState(event.target.name);
 	}
 
 	onChange = (event) => {
@@ -233,8 +239,8 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 												</div>
 												
 												<HousingCompSelect housingCompList={this.props.housingCompList}
-																	setCurrentHousingCompany={this.props.setCurrentHousingCompany}/>
-												
+																	setCurrentHousingCompany={this.props.setCurrentHousingCompany}
+																	hcid={this.state.hcid}/>
 												<HouseSelect/>
 												
 												<FlatSelect/>
