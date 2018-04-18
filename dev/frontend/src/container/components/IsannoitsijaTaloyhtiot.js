@@ -15,10 +15,11 @@ export default class EtuSivu extends React.Component {
 
 	componentDidMount() {
 		this.props.getHousingCompanies();
+    this.props.setPageTittle("Taloyhtiöt");
 	}
 
 	onChange = (event) => {
-		
+
 		if (event.target.value.length > 0)
 			{
 			if(event.target.name === "yhtiotHaeYhtionNimella") {
@@ -37,7 +38,7 @@ export default class EtuSivu extends React.Component {
 	sortEvent = (event) => {
 		let temphousingCompList = this.props.housingCompList;
 		let sorter = new Sorter();
-		
+
 			if (event.target.name === "sortaddressdown"){
 				temphousingCompList = sorter.sortArrayByField(temphousingCompList,"address",1);
 				this.props.setCompanyPropsState(temphousingCompList);
@@ -49,17 +50,17 @@ export default class EtuSivu extends React.Component {
 			if (event.target.name === "sortnamedown"){
 				temphousingCompList = sorter.sortArrayByField(temphousingCompList,"name",1);
 				this.props.setCompanyPropsState(temphousingCompList);
-		
+
 			}
 			if (event.target.name === "sortnameup"){
 				temphousingCompList = sorter.sortArrayByField(temphousingCompList,"name",-1);
 				this.props.setCompanyPropsState(temphousingCompList);
 			}
 			if (event.target.name === "newnotifs"){
-				
+
 				if (this.state.newNotifsOnTop === 1)
 				{
-					
+
 					this.setState({
 						newNotifsOnTop:-1
 					});
@@ -69,15 +70,15 @@ export default class EtuSivu extends React.Component {
 				}
 				if (this.state.newNotifsOnTop === -1)
 				{
-				
+
 					this.setState({
 						newNotifsOnTop:1
 					});
 					this.props.getHousingCompanies();
 				}
-				
+
 			}
-			
+
 
 	}
 
@@ -92,7 +93,7 @@ export default class EtuSivu extends React.Component {
 		}
 		else {
 
-	
+
 
 
 

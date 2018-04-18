@@ -16,9 +16,8 @@ export default class EtuSivu extends React.Component {
 
   componentDidMount() {
     this.props.getNotifications();
+    this.props.setPageTittle("Ilmoitukset");
   }
-
-
 
   render() {
 

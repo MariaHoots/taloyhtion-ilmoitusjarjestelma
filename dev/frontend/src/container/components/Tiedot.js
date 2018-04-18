@@ -2,11 +2,15 @@ import React from 'react';
 
 export default class EtuSivu extends React.Component {
 
+  componentDidMount() {
+    this.props.setPageTittle("Omat tiedot");
+  }
+
  //  Kommentoidut kohdat lisäyksiä. Kommenteissa, koska heittää vielä erroreja ajettaessa.
 
 
  // Konstruktori
- 
+
  /*
 	constructor(props) {
 		super(props);
@@ -18,9 +22,9 @@ export default class EtuSivu extends React.Component {
 			city:"",
 			email:"",
 			passphrase:""
-		}	
-	}	
-*/	
+		}
+	}
+*/
 
 /*
 
@@ -34,7 +38,7 @@ export default class EtuSivu extends React.Component {
 			this.setState({
 				last_name:event.target.value
 			});
-		}	
+		}
 		if(event.target.name === "address") {
 			this.setState({
 				address:event.target.value
@@ -54,15 +58,15 @@ export default class EtuSivu extends React.Component {
 			this.setState({
 				email:event.target.value
 			});
-		}	
+		}
 		if(event.target.name === "passphrase") {
 			this.setState({
 				passphrase:event.target.value
 			});
-		}		
+		}
 	}
-	
-*/	
+
+*/
 
 /*
 		onSubmit = (event) => {
@@ -81,11 +85,11 @@ export default class EtuSivu extends React.Component {
 		}
 		event.preventDefault();
 	}
-		 
+
 */
 
 // JSX alkaa alapuolella
-	
+
   render() {
     return (
 		<div class="card">
@@ -95,22 +99,22 @@ export default class EtuSivu extends React.Component {
 			<div class="form-row">
 				<div class="form-group col-md-3">
 					<label for="formGroupNimi">Nimi</label>
-					{/*<input type="text" 
-						   name="nimi" 
-						   class="form-control" 
+					{/*<input type="text"
+						   name="nimi"
+						   class="form-control"
 						   id="formGroupNimi"
-						   placeholder="Nimi" 
+						   placeholder="Nimi"
 						   value={this.state.nimi}
-						   onChange={this.onChange}/> */}	
+						   onChange={this.onChange}/> */}
 				</div>
 				<div class="form-group col-md-3">
 					<label for="formGroupNimi">Sukunimi</label>
-					{/*  <input type="text" 
+					{/*  <input type="text"
 						   name="sukunimi"
-						   class="form-control" 
-						   id="formGroupNimi" 
+						   class="form-control"
+						   id="formGroupNimi"
 						   placeholder="Sukunimi"
-						   value={this.state.sukunimi} 
+						   value={this.state.sukunimi}
 						   onChange={this.onChange}/> */}
 				</div>
 			</div>
@@ -121,7 +125,7 @@ export default class EtuSivu extends React.Component {
 						   class="form-control"
 						   id="formGroupOsoite"
 						   placeholder="Osoite"
-						   value={this.state.osoite} 
+						   value={this.state.osoite}
 						   onChange={this.onChange}/> */}
 			</div>
 			<div class="form-row">
@@ -129,33 +133,33 @@ export default class EtuSivu extends React.Component {
 					<label for="formGroupPostinumero">Postinumero</label>
 					 {/*<input type="text"
 						   name="postinumero"
-						   class="form-control" 
-						   id="formGroupPostinumero" 
-						   placeholder="Postinumero"						   
+						   class="form-control"
+						   id="formGroupPostinumero"
+						   placeholder="Postinumero"
 						   value={this.state.postinumero}
 						   onChange={this.onChange}/>  */}
 				</div>
 				<div class="form-group col-md-4">
 					<label for="formGroupPostinumero">Postitoimipaikka</label>
-					{/*<input type="text" 
-						   name="postitoimipaikka"	
-						   class="form-control" 
+					{/*<input type="text"
+						   name="postitoimipaikka"
+						   class="form-control"
 						   id="formGroupPostinumero"
 						   placeholder="Postitoimipaikka"
-						   value={this.state.postitoimipaikka} 
+						   value={this.state.postitoimipaikka}
 						   onChange={this.onChange}/> */}
 				</div>
-			</div>	
+			</div>
 			<div class="form-group">
 					<label for="kayttajaInputEmail1">Sähköposti</label>
 					{/* <input type="email"
-						   name="email" 
-						   class="form-control" 
-						   id="kayttajaInputEmail1" aria-describedby="emailHelp" 
+						   name="email"
+						   class="form-control"
+						   id="kayttajaInputEmail1" aria-describedby="emailHelp"
 						   placeholder="Syötä sähköposti"/>
-						   <small id="emailHelp" class="form-text text-muted">Emme tee osoitteellasi mitään laitonta.</small> 
+						   <small id="emailHelp" class="form-text text-muted">Emme tee osoitteellasi mitään laitonta.</small>
 						   value={this.state.email}
-						   onChange={this.onChange}/> */}	
+						   onChange={this.onChange}/> */}
 			</div>
 			<p>Salasanan vaihtaminen</p>
 			<div class="form-group">
@@ -164,9 +168,9 @@ export default class EtuSivu extends React.Component {
 			</div>
 			<div class="form-group">
 				<label for="InputPassword1">Salasana uudestaan</label>
-				<input type="kayttajaInputPassword2" class="form-control" id="kayttajaInputPassword2" placeholder="Salasana uudestaan"/>	
+				<input type="kayttajaInputPassword2" class="form-control" id="kayttajaInputPassword2" placeholder="Salasana uudestaan"/>
 			</div>
-	
+
 			<button type="submit" class="btn btn-primary">Tallenna</button>
 		  </form>
 		  </div>

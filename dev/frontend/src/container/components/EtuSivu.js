@@ -2,6 +2,10 @@ import React from 'react';
 
 export default class EtuSivu extends React.Component {
 
+  componentDidMount() {
+    this.props.setPageTittle("Etusivu");
+  }
+
   render() {
     return (
 		<div className="card">

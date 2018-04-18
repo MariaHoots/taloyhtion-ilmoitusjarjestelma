@@ -41,7 +41,8 @@ export default class ContainerContents extends React.Component
 											  notificationsList={this.props.notificationsList}
 											  getNotificationsNew={this.props.getNotificationsNew}
 											  updateNotificationStatus={this.props.updateNotificationStatus}/>) :
-						(<EtuSivu loggedUser={this.props.loggedUser}/>)
+						(<EtuSivu loggedUser={this.props.loggedUser}
+											setPageTittle={this.props.setPageTittle}/>)
 					}/>
 
 				<Route path="/etusivu"
@@ -51,23 +52,25 @@ export default class ContainerContents extends React.Component
 						}/>
 				<Route path="/ilmoitukset"
 					render={() => this.props.isLogged ?
-						(<Ilmoitukset/>) :
+						(<Ilmoitukset />) :
 						(<Redirect to="/"/>)
 						}/>
 				<Route path="/ilmoituslomake"
 					render={() => this.props.isLogged ?
-						(<Ilmoituslomake loggedUser={this.props.loggedUser}/>) :
+						(<Ilmoituslomake loggedUser={this.props.loggedUser}
+												setPageTittle={this.props.setPageTittle}/>) :
 						(<Redirect to="/"/>)
 						}/>
 				<Route path="/tiedot"
 					render={() => this.props.isLogged ?
-						(<Tiedot/>) :
+						(<Tiedot setPageTittle={this.props.setPageTittle}/>) :
 						(<Redirect to="/"/>)
 						}/>
 				<Route path="/admin_ilmoitukset"
 					render={() => this.props.isLogged ?
 						(<IsannoitsijaIlmoitukset notificationsList={this.props.notificationsList}
-													getNotifications={this.props.getNotifications}/>) :
+													getNotifications={this.props.getNotifications}
+													setPageTittle={this.props.setPageTittle}/>) :
 						(<Redirect to="/"/>)
 						}/>
 				<Route path="/admin_henkilot"
@@ -78,10 +81,10 @@ export default class ContainerContents extends React.Component
 												housesList={this.props.housesList}
 												notificationsList={this.props.notificationsList}
 												housingCompList={this.props.housingCompList}
-							
+
 												updateUser={this.props.updateUser}
 												updateUserByAdmin={this.props.updateUserByAdmin}
-												
+
 												setPageTittle={this.props.setPageTittle}
 
 												setUserPropsState={this.props.setUserPropsState}
@@ -115,7 +118,8 @@ export default class ContainerContents extends React.Component
 												getCompaniesByName={this.props.getCompaniesByName}
 									  			getCompaniesByAddress={this.props.getCompaniesByAddress}
 												setCompanyPropsState={this.props.setCompanyPropsState}
-												setCurrentHousingCompany={this.setCurrentHousingCompany}/>) :
+												setCurrentHousingCompany={this.setCurrentHousingCompany}
+												setPageTittle={this.props.setPageTittle}/>) :
 						(<Redirect to="/"/>)
 						}/>
 

@@ -4,6 +4,7 @@ import IlmoituksetLista from './IlmoituksetLista';
 import IlmoituksetListaKuitatut from './IlmoituksetListaKuitatut';
 
 export default class EtuSivu extends React.Component {
+
   render() {
     return (
 		<div class="card">
@@ -31,14 +32,14 @@ export default class EtuSivu extends React.Component {
           <td><a href="index.html"><img src="img/jarjestysalas.svg" class="img-fluid" alt="[H]" height="20" width="20"/></a></td>
           <td></td>
         </tr>
-		    
-			
-			
+
+
+
 			<IlmoituksetLista/>
-			
-			
-			
-			
+
+
+
+
 		  </tbody>
 		</table>
 
@@ -65,15 +66,15 @@ export default class EtuSivu extends React.Component {
          <td><a href="index.html"><img src="img/jarjestysalas.svg" class="img-fluid" alt="[H]" height="20" width="20"/></a></td>
          <td></td>
        </tr>
-		    
-			
+
+
 			<IlmoituksetListaKuitatut/>
-			
-			
-			
-			
-			
-			
+
+
+
+
+
+
 		  </tbody>
    </table>
 		<a href="index.html">Lisää ilmoituksia...</a>
