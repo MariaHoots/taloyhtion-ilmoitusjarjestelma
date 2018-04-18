@@ -23,7 +23,7 @@ export default class TopMenu extends React.Component {
 
   render() {
 		let brand =
-			<a href="/" className="navbar-brand">TIJ</a>
+			<Link to="/" className="navbar-brand">TIJ</Link>
 
 		let leftPart =
 		<ul className="navbar-nav">

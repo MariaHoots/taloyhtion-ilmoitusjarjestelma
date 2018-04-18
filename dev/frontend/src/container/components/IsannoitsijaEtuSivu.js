@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 import IsannoitsijaEtuSivuLista from './IsannoitsijaEtuSivuLista';
 
@@ -20,21 +21,21 @@ export default class EtuSivu extends React.Component {
 		    <h4>Uusimmat ilmoitukset</h4>
 		  <table className="table table-bordered mb-5">
 		    <thead>
-				
+
 		    </thead>
-		  
+
 				<IsannoitsijaEtuSivuLista notificationsList={this.props.notificationsList}
 																	updateNotificationStatus={this.props.updateNotificationStatus}/>
-		   
+
 		  </table>
 
-		  <a href="/admin_ilmoitukset" className="card-link">
-		  <img src="img/ilmoitukset.svg" className="img-fluid" alt="[H]" height="20" width="20"/> Kaikki ilmoitukset</a>
-		  <a href="/tiedot" className="card-link">
-		  <img src="img/tiedot.svg" className="img-fluid" alt="[H]" height="20" width="20"/> Omat tiedot</a>
-		  <a href="/asetukset" className="card-link">
-		  <img src="img/asetukset.svg" className="img-fluid" alt="[H]" height="20" width="20"/> Asetukset</a>
-		  
+		  <Link to="/admin_ilmoitukset" className="card-link">
+		  <img src="img/ilmoitukset.svg" className="img-fluid" alt="[H]" height="20" width="20"/> Kaikki ilmoitukset</Link>
+		  <Link to="/tiedot" className="card-link">
+		  <img src="img/tiedot.svg" className="img-fluid" alt="[H]" height="20" width="20"/> Omat tiedot</Link>
+		  <Link to="/asetukset" className="card-link">
+		  <img src="img/asetukset.svg" className="img-fluid" alt="[H]" height="20" width="20"/> Asetukset</Link>
+
 		  </div>
 		</div>
     );
