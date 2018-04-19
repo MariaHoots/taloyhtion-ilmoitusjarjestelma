@@ -47,7 +47,7 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 						phone:this.props.userList[i].phone,
 						billing_address:this.props.userList[i].billing_address,
 						zip:this.props.userList[i].zip,
-						city:this.props.userList[i].cityid,
+						city:this.props.userList[i].city,
 						h_address:this.props.userList[i].h_address,
 						stairway:this.props.userList[i].stairway,
 						flat_number:this.props.userList[i].flat_number,
