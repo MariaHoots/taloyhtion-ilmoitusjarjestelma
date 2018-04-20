@@ -2,11 +2,13 @@ let express = require("express");
 let bodyParser = require("body-parser");
 
 let bcrypt = require("bcrypt-nodejs");
-
 let crypto = require('crypto');
 let salt = 'jg#¤gdml5begf%Wgwerbewegewbmwvie4WEGobw';
+
 let tijPg = require("./pgserver");
 
+let tijRouteUser = require("./tijRouteUser");
+let tijRouteNotification = require("./tijRouteNotification");
 let tijRouter = require("./tijRouter");
 let tijRouterManager = require("./tijRouterManager");
 
@@ -31,7 +33,6 @@ app.post("/login", function(req,res){
 
 
     // "testi" = 187d0269d20bb359a9dd71ac44288a8cde5f749832791663d6ce1d6f1c5df81c
-
 
 
     tijPg.query("SELECT *, (SELECT COUNT(*) FROM tij_users WHERE email='"+email+"' AND password='"+password+"') AS found FROM tij_users WHERE email='"+email+"' AND password='"+password+"'")
@@ -87,7 +88,6 @@ app.post("/logout", function(req,res) {
 	return res.status(404).json({"message":"Not found"});
 });
 
-
 function isUserLogged(req,res,next) {
     let token = req.headers.token;
     console.log("token"+token);
@@ -105,10 +105,11 @@ function isUserLogged(req,res,next) {
 app.use("/api",isUserLogged, tijRouter);
 app.use("/apim",isUserLogged, tijRouterManager);
 */
+app.use("/api", tijRouteUser);
+app.use("/api", tijRouteNotification);
 app.use("/api", tijRouter);
 
 app.use("/apim", tijRouterManager);
-
 
 app.listen(3001);
 console.log("Running on port 3001");
