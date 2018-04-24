@@ -594,7 +594,6 @@ export default class App extends Component {
 					"token":this.state.token},
 					body:JSON.stringify(tempComp)
 		}
-		alert(tempComp.id)
 		fetch("/apim/housingcomp/"+comp.id,onUpdateHc).then((response) => {
 			if(response.ok) {
 				console.log("Housing company updated.");
