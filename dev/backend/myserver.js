@@ -52,6 +52,7 @@ app.post("/login", function(req,res){
         token2.update(token + pgres.rows[0].role + salt);
 
         tempUser = {
+            "id": pgres.rows[0].id,
             "first_name": pgres.rows[0].first_name,
             "last_name": pgres.rows[0].last_name,
             "last_login": pgres.rows[0].last_login,
