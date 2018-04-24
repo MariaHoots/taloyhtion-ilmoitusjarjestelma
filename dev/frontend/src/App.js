@@ -179,7 +179,7 @@ export default class App extends Component {
 			headers:{"Content-Type":"application/json",
 					"token":this.state.token}
 		}
-		fetch("/api/users"+id,onGetUser).then((response) => {
+		fetch("/api/users/"+id,onGetUser).then((response) => {
 			if(response.ok) {
 				response.json().then((data) => {
 					this.setState({
