@@ -120,7 +120,8 @@ export default class ContainerContents extends React.Component
 									  			getCompaniesByAddress={this.props.getCompaniesByAddress}
 												setCompanyPropsState={this.props.setCompanyPropsState}
 												setCurrentHousingCompany={this.setCurrentHousingCompany}
-												setPageTittle={this.props.setPageTittle}/>) :
+												setPageTittle={this.props.setPageTittle}
+												updateHousingCompany={this.props.updateHousingCompany}/>) :
 						(<Redirect to="/"/>)
 						}/>
 

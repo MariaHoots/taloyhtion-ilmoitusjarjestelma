@@ -318,6 +318,7 @@ tijRouterManager.get("/housingcomp", function(req,res) {
 
 // housing_comp - update one
 tijRouterManager.put("/housingcomp/:id", function(req,res){
+    console.log("testi")
     let putId = parseInt(req.params.id);
     let putHC = tijHousingcompany;
     putHC = {

@@ -584,6 +584,28 @@ export default class App extends Component {
 			console.log(error);
 		});
 	}
+	// update housing company by id
+	updateHousingCompany = (comp) => {
+		let tempComp = comp;
+		let onUpdateHc = {
+			method:"PUT",
+			mode:"cors",
+			headers:{"Content-Type":"application/json",
+					"token":this.state.token},
+					body:JSON.stringify(tempComp)
+		}
+		alert(tempComp.id)
+		fetch("/apim/housingcomp/"+comp.id,onUpdateHc).then((response) => {
+			if(response.ok) {
+				console.log("Housing company updated.");
+				this.getHousingCompanies();
+			} else {
+				console.log(response.statusText);
+			}
+		}).catch((error) => {
+			console.log(error);
+		});
+	}
 
 	onLogin = (user) => {
 		let usergroup=0;
@@ -704,6 +726,7 @@ export default class App extends Component {
 									   updateNotificationStatus={this.updateNotificationStatus}
 									   updateUser={this.updateUser}
 									   updateUserByAdmin={this.updateUserByAdmin}
+									   updateHousingCompany={this.updateHousingCompany}
 
 									   onLogin={this.onLogin}
 									   onLogout={this.onLogout}

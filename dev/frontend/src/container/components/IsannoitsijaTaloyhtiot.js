@@ -122,6 +122,7 @@ export default class EtuSivu extends React.Component {
 					</thead>
 
 					<IsannoitsijaTaloyhtiotLista housingCompList={this.props.housingCompList}
+												updateHousingCompany={this.props.updateHousingCompany}
 												setCurrentHousingCompany={this.props.setCurrentHousingCompany}/>
 
 				  </table>
