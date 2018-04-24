@@ -43,7 +43,8 @@ export default class ContainerContents extends React.Component
 											  updateNotificationStatus={this.props.updateNotificationStatus}/>) :
 						(<EtuSivu loggedUser={this.props.loggedUser}
 											setPageTittle={this.props.setPageTittle}
-											getNotificationsByUid={this.props.getNotificationsByUid}/>)
+											getNotificationsByUid={this.props.getNotificationsByUid}
+											notificationsList={this.props.notificationsList}/>)
 					}/>
 
 				<Route path="/etusivu"

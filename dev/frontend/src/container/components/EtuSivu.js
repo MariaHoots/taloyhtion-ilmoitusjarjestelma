@@ -11,14 +11,12 @@ export default class EtuSivu extends React.Component {
 
   render() {
 
-    console.log("FFF:" + this.props.notificationsList);
-
     let listView = [];
     if (this.props.notificationsList.length === 0) {
 			listView = <tr><td colSpan="4"><p>Ei aktiivisia ilmoituksia. Haluatko <Link to="/ilmoituslomake">luoda uuden ilmoituksen</Link>?</p></td></tr>
 		} else {
 
-			listView = this.props.getNotificationsByUid.map((notification) =>
+			listView = this.props.notificationsList.map((notification) =>
 				<tr key={notification.id}>
 
 					<td>
@@ -98,12 +96,12 @@ export default class EtuSivu extends React.Component {
   		      </tr>
   		    </thead>
   		    <tbody>
-  		      /*<tr>
+  		      {/*<tr>
               <td><a href="index.html">Kissa katolla apua</a></td>
               <td>15.2.2018 09:15</td>
               <td>Muu palaute</td>
               <td><small>Vastaanotettu 15.2.2018 09:20</small></td>
-  		      </tr>*/
+  		      </tr>*/}
             {listView}
   		    </tbody>
   		  </table>
