@@ -76,7 +76,7 @@ export default class EtuSivu extends React.Component
 											</table>
 
 											<form>
-												<label for="statusChange">Muuta tilaa:</label>
+												<label htmlFor="statusChange">Muuta tilaa:</label>
 												<a href="/"><img src="img/vastaanotettu.svg" className="img-fluid" alt="[H]" width="20" height="20" /></a>
 												<a href="/"><img src="img/tyonalla.svg" className="img-fluid" alt="[H]" width="20" height="20" /></a>
 												<a href="/"><img src="img/keskeytynyt.svg" className="img-fluid" alt="[H]" width="20" height="20" /></a>

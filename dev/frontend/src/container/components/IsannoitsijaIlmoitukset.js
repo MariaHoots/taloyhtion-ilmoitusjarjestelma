@@ -114,7 +114,7 @@ export default class EtuSivu extends React.Component {
        </tr>
       </thead>
 
-		   <IsannoitsijaIlmoituksetListaKuitatut checkedNotifications={checkedNotifications}/>
+		   <IsannoitsijaIlmoituksetListaKuitatut checkedNotifications={checkedNotifications} />
 
    </table>
 		<a href="index.html">Lisää ilmoituksia...</a>

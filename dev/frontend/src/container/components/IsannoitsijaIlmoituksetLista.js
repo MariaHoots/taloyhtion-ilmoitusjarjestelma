@@ -6,7 +6,6 @@ export default class EtuSivu extends React.Component{
 
 	render() {
 
-		console.log(this.props.activeNotifications[0]);
 		let listView = [];
 
 		if (this.props.activeNotifications.length === 0) {
@@ -72,13 +71,13 @@ export default class EtuSivu extends React.Component{
 											</table>
 
 											<form>
-												<label for="statusChange">Muuta tilaa:</label>
+												<label htmlFor="statusChange">Muuta tilaa:</label>
 												<a href="/"><img src="img/vastaanotettu.svg" className="img-fluid" alt="[H]" width="20" height="20" /></a>
 												<a href="/"><img src="img/tyonalla.svg" className="img-fluid" alt="[H]" width="20" height="20" /></a>
 												<a href="/"><img src="img/keskeytynyt.svg" className="img-fluid" alt="[H]" width="20" height="20" /></a>
 												<a href="/"><img src="img/valmis.svg" className="img-fluid border border-dark rounded bg-success" alt="[H]" width="20" height="20" /></a>
 												<div className="form-row">
-													<label for="exampleFormControlTextarea1">Kommentti</label>
+													<label htmlFor="exampleFormControlTextarea1">Kommentti</label>
 													<textarea className="form-control" id="isannoijaIlmoituksetKommenttiTextarea" rows="3">{notification.checkout_message}</textarea>
 												</div>
 												</form>
