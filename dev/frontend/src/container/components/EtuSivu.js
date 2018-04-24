@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {getIlmoitustyyppiById} from '../../Helper.js';
+import {notificationStatusText} from '../../Helper.js';
 
 export default class EtuSivu extends React.Component {
 
@@ -11,59 +12,59 @@ export default class EtuSivu extends React.Component {
 
   render() {
 
-    console.log("FFF:" + this.props.notificationsList);
-
     let listView = [];
     if (this.props.notificationsList.length === 0) {
+      {/* no notifications for the user */}
 			listView = <tr><td colSpan="4"><p>Ei aktiivisia ilmoituksia. Haluatko <Link to="/ilmoituslomake">luoda uuden ilmoituksen</Link>?</p></td></tr>
 		} else {
 
-			listView = this.props.getNotificationsByUid.map((notification) =>
+			listView = this.props.notificationsList.map((notification) =>
 				<tr key={notification.id}>
 
 					<td>
 						<a href="/" data-toggle="modal" data-target={`#${notification.id}`}>{notification.title}</a>
 
-							<div className="modal fade" id={`${notification.id}`} tabIndex="-1" role="dialog" aria-labelledby={`${notification.name}`} aria-hidden="true">
-							  <div className="modal-dialog" role="document" style={{maxWidth:'800px'}}>
-							    <div className="modal-content">
-							      <div className="modal-header">
-							        <h5 className="modal-title" id={`${notification.id}`}>{notification.title}</h5>
-							        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-							          <span aria-hidden="true">&times;</span>
-							        </button>
-							      </div>
-							      <div className="modal-body">
-
-											<table className="table table-bordered">
-												<tbody>
-													<tr>
-														<th>Ilmoitustyyppi</th>
-														<td colSpan="3">{getIlmoitustyyppiById(notification.notif_type)}</td>
-													</tr>
-													<tr>
-														<th colSpan="4">Kuvaus</th>
-													</tr>
-													<tr>
-														<td colSpan="4">{notification.message}</td>
-													</tr>
-                          <tr>
-														<th colSpan="4">Palaute</th>
-													</tr>
-                          <tr>
-														<td colSpan="4">{notification.checkout_message}</td>
-													</tr>
-												</tbody>
-											</table>
-							      </div>
-							      <div className="modal-footer">
-							        <button type="button" className="btn btn-secondary" data-dismiss="modal">Sulje</button>
-							      </div>
-							    </div>
-							  </div>
-							</div>
+            {/* Modal window for details */}
+						<div className="modal fade" id={`${notification.id}`} tabIndex="-1" role="dialog" aria-labelledby={`${notification.name}`} aria-hidden="true">
+						  <div className="modal-dialog" role="document" style={{maxWidth:'800px'}}>
+						    <div className="modal-content">
+						      <div className="modal-header">
+						        <h5 className="modal-title" id={`${notification.id}`}>{notification.title}</h5>
+						        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+						          <span aria-hidden="true">&times;</span>
+						        </button>
+						      </div>
+						      <div className="modal-body">
+										<table className="table table-bordered">
+											<tbody>
+												<tr>
+													<th>Ilmoitustyyppi</th>
+													<td colSpan="3">{getIlmoitustyyppiById(notification.notif_type)}</td>
+												</tr>
+												<tr>
+													<th colSpan="4">Kuvaus</th>
+												</tr>
+												<tr>
+													<td colSpan="4">{notification.message}</td>
+												</tr>
+                        <tr>
+													<th colSpan="4">Palaute</th>
+												</tr>
+                        <tr>
+													<td colSpan="4">{notification.checkout_message}</td>
+												</tr>
+											</tbody>
+										</table>
+						      </div>
+						      <div className="modal-footer">
+						        <button type="button" className="btn btn-secondary" data-dismiss="modal">Sulje</button>
+						      </div>
+						    </div>
+						  </div>
+						</div>
 
 					</td>
+
 					<td>
             <small>
             {new Date(notification.sent_date).toLocaleString("fi-FI")}
@@ -72,7 +73,7 @@ export default class EtuSivu extends React.Component {
 					<td>{getIlmoitustyyppiById(notification.notif_type)}</td>
 
 					<td>
-            {notification.status}
+            {notificationStatusText(notification.status)}
           </td>
 
 				</tr>
@@ -94,16 +95,10 @@ export default class EtuSivu extends React.Component {
               <th>Ilmoitus</th>
               <th>Lähetetty</th>
               <th>Tyyppi</th>
-              <th>Kuittaus</th>
+              <th>Status</th>
   		      </tr>
   		    </thead>
   		    <tbody>
-  		      /*<tr>
-              <td><a href="index.html">Kissa katolla apua</a></td>
-              <td>15.2.2018 09:15</td>
-              <td>Muu palaute</td>
-              <td><small>Vastaanotettu 15.2.2018 09:20</small></td>
-  		      </tr>*/
             {listView}
   		    </tbody>
   		  </table>
