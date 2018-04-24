@@ -106,7 +106,7 @@ tijRouter.get("/housesbycompany/:id", function(req,res) {
         {
             house = {
                 id:pgres.rows[i].id,
-                id_housing_com:pgres.rows[i].id_housing_com, 	// pitäiskö olla ...housing_comp?
+                id_housing_comp:pgres.rows[i].id_housing_comp, 
                 address:pgres.rows[i].address,
                 zip:pgres.rows[i].zip
             };
