@@ -175,7 +175,8 @@ tijRouteNotification.get("/notifications/:uid", function(req,res) {
     let notifications = [];
     let notification = tijNotification;
 
-    tijPg.query('SELECT * FROM tij_notifications WHERE id_user='+uId+' AND status>0')
+    tijPg.query('SELECT * FROM tij_notifications ' +
+				'WHERE id_user='+uId+' AND status>0 ORDER BY sent_date DESC')
     .then(pgres => {
         queryContents = pgres.rows;
         for (let i=0;i<pgres.rows.length;i++)
