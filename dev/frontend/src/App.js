@@ -686,6 +686,7 @@ export default class App extends Component {
 									   getNotifications={this.getNotifications}
 									   getNotificationsNew={this.getNotificationsNew}
 									   getNotificationsByUidStatus={this.getNotificationsByUidStatus}
+									   getNotificationsByUid={this.getNotificationsByUid}
 									   getUsers={this.getUsers}
 									   getHousingCompanies={this.getHousingCompanies}
 									   getUsersByName={this.getUsersByName}
