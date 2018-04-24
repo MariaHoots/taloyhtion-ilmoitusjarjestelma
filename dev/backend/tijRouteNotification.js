@@ -110,7 +110,7 @@ tijRouteNotification.get("/notifications", function(req,res) {
     }).catch(e => console.error(e.stack));
 });
 
-// notifications - get 5 notifications with status 0 
+// notifications - get 5 notifications with status 1 
 tijRouteNotification.get("/notificationsnew", function(req,res) {
     let notifications = [];
     let notification = tijNotification;
@@ -122,7 +122,7 @@ tijRouteNotification.get("/notificationsnew", function(req,res) {
 					"tij_housing_comp.city AS hc_city,tij_housing_comp.business_id " +
 				"FROM tij_notifications INNER JOIN tij_users ON (tij_notifications.id_user = tij_users.id) " +
 					"INNER JOIN tij_housing_comp ON (tij_notifications.id_housing_c = tij_housing_comp.id) " + 
-				"WHERE status=0 ORDER BY sent_date ASC LIMIT 5")
+				"WHERE status=1 ORDER BY sent_date ASC LIMIT 5")
     .then(pgres => {
         queryContents = pgres.rows;
         for (let i=0;i<pgres.rows.length;i++)
@@ -168,7 +168,39 @@ tijRouteNotification.get("/notificationsnew", function(req,res) {
 
     }).catch(e => console.error(e.stack));
 });
+// notifications - get all by user-id
+tijRouteNotification.get("/notifications/:uid", function(req,res) {
+    let uId = parseInt(req.params.uid);
+//  let status = parseInt(req.params.stat);
+    let notifications = [];
+    let notification = tijNotification;
 
+    tijPg.query('SELECT * FROM tij_notifications WHERE id_user='+uId+' AND status>0')
+    .then(pgres => {
+        queryContents = pgres.rows;
+        for (let i=0;i<pgres.rows.length;i++)
+        {
+            notification = {
+                id:pgres.rows[i].id,
+                id_user:pgres.rows[i].id_user,
+                id_housing_comp:pgres.rows[i].id_housing_comp,
+                id_checkout:pgres.rows[i].id_checkout,
+                read_id:pgres.rows[i].read_id,
+                sent_date:pgres.rows[i].sent_date,
+                read_date:pgres.rows[i].read_date,
+                title:pgres.rows[i].title,
+                message:pgres.rows[i].message,
+                notif_type:pgres.rows[i].notif_type,
+                checkout:pgres.rows[i].checkout,
+                checkout_message:pgres.rows[i].checkout_message,
+                status:pgres.rows[i].status
+            };
+            notifications.push(notification);
+        }
+        return res.status(200).json(notifications);
+
+    }).catch(e => console.error(e.stack));
+});
 // notifications - get one by id
 tijRouteNotification.get("/notifications/:id", function(req,res) {
     let notification = tijNotification;
