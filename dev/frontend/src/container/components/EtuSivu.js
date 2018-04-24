@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {getIlmoitustyyppiById} from '../../Helper.js';
+import {notificationStatusText} from '../../Helper.js';
 
 export default class EtuSivu extends React.Component {
 
@@ -62,6 +63,7 @@ export default class EtuSivu extends React.Component {
 							</div>
 
 					</td>
+
 					<td>
             <small>
             {new Date(notification.sent_date).toLocaleString("fi-FI")}
@@ -70,7 +72,7 @@ export default class EtuSivu extends React.Component {
 					<td>{getIlmoitustyyppiById(notification.notif_type)}</td>
 
 					<td>
-            {notification.status}
+            {notificationStatusText(notification.status)}
           </td>
 
 				</tr>
@@ -92,7 +94,7 @@ export default class EtuSivu extends React.Component {
               <th>Ilmoitus</th>
               <th>Lähetetty</th>
               <th>Tyyppi</th>
-              <th>Kuittaus</th>
+              <th>Status</th>
   		      </tr>
   		    </thead>
   		    <tbody>

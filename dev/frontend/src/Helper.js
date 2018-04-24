@@ -39,3 +39,28 @@ export function getIlmoitustyyppiById(id) {
     }
     return type;
 }
+
+export function notificationStatusText(status) {
+  //hardcoded status tekstit
+    let text;
+    switch (status) {
+      case 1:
+          text = "lukematon";
+        break;
+      case 2:
+          text = "luettu";
+        break;
+      case 3:
+          text = "työn alla";
+        break;
+      case 4:
+          text = "odotustilassa";
+        break;
+      case 5:
+          text = "valmis";
+        break;
+      default:
+
+    }
+    return text;
+}
