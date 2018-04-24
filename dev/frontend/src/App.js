@@ -470,7 +470,7 @@ export default class App extends Component {
 		});
 	}
 
-	// get notifications of one user by status
+	// get notifications of one user by status (manager)
 	getNotificationsByUidStatus = (uid,status) => {
 		let onGetNotificationList = {
 			method:"GET",
@@ -495,6 +495,30 @@ export default class App extends Component {
 		});
 	}
 
+	// get active notifications of one user (resident)
+	getNotificationsByUid = (uid) => {
+		let onGetNotificationList = {
+			method:"GET",
+			mode:"cors",
+			headers:{"Content-Type":"application/json",
+					"token":this.state.token}
+		}
+		fetch("/api/notifications/"+uid,onGetNotificationList).then((response) => {
+			if(response.ok) {
+				response.json().then((data) => {
+					this.setState({
+						notificationsList:data
+
+					});
+					//console.log(this.notificationsList);
+				})
+			} else {
+				console.log(response.statusText);
+			}
+		}).catch((error) => {
+			console.log(error);
+		});
+	}
 	// add one notification  = POST
 	addNotification = (notification) => {
 		let onAddNotification = {
@@ -662,6 +686,7 @@ export default class App extends Component {
 									   getNotifications={this.getNotifications}
 									   getNotificationsNew={this.getNotificationsNew}
 									   getNotificationsByUidStatus={this.getNotificationsByUidStatus}
+									   getNotificationsByUid={this.getNotificationsByUid}
 									   getUsers={this.getUsers}
 									   getHousingCompanies={this.getHousingCompanies}
 									   getUsersByName={this.getUsersByName}
