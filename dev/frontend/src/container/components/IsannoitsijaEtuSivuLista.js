@@ -5,16 +5,16 @@ export default class EtuSivu extends React.Component {
 
 	changeStatus = (event) =>{
 		if (event.target.name === "received"){
-			this.props.updateNotificationStatus(event.target.id,1);
-		}
-		if (event.target.name === "beingworked"){
 			this.props.updateNotificationStatus(event.target.id,2);
 		}
-		if (event.target.name === "cancelled"){
+		if (event.target.name === "beingworked"){
 			this.props.updateNotificationStatus(event.target.id,3);
 		}
-		if (event.target.name === "done"){
+		if (event.target.name === "cancelled"){
 			this.props.updateNotificationStatus(event.target.id,4);
+		}
+		if (event.target.name === "done"){
+			this.props.updateNotificationStatus(event.target.id,5);
 		}
 
 	
