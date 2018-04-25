@@ -14,7 +14,6 @@ export default class EtuSivu extends React.Component{
 
 			listView = this.props.activeNotifications.map((notification) =>
 				<tr key={notification.id}>
-
 					<td>
 						<a href="/" data-toggle="modal" data-target={`#${notification.id}`}>{notification.title}</a>
 
@@ -72,10 +71,34 @@ export default class EtuSivu extends React.Component{
 
 											<form>
 												<label htmlFor="statusChange">Muuta tilaa:</label>
-												<a href="/"><img src="img/vastaanotettu.svg" className="img-fluid" alt="[H]" width="20" height="20" /></a>
-												<a href="/"><img src="img/tyonalla.svg" className="img-fluid" alt="[H]" width="20" height="20" /></a>
-												<a href="/"><img src="img/keskeytynyt.svg" className="img-fluid" alt="[H]" width="20" height="20" /></a>
-												<a href="/"><img src="img/valmis.svg" className="img-fluid border border-dark rounded bg-success" alt="[H]" width="20" height="20" /></a>
+												<a href="index.html">
+							{(notification.status === 1) ? (
+									<img src="img/vastaanotettu.svg" className="img-fluid border border-dark rounded bg-success" alt="[H]" height="20" width="20"/>
+								) : (
+									<img src="img/vastaanotettu.svg" className="img-fluid" alt="[H]" height="20" width="20"/>
+							)}
+							</a>
+						<a href="index.html">
+						{(notification.status === 2) ? (
+									<img src="img/tyonalla.svg" className="img-fluid border border-dark rounded bg-success" alt="[H]" height="20" width="20"/>
+								) : (
+									<img src="img/tyonalla.svg" className="img-fluid" alt="[H]" height="20" width="20"/>
+							)}
+							</a>
+						<a href="index.html">
+						{(notification.status === 3) ? (
+									<img src="img/keskeytynyt.svg" className="img-fluid border border-dark rounded bg-success" alt="[H]" height="20" width="20"/>
+								) : (
+									<img src="img/keskeytynyt.svg" className="img-fluid " alt="[H]" height="20" width="20"/>
+							)}
+							</a>
+						<a href="index.html">
+						{(notification.status === 4) ? (
+									<img src="img/valmis.svg" className="img-fluid border border-dark rounded bg-success" alt="[H]" height="20" width="20"/>
+								) : (
+									<img src="img/valmis.svg" className="img-fluid" alt="[H]" height="20" width="20"/>
+							)}
+							</a>
 												<div className="form-row">
 													<label htmlFor="exampleFormControlTextarea1">Kommentti</label>
 													<textarea className="form-control" id="isannoijaIlmoituksetKommenttiTextarea" rows="3">{notification.checkout_message}</textarea>
@@ -101,7 +124,34 @@ export default class EtuSivu extends React.Component{
 					<td colSpan="3">{getIlmoitustyyppiById(notification.notif_type)}</td>
 
 					<td>
-						<a href="index.html"><img src="img/vastaanotettu.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a> <a href="index.html"><img src="img/tyonalla.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a> <a href="index.html"><img src="img/keskeytynyt.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a> <a href="index.html"><img src="img/valmis.svg" className="img-fluid border border-dark rounded bg-success" alt="[H]" height="20" width="20"/></a>
+						<a href="index.html">
+							{(notification.status === 1) ? (
+									<img src="img/vastaanotettu.svg" className="img-fluid border border-dark rounded bg-success" alt="[H]" height="20" width="20"/>
+								) : (
+									<img src="img/vastaanotettu.svg" className="img-fluid" alt="[H]" height="20" width="20"/>
+							)}
+							</a>
+						<a href="index.html">
+						{(notification.status === 2) ? (
+									<img src="img/tyonalla.svg" className="img-fluid border border-dark rounded bg-success" alt="[H]" height="20" width="20"/>
+								) : (
+									<img src="img/tyonalla.svg" className="img-fluid" alt="[H]" height="20" width="20"/>
+							)}
+							</a>
+						<a href="index.html">
+						{(notification.status === 3) ? (
+									<img src="img/keskeytynyt.svg" className="img-fluid border border-dark rounded bg-success" alt="[H]" height="20" width="20"/>
+								) : (
+									<img src="img/keskeytynyt.svg" className="img-fluid " alt="[H]" height="20" width="20"/>
+							)}
+							</a>
+						<a href="index.html">
+						{(notification.status === 4) ? (
+									<img src="img/valmis.svg" className="img-fluid border border-dark rounded bg-success" alt="[H]" height="20" width="20"/>
+								) : (
+									<img src="img/valmis.svg" className="img-fluid" alt="[H]" height="20" width="20"/>
+							)}
+							</a>
 					</td>
 
 				</tr>
