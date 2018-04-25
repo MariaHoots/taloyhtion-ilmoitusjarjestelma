@@ -85,7 +85,8 @@ export default class EtuSivu extends React.Component {
       </thead>
 
 
-			<IsannoitsijaIlmoituksetLista  activeNotifications={activeNotifications}/>
+			<IsannoitsijaIlmoituksetLista  activeNotifications={activeNotifications}
+                                      updateNotificationStatus={this.props.updateNotificationStatus}/>
 
 		</table>
 
