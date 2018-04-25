@@ -24,7 +24,7 @@ tijRouter.get("/notifications", function(req,res) {
             notification = {
                 id:pgres.rows[i].id,
                 id_user:pgres.rows[i].id_user,
-                id_housing_comp:pgres.rows[i].id_housing_comp,
+                id_housing_comp:pgres.rows[i].id_housing_c,
                 id_checkout:pgres.rows[i].id_checkout,
                 read_id:pgres.rows[i].read_id,
                 sent_date:pgres.rows[i].sent_date,
@@ -66,7 +66,7 @@ tijRouteNotification.get("/notifications", function(req,res) {
             notification = {
                 id:pgres.rows[i].id,
                 id_user:pgres.rows[i].id_user,
-                id_housing_comp:pgres.rows[i].id_housing_comp,
+                id_housing_comp:pgres.rows[i].id_housing_c,   //HUOM
                 id_checkout:pgres.rows[i].id_checkout,
                 read_id:pgres.rows[i].read_id,
                 sent_date:pgres.rows[i].sent_date,
@@ -130,7 +130,7 @@ tijRouteNotification.get("/notificationsnew", function(req,res) {
             notification = {
                 id:pgres.rows[i].id,
                 id_user:pgres.rows[i].id_user,
-                id_housing_comp:pgres.rows[i].id_housing_comp,
+                id_housing_comp:pgres.rows[i].id_housing_c,  //HUOM
                 id_checkout:pgres.rows[i].id_checkout,
                 read_id:pgres.rows[i].read_id,
                 sent_date:pgres.rows[i].sent_date,
@@ -184,7 +184,7 @@ tijRouteNotification.get("/notifications/:uid", function(req,res) {
             notification = {
                 id:pgres.rows[i].id,
                 id_user:pgres.rows[i].id_user,
-                id_housing_comp:pgres.rows[i].id_housing_comp,
+                id_housing_comp:pgres.rows[i].id_housing_c,  //HUOM
                 id_checkout:pgres.rows[i].id_checkout,
                 read_id:pgres.rows[i].read_id,
                 sent_date:pgres.rows[i].sent_date,
@@ -203,7 +203,7 @@ tijRouteNotification.get("/notifications/:uid", function(req,res) {
     }).catch(e => console.error(e.stack));
 });
 // notifications - get one by id
-tijRouteNotification.get("/notifications/:id", function(req,res) {
+tijRouteNotification.get("/notifications1/:id", function(req,res) {
     let notification = tijNotification;
     var getId = [ parseInt(req.params.id) ];
 
@@ -221,7 +221,7 @@ tijRouteNotification.post("/notifications", function(req,res){
     let addNtf = tijNotification;
     addNtf = {
         id_user:req.body.id_user,
-        id_housing_comp:req.body.id_housing_comp,
+        id_housing_c:req.body.id_housing_comp,  //HUOM
         id_checkout:req.body.id_checkout,
         read_id:req.body.read_id,
         sent_date:req.body.sent_date,
@@ -233,10 +233,10 @@ tijRouteNotification.post("/notifications", function(req,res){
         checkout_message:req.body.checkout_message,
         status:req.body.status
     };
-    tijPg.query('INSERT INTO tij_notifications(id_user, id_housing_comp, id_checkout, read_id,' +
+    tijPg.query('INSERT INTO tij_notifications(id_user, id_housing_c, id_checkout, read_id,' +
                 'sent_date, read_date, title, notif_type, checkout, checkout_message, status)' +
                 'VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)'
-                [addNtf.id_user, addNtf.id_housing_comp, addNtf.id_checkout, addNtf.read_id,
+                [addNtf.id_user, addNtf.id_housing_c, addNtf.id_checkout, addNtf.read_id,
                 addNtf.sent_date, addNtf.read_date, addNtf.title, addNtf.notif_type,
                 addNtf.checkout, addNtf.checkout_message, addNtf.status]
                 )
@@ -254,7 +254,7 @@ tijRouteNotification.put("/notifications/:id", function(req,res){
     let putNtf = tijNotification;
     putNtf = {
         id_user:req.body.id_user,
-        id_housing_comp:req.body.id_housing_comp,
+        id_housing_c:req.body.id_housing_comp,  //HUOM
         id_checkout:req.body.id_checkout,
         read_id:req.body.read_id,
         sent_date:req.body.sent_date,
@@ -266,10 +266,10 @@ tijRouteNotification.put("/notifications/:id", function(req,res){
         checkout_message:req.body.checkout_message,
         status:req.body.status
     };
-    tijPg.query('UPDATE tij_notifications SET id_user=($1), id_housing_comp=($2), id_checkout=($3),' +
+    tijPg.query('UPDATE tij_notifications SET id_user=($1), id_housing_c=($2), id_checkout=($3),' +
                 'read_id=($4), sent_date=($5), read_date=($6), title=($7), notif_type=($8),' +
                 'checkout=($9), checkout_message=($10), status=($11) WHERE id=($12)',
-                [putNtf.id_user, putNtf.id_housing_comp, putNtf.id_checkout, putNtf.read_id,
+                [putNtf.id_user, putNtf.id_housing_c, putNtf.id_checkout, putNtf.read_id,
                 putNtf.sent_date, putNtf.read_date, putNtf.title, putNtf.notif_type,
                 putNtf.checkout, putNtf.checkout_message, putNtf.status, putId]
                 )

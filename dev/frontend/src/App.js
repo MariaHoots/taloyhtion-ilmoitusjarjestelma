@@ -455,7 +455,7 @@ export default class App extends Component {
 			headers:{"Content-Type":"application/json",
 					"token":this.state.token}
 		}
-		fetch("/api/notifications/"+id,onGetNotification).then((response) => {
+		fetch("/api/notifications1/"+id,onGetNotification).then((response) => {
 			if(response.ok) {
 				response.json().then((data) => {
 					this.setState({
