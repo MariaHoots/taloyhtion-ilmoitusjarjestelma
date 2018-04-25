@@ -117,7 +117,7 @@ export default class EtuSivu extends React.Component{
 							</Link>
 												<div className="form-row">
 													<label htmlFor="exampleFormControlTextarea1">Kommentti</label>
-													<textarea className="form-control" id="isannoijaIlmoituksetKommenttiTextarea" rows="3">{notification.checkout_message}</textarea>
+													<textarea className="form-control" id="isannoijaIlmoituksetKommenttiTextarea" rows="3" defaultValue={notification.checkout_message}></textarea>
 												</div>
 												</form>
 
