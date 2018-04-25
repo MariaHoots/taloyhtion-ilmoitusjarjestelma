@@ -566,7 +566,7 @@ export default class App extends Component {
 	}
 
 	// update a notification status
-	updateNotificationStatus = (id,status) => {
+	updateNotificationStatus = (id,status,param1) => {
 		let onUpdNotification = {
 			method:"PUT",
 			mode:"cors",
@@ -576,7 +576,12 @@ export default class App extends Component {
 		fetch("/api/notificationstatus/"+id+"/"+status,onUpdNotification).then((response) => {
 			if(response.ok) {
 				console.log("Status updated");
-				this.getNotificationsNew();
+				if(param1 === 0){
+					this.getNotifications();
+				}
+				else{
+					this.getNotificationsNew();
+				}
 			} else {
 				console.log(response.statusText);
 			}

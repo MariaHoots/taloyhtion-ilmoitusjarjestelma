@@ -72,7 +72,8 @@ export default class ContainerContents extends React.Component
 					render={() => this.props.isLogged ?
 						(<IsannoitsijaIlmoitukset notificationsList={this.props.notificationsList}
 													getNotifications={this.props.getNotifications}
-													setPageTittle={this.props.setPageTittle}/>) :
+													setPageTittle={this.props.setPageTittle}
+													updateNotificationStatus={this.props.updateNotificationStatus}/>) :
 						(<Redirect to="/"/>)
 						}/>
 				<Route path="/admin_henkilot"
