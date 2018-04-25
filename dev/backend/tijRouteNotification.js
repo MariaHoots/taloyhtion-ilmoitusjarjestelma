@@ -220,18 +220,18 @@ tijRouteNotification.get("/notifications1/:id", function(req,res) {
 tijRouteNotification.post("/notifications", function(req,res){
     let addNtf = tijNotification;
     addNtf = {
-        id_user:req.body.id_user,
-        id_housing_c:req.body.id_housing_comp,  //HUOM
-        id_checkout:req.body.id_checkout,
-        read_id:req.body.read_id,
+        id_user:parseInt(req.body.id_user),
+        id_housing_c:parseInt(req.body.id_housing_comp),  //HUOM
+        id_checkout:parseInt(req.body.id_checkout),
+        read_id:parseInt(req.body.read_id),
         sent_date:req.body.sent_date,
         read_date:req.body.read_date,
         title:req.body.title,
         message:req.body.message,
-        notif_type:req.body.notif_type,
-        checkout:req.body.checkout,
+        notif_type:parseInt(req.body.notif_type),
+        checkout:req.body.checkout,					// date
         checkout_message:req.body.checkout_message,
-        status:req.body.status
+        status:parseInt(req.body.status)
     };
     tijPg.query('INSERT INTO tij_notifications(id_user, id_housing_c, id_checkout, read_id,' +
                 'sent_date, read_date, title, notif_type, checkout, checkout_message, status)' +
@@ -253,18 +253,18 @@ tijRouteNotification.put("/notifications/:id", function(req,res){
     let putId = parseInt(req.params.id);
     let putNtf = tijNotification;
     putNtf = {
-        id_user:req.body.id_user,
-        id_housing_c:req.body.id_housing_comp,  //HUOM
-        id_checkout:req.body.id_checkout,
-        read_id:req.body.read_id,
+        id_user:parseInt(req.body.id_user),
+        id_housing_c:parseInt(req.body.id_housing_comp),  //HUOM
+        id_checkout:parseInt(req.body.id_checkout),
+        read_id:parseInt(req.body.read_id),
         sent_date:req.body.sent_date,
         read_date:req.body.read_date,
         title:req.body.title,
         message:req.body.message,
-        notif_type:req.body.notif_type,
+        notif_type:parseInt(req.body.notif_type),
         checkout:req.body.checkout,
         checkout_message:req.body.checkout_message,
-        status:req.body.status
+        status:parseInt(req.body.status)
     };
     tijPg.query('UPDATE tij_notifications SET id_user=($1), id_housing_c=($2), id_checkout=($3),' +
                 'read_id=($4), sent_date=($5), read_date=($6), title=($7), notif_type=($8),' +

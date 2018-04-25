@@ -175,7 +175,7 @@ tijRouteUser.get("/users/:id", function(req,res) {
 tijRouteUser.post("/users", function(req,res){
     let addUser = tijUser;
     addUser = {
-        id_flat:req.body.id_flat,
+        id_flat:parseInt(req.body.id_flat),
         email:req.body.email,
         password:req.body.password,
         first_name:req.body.first_name,
@@ -184,7 +184,7 @@ tijRouteUser.post("/users", function(req,res){
         role:parseInt(req.body.role),
         last_login:req.body.last_login,
         billing_address:req.body.billing_address,
-        zip:req.body.zip,
+        zip:parseInt(req.body.zip),
         city:req.body.city
     };
     tijPg.query('INSERT INTO tij_users (id_flat, email, password, first_name, last_name,' +
@@ -221,7 +221,7 @@ tijRouteUser.put("/users2/:id", function(req,res){
         last_name:req.body.last_name,
         phone:req.body.phone,
         billing_address:req.body.billing_address,
-        zip:req.body.zip,
+        zip:parseInt(req.body.zip),
         city:req.body.city
 
     };
@@ -238,12 +238,12 @@ tijRouteUser.put("/users2/:id", function(req,res){
     }).catch(e => console.error(e.stack));
 });
 
-// users - update one from omat tiedot
+// users - update one from omat tiedot			--- saako kaikkia kenttiä päivittää??? ---
 tijRouteUser.put("/users/:id", function(req,res){
     let putId = parseInt(req.params.id);
     let putUser = tijUser;
     putUser = {
-        id_flat:req.body.id_flat,
+        id_flat:parseInt(req.body.id_flat),
         email:req.body.email,
         password:req.body.password,
         first_name:req.body.first_name,
@@ -252,7 +252,7 @@ tijRouteUser.put("/users/:id", function(req,res){
         role:parseInt(req.body.role),
         last_login:req.body.last_login,
         billing_address:req.body.billing_address,
-        zip:req.body.zip,
+        zip:parseInt(req.body.zip),
         city:req.body.city
     };
     tijPg.query('UPDATE tij_users SET id_flat=($1), email=($2), password=($3), first_name=($4), last_name=($5),' +
