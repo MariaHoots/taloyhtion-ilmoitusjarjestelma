@@ -544,14 +544,19 @@ export default class App extends Component {
 
 	// update a notification  = PUT
 	updateNotification = (notification) => {
+		let tempNotif = {
+			id:notification.id,
+			checkout_message:notification.comment,
+			uid:this.state.loggedUser.id
+		};
 		let onUpdNotification = {
 			method:"PUT",
 			mode:"cors",
 			headers:{"Content-Type":"application/json",
 					"token":this.state.token},
-			body:JSON.stringify(notification)
+			body:JSON.stringify(tempNotif)
 		}
-		fetch("/api/notifications/",onUpdNotification).then((response) => {
+		fetch("/api/notifications/"+tempNotif.id,onUpdNotification).then((response) => {
 			if(response.ok) {
 				response.json().then((data) => {
 						this.getNotifications();

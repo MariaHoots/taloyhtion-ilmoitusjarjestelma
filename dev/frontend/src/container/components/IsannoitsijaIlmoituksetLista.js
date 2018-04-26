@@ -3,6 +3,13 @@ import {Link} from 'react-router-dom';
 import {getIlmoitustyyppiById} from '../../Helper.js';
 
 export default class EtuSivu extends React.Component{
+	constructor(props) {
+		super(props);
+		this.state={
+			comment:"",
+			currentNotif: 0
+		}
+	}
 	changeStatus = (event) =>{
 		if (event.target.name === "received"){
 			this.props.updateNotificationStatus(event.target.id,1,0);
@@ -16,8 +23,37 @@ export default class EtuSivu extends React.Component{
 		if (event.target.name === "done"){
 			this.props.updateNotificationStatus(event.target.id,4,0);
 		}
+	}
 
-	
+	setCurrentNotification = (event) =>
+	{
+		for(let i=0;i<this.props.activeNotifications.length;i++){
+			if (this.props.activeNotifications[i].id === parseInt(event.target.value,10)){
+				this.setState({
+					currentNotif:this.props.activeNotifications[i].id,
+					comment:this.props.activeNotifications[i].checkout_message,
+			
+				})
+			}
+		}
+	}
+
+	onFormChange = (event) => {
+		if(event.target.name==="comment") {
+			this.setState({
+				comment:event.target.value				
+			});
+		}
+	}
+
+	submit = (event) => {
+		event.preventDefault();
+			let tempNotif = {
+			id:this.state.id,
+			comment:this.state.comment,
+      	
+		}
+		this.props.updateNotification(tempNotif);
 	}
 
 	render() {
@@ -31,7 +67,7 @@ export default class EtuSivu extends React.Component{
 			listView = this.props.activeNotifications.map((notification) =>
 				<tr key={notification.id}>
 					<td>
-						<a href="/" data-toggle="modal" data-target={`#${notification.id}`}>{notification.title}</a>
+						<Link to="/" data-toggle="modal" name={notification.id} data-target={`#${notification.id}`} onClick={this.setCurrentNotification}>{notification.title}</Link>
 
 							<div className="modal fade" id={`${notification.id}`} tabIndex="-1" role="dialog" aria-labelledby={`${notification.name}`} aria-hidden="true">
 							  <div className="modal-dialog" role="document" style={{maxWidth:'800px'}}>
@@ -116,15 +152,20 @@ export default class EtuSivu extends React.Component{
 							)}
 							</Link>
 												<div className="form-row">
-													<label htmlFor="exampleFormControlTextarea1">Kommentti</label>
-													<textarea className="form-control" id="isannoijaIlmoituksetKommenttiTextarea" rows="3" defaultValue={notification.checkout_message}></textarea>
+													<label htmlFor="comment">Kommentti</label>
+													<textarea onChange={this.onFormChange} className="form-control" name="comment" rows="3" defaultValue={notification.checkout_message}></textarea>
 												</div>
 												</form>
 
 							      </div>
 							      <div className="modal-footer">
 							        <button type="button" className="btn btn-secondary" data-dismiss="modal">Sulje</button>
-							        <button type="button" className="btn btn-primary">Tallenna</button>
+							        <input type="submit"
+				       						name="submit"
+											value="Tallenna"
+											data-dismiss="modal"
+											onClick={this.submit}
+											className="btn btn-primary"/>
 							      </div>
 							    </div>
 							  </div>

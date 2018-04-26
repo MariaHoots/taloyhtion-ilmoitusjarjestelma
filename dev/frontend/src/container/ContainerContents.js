@@ -73,7 +73,8 @@ export default class ContainerContents extends React.Component
 						(<IsannoitsijaIlmoitukset notificationsList={this.props.notificationsList}
 													getNotifications={this.props.getNotifications}
 													setPageTittle={this.props.setPageTittle}
-													updateNotificationStatus={this.props.updateNotificationStatus}/>) :
+													updateNotificationStatus={this.props.updateNotificationStatus}
+													updateNotification={this.props.updateNotification}/>) :
 						(<Redirect to="/"/>)
 						}/>
 				<Route path="/admin_henkilot"
