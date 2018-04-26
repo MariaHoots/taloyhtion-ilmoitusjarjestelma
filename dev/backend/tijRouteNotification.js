@@ -7,6 +7,31 @@ let tijHousingcompany = require('./models/housingcompany');
 
 let tijRouteNotification = express.Router();
 
+function getDateTime() {
+
+    var date = new Date();
+
+    var hour = date.getHours();
+    hour = (hour < 10 ? "0" : "") + hour;
+
+    var min  = date.getMinutes();
+    min = (min < 10 ? "0" : "") + min;
+
+    var sec  = date.getSeconds();
+    sec = (sec < 10 ? "0" : "") + sec;
+
+    var year = date.getFullYear();
+
+    var month = date.getMonth() + 1;
+    month = (month < 10 ? "0" : "") + month;
+
+    var day  = date.getDate();
+    day = (day < 10 ? "0" : "") + day;
+
+    return year + "-" + month + "-" + day + " " + hour + ":" + min + ":" + sec;
+
+}
+
 // tijRouteNotification
 // hoitaa taulun tij_notifications käsittelyt
 
@@ -224,14 +249,14 @@ tijRouteNotification.post("/notifications", function(req,res){
         id_housing_c:parseInt(req.body.id_housing_comp),  //HUOM
         id_checkout:parseInt(req.body.id_checkout),
         read_id:parseInt(req.body.read_id),
-        sent_date:req.body.sent_date,
+        sent_date:getDateTime(),      			  // ASETETTAVA TÄSSÄ
         read_date:req.body.read_date,
         title:req.body.title,
         message:req.body.message,
         notif_type:parseInt(req.body.notif_type),
         checkout:req.body.checkout,					// date
         checkout_message:req.body.checkout_message,
-        status:parseInt(req.body.status)
+        status:1
     };
     tijPg.query('INSERT INTO tij_notifications(id_user, id_housing_c, id_checkout, read_id,' +
                 'sent_date, read_date, title, notif_type, checkout, checkout_message, status)' +
@@ -248,40 +273,30 @@ tijRouteNotification.post("/notifications", function(req,res){
     }).catch(e => console.error(e.stack));
 });
 
-// notifications - update one  = PUT
+// notifications - update one  = PUT	--- Mgr / checkout data
 tijRouteNotification.put("/notifications/:id", function(req,res){
     let putId = parseInt(req.params.id);
     let putNtf = tijNotification;
+	let checkDate = getDateTime();
+	console.log("checkDate: ", checkDate);
     putNtf = {
-        id_user:parseInt(req.body.id_user),
-        id_housing_c:parseInt(req.body.id_housing_comp),  //HUOM
-        id_checkout:parseInt(req.body.id_checkout),
-        read_id:parseInt(req.body.read_id),
-        sent_date:req.body.sent_date,
-        read_date:req.body.read_date,
-        title:req.body.title,
-        message:req.body.message,
-        notif_type:parseInt(req.body.notif_type),
-        checkout:req.body.checkout,
-        checkout_message:req.body.checkout_message,
-        status:parseInt(req.body.status)
+        id_checkout:parseInt(req.body.uid),
+        checkout:checkDate,
+        checkout_message:req.body.checkout_message
     };
-    tijPg.query('UPDATE tij_notifications SET id_user=($1), id_housing_c=($2), id_checkout=($3),' +
-                'read_id=($4), sent_date=($5), read_date=($6), title=($7), notif_type=($8),' +
-                'checkout=($9), checkout_message=($10), status=($11) WHERE id=($12)',
-                [putNtf.id_user, putNtf.id_housing_c, putNtf.id_checkout, putNtf.read_id,
-                putNtf.sent_date, putNtf.read_date, putNtf.title, putNtf.notif_type,
-                putNtf.checkout, putNtf.checkout_message, putNtf.status, putId]
+    tijPg.query('UPDATE tij_notifications SET id_checkout=($1),' +
+                'checkout=($2), checkout_message=($3) WHERE id=($4)',
+                [putNtf.id_checkout, putNtf.checkout, putNtf.checkout_message, putId]
                 )
     .then(pgres => {
         return res.status(200)
         .json({
-            status: 'OK', message: 'notification updated'
+            status: 'OK', message: 'notification check updated'
         });
     }).catch(e => console.error(e.stack));
 });
 
-// notifications - update notification status
+// notifications - update notification status only
 tijRouteNotification.put("/notificationstatus/:id/:status", function(req,res){
     let putId = parseInt(req.params.id);
     let putStatus = parseInt(req.params.status);
@@ -290,7 +305,7 @@ tijRouteNotification.put("/notificationstatus/:id/:status", function(req,res){
     .then(pgres => {
         return res.status(200)
         .json({
-            status: 'OK', message: 'notification updated'
+            status: 'OK', message: 'notification status updated'
         });
     }).catch(e => console.error(e.stack));
 });

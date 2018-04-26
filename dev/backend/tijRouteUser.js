@@ -182,7 +182,7 @@ tijRouteUser.post("/users", function(req,res){
         last_name:req.body.last_name,
         phone:req.body.phone,
         role:parseInt(req.body.role),
-        last_login:req.body.last_login,
+        last_login:Date(),
         billing_address:req.body.billing_address,
         zip:parseInt(req.body.zip),
         city:req.body.city
