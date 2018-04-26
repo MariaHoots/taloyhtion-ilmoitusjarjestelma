@@ -18,6 +18,31 @@ app.use(bodyParser.json());
 
 let loggedUsers = [];
 
+function getDateTime() {
+
+    var date = new Date();
+
+    var hour = date.getHours();
+    hour = (hour < 10 ? "0" : "") + hour;
+
+    var min  = date.getMinutes();
+    min = (min < 10 ? "0" : "") + min;
+
+    var sec  = date.getSeconds();
+    sec = (sec < 10 ? "0" : "") + sec;
+
+    var year = date.getFullYear();
+
+    var month = date.getMonth() + 1;
+    month = (month < 10 ? "0" : "") + month;
+
+    var day  = date.getDate();
+    day = (day < 10 ? "0" : "") + day;
+
+    return year + "-" + month + "-" + day + " " + hour + ":" + min + ":" + sec;
+
+}
+
 app.post("/login", function(req,res){
 
     let email = req.body.uname; // !!!!!!!!!!!!!!!!! Syötteen puhdistus puuttuu
@@ -39,6 +64,13 @@ app.post("/login", function(req,res){
     .then(pgres => {
         if (pgres.rows[0].found === 0) {
             return res.status(409).json({"message":"conflict!!"});
+        }
+        else{
+            
+            tijPg.query("UPDATE tij_users SET last_login='"+getDateTime()+"' WHERE id="+ pgres.rows[0].id)
+            .catch(e => {
+                console.error(e.stack)
+            });
         }
 
         for (let i=0; i< 128; i++)
