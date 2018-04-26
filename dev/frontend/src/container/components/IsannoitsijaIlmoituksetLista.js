@@ -6,6 +6,7 @@ export default class EtuSivu extends React.Component{
 	constructor(props) {
 		super(props);
 		this.state={
+			id:0,
 			comment:"",
 			currentNotif: 0
 		}
@@ -28,8 +29,10 @@ export default class EtuSivu extends React.Component{
 	setCurrentNotification = (event) =>
 	{
 		for(let i=0;i<this.props.activeNotifications.length;i++){
-			if (this.props.activeNotifications[i].id === parseInt(event.target.value,10)){
+			if (this.props.activeNotifications[i].id === parseInt(event.target.name,10)){
+				
 				this.setState({
+					id:parseInt(event.target.name,10),
 					currentNotif:this.props.activeNotifications[i].id,
 					comment:this.props.activeNotifications[i].checkout_message,
 			
