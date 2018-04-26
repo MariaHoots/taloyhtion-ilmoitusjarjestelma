@@ -25,9 +25,9 @@ DROP TABLE IF EXISTS tij_housing_comp;
 CREATE TABLE "tij_housing_comp" (
 id SERIAL UNIQUE NOT NULL,
 name varchar(255),
-address varchar(255),
-zip varchar(255),
-city varchar(255),
+h_address varchar(255),
+h_zip varchar(255),
+h_city varchar(255),
 business_id varchar(255),
 PRIMARY KEY (id)
 );
@@ -37,6 +37,7 @@ id SERIAL UNIQUE NOT NULL,
 id_housing_comp INT NOT NULL,
 address varchar(255),
 zip varchar(255),
+city varchar(255),
 PRIMARY KEY (id),
 FOREIGN KEY (id_housing_comp) REFERENCES tij_housing_comp(id)
 );
@@ -52,17 +53,17 @@ FOREIGN KEY (id_houses) REFERENCES tij_houses(id)
 
 CREATE TABLE "tij_users" (
 id SERIAL UNIQUE NOT NULL,
-id_flat int,
+id_flat INT NOT NULL,
 email varchar(255) NOT NULL,
 password CHAR(64),
 first_name varchar(255),
 last_name varchar(255),
 phone varchar(255),
 role smallint,
-last_login DATE,
-billing_address varchar(255),
-zip int,
-city varchar(255),
+last_login TIMESTAMP without time zone,
+ub_address varchar(255),
+ub_zip int,
+ub_city varchar(255),
 PRIMARY KEY (id),
 FOREIGN KEY (id_flat) REFERENCES tij_flats(id)
 );
@@ -70,27 +71,27 @@ FOREIGN KEY (id_flat) REFERENCES tij_flats(id)
 CREATE TABLE "tij_notifications" (
 id SERIAL UNIQUE NOT NULL,
 id_user INT NOT NULL,
-id_housing_c INT NOT NULL,
+id_housing_c INT,
 id_checkout INT,
-read_id varchar(255),
-sent_date date,
-read_date date,
+read_id INT,
+sent_date TIMESTAMP without time zone,
+read_date TIMESTAMP without time zone,
 message text,
 title varchar(255),
 notif_type int NOT NULL,
-checkout date,
+checkout_date TIMESTAMP without time zone,
 checkout_message text,
 status smallint,
-PRIMARY KEY (id)
+PRIMARY KEY (id),
 );
 
 CREATE TABLE "tij_maintenance_comp" (
 id SERIAL UNIQUE NOT NULL,
-name varchar(255),
-address varchar(255),
-zip varchar(255),
-city varchar(255),
-business_id varchar(255),
+mc_name varchar(255),
+mc_address varchar(255),
+mc_zip varchar(255),
+mc_city varchar(255),
+mc_business_id varchar(255),
 PRIMARY KEY (id)
 );
 
@@ -163,6 +164,7 @@ insert into tij_users (id, id_flat, email, password, first_name, last_name, phon
 insert into tij_users (id, id_flat, email, password, first_name, last_name, phone, role, last_login, billing_address, zip, city) values (29, 15, 'ewhitens@dyndns.org', '27aec3459dd4e134bb0e5302aba3895913aff0b4', 'Emilee', 'Whiten', '226-618-7578', 2, '2017-11-21', '49 Mallard Parkway', 94988, 'Tsovazard');
 insert into tij_users (id, id_flat, email, password, first_name, last_name, phone, role, last_login, billing_address, zip, city) values (30, 7, 'aattawellt@uol.com.br', '09d175806a7063b2cf8afe7047309a63619b1131', 'Auria', 'Attawell', '969-296-1307', 3, '2017-08-18', '0 Mcbride Avenue', 52169, 'Zarszyn');
 
+/* lisätty id_flat */
 insert into tij_notifications (id, id_user, id_housing_c, id_checkout, read_id, sent_date, read_date, message, title, notif_type, checkout, checkout_message, status) values (1, 10, 4, 0, 3, '2017-07-22', '2017-12-30', 'Etiam justo.', 'Vestibulum sed magna at nunc commodo placerat.', 10, '2018-02-03', '', 2);
 insert into tij_notifications (id, id_user, id_housing_c, id_checkout, read_id, sent_date, read_date, message, title, notif_type, checkout, checkout_message, status) values (2, 4, 3, 1, 3, '2017-11-19', '2018-02-23', 'Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris. Morbi non lectus.', 'Maecenas pulvinar lobortis est.', 8, '2017-05-11', 'Donec dapibus. Duis at velit eu est congue elementum. In hac habitasse platea dictumst.', 4);
 insert into tij_notifications (id, id_user, id_housing_c, id_checkout, read_id, sent_date, read_date, message, title, notif_type, checkout, checkout_message, status) values (3, 5, 3, 1, 10, '2017-07-18', '2017-06-30', 'Nulla justo. Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis. Sed ante. Vivamus tortor. Duis mattis egestas metus. Aenean fermentum. Donec ut mauris eget massa tempor convallis.', 'Nullam porttitor lacus at turpis.', 6, '2017-10-26', 'Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum.', 1);
