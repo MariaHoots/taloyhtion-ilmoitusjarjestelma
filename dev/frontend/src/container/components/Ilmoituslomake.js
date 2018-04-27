@@ -22,16 +22,27 @@ export default class EtuSivu extends React.Component {
               <div className="form-group">
                 <label htmlFor="ilmoitustyyppi">Valitse ilmoitustyyppi</label>
                 <select className="form-control" id="ilmoitustyyppi">
+			{/* <select value={this.state.value} onChange={this.handleChange}> */}
                   <option>Vikailmoitus (H)</option>
+			  {/* <option value="vikailmoitus">Vikailmoitus (H)</option> */}
                   <option>Avaimet (H)</option>
+			  {/* <option value="avaimet">Avaimet (H)</option> */}
                   <option>Autopaikat (H)</option>
+			  {/* <option value="autopaikat">Autopaikat (H)</option> */}
                   <option>Saunavuorot (H)</option>
+			  {/* <option value="saunavuorot">Saunavuorot (H)</option> */}
                   <option>Lähtöilmoitus (I)</option>
+			  {/* <option value="lahtoilmoitus">Lähtöilmoitus (I)</option> */}	  
                   <option>Vastikeasiat (I)</option>
+			  {/* <option value="vastikeasiat">Vastikeasiat (I)</option> */}	 	  
                   <option>Häiriöilmoitus (I)</option>
+			  {/* <option value="hairioilmoitus">Häiriöilmoitus (I)</option> */}
                   <option>Reklamaatio (I)</option>
+			  {/* <option value="reklamaatio">Reklamaatio (I)</option> */}	  
                   <option>Muu palaute (I)</option>
+			  {/* <option value="muu palaute">Muu palaute (I)</option> */}	  
                   <option>Yhteydenotto (I) (H)</option>
+			  {/* <option value="yhteydenotto">Yhteydenotto (I)</option> */}		  
                 </select>
               </div>
            </div>
