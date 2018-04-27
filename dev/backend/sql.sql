@@ -25,9 +25,9 @@ DROP TABLE IF EXISTS tij_housing_comp;
 CREATE TABLE "tij_housing_comp" (
 id SERIAL UNIQUE NOT NULL,
 name varchar(255),
-h_address varchar(255),
-h_zip varchar(255),
-h_city varchar(255),
+address varchar(255),
+zip INT,
+city varchar(255),
 business_id varchar(255),
 PRIMARY KEY (id)
 );
@@ -36,7 +36,7 @@ CREATE TABLE  "tij_houses" (
 id SERIAL UNIQUE NOT NULL,
 id_housing_comp INT NOT NULL,
 address varchar(255),
-zip varchar(255),
+zip INT,
 city varchar(255),
 PRIMARY KEY (id),
 FOREIGN KEY (id_housing_comp) REFERENCES tij_housing_comp(id)
@@ -61,9 +61,9 @@ last_name varchar(255),
 phone varchar(255),
 role smallint,
 last_login TIMESTAMP without time zone,
-ub_address varchar(255),
-ub_zip int,
-ub_city varchar(255),
+address varchar(255),
+zip int,
+city varchar(255),
 PRIMARY KEY (id),
 FOREIGN KEY (id_flat) REFERENCES tij_flats(id)
 );
@@ -89,7 +89,7 @@ CREATE TABLE "tij_maintenance_comp" (
 id SERIAL UNIQUE NOT NULL,
 mc_name varchar(255),
 mc_address varchar(255),
-mc_zip varchar(255),
+mc_zip INT,
 mc_city varchar(255),
 mc_business_id varchar(255),
 PRIMARY KEY (id)
