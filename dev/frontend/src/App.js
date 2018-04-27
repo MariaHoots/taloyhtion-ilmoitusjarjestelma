@@ -148,7 +148,7 @@ export default class App extends Component {
 		});
 	}
 
-	// Get users from single housing company
+	// Get users from single housing company   *** EI TÄMÄ TOIMI NÄIN ***
 	getUsersByHousingCompany = (id) => {
 		let onGetUser = {
 			method:"GET",

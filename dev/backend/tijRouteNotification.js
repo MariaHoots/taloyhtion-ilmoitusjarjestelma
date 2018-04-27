@@ -30,6 +30,7 @@ function getDateTime() {
 
     return year + "-" + month + "-" + day + " " + hour + ":" + min + ":" + sec;
 
+	// YYYY-MM-DD HH:MM:SS
 }
 
 // tijRouteNotification
@@ -78,7 +79,8 @@ tijRouteNotification.get("/notifications", function(req,res) {
 					"tij_users.last_login,tij_users.billing_address,tij_users.zip AS ub_zip,tij_users.city AS ub_city," +
 					"tij_housing_comp.name,tij_housing_comp.address,tij_housing_comp.zip AS hc_zip," +
 					"tij_housing_comp.city AS hc_city,tij_housing_comp.business_id," +
-					"tij_flats.flat_number,tij_flats.stairway, tij_houses.address AS h_address, tij_houses.zip AS h_zip " +
+					"tij_flats.flat_number,tij_flats.stairway," +
+					"tij_houses.address AS h_address, tij_houses.zip AS h_zip, tij_houses.city AS h_city " +
 				"FROM tij_notifications INNER JOIN tij_users ON (tij_notifications.id_user = tij_users.id) " +
 					"INNER JOIN tij_housing_comp ON (tij_notifications.id_housing_c = tij_housing_comp.id) " +
 					"INNER JOIN tij_flats ON (tij_users.id_flat = tij_flats.id) " +
@@ -91,7 +93,7 @@ tijRouteNotification.get("/notifications", function(req,res) {
             notification = {
                 id:pgres.rows[i].id,
                 id_user:pgres.rows[i].id_user,
-                id_housing_comp:pgres.rows[i].id_housing_c,   //HUOM
+                id_housing_comp:pgres.rows[i].id_housing_c,   	// HUOM. nimi
                 id_checkout:pgres.rows[i].id_checkout,
                 read_id:pgres.rows[i].read_id,
                 sent_date:pgres.rows[i].sent_date,
@@ -99,7 +101,7 @@ tijRouteNotification.get("/notifications", function(req,res) {
                 title:pgres.rows[i].title,
                 message:pgres.rows[i].message,
                 notif_type:pgres.rows[i].notif_type,
-                checkout:pgres.rows[i].checkout,
+                checkout:pgres.rows[i].checkout_date,				// _date
                 checkout_message:pgres.rows[i].checkout_message,
                 status:pgres.rows[i].status,
                
@@ -120,6 +122,7 @@ tijRouteNotification.get("/notifications", function(req,res) {
 				
 				h_address:pgres.rows[i].h_address,
 				h_zip:pgres.rows[i].h_zip,
+				h_city:pgres.rows[i].h_city,				// lisätty selectiin
 
                 hc_name:pgres.rows[i].hc_name,
                 hc_address:pgres.rows[i].hc_address,
@@ -155,7 +158,7 @@ tijRouteNotification.get("/notificationsnew", function(req,res) {
             notification = {
                 id:pgres.rows[i].id,
                 id_user:pgres.rows[i].id_user,
-                id_housing_comp:pgres.rows[i].id_housing_c,  //HUOM
+                id_housing_comp:pgres.rows[i].id_housing_c,  	//	HUOM. nimi
                 id_checkout:pgres.rows[i].id_checkout,
                 read_id:pgres.rows[i].read_id,
                 sent_date:pgres.rows[i].sent_date,
@@ -163,10 +166,9 @@ tijRouteNotification.get("/notificationsnew", function(req,res) {
                 title:pgres.rows[i].title,
                 message:pgres.rows[i].message,
                 notif_type:pgres.rows[i].notif_type,
-                checkout:pgres.rows[i].checkout,
+                checkout:pgres.rows[i].checkout_date,				// _date
                 checkout_message:pgres.rows[i].checkout_message,
                 status:pgres.rows[i].status,
-
                
                 id_flat:pgres.rows[i].id_flat,
                 email:pgres.rows[i].email,
@@ -209,7 +211,7 @@ tijRouteNotification.get("/notifications/:uid", function(req,res) {
             notification = {
                 id:pgres.rows[i].id,
                 id_user:pgres.rows[i].id_user,
-                id_housing_comp:pgres.rows[i].id_housing_c,  //HUOM
+                id_housing_comp:pgres.rows[i].id_housing_c,  //HUOM. nimi
                 id_checkout:pgres.rows[i].id_checkout,
                 read_id:pgres.rows[i].read_id,
                 sent_date:pgres.rows[i].sent_date,
@@ -217,7 +219,7 @@ tijRouteNotification.get("/notifications/:uid", function(req,res) {
                 title:pgres.rows[i].title,
                 message:pgres.rows[i].message,
                 notif_type:pgres.rows[i].notif_type,
-                checkout:pgres.rows[i].checkout,
+                checkout:pgres.rows[i].checkout_date,		//HUOM. nimi
                 checkout_message:pgres.rows[i].checkout_message,
                 status:pgres.rows[i].status
             };
@@ -246,24 +248,24 @@ tijRouteNotification.post("/notifications", function(req,res){
     let addNtf = tijNotification;
     addNtf = {
         id_user:parseInt(req.body.id_user),
-        id_housing_c:parseInt(req.body.id_housing_comp),  //HUOM
-        id_checkout:parseInt(req.body.id_checkout),
-        read_id:parseInt(req.body.read_id),
-        sent_date:getDateTime(),      			  // ASETETTAVA TÄSSÄ
-        read_date:req.body.read_date,
+        id_housing_c:parseInt(req.body.id_housing_comp),  	// HUOM. nimi
+        id_checkout:parseInt(req.body.id_checkout),			// null?
+        read_id:parseInt(req.body.read_id),					// null?
+        sent_date:getDateTime(),      			  			// ASETETTAVA TÄSSÄ
+        read_date:req.body.read_date,						// null?
         title:req.body.title,
         message:req.body.message,
         notif_type:parseInt(req.body.notif_type),
-        checkout:req.body.checkout,					// date
-        checkout_message:req.body.checkout_message,
+        checkout_date:req.body.checkout_date,				// _date, null?
+        checkout_message:req.body.checkout_message,			// tyhjä
         status:1
     };
     tijPg.query('INSERT INTO tij_notifications(id_user, id_housing_c, id_checkout, read_id,' +
-                'sent_date, read_date, title, notif_type, checkout, checkout_message, status)' +
+                'sent_date, read_date, title, notif_type, checkout_date, checkout_message, status)' +
                 'VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)'
                 [addNtf.id_user, addNtf.id_housing_c, addNtf.id_checkout, addNtf.read_id,
                 addNtf.sent_date, addNtf.read_date, addNtf.title, addNtf.notif_type,
-                addNtf.checkout, addNtf.checkout_message, addNtf.status]
+                addNtf.checkout_date, addNtf.checkout_message, addNtf.status]
                 )
     .then(pgres => {
         return res.status(200)
@@ -281,12 +283,12 @@ tijRouteNotification.put("/notifications/:id", function(req,res){
 	console.log("checkDate: ", checkDate);
     putNtf = {
         id_checkout:parseInt(req.body.uid),
-        checkout:checkDate,
+        checkout_date:checkDate,
         checkout_message:req.body.checkout_message
     };
     tijPg.query('UPDATE tij_notifications SET id_checkout=($1),' +
-                'checkout=($2), checkout_message=($3) WHERE id=($4)',
-                [putNtf.id_checkout, putNtf.checkout, putNtf.checkout_message, putId]
+                'checkout_date=($2), checkout_message=($3) WHERE id=($4)',
+                [putNtf.id_checkout, putNtf.checkout_date, putNtf.checkout_message, putId]
                 )
     .then(pgres => {
         return res.status(200)
