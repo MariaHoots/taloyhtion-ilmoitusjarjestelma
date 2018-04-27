@@ -5,7 +5,31 @@ export default class EtuSivu extends React.Component {
   componentDidMount() {
     this.props.setPageTittle("Uusi ilmoitus");
   }
+  
+  /* constructor(props) {
+     super(props);
+     this.state = {value: ''};
 
+     this.handleChange = this.handleChange.bind(this);
+     this.handleSubmit = this.handleSubmit.bind(this);
+  }  
+  */
+ 
+  /* 
+     handleChange(event) {
+     this.setState({value: event.target.value});
+  } 
+  */
+  
+  /*
+     handleSubmit(event) {
+     alert('Ilmoitus on lähetetty! ' + this.state.value);
+     event.preventDefault();
+  }
+  */
+  
+  
+  
   render() {
     return (
 		<div className="card">
