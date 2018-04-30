@@ -4,6 +4,7 @@ Sovelluksessa toimii:
 - Login ja logout
 - Ilmoituksien, yhtiöiden ja henkilöiden selaus
 - Ilmoituksen tilan muuttaminen
+- Ilmoitukseen lisätty kommentti menee tietokantaan
 - Ilmoituksen modal-ikkuna
 - Sorttaus
 - Last login
