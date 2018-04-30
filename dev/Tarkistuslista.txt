@@ -6,6 +6,6 @@ Toimii:
 
 
 Teht‰v‰‰:
--
--
+- Ilmoituksen l‰hett‰minen
+- K‰ytt‰j‰n tietojen muuttaminen
 
