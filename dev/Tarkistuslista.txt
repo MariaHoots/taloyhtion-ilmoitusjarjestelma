@@ -1,11 +1,17 @@
 Tarkistuslista:
 
-Toimii:
+Sovelluksessa toimii:
 - Login ja logout
 - Ilmoituksien, yhtiöiden ja henkilöiden selaus
+- Ilmoituksen tilan muuttaminen
+- Sorttaus
 
 
 Tehtävää/tarkistettavaa:
 - Ilmoituksen lähettäminen
 - Käyttäjän tietojen muuttaminen
+
+Karsittavia ominaisuuksia?
+-
+-
 
