@@ -2,10 +2,10 @@ Tarkistuslista:
 
 Toimii:
 - Login ja logout
+- Ilmoituksien, yhtiöiden ja henkilöiden selaus
 
 
-
-Tehtävää:
+Tehtävää/tarkistettavaa:
 - Ilmoituksen lähettäminen
 - Käyttäjän tietojen muuttaminen
 
