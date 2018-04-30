@@ -8,8 +8,8 @@ Sovelluksessa toimii:
 
 
 Tehtävää/tarkistettavaa:
-- Ilmoituksen lähettäminen
-- Käyttäjän tietojen muuttaminen
+- Ilmoituksen lähettäminen (asukas)
+- Käyttäjän tietojen muuttaminen (asukas, omat tiedot)
 
 Karsittavia ominaisuuksia?
 -
