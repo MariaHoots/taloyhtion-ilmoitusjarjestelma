@@ -17,7 +17,7 @@ export default class EtuSivu extends React.Component {
 			this.props.updateNotificationStatus(event.target.id,5,1);
 		}
 
-	
+
 	}
 
 
@@ -26,12 +26,12 @@ export default class EtuSivu extends React.Component {
 		let listView = {}
 
 		if (this.props.notificationsList.length === 0) {
-			listView = <tr><td colSpan="8"><p>Ei taloyhtiöitä listassa</p></td></tr>
+			listView = <tr><td colSpan="8"><p>Ei uusia ilmoituksia listassa</p></td></tr>
 		} else {
 			listView = this.props.notificationsList.map((notif) =>
 				<tr key={notif.id}>
             <td ><Link to="/" data-toggle="modal">{notif.title}</Link></td>
-            <td>{notif.sent_date}</td>
+            <td>{new Date(notif.sent_date).toLocaleString("fi-FI")}</td>
             <td>{notif.first_name} {notif.last_name}</td>
             <td>{notif.topic}</td>
             <td><Link to="/" data-toggle="modal" onClick={this.changeStatus}><img src="img/vastaanotettu.svg" id={notif.id} name="received" className="img-fluid" alt="[H]" height="20" width="20"/></Link> <Link to="/" data-toggle="modal" onClick={this.changeStatus}><img src="img/tyonalla.svg" id={notif.id} name="beingworked" className="img-fluid" alt="[H]" height="20" width="20"/></Link> <Link to="/" data-toggle="modal" onClick={this.changeStatus}><img src="img/keskeytynyt.svg" id={notif.id} name="cancelled" className="img-fluid" alt="[H]" height="20" width="20"/></Link> <Link to="/" data-toggle="modal" onClick={this.changeStatus}><img src="img/valmis.svg" id={notif.id} name="done" className="img-fluid" alt="[H]" height="20" width="20"/></Link></td>
