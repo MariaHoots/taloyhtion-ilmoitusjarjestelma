@@ -126,6 +126,7 @@ export default class EtuSivu extends React.Component {
 												setCurrentHousingCompany={this.props.setCurrentHousingCompany}/>
 
 				  </table>
+				  <Link to="/admin_lisaayhtio" >Lisää yhtiö</Link>
 				</div>
 			</div>
 

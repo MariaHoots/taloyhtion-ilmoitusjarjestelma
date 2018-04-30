@@ -10,6 +10,7 @@ import IsannoitsijaTaloyhtiot from './components/IsannoitsijaTaloyhtiot';
 import Ilmoitukset from './components/Ilmoitukset';
 import Ilmoituslomake from './components/Ilmoituslomake';
 import Tiedot from './components/Tiedot';
+import IsannoitsijaTaloyhtiotLisaa from './components/IsannoitsijaTaloyhtiotLisaa';
 
 export default class ContainerContents extends React.Component
 {
@@ -104,14 +105,14 @@ export default class ContainerContents extends React.Component
 												getHousingCompanies={this.props.getHousingCompanies}/>) :
 						(<Redirect to="/"/>)
 						}/>
-				<Route path="/admin_etusivu"
-					render={() => this.props.isLogged ?
-						(<IsannoitsijaEtuSivu/>) :
-						(<Redirect to="/"/>)
-						}/>
 				<Route path="/admin_tiedot"
 					render={() => this.props.isLogged ?
 						(<IsannoitsijaTiedot/>) :
+						(<Redirect to="/"/>)
+						}/>
+				<Route path="/admin_lisaayhtio"
+					render={() => this.props.isLogged ?
+						(<IsannoitsijaTaloyhtiotLisaa/>) :
 						(<Redirect to="/"/>)
 						}/>
 				<Route path="/admin_yhtiot"
