@@ -11,10 +11,12 @@ Sovelluksessa toimii:
 
 
 Tehtävää/tarkistettavaa:
-- Ilmoituksen lähettäminen (asukas)
-- Käyttäjän tietojen muuttaminen (asukas, omat tiedot)
+- Ilmoituksen lähettäminen (asukas). Ilmoituksen perille meno tietokantaan saakka.
+- Käyttäjän tietojen muuttaminen (asukas, omat tiedot-valinta)
 
 Karsittavia ominaisuuksia(?):
 -
 -
+
+
 
