@@ -11,7 +11,7 @@ Tehtävää/tarkistettavaa:
 - Ilmoituksen lähettäminen (asukas)
 - Käyttäjän tietojen muuttaminen (asukas, omat tiedot)
 
-Karsittavia ominaisuuksia?
--
+Karsittavia ominaisuuksia(?):
+- Asetukset?
 -
 
