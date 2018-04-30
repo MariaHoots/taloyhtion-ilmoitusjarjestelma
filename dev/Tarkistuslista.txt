@@ -5,6 +5,7 @@ Sovelluksessa toimii:
 - Ilmoituksien, yhtiöiden ja henkilöiden selaus
 - Ilmoituksen tilan muuttaminen
 - Sorttaus
+- Last login
 
 
 Tehtävää/tarkistettavaa:
@@ -12,6 +13,6 @@ Tehtävää/tarkistettavaa:
 - Käyttäjän tietojen muuttaminen (asukas, omat tiedot)
 
 Karsittavia ominaisuuksia(?):
-- Asetukset?
+-
 -
 
