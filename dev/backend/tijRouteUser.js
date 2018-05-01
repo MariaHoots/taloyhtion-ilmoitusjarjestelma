@@ -183,9 +183,9 @@ tijRouteUser.post("/users", function(req,res){
         last_name:req.body.last_name,
         phone:req.body.phone,
         role:parseInt(req.body.role),				// oletus: 1 = asukas
-        last_login:req.body.last_login,				// miten alustetaan?
+        last_login:req.body.last_login,	
         billing_address:req.body.billing_address,
-        zip:parseInt(req.body.zip),
+        zip:req.body.zip,
         city:req.body.city
     };
     tijPg.query('INSERT INTO tij_users (id_flat, email, password, first_name, last_name,' +
@@ -221,7 +221,7 @@ tijRouteUser.put("/users2/:id", function(req,res){
         last_name:req.body.last_name,
         phone:req.body.phone,
         billing_address:req.body.billing_address,
-        zip:parseInt(req.body.zip),
+        zip:req.body.zip,
         city:req.body.city
 
     };
@@ -252,7 +252,7 @@ tijRouteUser.put("/users/:id", function(req,res){
     //  role:parseInt(req.body.role),
         last_login:req.body.last_login,
         billing_address:req.body.billing_address,
-        zip:parseInt(req.body.zip),
+        zip:req.body.zip,
         city:req.body.city
     };
     tijPg.query('UPDATE tij_users SET id_flat=($1), email=($2), password=($3), first_name=($4), last_name=($5),' +
