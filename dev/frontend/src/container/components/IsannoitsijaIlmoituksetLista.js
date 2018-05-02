@@ -62,7 +62,7 @@ export default class EtuSivu extends React.Component{
 	render() {
 
 		let listView = [];
-		console.log(this.props.activeNotifications)
+		
 		if (this.props.activeNotifications.length === 0) {
 			listView = <tr><td colSpan="11"><p>Ei aktiivisia ilmoituksia</p></td></tr>
 		} else {
