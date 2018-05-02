@@ -5,21 +5,16 @@ export default class IsannoitsijaTaloyhtiotLisaa extends React.Component
 {	
 	constructor(props) {
 		super(props);
+		
 		this.state = {
 			name:"testi",
 			address:"",
 			zip:"",
 			city:"",
 			business_id:"",
-			houses:[
-				["osoite1", "zip1", "kaupunki1",[["9","A"],["2","A"],["3","A"],["4","B"],["5","B"],["6","B"]]],
-				["osoite2", "zip2", "kaupunki2",[["7","C"],["8","C"]]]
-			]
-		
+			houses:[]		
 		}
 	}
-
-
 	
 	onFormChange = (event) => {
 
@@ -27,22 +22,34 @@ export default class IsannoitsijaTaloyhtiotLisaa extends React.Component
 
 	delHouse = (event) => {
 		let tempHousesList = this.state.houses;
-		tempHousesList.splice(event.target.name,1);
+
+		for (let i=0;i<tempHousesList.length;i++)
+		{
+			console.log(tempHousesList[i][0])
+			if (tempHousesList[i][0]===parseInt(event.target.name,10))
+			{
+				tempHousesList.splice(i,1);
+			}
+		}
+	
 		this.setState({
 			houses:tempHousesList
 		});
+		
 	}
 
 	delFlat = (event) => {
 		let ids = event.target.name.split(",");
+		console.log(this.state.houses[ids[0]][3])
 		this.setState({
-			...this.state.houses[ids[0]][3].splice(ids[1],1)
+			...this.state.houses[ids[0]][4].splice(ids[1],1)
 		});
 	}
 
 	newHouse = (event) => {
 		let tempHousesList = this.state.houses;
-		tempHousesList.push(["Osoite", "Postinumero", "Kaupunki",[]]);
+		let uniqId = tempHousesList.length;
+		tempHousesList.push([uniqId,"Osoite", "Postinumero", "Kaupunki",[]]);
 		this.setState({
 			houses:tempHousesList
 		});
@@ -51,38 +58,39 @@ export default class IsannoitsijaTaloyhtiotLisaa extends React.Component
 
 	newFlat = (event) => {
 		let tempHousesList = this.state.houses;
-		tempHousesList[event.target.name][3].push(["Asunto", "Rappu"]);
+		let uniqId = tempHousesList[event.target.name][4].length;
+		tempHousesList[event.target.name][4].push([uniqId,"Asunto", "Rappu"]);
 		this.setState({
 			houses:tempHousesList
 		});
-
 	}
 
 	render() {
 		let listView = {}
+		let i=1;
 
 		if (this.state.houses.length === 0) {
 			listView = <div className="form-row">Lisää talo painamalla linkkiä.</div>
 		} else {
-			listView = this.state.houses.map((houses,index) =>
-			<div key={index}>
+			listView = this.state.houses.map((houses) =>
+			<div key={houses[0]}>
 				<div className="form-row">
-					<div className="col-md-1">Talo {index+1}</div>
-					<div className="col-md-2"><input type="text" className="form-control" name="address" defaultValue={houses[0]}></input></div>
-					<div className="col-md-2"><input type="text" className="form-control" name="zip" defaultValue={houses[1]}></input></div>
-					<div className="col-md-2"><input type="text" className="form-control" name="city" defaultValue={houses[2]}></input></div>
-					<div className="col-md-2"><Link to="/" data-toggle="modal" name={index} onClick={this.newFlat}>Lisää Asunto</Link></div>
-					<div className="col-md-2"><Link to="/" data-toggle="modal" name={index} onClick={this.delHouse}>Poista talo</Link></div>
+					<div className="col-md-1">Talo {houses[0]+1}</div>
+					<div className="col-md-2"><input type="text" className="form-control" name="address" defaultValue={houses[1]}></input></div>
+					<div className="col-md-2"><input type="text" className="form-control" name="zip" defaultValue={houses[2]}></input></div>
+					<div className="col-md-2"><input type="text" className="form-control" name="city" defaultValue={houses[3]}></input></div>
+					<div className="col-md-2"><Link to="/" data-toggle="modal" name={houses[0]} onClick={this.newFlat}>Lisää Asunto</Link></div>
+					<div className="col-md-2"><Link to="/" data-toggle="modal" name={houses[0]} onClick={this.delHouse}>Poista talo</Link></div>
 				</div>
-				<div className="form-row"><label>Talon {index+1} Asunnot</label></div>
+				<div className="form-row"><label>Talon {houses[0]+1} Asunnot</label></div>
 
 				{
-				houses[3].map((flats,index2) => {
-					return <div className="form-row" key={index+","+index2}>
+				houses[4].map((flats) => {
+					return <div className="form-row" key={houses[0]+","+flats[0]}>
 		
-								<div className="col-md-2"><input type="text" className="form-control" name="flatnumber" defaultValue={flats[0]}></input></div>
-								<div className="col-md-2"><input type="text" className="form-control" name="stairway" defaultValue={flats[1]}></input></div>
-								<div className="col-md-2"><Link to="/" data-toggle="modal" name={index+","+index2} onClick={this.delFlat}>Poista asunto</Link></div>
+								<div className="col-md-2"><input type="text" className="form-control" name="flatnumber" defaultValue={flats[1]}></input></div>
+								<div className="col-md-2"><input type="text" className="form-control" name="stairway" defaultValue={flats[2]}></input></div>
+								<div className="col-md-2"><Link to="/" data-toggle="modal" name={houses[0]+","+flats[0]} onClick={this.delFlat}>Poista asunto</Link></div>
 							</div>
 							})
 				}	

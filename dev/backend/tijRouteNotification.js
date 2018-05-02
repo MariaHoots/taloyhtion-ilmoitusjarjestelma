@@ -77,7 +77,7 @@ tijRouteNotification.get("/notifications", function(req,res) {
     tijPg.query("SELECT tij_notifications.*, CONCAT (tij_users.last_name, ' ', tij_users.first_name) AS fullname," +
 					"tij_users.email,tij_users.first_name,tij_users.last_name,tij_users.phone,tij_users.role," +
 					"tij_users.last_login,tij_users.billing_address,tij_users.zip AS ub_zip,tij_users.city AS ub_city," +
-					"tij_housing_comp.name,tij_housing_comp.address,tij_housing_comp.zip AS hc_zip," +
+					"tij_housing_comp.name AS hc_name,tij_housing_comp.address,tij_housing_comp.zip AS hc_zip," +
 					"tij_housing_comp.city AS hc_city,tij_housing_comp.business_id," +
 					"tij_flats.flat_number,tij_flats.stairway," +
 					"tij_houses.address AS h_address, tij_houses.zip AS h_zip, tij_houses.city AS h_city " +
