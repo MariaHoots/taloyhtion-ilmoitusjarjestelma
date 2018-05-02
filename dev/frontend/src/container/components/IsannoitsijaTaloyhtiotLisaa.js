@@ -23,6 +23,45 @@ export default class IsannoitsijaTaloyhtiotLisaa extends React.Component
 		});
 	}
 
+
+	flatChange = (event) =>{
+		let tempVal=event.target.value
+		let tempTarget = event.target.name.split(",");
+		let tempHouses = this.state.houses;
+		let houseToModify;
+		let flatToModify;
+		for (let i=0;i<tempHouses.length;i++)
+		{
+			if (tempHouses[i][0]===parseInt(tempTarget[1],10))
+			{
+				houseToModify = i;
+				for (let ii=0;ii<tempHouses[i][4].length;ii++)
+				{
+					if (tempHouses[i][4][ii][0]===parseInt(tempTarget[2],10))
+					{
+						flatToModify = ii;
+					}
+				}
+			}
+		}
+		if (tempTarget[0]==='flatnumber')
+		{
+			tempHouses[houseToModify][4][flatToModify][1] = tempVal;
+			this.setState({
+				houses:tempHouses
+			});
+		}
+		if (tempTarget[0]==='stairway')
+		{
+			tempHouses[houseToModify][4][flatToModify][2] = tempVal;
+			this.setState({
+				houses:tempHouses
+			});
+		}
+
+
+	}
+
 	houseChange = (event) => {
 		let tempVal=event.target.value
 		let tempTarget = event.target.name.split(",");
@@ -191,8 +230,8 @@ export default class IsannoitsijaTaloyhtiotLisaa extends React.Component
 				houses[4].map((flats) => {
 					return <div className="form-row" key={houses[0]+","+flats[0]}>
 		
-								<div className="col-md-2"><input type="text" className="form-control" name={"flatnumber,"+houses[0]+","+flats[0]} defaultValue={flats[1]}></input></div>
-								<div className="col-md-2"><input type="text" className="form-control" name={"stairway,"+houses[0]+","+flats[0]} defaultValue={flats[2]}></input></div>
+								<div className="col-md-2"><input type="text" className="form-control" name={"flatnumber,"+houses[0]+","+flats[0]} defaultValue={flats[1]} onChange={this.flatChange}></input></div>
+								<div className="col-md-2"><input type="text" className="form-control" name={"stairway,"+houses[0]+","+flats[0]} defaultValue={flats[2]} onChange={this.flatChange}></input></div>
 								<div className="col-md-2"><Link to="/" data-toggle="modal" name={houses[0]+","+flats[0]} onClick={this.delFlat}>Poista asunto</Link></div>
 							</div>
 							})
@@ -201,8 +240,6 @@ export default class IsannoitsijaTaloyhtiotLisaa extends React.Component
 			</div>)
 		}
 		
-
-
 		return (
 			
 			<div className="col">	
