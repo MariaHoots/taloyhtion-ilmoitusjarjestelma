@@ -15,8 +15,9 @@ Tehtävää/tarkistettavaa:
 - Käyttäjän tietojen muuttaminen (asukas, omat tiedot-valinta)
 - Pikkubugi: Uusimmat ilmoitukset -> tilan muutos, sivu jämähtää ja vaatii refreshin. 
   Aktiivisissa ilmoituksissa tilan muutos toimii hyvin.
+- Pikkubugi: Uusimmat ilmoitukset -> huoneiston kohdalle tulee x.
 
-Karsittavia ominaisuuksia(?):
+  Karsittavia ominaisuuksia(?):
 -
 -
 
