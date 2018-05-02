@@ -3,7 +3,6 @@ Tarkistuslista:
 Sovelluksessa toimii:
 - Login ja logout
 - Ilmoituksien, yhtiöiden ja henkilöiden selaus
-- Ilmoituksen tilan muuttaminen
 - Ilmoitukseen lisätty kommentti menee tietokantaan
 - Ilmoituksen modal-ikkuna
 - Sorttaus
@@ -17,7 +16,8 @@ Tehtävää/tarkistettavaa:
   Aktiivisissa ilmoituksissa tilan muutos toimii hyvin.
 - Pikkubugi: Uusimmat ilmoitukset -> huoneiston kohdalle tulee x.
 
-  Karsittavia ominaisuuksia(?):
+
+Karsittavia ominaisuuksia(?):
 -
 -
 
