@@ -13,6 +13,8 @@ Sovelluksessa toimii:
 Teht‰v‰‰/tarkistettavaa:
 - Ilmoituksen l‰hett‰minen (asukas). Ilmoituksen perille meno tietokantaan saakka.
 - K‰ytt‰j‰n tietojen muuttaminen (asukas, omat tiedot-valinta)
+- Pikkubugi: Uusimmat ilmoitukset -> tilan muutos, sivu j‰m‰ht‰‰ ja vaatii refreshin. 
+  Aktiivisissa ilmoituksissa tilan muutos toimii hyvin.
 
 Karsittavia ominaisuuksia(?):
 -
