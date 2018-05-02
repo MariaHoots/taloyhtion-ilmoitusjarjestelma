@@ -615,6 +615,27 @@ export default class App extends Component {
 			console.log(error);
 		});
 	}
+	addHousingCompany = (housingcompany) => {
+		let onAddHousingCompany= {
+			method:"POST",
+			mode:"cors",
+			headers:{"Content-Type":"application/json",
+					"token":this.state.token},
+			body:JSON.stringify(housingcompany)
+		}
+		fetch("/apim/housingcompany/",onAddHousingCompany).then((response) => {
+			if(response.ok) {
+				response.json().then((data) => {
+						/*this.getNotifications();
+						this.setState({notificationsList:data})*/
+				})
+			} else {
+				console.log(response.statusText);
+			}
+		}).catch((error) => {
+			console.log(error);
+		});
+	}
 
 	onLogin = (user) => {
 		let usergroup=0;
