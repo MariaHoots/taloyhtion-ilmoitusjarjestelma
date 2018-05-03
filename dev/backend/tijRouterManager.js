@@ -368,15 +368,12 @@ tijRouterManager.post("/housingcompany", function(req,res){
         for (let ii=0;ii<addNtf.houses[i][4].length;ii++)
         {
             addHcQuery += "INSERT INTO tij_flats (id_houses,flat_number,stairway) ";
-            addHcQuery += "VALUES (house_id,'"+addNtf.houses[i][4][1]+"','"+addNtf.houses[i][4][2]+"'); ";
+            addHcQuery += "VALUES (house_id,'"+addNtf.houses[i][4][ii][1]+"','"+addNtf.houses[i][4][ii][2]+"'); ";
         }
     }
     addHcQuery += "END addhc $$; ";
     addHcQuery += "COMMIT; "; 
 
-
-
-    
     tijPg.query(addHcQuery)
     .then(pgres => {
         return res.status(200)
