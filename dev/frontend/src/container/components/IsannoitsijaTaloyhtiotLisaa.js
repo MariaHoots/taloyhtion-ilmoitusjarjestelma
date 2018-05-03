@@ -7,7 +7,7 @@ export default class IsannoitsijaTaloyhtiotLisaa extends React.Component
 		super(props);
 		
 		this.state = {
-			name:"testi",
+			name:"",
 			address:"",
 			zip:"",
 			city:"",

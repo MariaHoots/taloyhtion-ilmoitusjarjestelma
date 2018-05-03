@@ -1,19 +1,19 @@
 import React from 'react';
 
-export default class IsannoitsijaHenkilotListaNotifications extends React.Component 
+export default class IsannoitsijaHenkilotListaNotifications extends React.Component
 {
 
-	render() 
+	render()
 	{
-		
+
 		let tempView = {}
 		if (this.props.notificationsList.length === 0) {
-			tempView = <tr><td>Ei uusia ilmoituksia.</td></tr>
+			tempView = <tr><td colSpan="2">Ei ilmoituksia</td></tr>
 		} else {
-			tempView = this.props.notificationsList.map((list) => 
+			tempView = this.props.notificationsList.map((list) =>
 			<tr key={list.id}>
 				<td><a href="/ilmoitus">{list.title}</a></td>
-				<td>{list.sent_date}</td>
+				<td>{new Date(list.sent_date).toLocaleString("fi-FI")}</td>
 		   </tr>
 			)
 		}

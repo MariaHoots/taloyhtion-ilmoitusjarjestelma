@@ -339,6 +339,50 @@ tijRouterManager.put("/housingcomp/:id", function(req,res){
     }).catch(e => console.error(e.stack));
 });
 
+tijRouterManager.post("/housingcompany", function(req,res){
+    let addHcQuery = '';
+    let addNtf = {
+        name:req.body.name,
+		address:req.body.address,
+		zip:req.body.zip,
+		city:req.body.city,
+		business_id:req.body.business_id,
+		houses:req.body.houses,
+    };
+
+    addHcQuery += "BEGIN; ";
+    addHcQuery += "DO $$ ";
+    addHcQuery += "<<addhc>> ";
+    addHcQuery += "DECLARE ";
+    addHcQuery += "hc_id bigint; ";
+    addHcQuery += "house_id bigint; ";
+    addHcQuery += "BEGIN ";
+    addHcQuery += "INSERT INTO tij_housing_comp (name,address,zip,city,business_id) ";
+    addHcQuery += "VALUES ('"+addNtf.name+"','"+addNtf.address+"','"+addNtf.zip+"','"+addNtf.city+"','"+addNtf.business_id+"') RETURNING id INTO hc_id; ";
+    
+    for (let i=0;i<addNtf.houses.length;i++)
+    {
+        addHcQuery += "INSERT INTO tij_houses (id_housing_comp,address,zip,city) ";
+        addHcQuery += "VALUES (hc_id,'"+addNtf.houses[i][1]+"','"+addNtf.houses[i][2]+"','"+addNtf.houses[i][3]+"') RETURNING id INTO house_id; ";
+        
+        for (let ii=0;ii<addNtf.houses[i][4].length;ii++)
+        {
+            addHcQuery += "INSERT INTO tij_flats (id_houses,flat_number,stairway) ";
+            addHcQuery += "VALUES (house_id,'"+addNtf.houses[i][4][ii][1]+"','"+addNtf.houses[i][4][ii][2]+"'); ";
+        }
+    }
+    addHcQuery += "END addhc $$; ";
+    addHcQuery += "COMMIT; "; 
+
+    tijPg.query(addHcQuery)
+    .then(pgres => {
+        return res.status(200)
+        .json({
+            status: 'OK', message: 'notification inserted'
+        });
+    }).catch(e => console.error(e.stack));
+});
+
 // maintenance_comp - get all
 tijRouterManager.get("/maintenancecomp", function(req,res) {
     let maintenanceCompanies = [];
