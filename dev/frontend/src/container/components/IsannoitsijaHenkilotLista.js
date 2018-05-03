@@ -246,7 +246,7 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 
 									</form>
 
-									<h5>Käyttäjän ilmoitukset:</h5>
+									<h5>Käyttäjän aktiiviset ilmoitukset:</h5>
 									<table>
 										<thead>
 											<tr>
