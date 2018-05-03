@@ -346,7 +346,7 @@ tijRouterManager.post("/housingcompany", function(req,res){
 		address:req.body.address,
 		zip:req.body.zip,
 		city:req.body.city,
-		business_id:req.body.name,
+		business_id:req.body.business_id,
 		houses:req.body.houses,
     };
 
