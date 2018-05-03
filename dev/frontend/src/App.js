@@ -751,6 +751,7 @@ export default class App extends Component {
 
 									   addNotification={this.addNotification}
 									   addUser={this.addUser}
+									   addHousingCompany={this.addHousingCompany}
 
 									   updateNotification={this.updateNotification}
 									   updateNotificationStatus={this.updateNotificationStatus}

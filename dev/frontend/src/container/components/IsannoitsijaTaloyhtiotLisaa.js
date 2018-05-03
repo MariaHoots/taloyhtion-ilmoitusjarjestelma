@@ -77,21 +77,21 @@ export default class IsannoitsijaTaloyhtiotLisaa extends React.Component
 
 		if (tempTarget[0]==='haddress')
 		{
-			tempHouses [itemToModify][1] = tempVal;
+			tempHouses[itemToModify][1] = tempVal;
 			this.setState({
 				houses:tempHouses
 			});
 		}
 		if (tempTarget[0]==='hzip')
 		{
-			tempHouses [itemToModify][2] = tempVal;
+			tempHouses[itemToModify][2] = tempVal;
 			this.setState({
 				houses:tempHouses
 			});
 		}
 		if (tempTarget[0]==='hcity')
 		{
-			tempHouses [itemToModify][3] = tempVal;
+			tempHouses[itemToModify][3] = tempVal;
 			this.setState({
 				houses:tempHouses
 			});
@@ -204,7 +204,16 @@ export default class IsannoitsijaTaloyhtiotLisaa extends React.Component
 	}
 
 	submit = (event) => {
-		console.log(this.state.houses)
+		console.log(this.state.houses);
+		let tempHousingCompany = {
+			name:this.state.name,
+			address:this.state.address,
+			zip:this.state.zip,
+			city:this.state.city,
+			business_id:this.state.business_id,
+			houses:this.state.houses	
+		}
+		this.props.addHousingCompany(tempHousingCompany);
 	}
 
 
@@ -214,17 +223,17 @@ export default class IsannoitsijaTaloyhtiotLisaa extends React.Component
 		if (this.state.houses.length === 0) {
 			listView = <div className="form-row">Lisää talo painamalla linkkiä.</div>
 		} else {
-			listView = this.state.houses.map((houses) =>
+			listView = this.state.houses.map((houses,index) =>
 			<div key={houses[0]}>
 				<div className="form-row">
-					<div className="col-md-1">Talo {houses[0]+1}</div>
+					<div className="col-md-1">Talo {index+1}</div>
 					<div className="col-md-2"><input type="text" className="form-control" name={"haddress,"+houses[0]} defaultValue={houses[1]} onChange={this.houseChange}></input></div>
 					<div className="col-md-2"><input type="text" className="form-control" name={"hzip,"+houses[0]} defaultValue={houses[2]} onChange={this.houseChange}></input></div>
 					<div className="col-md-2"><input type="text" className="form-control" name={"hcity,"+houses[0]} defaultValue={houses[3]} onChange={this.houseChange}></input></div>
 					<div className="col-md-2"><Link to="/" data-toggle="modal" name={houses[0]} onClick={this.newFlat}>Lisää Asunto</Link></div>
 					<div className="col-md-2"><Link to="/" data-toggle="modal" name={houses[0]} onClick={this.delHouse}>Poista talo</Link></div>
 				</div>
-				<div className="form-row"><label>Talon {houses[0]+1} Asunnot</label></div>
+				<div className="form-row"><label>Talon {index+1} Asunnot</label></div>
 
 				{
 				houses[4].map((flats) => {
@@ -277,11 +286,13 @@ export default class IsannoitsijaTaloyhtiotLisaa extends React.Component
 				</form>
 
 				<br/>
-				<input type="submit"
-				       	name="submit"
-						value="Tallenna uusi yhtiö"
-						className="btn btn-primary"
-						onClick={this.submit}/>
+				<form action="/admin_yhtiot" method="GET">
+					<input type="submit"
+							name="submit"
+							value="Tallenna uusi yhtiö"
+							className="btn btn-primary"
+							onClick={this.submit}/>
+				</form>
 			  </div>
 			
 		);
