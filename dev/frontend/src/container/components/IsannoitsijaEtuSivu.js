@@ -13,31 +13,25 @@ export default class EtuSivu extends React.Component {
 
   render() {
     return (
-		<div className="card">
-		  <div className="card-body">
-		    <h3 className="card-title">Tervetuloa {this.props.loggedUser.first_name}</h3>
-		    <p className="card-text mb-5">Edellinen sisäänkirjautuminen {new Date(this.props.loggedUser.last_login).toLocaleString("fi-FI")}</p>
+			<div className="card">
+			  <div className="card-body">
+			    <h3 className="card-title">Tervetuloa {this.props.loggedUser.first_name}</h3>
+			    <p className="card-text mb-5">Edellinen sisäänkirjautuminen {new Date(this.props.loggedUser.last_login).toLocaleString("fi-FI")}</p>
+			    <h4>Käsittelemättömät ilmoitukset</h4>
+				  <table className="table table-bordered mb-5">
 
-		    <h4>Uusimmat ilmoitukset</h4>
-		  <table className="table table-bordered mb-5">
-		    <thead>
+						<IsannoitsijaEtuSivuLista notificationsList={this.props.notificationsList}
+																			updateNotificationStatus={this.props.updateNotificationStatus}/>
 
-		    </thead>
-
-				<IsannoitsijaEtuSivuLista notificationsList={this.props.notificationsList}
-																	updateNotificationStatus={this.props.updateNotificationStatus}/>
-
-		  </table>
-
-		  <Link to="/admin_ilmoitukset" className="card-link">
-		  <img src="img/ilmoitukset.svg" className="img-fluid" alt="[H]" height="20" width="20"/> Kaikki ilmoitukset</Link>
-		  <Link to="/tiedot" className="card-link">
-		  <img src="img/tiedot.svg" className="img-fluid" alt="[H]" height="20" width="20"/> Omat tiedot</Link>
-		  <Link to="/asetukset" className="card-link">
-		  <img src="img/asetukset.svg" className="img-fluid" alt="[H]" height="20" width="20"/> Asetukset</Link>
-
-		  </div>
-		</div>
+				  </table>
+				  <Link to="/admin_ilmoitukset" className="card-link">
+				  <img src="img/ilmoitukset.svg" className="img-fluid" alt="[H]" height="20" width="20"/> Kaikki ilmoitukset</Link>
+				  <Link to="/tiedot" className="card-link">
+				  <img src="img/tiedot.svg" className="img-fluid" alt="[H]" height="20" width="20"/> Omat tiedot</Link>
+				  <Link to="/asetukset" className="card-link">
+				  <img src="img/asetukset.svg" className="img-fluid" alt="[H]" height="20" width="20"/> Asetukset</Link>
+			  </div>
+			</div>
     );
   }
 }

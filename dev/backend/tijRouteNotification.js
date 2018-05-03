@@ -104,7 +104,7 @@ tijRouteNotification.get("/notifications", function(req,res) {
                 checkout:pgres.rows[i].checkout_date,				// _date
                 checkout_message:pgres.rows[i].checkout_message,
                 status:pgres.rows[i].status,
-               
+
                 id_flat:pgres.rows[i].id_flat,
                 email:pgres.rows[i].email,
                 first_name:pgres.rows[i].first_name,
@@ -116,10 +116,10 @@ tijRouteNotification.get("/notifications", function(req,res) {
                 ub_zip:pgres.rows[i].ub_zip,
                 ub_city:pgres.rows[i].ub_city,
                 fullname:pgres.rows[i].fullname,
-				
+
 				flat_number:pgres.rows[i].flat_number,
 				stairway:pgres.rows[i].stairway,
-				
+
 				h_address:pgres.rows[i].h_address,
 				h_zip:pgres.rows[i].h_zip,
 				h_city:pgres.rows[i].h_city,				// lisätty selectiin
@@ -129,7 +129,7 @@ tijRouteNotification.get("/notifications", function(req,res) {
                 hc_zip:pgres.rows[i].hc_zip,
                 hc_city:pgres.rows[i].hc_city,
                 business_id:pgres.rows[i].business_id
-                
+
             };
             notifications.push(notification);
         }
@@ -138,7 +138,7 @@ tijRouteNotification.get("/notifications", function(req,res) {
     }).catch(e => console.error(e.stack));
 });
 
-// notifications - get 5 notifications with status 1 
+// notifications - get 5 notifications with status 1
 tijRouteNotification.get("/notificationsnew", function(req,res) {
     let notifications = [];
     let notification = tijNotification;
@@ -149,8 +149,8 @@ tijRouteNotification.get("/notificationsnew", function(req,res) {
 					"tij_housing_comp.name,tij_housing_comp.address,tij_housing_comp.zip AS hc_zip," +
 					"tij_housing_comp.city AS hc_city,tij_housing_comp.business_id " +
 				"FROM tij_notifications INNER JOIN tij_users ON (tij_notifications.id_user = tij_users.id) " +
-					"INNER JOIN tij_housing_comp ON (tij_notifications.id_housing_c = tij_housing_comp.id) " + 
-				"WHERE status=1 ORDER BY sent_date ASC LIMIT 5")
+					"INNER JOIN tij_housing_comp ON (tij_notifications.id_housing_c = tij_housing_comp.id) " +
+				"WHERE status=1 ORDER BY sent_date ASC")
     .then(pgres => {
         queryContents = pgres.rows;
         for (let i=0;i<pgres.rows.length;i++)
@@ -169,7 +169,7 @@ tijRouteNotification.get("/notificationsnew", function(req,res) {
                 checkout:pgres.rows[i].checkout_date,				// _date
                 checkout_message:pgres.rows[i].checkout_message,
                 status:pgres.rows[i].status,
-               
+
                 id_flat:pgres.rows[i].id_flat,
                 email:pgres.rows[i].email,
                 first_name:pgres.rows[i].first_name,
@@ -187,7 +187,7 @@ tijRouteNotification.get("/notificationsnew", function(req,res) {
                 hc_zip:pgres.rows[i].hc_zip,
                 hc_city:pgres.rows[i].hc_city,
                 business_id:pgres.rows[i].business_id
-                
+
             };
             notifications.push(notification);
         }
