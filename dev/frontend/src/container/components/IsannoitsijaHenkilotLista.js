@@ -288,7 +288,7 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 
 					</th>
 
-					<td colSpan="3">{list.billing_address}</td>
+					<td colSpan="3">{list.h_address}</td>
 
 					<td>
 					<a href="/admin_ilmoitukset"><img src="img/ilmoitukset.svg" className="img-fluid" alt="[H]" height="20" width="20"/></a>
