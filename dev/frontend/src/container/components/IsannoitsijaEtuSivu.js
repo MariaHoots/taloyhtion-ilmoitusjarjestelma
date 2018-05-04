@@ -19,6 +19,13 @@ export default class EtuSivu extends React.Component {
 			    <p className="card-text mb-5">Edellinen sisäänkirjautuminen {new Date(this.props.loggedUser.last_login).toLocaleString("fi-FI")}</p>
 			    <h4>Käsittelemättömät ilmoitukset</h4>
 				  <table className="table table-bordered mb-5">
+						<tr>
+							<th>Ilmoitus</th>
+              <th>Päivämäärä</th>
+              <th>Ilmoittaja</th>
+              <th>Ilmoitus</th>
+							<th>Toiminnot</th>
+						</tr>
 
 						<IsannoitsijaEtuSivuLista notificationsList={this.props.notificationsList}
 																			updateNotificationStatus={this.props.updateNotificationStatus}/>

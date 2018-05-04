@@ -93,7 +93,7 @@ export default class EtuSivu extends React.Component {
   		    <thead>
   		      <tr>
               <th>Ilmoitus</th>
-              <th>Lähetetty</th>
+              <th>Päivämäärä</th>
               <th>Tyyppi</th>
               <th>Status</th>
   		      </tr>
