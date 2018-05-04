@@ -30,12 +30,12 @@ export default class EtuSivu extends React.Component{
 	{
 		for(let i=0;i<this.props.activeNotifications.length;i++){
 			if (this.props.activeNotifications[i].id === parseInt(event.target.name,10)){
-				
+
 				this.setState({
 					id:parseInt(event.target.name,10),
 					currentNotif:this.props.activeNotifications[i].id,
 					comment:this.props.activeNotifications[i].checkout_message,
-			
+
 				})
 			}
 		}
@@ -44,7 +44,7 @@ export default class EtuSivu extends React.Component{
 	onFormChange = (event) => {
 		if(event.target.name==="comment") {
 			this.setState({
-				comment:event.target.value				
+				comment:event.target.value
 			});
 		}
 	}
@@ -54,7 +54,7 @@ export default class EtuSivu extends React.Component{
 			let tempNotif = {
 			id:this.state.id,
 			comment:this.state.comment,
-      	
+
 		}
 		this.props.updateNotification(tempNotif);
 	}
@@ -62,7 +62,7 @@ export default class EtuSivu extends React.Component{
 	render() {
 
 		let listView = [];
-		
+
 		if (this.props.activeNotifications.length === 0) {
 			listView = <tr><td colSpan="11"><p>Ei aktiivisia ilmoituksia</p></td></tr>
 		} else {
@@ -126,34 +126,34 @@ export default class EtuSivu extends React.Component{
 
 											<form>
 												<label htmlFor="statusChange">Muuta tilaa:</label>
-												<Link to="/" data-toggle="modal" onClick={this.changeStatus}>
-							{(notification.status === 1) ? (
-									<img src="img/vastaanotettu.svg"  className="img-fluid border border-dark rounded bg-success" alt="[H]" height="20" width="20"/>
-								) : (
-									<img src="img/vastaanotettu.svg" id={notification.id} name="received" className="img-fluid" alt="[H]" height="20" width="20"/>
-							)}
-							</Link>
-							<Link to="/" data-toggle="modal" onClick={this.changeStatus}>
-						{(notification.status === 2) ? (
-									<img src="img/tyonalla.svg" className="img-fluid border border-dark rounded bg-success" alt="[H]" height="20" width="20"/>
-								) : (
-									<img src="img/tyonalla.svg" id={notification.id} name="beingworked" className="img-fluid" alt="[H]" height="20" width="20"/>
-							)}
-							</Link>
-							<Link to="/" data-toggle="modal" onClick={this.changeStatus}>
-						{(notification.status === 3) ? (
-									<img src="img/keskeytynyt.svg" className="img-fluid border border-dark rounded bg-success" alt="[H]" height="20" width="20"/>
-								) : (
-									<img src="img/keskeytynyt.svg" id={notification.id} name="cancelled" className="img-fluid " alt="[H]" height="20" width="20"/>
-							)}
-							</Link>
-							<Link to="/" data-toggle="modal" onClick={this.changeStatus}>
-						{(notification.status === 4) ? (
-									<img src="img/valmis.svg" className="img-fluid border border-dark rounded bg-success" alt="[H]" height="20" width="20"/>
-								) : (
-									<img src="img/valmis.svg" id={notification.id} name="done" className="img-fluid" alt="[H]" height="20" width="20"/>
-							)}
-							</Link>
+												<Link to="/" data-toggle="modal" title="vastaanotettu" onClick={this.changeStatus}>
+													{(notification.status === 1) ? (
+														<img src="img/vastaanotettu.svg"  className="img-fluid border border-dark rounded bg-success" alt="[H]" height="20" width="20"/>
+													) : (
+														<img src="img/vastaanotettu.svg" id={notification.id} name="received" className="img-fluid" alt="[H]" height="20" width="20"/>
+													)}
+												</Link>
+												<Link to="/" data-toggle="modal" title="työn alla" onClick={this.changeStatus}>
+													{(notification.status === 2) ? (
+														<img src="img/tyonalla.svg" className="img-fluid border border-dark rounded bg-success" alt="[H]" height="20" width="20"/>
+													) : (
+														<img src="img/tyonalla.svg" id={notification.id} name="beingworked" className="img-fluid" alt="[H]" height="20" width="20"/>
+													)}
+												</Link>
+												<Link to="/" data-toggle="modal" title="keskeytynyt" onClick={this.changeStatus}>
+													{(notification.status === 3) ? (
+														<img src="img/keskeytynyt.svg" className="img-fluid border border-dark rounded bg-success" alt="[H]" height="20" width="20"/>
+													) : (
+														<img src="img/keskeytynyt.svg" id={notification.id} name="cancelled" className="img-fluid " alt="[H]" height="20" width="20"/>
+													)}
+												</Link>
+												<Link to="/" data-toggle="modal" title="valmis" onClick={this.changeStatus}>
+													{(notification.status === 4) ? (
+														<img src="img/valmis.svg" className="img-fluid border border-dark rounded bg-success" alt="[H]" height="20" width="20"/>
+													) : (
+														<img src="img/valmis.svg" id={notification.id} name="done" className="img-fluid" alt="[H]" height="20" width="20"/>
+													)}
+												</Link>
 												<div className="form-row">
 													<label htmlFor="comment">Kommentti</label>
 													<textarea onChange={this.onFormChange} className="form-control" name="comment" rows="3" defaultValue={notification.checkout_message}></textarea>
@@ -184,28 +184,28 @@ export default class EtuSivu extends React.Component{
 					<td colSpan="3">{getIlmoitustyyppiById(notification.notif_type)}</td>
 
 					<td>
-						<Link to="/" data-toggle="modal" onClick={this.changeStatus}>
+						<Link to="/" data-toggle="modal" title="vastaanotettu" onClick={this.changeStatus}>
 							{(notification.status === 1) ? (
 									<img src="img/vastaanotettu.svg" className="img-fluid border border-dark rounded bg-success" alt="[H]" height="20" width="20"/>
 								) : (
 									<img src="img/vastaanotettu.svg" id={notification.id} name="received" className="img-fluid" alt="[H]" height="20" width="20"/>
 							)}
 							</Link>
-						<Link to="/" data-toggle="modal" onClick={this.changeStatus}>
+						<Link to="/" data-toggle="modal" title="työn alla" onClick={this.changeStatus}>
 						{(notification.status === 2) ? (
 									<img src="img/tyonalla.svg" className="img-fluid border border-dark rounded bg-success" alt="[H]" height="20" width="20"/>
 								) : (
 									<img src="img/tyonalla.svg" id={notification.id} name="beingworked" className="img-fluid" alt="[H]" height="20" width="20"/>
 							)}
 							</Link>
-						<Link to="/" data-toggle="modal" onClick={this.changeStatus}>
+						<Link to="/" data-toggle="modal" title="keskeytynyt" onClick={this.changeStatus}>
 						{(notification.status === 3) ? (
 									<img src="img/keskeytynyt.svg" className="img-fluid border border-dark rounded bg-success" alt="[H]" height="20" width="20"/>
 								) : (
 									<img src="img/keskeytynyt.svg" id={notification.id} name="cancelled" className="img-fluid " alt="[H]" height="20" width="20"/>
 							)}
 							</Link>
-						<Link to="/" data-toggle="modal" onClick={this.changeStatus}>
+						<Link to="/" data-toggle="modal" title="valmis" onClick={this.changeStatus}>
 						{(notification.status === 4) ? (
 									<img src="img/valmis.svg" className="img-fluid border border-dark rounded bg-success" alt="[H]" height="20" width="20"/>
 								) : (
