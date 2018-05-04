@@ -2,6 +2,12 @@ import React from 'react';
 
 export default class HouseSelect extends React.Component {
 
+	onChange = (event) => {
+		if(event.target.name==="houseselect") {
+			this.props.updateHid(event.target.value);
+		}
+	}
+
   render() {
     let tempView = {}
 	if (this.props.housesList.length === 0) {
@@ -15,7 +21,7 @@ export default class HouseSelect extends React.Component {
     return (
         <div className="form-group">
 			<label htmlFor="talo">Talo</label>
-            <select className="form-control" id="talo" value={this.props.hid}>
+            <select className="form-control" id="talo" name="houseselect" value={this.props.hid} onChange={this.onChange}>
 					{tempView}
 			</select>
         </div>	

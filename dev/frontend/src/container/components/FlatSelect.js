@@ -2,6 +2,12 @@ import React from 'react';
 
 export default class FlatSelect extends React.Component {
 
+    onChange = (event) => {
+		if(event.target.name==="flatselect") {
+			this.props.updateFid(event.target.value);
+		}
+    }
+    
     render() {
         let tempView = {}
         if (this.props.flatsList.length === 0) {
@@ -17,7 +23,7 @@ export default class FlatSelect extends React.Component {
         
         <div className="form-group">
 			<label htmlFor="asunto">Asunto</label>
-            <select className="form-control" id="asunto" value={this.props.fid}>
+            <select className="form-control" id="asunto"  name="flatselect" value={this.props.fid} onChange={this.onChange}>
 					{tempView}
 			</select>
         </div>

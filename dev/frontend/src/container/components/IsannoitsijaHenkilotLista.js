@@ -11,6 +11,12 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 {
 	constructor(props) {
 		super(props);
+
+		this.updateHcid = this.updateHcid.bind(this);
+		this.updateHid = this.updateHid.bind(this);
+		this.updateFid = this.updateFid.bind(this);
+	
+
 		this.state={
 			id:"",
 			first_name:"",
@@ -33,6 +39,24 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 	componentDidMount() {
 		this.props.getHousingCompanies();
 
+	}
+
+	updateHcid(id){
+		this.setState({
+			hcid:id
+		});
+	}
+
+	updateHid(id){
+		this.setState({
+			hid:id
+		});
+	}
+	
+	updateFid(id){
+		this.setState({
+			fid:id
+		});
 	}
 
 	setCurrentPersonState(target){
@@ -240,11 +264,14 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 
 										<HousingCompSelect housingCompList={this.props.housingCompList}
 															setCurrentHousingCompany={this.props.setCurrentHousingCompany}
-															hcid={this.state.hcid}/>
+															hcid={this.state.hcid}
+															updateHcid={this.updateHcid}/>
 										<HouseSelect housesList={this.props.housesList}
-													hid={this.state.hid}/>
+													hid={this.state.hid}
+													updateHid={this.updateHid}/>
 										<FlatSelect flatsList={this.props.flatsList}
-													fid={this.state.fid}/>
+													fid={this.state.fid}
+													updateFid={this.updateFid}/>
 
 									</form>
 
