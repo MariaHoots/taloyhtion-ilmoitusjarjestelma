@@ -17,7 +17,7 @@ export default class FlatSelect extends React.Component {
         
         <div className="form-group">
 			<label htmlFor="asunto">Asunto</label>
-            <select className="form-control" id="asunto" value={this.props.hid}>
+            <select className="form-control" id="asunto" value={this.props.fid}>
 					{tempView}
 			</select>
         </div>

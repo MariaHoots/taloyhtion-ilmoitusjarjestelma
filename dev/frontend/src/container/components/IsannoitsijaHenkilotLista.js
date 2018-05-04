@@ -241,8 +241,10 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 										<HousingCompSelect housingCompList={this.props.housingCompList}
 															setCurrentHousingCompany={this.props.setCurrentHousingCompany}
 															hcid={this.state.hcid}/>
-										<HouseSelect housesList={this.props.housesList}/>
-										<FlatSelect flatsList={this.props.flatsList}/>
+										<HouseSelect housesList={this.props.housesList}
+													hid={this.state.hid}/>
+										<FlatSelect flatsList={this.props.flatsList}
+													fid={this.state.fid}/>
 
 									</form>
 
