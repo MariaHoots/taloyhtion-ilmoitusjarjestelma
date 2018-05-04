@@ -89,11 +89,11 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 		let sorter = new Sorter();
 
 		if (event.target.name === "sortaddressdown"){
-			tempUserList = sorter.sortArrayByField(tempUserList,"billing_address",1);
+			tempUserList = sorter.sortArrayByField(tempUserList,"h_address",1);
 			this.props.setUserPropsState(tempUserList);
 		}
 		if (event.target.name === "sortaddressup"){
-			tempUserList = sorter.sortArrayByField(tempUserList,"billing_address",-1);
+			tempUserList = sorter.sortArrayByField(tempUserList,"h_address",-1);
 			this.props.setUserPropsState(tempUserList);
 		}
 		if (event.target.name === "sortnamedown"){
