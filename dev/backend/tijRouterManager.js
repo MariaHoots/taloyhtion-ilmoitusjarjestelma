@@ -226,7 +226,7 @@ tijRouterManager.get("/notifications/:uid/:stat", function(req,res) {
     }).catch(e => console.error(e.stack));
 });
 
-// notifications - add (insert) one  = POST
+/* notifications - add (insert) one  = POST                 toimivuus = ?
 tijRouterManager.post("/notifications", function(req,res){
     let addNtf = tijNotification;
     addNtf = {
@@ -244,10 +244,10 @@ tijRouterManager.post("/notifications", function(req,res){
         status:req.body.status
     };
     tijPg.query('INSERT INTO tij_notifications(id_user, id_housing_comp, id_checkout, read_id,' +
-                'sent_date, read_date, title, notif_type, checkout, checkout_message, status)' +
-                'VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)'
+                'sent_date, read_date, title, message, notif_type, checkout, checkout_message, status)' +
+                'VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)',
                 [addNtf.id_user, addNtf.id_housing_comp, addNtf.id_checkout, addNtf.read_id,
-                addNtf.sent_date, addNtf.read_date, addNtf.title, addNtf.notif_type,
+                addNtf.sent_date, addNtf.read_date, addNtf.title, addNtf.message, addNtf.notif_type,
                 addNtf.checkout, addNtf.checkout_message, addNtf.status]
                 )
     .then(pgres => {
@@ -257,6 +257,7 @@ tijRouterManager.post("/notifications", function(req,res){
         });
     }).catch(e => console.error(e.stack));
 });
+*/
 
 // notifications - update one  = PUT
 tijRouterManager.put("/notifications/:id", function(req,res){
@@ -272,16 +273,16 @@ tijRouterManager.put("/notifications/:id", function(req,res){
         title:req.body.title,
         message:req.body.message,
         notif_type:req.body.notif_type,
-        checkout:req.body.checkout,
+        checkout_date:req.body.checkout,
         checkout_message:req.body.checkout_message,
         status:req.body.status
     };
     tijPg.query('UPDATE tij_notifications SET id_user=($1), id_housing_comp=($2), id_checkout=($3),' +
-                'read_id=($4), sent_date=($5), read_date=($6), title=($7), notif_type=($8),' +
-                'checkout=($9), checkout_message=($10), status=($11) WHERE id=($12)',
+                'read_id=($4), sent_date=($5), read_date=($6), title=($7), message=($8), notif_type=($9),' +
+                'checkout_date=($10), checkout_message=($11), status=($12) WHERE id=($13)',
                 [putNtf.id_user, putNtf.id_housing_comp, putNtf.id_checkout, putNtf.read_id,
-                putNtf.sent_date, putNtf.read_date, putNtf.title, putNtf.notif_type,
-                putNtf.checkout, putNtf.checkout_message, putNtf.status, putId]
+                putNtf.sent_date, putNtf.read_date, putNtf.title, putNtf.message, putNtf.notif_type,
+                putNtf.checkout_date, putNtf.checkout_message, putNtf.status, putId]
                 )
     .then(pgres => {
         return res.status(200)
@@ -378,7 +379,7 @@ tijRouterManager.post("/housingcompany", function(req,res){
     .then(pgres => {
         return res.status(200)
         .json({
-            status: 'OK', message: 'notification inserted'
+            status: 'OK', message: 'housing_company/houses/flats inserted'
         });
     }).catch(e => console.error(e.stack));
 });

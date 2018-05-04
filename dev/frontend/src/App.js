@@ -148,7 +148,7 @@ export default class App extends Component {
 		});
 	}
 
-	// Get users from single housing company   *** EI TÄMÄ TOIMI NÄIN ***
+	// Get users from single housing company   *** backendin haku on tij_flats-taulusta / avaimella id_flats ***
 	getUsersByHousingCompany = (id) => {
 		let onGetUser = {
 			method:"GET",

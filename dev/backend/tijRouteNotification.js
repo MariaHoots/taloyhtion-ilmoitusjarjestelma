@@ -261,10 +261,10 @@ tijRouteNotification.post("/notifications", function(req,res){
         status:1
     };
     tijPg.query('INSERT INTO tij_notifications(id_user, id_housing_c, id_checkout, read_id,' +
-                'sent_date, read_date, title, notif_type, checkout_date, checkout_message, status)' +
-                'VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)'
+                'sent_date, read_date, title, message, notif_type, checkout_date, checkout_message, status)' +
+                'VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)',
                 [addNtf.id_user, addNtf.id_housing_c, addNtf.id_checkout, addNtf.read_id,
-                addNtf.sent_date, addNtf.read_date, addNtf.title, addNtf.notif_type,
+                addNtf.sent_date, addNtf.read_date, addNtf.title, addNtf.message, addNtf.notif_type,
                 addNtf.checkout_date, addNtf.checkout_message, addNtf.status]
                 )
     .then(pgres => {
