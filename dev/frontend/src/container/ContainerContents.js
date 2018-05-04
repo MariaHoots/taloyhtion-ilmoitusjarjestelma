@@ -112,7 +112,8 @@ export default class ContainerContents extends React.Component
 						}/>
 				<Route path="/admin_lisaayhtio"
 					render={() => this.props.isLogged ?
-						(<IsannoitsijaTaloyhtiotLisaa addHousingCompany={this.props.addHousingCompany}/>) :
+						(<IsannoitsijaTaloyhtiotLisaa addHousingCompany={this.props.addHousingCompany}
+														setPageTittle={this.props.setPageTittle}/>) :
 						(<Redirect to="/"/>)
 						}/>
 				<Route path="/admin_yhtiot"

@@ -15,6 +15,10 @@ export default class IsannoitsijaTaloyhtiotLisaa extends React.Component
 			houses:[]		
 		}
 	}
+
+	componentDidMount() {
+    	this.props.setPageTittle("Taloyhtiön lisäys");
+	}
 	
 	onFormChange = (event) => {
 		let tempVal=event.target.value
