@@ -194,6 +194,9 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 		event.preventDefault();
 		let tempUser = {
 			id:this.state.id,
+			hcid:this.state.hcid,
+			hid:this.state.hid,
+			fid:this.state.fid,
 			first_name:this.state.first_name,
 			last_name:this.state.last_name,
 			email:this.state.email,
