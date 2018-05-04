@@ -83,8 +83,9 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 						hid:this.props.userList[i].hid,
 						hcid:this.props.userList[i].hcid
 				})
-				this.props.getHousesByHousingCompany(this.props.userList[i].hid);
-				this.props.getFlatsByHouse(this.props.userList[i].fid);
+				this.props.getHousesByHousingCompany(this.props.userList[i].hcid);
+				this.props.getFlatsByHouse(this.props.userList[i].hid);
+				console.log(this.props.userList[i].hcid+" "+this.props.userList[i].hid+" "+this.props.userList[i].fid)
 			}
 		}
 	}
