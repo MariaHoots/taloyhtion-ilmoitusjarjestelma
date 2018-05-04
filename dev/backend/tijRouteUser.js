@@ -16,14 +16,27 @@ tijRouteUser.get("/usersseek/:search", function(req,res) {
     let user = tijUser;
     var getSearch = req.params.search;
 
-    tijPg.query("SELECT *, CONCAT (last_name, ' ', first_name) AS fullname FROM tij_users " +
-				"WHERE CONCAT (last_name, ' ', first_name) ~* '^"+getSearch+".*'")
+//  tijPg.query("SELECT *, CONCAT (last_name, ' ', first_name) AS fullname FROM tij_users " +
+//				"WHERE CONCAT (last_name, ' ', first_name) ~* '^"+getSearch+".*'")
+
+	tijPg.query("SELECT tij_users.*, CONCAT (tij_users.last_name, ' ', tij_users.first_name) AS fullname," +
+					"tij_flats.id AS fid, tij_flats.flat_number, tij_flats.stairway," +
+					"tij_houses.id AS hid, tij_houses.address AS h_address, tij_houses.zip AS h_zip," + 
+					"tij_houses.city AS h_city, tij_housing_comp.id AS hcid " +
+				"FROM tij_users " +
+				"INNER JOIN tij_flats ON (tij_users.id_flat = tij_flats.id) " +
+				"INNER JOIN tij_houses ON (tij_flats.id_houses = tij_houses.id) " +
+				"INNER JOIN tij_housing_comp ON (tij_houses.id_housing_comp= tij_housing_comp.id) " +
+				"WHERE CONCAT (tij_users.last_name, ' ', tij_users.first_name) ~* '^"+getSearch+".*'")
     .then(pgres => {
         queryContents = pgres.rows;
         for (let i=0;i<pgres.rows.length;i++)
         {
             user = {
                 id:pgres.rows[i].id,
+                fid:pgres.rows[i].fid,
+                hid:pgres.rows[i].hid,
+                hcid:pgres.rows[i].hcid,
                 id_flat:pgres.rows[i].id_flat,
                 email:pgres.rows[i].email,
                 password:pgres.rows[i].password,
@@ -35,7 +48,14 @@ tijRouteUser.get("/usersseek/:search", function(req,res) {
                 billing_address:pgres.rows[i].billing_address,
                 zip:pgres.rows[i].zip,
                 city:pgres.rows[i].city,
-                fullname:pgres.rows[i].fullname                
+                fullname:pgres.rows[i].fullname,
+
+                flat_number:pgres.rows[i].flat_number,
+				stairway:pgres.rows[i].stairway,
+                
+				h_address:pgres.rows[i].h_address,
+                h_zip:pgres.rows[i].h_zip,
+                h_city:pgres.rows[i].h_city	                
             };
             users.push(user);
         }
@@ -44,19 +64,32 @@ tijRouteUser.get("/usersseek/:search", function(req,res) {
     }).catch(e => console.error(e.stack));
 });
 
-// users - get some by address
+// users - get some by (house)address
 tijRouteUser.get("/usersseekaddress/:search", function(req,res) {
     let users = [];
     let user = tijUser;
     var getSearch = req.params.search;
 
-    tijPg.query("SELECT *, CONCAT (last_name, ' ', first_name) AS fullname FROM tij_users WHERE billing_address ~* '^"+getSearch+".*'")
+//  tijPg.query("SELECT *, CONCAT (last_name, ' ', first_name) AS fullname FROM tij_users WHERE billing_address ~* '^"+getSearch+".*'")
+
+	tijPg.query("SELECT tij_users.*, CONCAT (tij_users.last_name, ' ', tij_users.first_name) AS fullname," +
+					"tij_flats.id AS fid, tij_flats.flat_number, tij_flats.stairway," +
+					"tij_houses.id AS hid, tij_houses.address AS h_address, tij_houses.zip AS h_zip," + 
+					"tij_houses.city AS h_city, tij_housing_comp.id AS hcid " +
+				"FROM tij_users " +
+				"INNER JOIN tij_flats ON (tij_users.id_flat = tij_flats.id) " +
+				"INNER JOIN tij_houses ON (tij_flats.id_houses = tij_houses.id) " +
+				"INNER JOIN tij_housing_comp ON (tij_houses.id_housing_comp= tij_housing_comp.id) " +
+				"WHERE tij_houses.address ~* '^"+getSearch+".*'")
     .then(pgres => {
         queryContents = pgres.rows;
         for (let i=0;i<pgres.rows.length;i++)
         {
             user = {
                 id:pgres.rows[i].id,
+				fid:pgres.rows[i].fid,
+                hid:pgres.rows[i].hid,
+                hcid:pgres.rows[i].hcid,
                 id_flat:pgres.rows[i].id_flat,
                 email:pgres.rows[i].email,
                 password:pgres.rows[i].password,
@@ -68,7 +101,14 @@ tijRouteUser.get("/usersseekaddress/:search", function(req,res) {
                 billing_address:pgres.rows[i].billing_address,
                 zip:pgres.rows[i].zip,
                 city:pgres.rows[i].city,
-                fullname:pgres.rows[i].fullname
+                fullname:pgres.rows[i].fullname,
+
+                flat_number:pgres.rows[i].flat_number,
+				stairway:pgres.rows[i].stairway,
+                
+				h_address:pgres.rows[i].h_address,
+                h_zip:pgres.rows[i].h_zip,
+                h_city:pgres.rows[i].h_city	
             };
             users.push(user);
         }
@@ -116,7 +156,7 @@ tijRouteUser.get("/users", function(req,res) {
                 
 				h_address:pgres.rows[i].h_address,
                 h_zip:pgres.rows[i].h_zip,
-                h_city:pgres.rows[i].h_city			// muuta selectissä: houses.city - OK
+                h_city:pgres.rows[i].h_city	
             };
             users.push(user);
         }
