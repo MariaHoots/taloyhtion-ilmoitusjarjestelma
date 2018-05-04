@@ -206,7 +206,7 @@ tijRouteUser.post("/users", function(req,res){
 tijRouteUser.put("/users2/:id", function(req,res){
     let putId = parseInt(req.params.id);
     let putUser = tijUser;
-    console.log(JSON.stringify(req.body)+"\n\n")
+    //console.log(JSON.stringify(req.body)+"\n\n")
 /* 
 	Näihin oma update logiikka			(= asunnon osoite)
     h_address:this.state.h_address,			houses
@@ -216,18 +216,18 @@ tijRouteUser.put("/users2/:id", function(req,res){
     h_city:this.state.h_city				houses (uusi)
 */
     putUser = {
-        email:req.body.email,
         first_name:req.body.first_name,
         last_name:req.body.last_name,
         phone:req.body.phone,
         billing_address:req.body.billing_address,
         zip:req.body.zip,
-        city:req.body.city
+        city:req.body.city,
+        id_flat:req.body.fid
 
     };
-    tijPg.query('UPDATE tij_users SET email=($1), first_name=($2), last_name=($3),' +
+    tijPg.query('UPDATE tij_users SET id_flat=($1), first_name=($2), last_name=($3),' +
                 'phone=($4), billing_address=($5), zip=($6), city=($7) WHERE id=($8)',
-                    [putUser.email, putUser.first_name, putUser.last_name, putUser.phone,
+                    [putUser.id_flat, putUser.first_name, putUser.last_name, putUser.phone,
                      putUser.billing_address, putUser.zip, putUser.city, putId]
                 )
     .then(pgres => {

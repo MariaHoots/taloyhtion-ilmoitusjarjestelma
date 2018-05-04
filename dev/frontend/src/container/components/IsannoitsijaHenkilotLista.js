@@ -42,12 +42,14 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 	}
 
 	updateHcid(id){
+		this.props.getHousesByHousingCompany(id);
 		this.setState({
 			hcid:id
 		});
 	}
 
 	updateHid(id){
+		this.props.getFlatsByHouse(id);
 		this.setState({
 			hid:id
 		});
@@ -81,8 +83,8 @@ export default class IsannoitsijaHenkilotLista extends React.Component
 						hid:this.props.userList[i].hid,
 						hcid:this.props.userList[i].hcid
 				})
-				this.props.getHousesByHousingCompany(this.props.userList[i].hcid);
-				this.props.getFlatsByHouse(this.props.userList[i].hid);
+				this.props.getHousesByHousingCompany(this.props.userList[i].hid);
+				this.props.getFlatsByHouse(this.props.userList[i].fid);
 			}
 		}
 	}
