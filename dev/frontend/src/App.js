@@ -84,6 +84,10 @@ export default class App extends Component {
 				loggedUser:user
 			})
 		}
+		else{
+			this.onLogout();
+			return;
+		}
 	}
 
 	setPageTittle(tittle){
@@ -707,9 +711,10 @@ export default class App extends Component {
 					userGroup:0,
 					isLogged:false
 				})
-				sessionStorage.setItem("loginStatus","not logged");
 				sessionStorage.setItem("token2","");
+				sessionStorage.setItem("loginStatus","not logged");
 				sessionStorage.setItem("token","");
+				sessionStorage.setItem("user","");
 			} else {
 				console.log(response.statusText);
 			}
