@@ -90,28 +90,28 @@ export default class EtuSivu extends React.Component {
 										<form>
 											<label htmlFor="statusChange">Muuta tilaa:</label>
 											<Link to="/" data-toggle="modal" title="vastaanotettu" onClick={this.changeStatus}>
-												{(notif.status === 1) ? (
+												{(notif.status === 2) ? (
 												<img src="img/vastaanotettu.svg"  className="img-fluid border border-dark rounded bg-success" alt="[H]" height="20" width="20"/>
 												) : (
 												<img src="img/vastaanotettu.svg" id={notif.id} name="received" className="img-fluid" alt="[H]" height="20" width="20"/>
 												)}
 											</Link>
 											<Link to="/" data-toggle="modal" title="työn alla" onClick={this.changeStatus}>
-												{(notif.status === 2) ? (
+												{(notif.status === 3) ? (
 												<img src="img/tyonalla.svg" className="img-fluid border border-dark rounded bg-success" alt="[H]" height="20" width="20"/>
 												) : (
 												<img src="img/tyonalla.svg" id={notif.id} name="beingworked" className="img-fluid" alt="[H]" height="20" width="20"/>
 												)}
 											</Link>
 											<Link to="/" data-toggle="modal" title="keskeytynyt" onClick={this.changeStatus}>
-												{(notif.status === 3) ? (
+												{(notif.status === 4) ? (
 												<img src="img/keskeytynyt.svg" className="img-fluid border border-dark rounded bg-success" alt="[H]" height="20" width="20"/>
 												) : (
 												<img src="img/keskeytynyt.svg" id={notif.id} name="cancelled" className="img-fluid " alt="[H]" height="20" width="20"/>
 												)}
 											</Link>
 											<Link to="/" data-toggle="modal" title="valmis" onClick={this.changeStatus}>
-												{(notif.status === 4) ? (
+												{(notif.status === 5) ? (
 												<img src="img/valmis.svg" className="img-fluid border border-dark rounded bg-success" alt="[H]" height="20" width="20"/>
 												) : (
 												<img src="img/valmis.svg" id={notif.id} name="done" className="img-fluid" alt="[H]" height="20" width="20"/>
@@ -145,28 +145,28 @@ export default class EtuSivu extends React.Component {
             <td>{getIlmoitustyyppiById(notif.notif_type)}</td>
             <td>
 							<Link to="/" data-toggle="modal" title="vastaanotettu" onClick={this.changeStatus}>
-								{(notif.status === 1) ? (
+								{(notif.status === 2) ? (
 								<img src="img/vastaanotettu.svg"  className="img-fluid border border-dark rounded bg-success" alt="[H]" height="20" width="20"/>
 								) : (
 								<img src="img/vastaanotettu.svg" id={notif.id} name="received" className="img-fluid" alt="[H]" height="20" width="20"/>
 								)}
 							</Link>
 							<Link to="/" data-toggle="modal" title="työn alla" onClick={this.changeStatus}>
-								{(notif.status === 2) ? (
+								{(notif.status === 3) ? (
 								<img src="img/tyonalla.svg" className="img-fluid border border-dark rounded bg-success" alt="[H]" height="20" width="20"/>
 								) : (
 								<img src="img/tyonalla.svg" id={notif.id} name="beingworked" className="img-fluid" alt="[H]" height="20" width="20"/>
 								)}
 							</Link>
 							<Link to="/" data-toggle="modal" title="keskeytynyt" onClick={this.changeStatus}>
-								{(notif.status === 3) ? (
+								{(notif.status === 4) ? (
 								<img src="img/keskeytynyt.svg" className="img-fluid border border-dark rounded bg-success" alt="[H]" height="20" width="20"/>
 								) : (
 								<img src="img/keskeytynyt.svg" id={notif.id} name="cancelled" className="img-fluid " alt="[H]" height="20" width="20"/>
 								)}
 							</Link>
 							<Link to="/" data-toggle="modal" title="valmis" onClick={this.changeStatus}>
-								{(notif.status === 4) ? (
+								{(notif.status === 5) ? (
 								<img src="img/valmis.svg" className="img-fluid border border-dark rounded bg-success" alt="[H]" height="20" width="20"/>
 								) : (
 								<img src="img/valmis.svg" id={notif.id} name="done" className="img-fluid" alt="[H]" height="20" width="20"/>

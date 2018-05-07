@@ -138,7 +138,7 @@ tijRouteNotification.get("/notifications", function(req,res) {
     }).catch(e => console.error(e.stack));
 });
 
-// notifications - get 5 notifications with status 1
+// notifications - get notifications with status 1
 tijRouteNotification.get("/notificationsnew", function(req,res) {
     let notifications = [];
     let notification = tijNotification;

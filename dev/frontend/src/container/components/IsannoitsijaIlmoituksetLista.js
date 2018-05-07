@@ -13,16 +13,16 @@ export default class EtuSivu extends React.Component{
 	}
 	changeStatus = (event) =>{
 		if (event.target.name === "received"){
-			this.props.updateNotificationStatus(event.target.id,1,0);
-		}
-		if (event.target.name === "beingworked"){
 			this.props.updateNotificationStatus(event.target.id,2,0);
 		}
-		if (event.target.name === "cancelled"){
+		if (event.target.name === "beingworked"){
 			this.props.updateNotificationStatus(event.target.id,3,0);
 		}
-		if (event.target.name === "done"){
+		if (event.target.name === "cancelled"){
 			this.props.updateNotificationStatus(event.target.id,4,0);
+		}
+		if (event.target.name === "done"){
+			this.props.updateNotificationStatus(event.target.id,5,0);
 		}
 	}
 
@@ -127,28 +127,28 @@ export default class EtuSivu extends React.Component{
 											<form>
 												<label htmlFor="statusChange">Muuta tilaa:</label>
 												<Link to="/" data-toggle="modal" title="vastaanotettu" onClick={this.changeStatus}>
-													{(notification.status === 1) ? (
+													{(notification.status === 2) ? (
 														<img src="img/vastaanotettu.svg"  className="img-fluid border border-dark rounded bg-success" alt="[H]" height="20" width="20"/>
 													) : (
 														<img src="img/vastaanotettu.svg" id={notification.id} name="received" className="img-fluid" alt="[H]" height="20" width="20"/>
 													)}
 												</Link>
 												<Link to="/" data-toggle="modal" title="työn alla" onClick={this.changeStatus}>
-													{(notification.status === 2) ? (
+													{(notification.status === 3) ? (
 														<img src="img/tyonalla.svg" className="img-fluid border border-dark rounded bg-success" alt="[H]" height="20" width="20"/>
 													) : (
 														<img src="img/tyonalla.svg" id={notification.id} name="beingworked" className="img-fluid" alt="[H]" height="20" width="20"/>
 													)}
 												</Link>
 												<Link to="/" data-toggle="modal" title="keskeytynyt" onClick={this.changeStatus}>
-													{(notification.status === 3) ? (
+													{(notification.status === 4) ? (
 														<img src="img/keskeytynyt.svg" className="img-fluid border border-dark rounded bg-success" alt="[H]" height="20" width="20"/>
 													) : (
 														<img src="img/keskeytynyt.svg" id={notification.id} name="cancelled" className="img-fluid " alt="[H]" height="20" width="20"/>
 													)}
 												</Link>
 												<Link to="/" data-toggle="modal" title="valmis" onClick={this.changeStatus}>
-													{(notification.status === 4) ? (
+													{(notification.status === 5) ? (
 														<img src="img/valmis.svg" className="img-fluid border border-dark rounded bg-success" alt="[H]" height="20" width="20"/>
 													) : (
 														<img src="img/valmis.svg" id={notification.id} name="done" className="img-fluid" alt="[H]" height="20" width="20"/>
@@ -185,28 +185,28 @@ export default class EtuSivu extends React.Component{
 
 					<td>
 						<Link to="/" data-toggle="modal" title="vastaanotettu" onClick={this.changeStatus}>
-							{(notification.status === 1) ? (
+							{(notification.status === 2) ? (
 									<img src="img/vastaanotettu.svg" className="img-fluid border border-dark rounded bg-success" alt="[H]" height="20" width="20"/>
 								) : (
 									<img src="img/vastaanotettu.svg" id={notification.id} name="received" className="img-fluid" alt="[H]" height="20" width="20"/>
 							)}
 							</Link>
 						<Link to="/" data-toggle="modal" title="työn alla" onClick={this.changeStatus}>
-						{(notification.status === 2) ? (
+						{(notification.status === 3) ? (
 									<img src="img/tyonalla.svg" className="img-fluid border border-dark rounded bg-success" alt="[H]" height="20" width="20"/>
 								) : (
 									<img src="img/tyonalla.svg" id={notification.id} name="beingworked" className="img-fluid" alt="[H]" height="20" width="20"/>
 							)}
 							</Link>
 						<Link to="/" data-toggle="modal" title="keskeytynyt" onClick={this.changeStatus}>
-						{(notification.status === 3) ? (
+						{(notification.status === 4) ? (
 									<img src="img/keskeytynyt.svg" className="img-fluid border border-dark rounded bg-success" alt="[H]" height="20" width="20"/>
 								) : (
 									<img src="img/keskeytynyt.svg" id={notification.id} name="cancelled" className="img-fluid " alt="[H]" height="20" width="20"/>
 							)}
 							</Link>
 						<Link to="/" data-toggle="modal" title="valmis" onClick={this.changeStatus}>
-						{(notification.status === 4) ? (
+						{(notification.status === 5) ? (
 									<img src="img/valmis.svg" className="img-fluid border border-dark rounded bg-success" alt="[H]" height="20" width="20"/>
 								) : (
 									<img src="img/valmis.svg" id={notification.id} name="done" className="img-fluid" alt="[H]" height="20" width="20"/>
