@@ -223,16 +223,16 @@ tijRouteUser.post("/users", function(req,res){
         last_name:req.body.last_name,
         phone:req.body.phone,
         role:parseInt(req.body.role),				// oletus: 1 = asukas
-        last_login:req.body.last_login,	
+//      last_login:req.body.last_login,	
         billing_address:req.body.billing_address,
         zip:req.body.zip,
         city:req.body.city
     };
     tijPg.query('INSERT INTO tij_users (id_flat, email, password, first_name, last_name,' +
-                'phone, role, last_login, billing_address, zip, city)' +
-                'VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)',
+                'phone, role, billing_address, zip, city)' +
+                'VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)',
                     [addUser.id_flat, addUser.email, addUser.password, addUser.first_name, addUser.last_name, addUser.phone,
-                    addUser.role, addUser.last_login, addUser.billing_address, addUser.zip, addUser.city]
+                    addUser.role, addUser.billing_address, addUser.zip, addUser.city]
                 )
     .then(pgres => {
         return res.status(200)
