@@ -2,20 +2,24 @@ Tarkistuslista:
 
 Sovelluksessa toimii:
 - Login ja logout
-- Ilmoituksien, yhtiöiden ja henkilöiden selaus
-- Ilmoitukseen lisätty kommentti menee tietokantaan
-- Ilmoituksen modal-ikkuna
-- Sorttaus
+- Ilmoituksien, yhtiÃ¶iden ja henkilÃ¶iden selaus
+- Ilmoituksen modal-ikkuna (is.etusivu ja is.ilmoituslista), myÃ¶s statuksen pÃ¤ivitys
+- Ilmoitukseen lisÃ¤tty (checkout-)kommentti menee tietokantaan (mutta status ei muutu) 
+- statuksen pÃ¤ivitys ilmoituslistalta (ja etusivulta)
+- HenkilÃ¶n modal-ikkuna: voi vaihtaa asunnon 
+  (puute: nÃ¤yttÃ¤Ã¤ vain 1-tilan ilmoitukset =ominaisuus)
+- HenkilÃ¶listan sorttaus, nimi- ja osoitehaut
+- YhtiÃ¶iden, talojen ja asuntojen lisÃ¤ys
 - Last login
 
 
-Tehtävää/tarkistettavaa:
-- Ilmoituksen lähettäminen (asukas). Ilmoituksen perille meno tietokantaan saakka.
-- Käyttäjän tietojen muuttaminen (asukas, omat tiedot-valinta)
-- Pikkubugi: Uusimmat ilmoitukset -> tilan muutos, sivu jämähtää ja vaatii refreshin. 
-  Aktiivisissa ilmoituksissa tilan muutos toimii hyvin.
-- Pikkubugi: Uusimmat ilmoitukset -> huoneiston kohdalle tulee x.
-
+TehtÃ¤vÃ¤Ã¤/tarkistettavaa:
+- Ilmoituksen lÃ¤hettÃ¤minen (asukas). Ilmoituksen perille meno tietokantaan saakka.
+- KÃ¤yttÃ¤jÃ¤n tietojen muuttaminen (asukas, omat tiedot-valinta / isÃ¤nn. modal-ikkuna, kaikki tiedot)
+- Pikkubugi: Uusimmat ilmoitukset -> tilan muutos, sivu jÃ¤mÃ¤htÃ¤Ã¤ ja vaatii refreshin. 
+  Aktiivisissa ilmoituksissa tilan muutos toimii hyvin. (read-tiedot ei pÃ¤ivity, check-tiedot ei pÃ¤ivity)
+- Pikkubugi: (Uusimmat) ilmoitukset mod.ikkuna -> huoneiston kohdalle tulee x.
+- ilmoituslistan sortit/haut ( / nimi?)
 
 Karsittavia ominaisuuksia(?):
 -
