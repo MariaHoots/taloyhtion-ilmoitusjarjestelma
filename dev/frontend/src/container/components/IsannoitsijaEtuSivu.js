@@ -7,7 +7,7 @@ export default class EtuSivu extends React.Component {
 
 	componentDidMount() {
 		this.props.setPageTittle("Etusivu")
-		this.props.getNotificationsNew();
+
 	}
 
 
@@ -19,6 +19,7 @@ export default class EtuSivu extends React.Component {
 			    <p className="card-text mb-5">Edellinen sisäänkirjautuminen {new Date(this.props.loggedUser.last_login).toLocaleString("fi-FI")}</p>
 			    <h4>Käsittelemättömät ilmoitukset</h4>
 				  <table className="table table-bordered mb-5">
+					<thead>
 						<tr>
 							<th>Ilmoitus</th>
               <th>Päivämäärä</th>
@@ -26,10 +27,12 @@ export default class EtuSivu extends React.Component {
               <th>Ilmoitus</th>
 							<th>Toiminnot</th>
 						</tr>
-
+						</thead>
 						<IsannoitsijaEtuSivuLista notificationsList={this.props.notificationsList}
-																			updateNotificationStatus={this.props.updateNotificationStatus}/>
-
+																			updateNotificationStatus={this.props.updateNotificationStatus}
+																			updateNotification={this.props.updateNotification}
+																			getNotificationsNew={this.props.getNotificationsNew}/>
+						
 				  </table>
 				  <Link to="/admin_ilmoitukset" className="card-link">
 				  <img src="img/ilmoitukset.svg" className="img-fluid" alt="[H]" height="20" width="20"/> Kaikki ilmoitukset</Link>

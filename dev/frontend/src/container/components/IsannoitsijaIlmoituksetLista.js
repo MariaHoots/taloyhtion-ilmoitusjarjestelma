@@ -54,6 +54,7 @@ export default class EtuSivu extends React.Component{
 			let tempNotif = {
 			id:this.state.id,
 			comment:this.state.comment,
+			page:"lista"
 
 		}
 		this.props.updateNotification(tempNotif);

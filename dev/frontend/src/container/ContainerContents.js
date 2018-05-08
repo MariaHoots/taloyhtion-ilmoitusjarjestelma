@@ -41,6 +41,7 @@ export default class ContainerContents extends React.Component
 											  setPageTittle={this.props.setPageTittle}
 											  notificationsList={this.props.notificationsList}
 											  getNotificationsNew={this.props.getNotificationsNew}
+											  updateNotification={this.props.updateNotification}
 											  updateNotificationStatus={this.props.updateNotificationStatus}/>) :
 						(<EtuSivu loggedUser={this.props.loggedUser}
 											setPageTittle={this.props.setPageTittle}
@@ -48,11 +49,6 @@ export default class ContainerContents extends React.Component
 											notificationsList={this.props.notificationsList}/>)
 					}/>
 
-				<Route path="/etusivu"
-					render={() => this.props.isLogged ?
-						(<IsannoitsijaEtuSivu/>) :
-						(<Redirect to="/"/>)
-						}/>
 				<Route path="/ilmoitukset"
 					render={() => this.props.isLogged ?
 						(<Ilmoitukset />) :

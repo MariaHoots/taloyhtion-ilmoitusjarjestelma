@@ -4,21 +4,66 @@ import {getIlmoitustyyppiById} from '../../Helper.js';
 
 export default class EtuSivu extends React.Component {
 
+	constructor(props) {
+		super(props);
+		this.state={
+			id:0,
+			comment:"",
+			currentNotif: 0
+		}
+	}
+	componentDidMount() {
+
+		this.props.getNotificationsNew();
+	}
+
 	changeStatus = (event) =>{
 		if (event.target.name === "received"){
-			this.props.updateNotificationStatus(event.target.id,2,1);
+			this.props.updateNotificationStatus(event.target.id,2,0);
 		}
 		if (event.target.name === "beingworked"){
-			this.props.updateNotificationStatus(event.target.id,3,1);
+			this.props.updateNotificationStatus(event.target.id,3,0);
 		}
 		if (event.target.name === "cancelled"){
-			this.props.updateNotificationStatus(event.target.id,4,1);
+			this.props.updateNotificationStatus(event.target.id,4,0);
 		}
 		if (event.target.name === "done"){
-			this.props.updateNotificationStatus(event.target.id,5,1);
+			this.props.updateNotificationStatus(event.target.id,5,0);
 		}
+	}
 
+	setCurrentNotification = (event) =>
+	{
+		for(let i=0;i<this.props.notificationsList.length;i++){
+			if (this.props.notificationsList[i].id === parseInt(event.target.name,10)){
 
+				this.setState({
+					id:parseInt(event.target.name,10),
+					currentNotif:this.props.notificationsList[i].id,
+					comment:this.props.notificationsList[i].checkout_message,
+
+				})
+			}
+		}
+	}
+
+	onFormChange = (event) => {
+		if(event.target.name==="comment") {
+			this.setState({
+				comment:event.target.value
+			});
+		}
+	}
+
+	submit = (event) => {
+		event.preventDefault();
+			let tempNotif = {
+			id:this.state.id,
+			comment:this.state.comment,
+			page:"etusivu"
+
+		}
+		this.props.updateNotification(tempNotif);
 	}
 
 
@@ -31,7 +76,7 @@ export default class EtuSivu extends React.Component {
 		} else {
 			listView = this.props.notificationsList.map((notif) =>
 				<tr key={notif.id}>
-            <td ><Link to="/" data-toggle="modal" name={notif.id} data-target={`#${notif.id}`} >{notif.title}</Link>
+            <td ><Link to="/" data-toggle="modal" name={notif.id} data-target={`#${notif.id}`} onClick={this.setCurrentNotification} >{notif.title}</Link>
 
 						{/* Modal start */}
 

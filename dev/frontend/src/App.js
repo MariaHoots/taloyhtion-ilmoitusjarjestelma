@@ -563,8 +563,15 @@ export default class App extends Component {
 		fetch("/api/notifications/"+tempNotif.id,onUpdNotification).then((response) => {
 			if(response.ok) {
 				response.json().then((data) => {
+						
+					if(notification.page==="etusivu")
+					{
+						this.getNotificationsNew();
+					}
+					if(notification.page==="lista")
+					{
 						this.getNotifications();
-						this.setState({notificationsList:data})
+					}
 				})
 			} else {
 				console.log(response.statusText);
