@@ -243,29 +243,24 @@ tijRouteNotification.get("/notifications1/:id", function(req,res) {
     }).catch(e => console.error(e.stack));
 });
 
-// notifications - add (insert) one  = POST
+// notifications - add (insert) one ,first time = POST
 tijRouteNotification.post("/notifications", function(req,res){
+	let sentDate = getDateTime();
     let addNtf = tijNotification;
     addNtf = {
         id_user:parseInt(req.body.id_user),
         id_housing_c:parseInt(req.body.id_housing_comp),  	// HUOM. nimi
-        id_checkout:parseInt(req.body.id_checkout),			// null?
-        read_id:parseInt(req.body.read_id),					// null?
-        sent_date:getDateTime(),      			  			// ASETETTAVA TÄSSÄ
-        read_date:req.body.read_date,						// null?
+        sent_date:sentDate,      			  				// ASETETTAVA TÄSSÄ
         title:req.body.title,
         message:req.body.message,
         notif_type:parseInt(req.body.notif_type),
-        checkout_date:req.body.checkout_date,				// _date, null?
-        checkout_message:req.body.checkout_message,			// tyhjä
-        status:1
+        status:parseInt(req.body.status)
     };
-    tijPg.query('INSERT INTO tij_notifications(id_user, id_housing_c, id_checkout, read_id,' +
-                'sent_date, read_date, title, message, notif_type, checkout_date, checkout_message, status)' +
-                'VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)',
-                [addNtf.id_user, addNtf.id_housing_c, addNtf.id_checkout, addNtf.read_id,
-                addNtf.sent_date, addNtf.read_date, addNtf.title, addNtf.message, addNtf.notif_type,
-                addNtf.checkout_date, addNtf.checkout_message, addNtf.status]
+    tijPg.query('INSERT INTO tij_notifications(id_user, id_housing_c,' +
+                'sent_date, title, message, notif_type, status)' +
+                'VALUES($1, $2, $3, $4, $5, $6, $7)',
+                [addNtf.id_user, addNtf.id_housing_c, addNtf.sent_date, addNtf.title, addNtf.message, 
+				addNtf.notif_type, addNtf.status]
                 )
     .then(pgres => {
         return res.status(200)
@@ -275,7 +270,7 @@ tijRouteNotification.post("/notifications", function(req,res){
     }).catch(e => console.error(e.stack));
 });
 
-// notifications - update one  = PUT	--- Mgr / checkout data
+// notifications - update one  = PUT	--- Mgr / checkout data (no status update)
 tijRouteNotification.put("/notifications/:id", function(req,res){
     let putId = parseInt(req.params.id);
     let putNtf = tijNotification;
@@ -298,7 +293,7 @@ tijRouteNotification.put("/notifications/:id", function(req,res){
     }).catch(e => console.error(e.stack));
 });
 
-// notifications - update notification status only
+// notifications - update notification status only (not checkout data)
 tijRouteNotification.put("/notificationstatus/:id/:status", function(req,res){
     let putId = parseInt(req.params.id);
     let putStatus = parseInt(req.params.status);
