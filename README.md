@@ -8,4 +8,9 @@ omia ilmoituksia ja kirjautua ulos. Ilmoituksen tehtäessä kirjoitetaan otsikko
 tarkempi kuvaus ja valitaan ilmoitustyyppien listasta sopiva ilmoitus, joka lähetetään
 joko isännöitsijälle tai huoltoyhtiölle luettavaksi. 
 
+Isännöitsijän roolissa kirjauduttaessa päästään selamaan ilmoituksia, yhtiöitä ja henkilöitä.
+Ilmoitukset jakautuvat aktiivisiin ja kuitattuihin ilmoituksiin.
+Yhtiöitä ja henkilöitä voidaan etsiä listoista käyttämällä hakutoimintoa.
+
+
 Kari Kuusniemi, Maria Knuutinen, Jari-Matti Seppälä, Jari Vuorinen
