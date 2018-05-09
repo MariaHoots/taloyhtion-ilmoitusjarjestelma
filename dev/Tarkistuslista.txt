@@ -6,16 +6,17 @@ Sovelluksessa toimii:
 - Ilmoituksen modal-ikkuna (is.etusivu ja is.ilmoituslista), myös statuksen päivitys
 - Ilmoitukseen lisätty (checkout-)kommentti menee tietokantaan (mutta status ei muutu) 
 - statuksen päivitys ilmoituslistalta (ja etusivulta)
-- Henkilön modal-ikkuna: voi vaihtaa asunnon 
+- Henkilön modal-ikkuna: henkilötiedot päivittyy, voi myös vaihtaa asunnon 
   (puute: näyttää vain 1-tilan ilmoitukset =ominaisuus)
 - Henkilölistan sorttaus, nimi- ja osoitehaut
 - Yhtiöiden, talojen ja asuntojen lisäys
-- Last login
-
+- Last login päivittyy
 
 Tehtävää/tarkistettavaa:
-- Ilmoituksen lähettäminen (asukas). Ilmoituksen perille meno tietokantaan saakka.
-- Käyttäjän tietojen muuttaminen (asukas, omat tiedot-valinta / isänn. modal-ikkuna, kaikki tiedot)
+- Ilmoituksen lähettäminen (asukas). Ilmoituksen perille meno tietokantaan saakka. Backend OK viimein?
+- Uuden asukkaan/käyttäjän lisäys (isänn?) Backend OK?
+- Käyttäjän omien tietojen muuttaminen (asukas, omat tiedot-valinta), mitä saa muuttaa (backend)?
+
 - Pikkubugi: Uusimmat ilmoitukset -> tilan muutos, sivu jämähtää ja vaatii refreshin. 
   Aktiivisissa ilmoituksissa tilan muutos toimii hyvin. (read-tiedot ei päivity, check-tiedot ei päivity)
 - Pikkubugi: (Uusimmat) ilmoitukset mod.ikkuna -> huoneiston kohdalle tulee x.
