@@ -1,7 +1,8 @@
 # Taloyhtiön ilmoitusjärjestelmä
 IT-tiimiosaaja-kurssin ryhmätyöharjoitus 2018
 
-Sovelluksen käyttäjinä eri käyttäjärooleissa voivat toimia asukas tai isännöitsijä.
+Sovelluksen ideana on tarjota työkalu taloyhtiöön liittyvien ilmoitusten tekemiseen ja niiden käsittelyyn sähköisesti.  
+Käyttäjinä eri käyttäjärooleissa voivat toimia asukas tai isännöitsijä.
 Sovelluksen käyttö aloitetaan kirjautumalla järjestelmään omilla tunnuksilla.
 Asukkaan roolissa kirjauduttaessa on mahdollista tehdä uusi ilmoitus ja katsoa 
 omia ilmoituksia. Isännöitsijän roolissa kirjauduttaessa päästään selamaan ilmoituksia, yhtiöitä ja henkilöitä. 
