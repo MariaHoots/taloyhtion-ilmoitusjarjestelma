@@ -119,8 +119,9 @@ export default class EtuSivu extends React.Component {
 			<div class="form-group">
 					<label for="kayttajaInputEmail1">Sähköposti</label>
 					 <input type="email" name="email" class="form-control" id="kayttajaInputEmail1" aria-describedby="emailHelp"
-						 placeholder="Syötä sähköposti"/> <small id="emailHelp" class="form-text text-muted">Emme tee osoitteellasi mitään laitonta.</small>
-						 value={this.state.email} onChange={this.onChange}/>
+					 placeholder="Syötä sähköposti"
+					  value={this.state.email} onChange={this.onChange}/>
+					 <small id="emailHelp" class="form-text text-muted">Emme tee osoitteellasi mitään laitonta.</small>		 
 			</div>
 			<p>Salasanan vaihtaminen</p>
 			<div class="form-group">
