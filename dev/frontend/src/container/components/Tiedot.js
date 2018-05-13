@@ -35,7 +35,7 @@ export default class EtuSivu extends React.Component {
 				last_name:event.target.value
 			});
 		}
-		if(event.target.name === "address") {
+		if(event.target.name === "billing_address") {
 			this.setState({
 				address:event.target.value
 			});
@@ -67,7 +67,7 @@ export default class EtuSivu extends React.Component {
 		let user = {
 			"first_name":this.state.first_name,
 			"lastname":this.state.last_name,
-			"address":this.state.address,
+			"billing_address":this.state.address,
 			"zip":this.state.zip,
 			"city":this.state.city,
 			"email":this.state.email,
