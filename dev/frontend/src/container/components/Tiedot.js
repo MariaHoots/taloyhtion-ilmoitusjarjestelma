@@ -5,12 +5,10 @@ export default class EtuSivu extends React.Component {
   componentDidMount() {
     this.props.setPageTittle("Omat tiedot");
   }
- //  Kommentoidut kohdat lisäyksiä. Kommenteissa, koska heittää vielä erroreja ajettaessa.
 
 
- // Konstruktori
+  // Konstruktori
 
- /*
 	constructor(props) {
 		super(props);
 		this.state={
@@ -23,9 +21,8 @@ export default class EtuSivu extends React.Component {
 			passphrase:""
 		}
 	}
-*/
 
-/*
+
 
   onChange = (event) => {
 		if(event.target.name === "first_name") {
@@ -65,9 +62,6 @@ export default class EtuSivu extends React.Component {
 		}
 	}
 
-*/
-
-/*
 		onSubmit = (event) => {
 		console.log("onsubmit")
 		let user = {
@@ -85,50 +79,48 @@ export default class EtuSivu extends React.Component {
 		event.preventDefault();
 	}
 
-*/
-
 // JSX alkaa alapuolella
 
   render() {
     return (
 		<div class="card">
 		  <div class="card-body">
-		  {/* <form onSubmit={this.onSubmit}> */}
-		   <form>
+		  <form onSubmit={this.onSubmit}>
+		    {/*<form> */}
 			<div class="form-row">
 				<div class="form-group col-md-3">
 					<label for="formGroupNimi">Nimi</label>
-					{/*<input type="text" name="nimi" class="form-control" id="formGroupNimi" placeholder="Nimi"
-					    value={this.state.nimi} onChange={this.onChange}/> */}
+					<input type="text" name="nimi" class="form-control" id="formGroupNimi" placeholder="Nimi"
+					    value={this.state.nimi} onChange={this.onChange}/> 
 				</div>
 				<div class="form-group col-md-3">
 					<label for="formGroupNimi">Sukunimi</label>
-					{/*<input type="text" name="sukunimi" class="form-control" id="formGroupNimi" placeholder="Sukunimi"
-					   value={this.state.sukunimi} onChange={this.onChange}/> */}
+					<input type="text" name="sukunimi" class="form-control" id="formGroupNimi" placeholder="Sukunimi"
+					   value={this.state.sukunimi} onChange={this.onChange}/> 
 				</div>
 			</div>
 				<div class="form-groupform-group">
 					<label for="formGroupOsoite">Osoite</label>
-					 {/*<input type="text" name="osoite" class="form-control" id="formGroupOsoite" placeholder="Osoite"
-						value={this.state.osoite} onChange={this.onChange}/> */}
+					 <input type="text" name="osoite" class="form-control" id="formGroupOsoite" placeholder="Osoite"
+						value={this.state.osoite} onChange={this.onChange}/> 
 			</div>
 			<div class="form-row">
 				<div class="form-group col-md-2">
 					<label for="formGroupPostinumero">Postinumero</label>
-					 {/*<input type="text" name="postinumero" class="form-control" id="formGroupPostinumero" placeholder="Postinumero"
-						value={this.state.postinumero} onChange={this.onChange}/> */}
+					 <input type="text" name="postinumero" class="form-control" id="formGroupPostinumero" placeholder="Postinumero"
+						value={this.state.postinumero} onChange={this.onChange}/> 
 				</div>
 				<div class="form-group col-md-4">
 					<label for="formGroupPostinumero">Postitoimipaikka</label>
-					{/*<input type="text" name="postitoimipaikka" class="form-control" id="formGroupPostinumero" placeholder="Postitoimipaikka"
-					   value={this.state.postitoimipaikka} onChange={this.onChange}/> */}
+					<input type="text" name="postitoimipaikka" class="form-control" id="formGroupPostinumero" placeholder="Postitoimipaikka"
+					   value={this.state.postitoimipaikka} onChange={this.onChange}/>
 				</div>
 			</div>
 			<div class="form-group">
 					<label for="kayttajaInputEmail1">Sähköposti</label>
-					{/* <input type="email" name="email" class="form-control" id="kayttajaInputEmail1" aria-describedby="emailHelp"
+					 <input type="email" name="email" class="form-control" id="kayttajaInputEmail1" aria-describedby="emailHelp"
 						 placeholder="Syötä sähköposti"/> <small id="emailHelp" class="form-text text-muted">Emme tee osoitteellasi mitään laitonta.</small>
-						 value={this.state.email} onChange={this.onChange}/> */}
+						 value={this.state.email} onChange={this.onChange}/>
 			</div>
 			<p>Salasanan vaihtaminen</p>
 			<div class="form-group">
