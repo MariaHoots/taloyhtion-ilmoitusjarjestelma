@@ -14,7 +14,7 @@ export default class EtuSivu extends React.Component {
 		this.state={
 			first_name:"",
 			last_name:"",
-			address:"",
+			billing_address:"",
 			zip:"",
 			city:"",
 			email:"",
